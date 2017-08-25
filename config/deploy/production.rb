@@ -61,5 +61,3 @@
 #   }
 
 server '13.59.149.165', user: 'ubuntu', roles: %w{web app}
-
-config.read_encrypted_secrets = true
