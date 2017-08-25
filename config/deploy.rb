@@ -7,7 +7,7 @@ set :ssh_options, {
   keys: ["#{Dir.home}/Key/minerva-key.pem"]
 }
 
-set :application,     "MinervaWebApp"
+set :application,     "minerva"
 # set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
