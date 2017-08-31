@@ -91,5 +91,6 @@ Rails.application.configure do
 
   config.read_encrypted_secrets = true
 
-  config.serve_static_assets = true
+  # config.serve_static_assets = true
+  config.public_file_server.enabled = true
 end
