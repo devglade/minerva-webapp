@@ -51,7 +51,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-append :linked_dirs, "public/assets/css", "public/assets/fonts", "public/assets/js", "public/assets/sass"
+# append :linked_dirs, "public/assets/css", "public/assets/fonts", "public/assets/js", "public/assets/sass"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
