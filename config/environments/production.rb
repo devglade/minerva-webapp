@@ -90,4 +90,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.read_encrypted_secrets = true
+
+  config.serve_static_assets = true
 end
