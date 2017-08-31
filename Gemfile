@@ -66,4 +66,5 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-passenger'
+  gem 'capistrano-rack'
 end
