@@ -83,4 +83,5 @@ production:
   database: minerva-webapp_production
 #  username: minerva-webapp
   username: postgres
-  password: <%= ENV['MINERVA_WEBAPP_DATABASE_PASSWORD']
+ # password: <%= ENV['MINERVA_WEBAPP_DATABASE_PASSWORD']
+  password: postgres
