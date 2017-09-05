@@ -60,6 +60,7 @@ gem 'jquery-rails'
 
 group :development do
   # Use Capistrano for deployment
+  gem 'listen'
   gem 'capistrano', "3.6.1"
   gem 'capistrano3-puma'
   gem 'capistrano-rails', require: false
