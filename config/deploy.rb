@@ -4,11 +4,11 @@ lock "3.9.0"
 set :ssh_options, {
   forward_agent: true,
   auth_methods: ["publickey"],
-  keys: ["#{Dir.home}/Key/minerva-key.pem"]
+  keys: ["#{Dir.home}/Key/devglade-key.pem"]
 }
 
 set :application,     "minerva"
-# set :user,            'ubuntu'
+set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 set :repo_url,        "git@github.com:devglade/minerva-webapp.git"
