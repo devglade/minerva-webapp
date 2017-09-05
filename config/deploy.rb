@@ -17,8 +17,8 @@ set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
 set :deploy_via,      :remote_cache
-set :deploy_to,       '/var/www/apps/minerva'
-# set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+# set :deploy_to,       '/var/www/apps/minerva'
+set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"

@@ -60,4 +60,4 @@
 #     # password: "please use keys"
 #   }
 
-server '13.59.149.165', user: 'ubuntu', roles: %w{web app}
+server 'minerva.devglade.com', user: 'ubuntu', roles: %w{web app}
