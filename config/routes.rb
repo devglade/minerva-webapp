@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'home#index', as: :home
   end
-  root to: 'root#index'
+  # root to: 'root#index'
 
   devise_for :users
 
