@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :retrospects
   #authenticated :user do
   #  root to: 'home#index', as: :home
   # end

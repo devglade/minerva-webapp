@@ -1,0 +1,32 @@
+<div id="main">
+  <h1>Retrospects</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>User</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @retrospects.each do |retrospect| %>
+        <tr>
+          <td><%= retrospect.name %></td>
+          <td><%= retrospect.description %></td>
+          <td><%= retrospect.user %></td>
+          <td>
+            <%= link_to 'Show', retrospect, class: 'button small fit' %>
+            <%= link_to 'Edit', edit_retrospect_path(retrospect), class: 'button small fit' %>
+            <%= link_to 'Destroy', retrospect, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small fit' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Retrospect', new_retrospect_path, class: 'button big fit' %>
+</div>
