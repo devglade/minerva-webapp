@@ -11,37 +11,18 @@
   <!-- Links -->
     <section>
       <ul class="links">
-        <li>
-          <a href="#">
-            <h3>Lorem ipsum</h3>
-            <p>Feugiat tempus veroeros dolor</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <h3>Dolor sit amet</h3>
-            <p>Sed vitae justo condimentum</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <h3>Feugiat veroeros</h3>
-            <p>Phasellus sed ultricies mi congue</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <h3>Etiam sed consequat</h3>
-            <p>Porta lectus amet ultricies</p>
-          </a>
-        </li>
       </ul>
     </section>
 
   <!-- Actions -->
     <section>
       <ul class="actions vertical">
-        <li><a href="users/sign_in" class="button big fit">Log In</a></li>
+          <% if current_user.present? %>
+            <li><a href="/users/sign_out" class="button big fit">LOG OUT</a></li>
+          <% else %>
+            <li><a href="/users/sign_in" class="button big fit">LOG IN</a></li>
+          <% end %>
+
       </ul>
     </section>
 
