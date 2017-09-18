@@ -25,7 +25,7 @@ production:
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  database: minerva-webapp_production
+  database: minerva-webapp
   username: postgres
  # password: <%= ENV['MINERVA_WEBAPP_DATABASE_PASSWORD']
   password: postgres
