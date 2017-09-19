@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+#drag_me{
+  -webkit-user-drag: element;
+}
+
 .note {
   word-wrap: normal;
   color: #333;

@@ -3,7 +3,7 @@
 
   <div id="board">
   <% @posts.each do |post| %>
-      <div class="post-container">
+      <div class="post-container" draggable="true" id="drag_me">
           <blockquote class="note yellow">
             <div max-width="auto"><%= simple_format(post.content) %></div>
             <cite class="author">
