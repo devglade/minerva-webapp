@@ -1,0 +1,14 @@
+<div id="main">
+  <p>
+    <strong>Description:</strong>
+    <%= @post.content %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @post.user.email %>
+  </p>
+
+  <%= link_to 'Edit', edit_post_path(@post), class: 'button big fit' %> |
+  <%= link_to 'Back', posts_path, class: 'button big fit' %>
+</div>

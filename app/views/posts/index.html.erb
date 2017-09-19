@@ -1,0 +1,23 @@
+<div id="main">
+  <h1>Posts</h1>
+
+  <div id="board">
+  <% @posts.each do |post| %>
+      <div class="post-container">
+          <blockquote class="note yellow">
+            <div><%= simple_format(post.content) %></div>
+            <cite class="author">
+              <%= post.user.email %>
+              <%= link_to 'Edit', edit_post_path(post), class: 'button small' %>
+              <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small' %>
+            </cite>
+          </blockquote>
+      </div>
+  <% end %>
+  </div>
+
+
+  <br>
+
+  <%= link_to 'New Post', new_post_path, class: 'button big fit' %>
+</div>
