@@ -1,0 +1,50 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#board {
+  text-align: center;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 30px 5px 30px 5px;
+  background-color: cadetblue;
+}
+
+.post-container {
+  display: inline-block;
+  width: 440px;
+  padding: 5px;
+  position: relative;
+  align-items: center;
+}
+
+.note {
+  color: #333;
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow: 0 5px 5px 1px rgba(0,0,0,0.3);
+}
+
+.note .button {
+  display: block;
+  margin: 1px 0 0 0;
+  text-align: center;
+}
+
+.note .author {
+  display: block;
+  margin: 10px 0 0 0;
+  text-align: right;
+}
+
+.yellow {
+  background: #eae672;
+  // -webkit-transform: rotate(2deg);
+  // -moz-transform: rotate(2deg);
+  // -o-transform: rotate(2deg);
+  // -ms-transform: rotate(2deg);
+  // transform: rotate(2deg);
+}
