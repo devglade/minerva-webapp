@@ -16,7 +16,7 @@
         <tr>
           <td><%= retrospect.name %></td>
           <td><%= retrospect.description %></td>
-          <td><%= retrospect.user %></td>
+          <td><%= retrospect.user.email %></td>
           <td>
             <%= link_to 'Show', retrospect, class: 'button small fit' %>
             <%= link_to 'Edit', edit_retrospect_path(retrospect), class: 'button small fit' %>
