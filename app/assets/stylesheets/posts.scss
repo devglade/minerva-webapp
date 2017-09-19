@@ -6,26 +6,29 @@
   text-align: center;
   max-width: auto;
   margin: 0 auto;
-  padding: 30px 5px 30px 5px;
+  padding: 20px 5px 20px 5px;
   background-color: cadetblue;
 }
 
 .post-container {
   display: inline-block;
-  width: 430px;
+  max-width: auto;
   padding: 5px;
   position: relative;
   align-items: center;
 }
 
 .note {
+  word-wrap: normal;
   color: #333;
   text-align: left;
   position: relative;
-  width: auto;
+  min-width: 300px;
+  max-height: auto;
+  max-width: auto;
   margin: 0 auto;
   padding: 10px;
-  font-size: 20px;
+  font-size: 15 px;
   box-shadow: 0 5px 5px 1px rgba(0,0,0,0.3);
 }
 
@@ -43,9 +46,4 @@
 
 .yellow {
   background: #eae672;
-  // -webkit-transform: rotate(2deg);
-  // -moz-transform: rotate(2deg);
-  // -o-transform: rotate(2deg);
-  // -ms-transform: rotate(2deg);
-  // transform: rotate(2deg);
 }
