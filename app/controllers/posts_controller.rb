@@ -29,6 +29,9 @@ class PostsController < ApplicationController
 
       respond_to do |format|
         if @post.save
+
+          broadcast_create_post(@post)
+
           format.html { redirect_to @post, notice: 'Post was successfully created.' }
           format.json { render :show, status: :created, location: @retrospect }
         else
@@ -43,6 +46,9 @@ class PostsController < ApplicationController
     def update
       respond_to do |format|
         if @post.update(post_params)
+
+          broadcast_update_post(@post)
+
           format.html { redirect_to @post, notice: 'Post was successfully updated.' }
           format.json { render :show, status: :ok, location: @post }
         else
@@ -57,6 +63,9 @@ class PostsController < ApplicationController
     def destroy
       @post.destroy
       respond_to do |format|
+
+        broadcast_delete_post(@post)
+
         format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
         format.json { head :no_content }
       end
@@ -71,5 +80,19 @@ class PostsController < ApplicationController
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
         params.require(:post).permit(:content, :user_id)
+      end
+
+      def broadcast_create_post(post)
+        html = ApplicationController.render partial: "posts/post", locals: {current_user: current_user, post: post}, formats: [:html]
+        ActionCable.server.broadcast "posts", {action: "create", id: "post-#{post.id}", html: html}
+      end
+
+      def broadcast_delete_post(post)
+        ActionCable.server.broadcast "posts", {action: "delete", id: "post-#{post.id}"}
+      end
+
+      def broadcast_update_post(post)
+        html = ApplicationController.render partial: "posts/post", locals: {current_user: current_user, post: post}, formats: [:html]
+        ActionCable.server.broadcast "posts", {action: "update", id: "post-#{post.id}", html: html}
       end
 end
