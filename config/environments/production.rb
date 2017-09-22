@@ -95,4 +95,5 @@ Rails.application.configure do
 
   # config.serve_static_assets = true
   # config.public_file_server.enabled = true
+  config.action_cable.url = "ws://minerva.devglade.com/cable"
 end
