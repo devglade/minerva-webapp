@@ -95,5 +95,7 @@ Rails.application.configure do
 
   # config.serve_static_assets = true
   # config.public_file_server.enabled = true
-  # config.action_cable.url = "ws://minerva.devglade.com/cable"
+
+  config.action_cable.url = 'ws://minerva.devglade.com/cable'
+  config.action_cable.allowed_request_origins = [ 'http://minerva.devglade.com' ]
 end
