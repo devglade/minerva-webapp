@@ -11,11 +11,17 @@
 }
 
 .post-container {
+  position: relative;
+
+  min-width: 360px;
+  min-height: 210px;
+  max-width: 360px;
+  max-height: auto;
   display: inline-block;
-  max-width: auto;
   padding: 5px;
-  position: absolute;
+
   align-items: center;
+  vertical-align: top;
 }
 
 #drag_me{
@@ -23,21 +29,39 @@
 }
 
 .note {
-  word-wrap: break-word;
   color: #333;
-  text-align: left;
   position: relative;
-  min-width: 300px;
-  min-height: 200px;
-  max-height: auto;
-  max-width: auto;
   margin: 0 auto;
   padding: 10px;
+
   font-size: 15 px;
   box-shadow: 0 5px 5px 1px rgba(0,0,0,0.3);
+
+  min-width: 350px;
+  min-height: 200px;
+  max-width: 350px;
+  max-height: 200px;
 }
 
-blockquote footer {
+.note div {
+  text-align: left;
+  height: 100px;
+
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note div:hover {
+  white-space: normal;
+  height: auto;
+  width: auto;
+  float: center;
+  border: 2px solid gray;
+  background: yellow;
+}
+
+.note cite {
   position: absolute;
   left: 10px;
   right: 10px;
