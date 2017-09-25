@@ -23,17 +23,25 @@
 }
 
 .note {
-  word-wrap: normal;
+  word-wrap: break-word;
   color: #333;
   text-align: left;
   position: relative;
   min-width: 300px;
+  min-height: 200px;
   max-height: auto;
   max-width: auto;
   margin: 0 auto;
   padding: 10px;
   font-size: 15 px;
   box-shadow: 0 5px 5px 1px rgba(0,0,0,0.3);
+}
+
+blockquote footer {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
 }
 
 .note .button {
