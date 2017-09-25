@@ -15,7 +15,7 @@
 
   min-width: 360px;
   min-height: 210px;
-  max-width: 360px;
+  max-width: auto;
   max-height: auto;
   display: inline-block;
   padding: 5px;
@@ -50,6 +50,11 @@
   word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.note:hover {
+  max-height: 1000px;
+  max-width: 1000px;
 }
 
 .note div:hover {
