@@ -52,6 +52,8 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (~> 1.11.1)
       sass (>= 3.4.19)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.3)
     byebug (9.1.0)
     capistrano (3.6.1)
@@ -394,6 +396,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.0.0.beta)
+  bootstrap-sass
   byebug
   capistrano (= 3.6.1)
   capistrano-bundler
