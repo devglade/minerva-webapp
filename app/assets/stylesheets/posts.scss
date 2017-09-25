@@ -13,8 +13,8 @@
 .post-container {
   position: relative;
 
-  min-width: 360px;
-  min-height: 210px;
+  min-width: 270px;
+  min-height: 170px;
   max-width: auto;
   max-height: auto;
   display: inline-block;
@@ -37,21 +37,23 @@
   font-size: 15 px;
   box-shadow: 0 5px 5px 1px rgba(0,0,0,0.3);
 
-  min-width: 350px;
-  min-height: 200px;
-  max-width: 350px;
-  max-height: 200px;
+  min-width: 250px;
+  min-height: 150px;
+  max-width: auto;
+  max-height: auto;
 }
 
 .note div {
   text-align: left;
-  height: 100px;
+  width: auto;
+  height: auto;
 
   word-wrap: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
 }
 
+/*
 .note:hover {
   max-height: 1000px;
   max-width: 1000px;
@@ -60,11 +62,11 @@
 .note div:hover {
   white-space: normal;
   height: auto;
-  width: auto;
   float: center;
   border: 2px solid gray;
   background: yellow;
 }
+*/
 
 .note cite {
   position: absolute;
