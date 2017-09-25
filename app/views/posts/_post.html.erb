@@ -1,12 +1,14 @@
 <div class="post-container" draggable="true" id="drag_me">
-  <blockquote class="note yellow" id=<%= "post-#{post.id}" %>>
-    <div max-width="auto"><%= simple_format(post.content) %></div>
-    <cite class="author">
-      <%= post.user.email %>
-      <% if current_user.id == post.user.id %>
-      <%= link_to 'Edit', edit_post_path(post), class: 'button small' %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small' %>
-      <% end %>
-    </cite>
+  <blockquote class="note yellow" id="<%= "post-#{post.id}" %>" >
+    <div><%= simple_format(post.content) %></div>
+    <footer>
+      <cite class="author">
+        <%= post.user.name %>(<%= post.user.email %>)
+        <% if current_user.id == post.user.id %>
+        <%= link_to 'Edit', edit_post_path(post), class: 'button small' %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small' %>
+        <% end %>
+      </cite>
+    </footer>
   </blockquote>
 </div>
