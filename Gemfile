@@ -69,4 +69,6 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano3-puma'
 
+  gem 'ruby-debug-ide'
+  gem 'debase'
 end
