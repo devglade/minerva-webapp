@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Minerva</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href=<%= asset_path 'main.css'%> />
+<head>
+  <title>Minerva</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href=<%= asset_path 'main.css' %>/>
 
-  </head>
+</head>
 
-  <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+<body>
+<% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 
 
-    <div id="wrapper">
+<div id="wrapper">
 
-      <%= render 'home/header' %>
-      <%= render 'home/menu' %>
+  <%= render 'home/header' %>
+  <%= render 'home/menu' %>
 
-      <%= yield %>
+  <%= yield %>
 
-    </div>
-
-    <!-- Scripts -->
-			<script src=<%= asset_path 'jquery.min.js'%>></script>
-			<script src=<%= asset_path 'skel.min.js'%>></script>
-			<script src=<%= asset_path 'util.js'%>></script>
-			<!--[if lte IE 8]><script src=<%= asset_path 'ie/respond.min.js'%>></script><![endif]-->
-			<script src=<%= asset_path 'main.js'%>></script>
-  </body>
+</div>
+<div class="modal fade" id="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="mLabel" aria-hidden="true"></div>
+<%= javascript_include_tag "application", data: {'turbolinks-track': false} %>
+</body>
 </html>
