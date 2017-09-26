@@ -1,8 +1,6 @@
 <div id="main">
   <h1>Posts</h1>
 
-  <div id="notifications"></div>
-
   <div id="board">
   <% @posts.each do |post| %>
 
@@ -15,5 +13,6 @@
 
   <br>
 
-  <%= link_to 'New Post', new_post_path, class: 'button big fit' %>
+  <%= link_to "New Post", new_post_modal_path, :remote => false, "data-toggle" => "modal", "data-target" => "#modal-window", :class => "button big fit" %>
+  <%= render partial: "posts/modal_window" %>
 </div>

@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   }
   resources :retrospects
 
+  get 'posts/new_post_modal' => 'posts#new_post_modal', :as => :new_post_modal
   resources :posts
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   mount ActionCable.server => '/cable'
