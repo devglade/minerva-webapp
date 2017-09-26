@@ -57,7 +57,8 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
+gem 'bootstrap_form'
 
 group :development do
   # Use Capistrano for deployment
