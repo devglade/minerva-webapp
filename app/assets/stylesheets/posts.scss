@@ -29,6 +29,7 @@
 }
 
 .note {
+  background: #eae672;
   color: #333;
   position: relative;
   margin: 0 auto;
@@ -45,8 +46,6 @@
 
 .note div {
   text-align: left;
-  width: auto;
-  height: auto;
 
   word-wrap: break-word;
   // overflow: hidden;
@@ -66,6 +65,7 @@
   border: 2px solid gray;
   background: yellow;
 }
+*/
 
 .note cite {
   position: absolute;
@@ -73,7 +73,6 @@
   right: 10px;
   bottom: 10px;
 }
-*/
 
 .note .button {
   display: block;
@@ -85,8 +84,4 @@
   display: block;
   margin: 10px 0 0 0;
   text-align: right;
-}
-
-.yellow {
-  background: #eae672;
 }
