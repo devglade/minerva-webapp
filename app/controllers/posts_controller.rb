@@ -25,8 +25,7 @@ class PostsController < ApplicationController
     # POST /posts
     # POST /posts.json
     def create
-      @post = Post.new(post_params)
-
+      @post = Post.new(post_params.merge(user_id: current_user.id))
       respond_to do |format|
         if @post.save
 
@@ -71,14 +70,6 @@ class PostsController < ApplicationController
       end
     end
 
-    def new_post_modal
-      @post = Post.new
-      respond_to do |format|
-        format.html
-        format.js
-      end
-    end
-
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
@@ -87,7 +78,7 @@ class PostsController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
-        params.require(:post).permit(:content, :user_id)
+        params.require(:post).permit(:content)
       end
 
       def broadcast_create_post(post)
