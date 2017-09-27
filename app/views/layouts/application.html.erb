@@ -4,6 +4,7 @@
   <title>Minerva</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <meta charset="utf-8"/>
@@ -30,6 +31,5 @@
 
 </div>
 <div class="modal fade" id="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="mLabel" aria-hidden="true"></div>
-<%= javascript_include_tag "application", data: {'turbolinks-track': false} %>
 </body>
 </html>

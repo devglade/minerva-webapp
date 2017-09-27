@@ -1,27 +1,22 @@
-<%= form_with(model: post, local: true) do |form| %>
-<% if post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-    <ul>
-    <% post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
+<div id="contact-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= bootstrap_form_for @post, remote: true do |f| %>
+          <div class="modal-body">
+            <div class="form-group">
+              <%= f.text_field :content, class: 'form-control input-lg', placeholder: '하고 싶은 말 적어보세요.' %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit class: 'btn btn-primary' %>
+          </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
-
-<div class="field">
-  <%= form.label :content %>
-  <%= form.text_area :content, id: :post_description %>
 </div>
-
-<div class="field">
-  <!--<%= form.label :user_id %>-->
-  <%= form.hidden_field :user_id, id: :post_user_id, value: current_user.id %>
-</div>
-
-<div class="actions">
-  <%= form.submit %>
-</div>
-<% end %>
