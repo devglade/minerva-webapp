@@ -93,8 +93,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.serve_static_assets = true
-  # config.public_file_server.enabled = true
+  # config.serve_static_assets = true
+  config.public_file_server.enabled = true
 
   config.action_cable.url = 'ws://minerva.devglade.com/cable'
   config.action_cable.allowed_request_origins = [ 'http://minerva.devglade.com' ]
