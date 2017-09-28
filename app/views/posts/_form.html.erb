@@ -1,4 +1,4 @@
-<div id="contact-modal" class="modal fade">
+<div id="post-modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,7 +10,7 @@
       <%= bootstrap_form_for @post, remote: true do |f| %>
           <div class="modal-body">
             <div class="form-group">
-              <%= f.text_field :content, class: 'form-control input-lg', placeholder: '하고 싶은 말 적어보세요.' %>
+              <%= f.text_area :content, class: 'form-control input-lg', placeholder: '하고 싶은 말 적어보세요.' %>
             </div>
           </div>
           <div class="modal-footer">
