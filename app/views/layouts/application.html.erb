@@ -4,7 +4,6 @@
   <title>Minerva</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
@@ -30,12 +29,6 @@
 
 </div>
 <div class="modal fade" id="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="mLabel" aria-hidden="true"></div>
-
-    <!-- Scripts -->
-    <script src=<%= asset_path 'skel.min.js'%>></script>
-    <script src=<%= asset_path 'util.js'%>></script>
-    <!--[if lte IE 8]><script src=<%= asset_path 'ie/respond.min.js'%>></script><![endif]-->
-    <script src=<%= asset_path 'main.js'%>></script>
 
 </body>
 </html>
