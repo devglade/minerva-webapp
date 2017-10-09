@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 
-<body>
+<body class="<%= controller_name %> <%= controller_name %>-<%= controller.action_name %>" data-controller="<%= controller_name %>" data-action="<%= action_name %>">
 <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
 <% end %>
@@ -19,15 +19,9 @@
     <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
-
-<div id="wrapper">
-
-  <%= render 'home/header' %>
-  <%= render 'home/menu' %>
-
-  <%= yield %>
-
-</div>
+<%= render 'layouts/header' %>
+<%= render 'layouts/navbar' %>
+<%= yield %>
 <div class="modal fade" id="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="mLabel" aria-hidden="true"></div>
 
 </body>

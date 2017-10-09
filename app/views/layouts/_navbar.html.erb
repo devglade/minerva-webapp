@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <%= link_to t(:service_name), root_url, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <% if user_signed_in? %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">메인</a>
+          </li>
+        </ul>
+    <% else %>
+        <%= link_to '가입하기', new_user_registration_url, title: '가입하기', class: 'btn btn-outline-success  mr-3' %>
+        <%= link_to '로그인', new_user_session_url, title: '로그인', class: 'btn btn-outline-success' %>
+    <% end %>
+  </div>
+</nav>
