@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   authenticated :user do
-    root to: 'home#index.html.erb', as: :home
+    root to: 'home#index', as: :home
   end
-  root to: 'root#index.html.erb'
+  root to: 'root#index'
 
   devise_for :users, controllers: {
       sessions: 'users/sessions',

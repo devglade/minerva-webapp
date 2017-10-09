@@ -11,9 +11,25 @@
             <a class="nav-link" href="#">메인</a>
           </li>
         </ul>
+        <ul class="navbar-right">
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">설정</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown06">
+              <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </ul>
     <% else %>
-        <%= link_to '가입하기', new_user_registration_url, title: '가입하기', class: 'btn btn-outline-success  mr-3' %>
-        <%= link_to '로그인', new_user_session_url, title: '로그인', class: 'btn btn-outline-success' %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to '가입하기', new_user_registration_url, title: '가입하기', class: 'btn btn-outline-success  mr-3 my-md-0' %>
+          </li>
+          <li class="navbar-item">
+            <%= link_to '로그인', new_user_session_url, title: '로그인', class: 'btn btn-outline-success r mr-3 my-md-0' %>
+          </li>
+        </ul>
     <% end %>
   </div>
 </nav>
