@@ -8,7 +8,7 @@
     <% if user_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">메인</a>
+            <a class="nav-link" href="/posts">회고</a>
           </li>
         </ul>
         <ul class="navbar-right">
@@ -16,8 +16,8 @@
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">설정</a>
             <div class="dropdown-menu" aria-labelledby="dropdown06">
               <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <!-- <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a> -->
             </div>
           </div>
         </ul>
