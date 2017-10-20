@@ -18,5 +18,10 @@ App.posts = App.cable.subscriptions.create "PostsChannel",
       when 'update'
         if $('#' + data.id).length > 0
           $('#' + data.id).replaceWith data.html
+      when 'like_dislike'
+        if $('#like-' + data.id).length > 0
+          $('#like-' + data.id).html '<i class=\"material-icons\" style=\"font-size: 12px;\">thumb_up</i> '  + data.like
+        if $('#dislike-' + data.id).length > 0
+          $('#dislike-' + data.id).html '<i class=\"material-icons\" style=\"font-size: 12px;\">thumb_down</i> ' + data.dislike
       else
         break

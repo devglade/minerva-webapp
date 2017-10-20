@@ -73,13 +73,15 @@ class PostsController < ApplicationController
     def upvote
       @post = Post.find(params[:id])
       @post.upvote_by current_user
-      redirect_to :posts
+
+      broadcast_like_dislike_post(@post)
     end
 
     def downvote
       @post = Post.find(params[:id])
       @post.downvote_by current_user
-      redirect_to :posts
+
+      broadcast_like_dislike_post(@post)
     end
 
     private
@@ -91,6 +93,10 @@ class PostsController < ApplicationController
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
         params.require(:post).permit(:content)
+      end
+
+      def broadcast_like_dislike_post(post)
+        ActionCable.server.broadcast "posts", {action: "like_dislike", id: "post-#{post.id}", like: "#{post.get_upvotes.size}", dislike: "#{post.get_downvotes.size}"}
       end
 
       def broadcast_create_post(post)

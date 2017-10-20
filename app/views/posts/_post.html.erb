@@ -1,12 +1,12 @@
 <div class="post-container" draggable="true" id="drag_me">
   <blockquote class="note yellow" id=<%= "post-#{post.id}" %>>
     <div>
-      <%= link_to like_post_path(post), class: 'btn btn-sm btn-outline-primary my-md-0', method: :put do %>
+      <%= link_to like_post_path(post), remote: true, class: 'btn btn-sm btn-outline-primary my-md-0', id: "like-post-#{post.id}", method: :put do %>
       <i class="material-icons" style="font-size: 12px;">thumb_up</i>
       <%= post.get_upvotes.size %>
       <% end %>
 
-      <%= link_to dislike_post_path(post), class: 'btn btn-sm btn-outline-primary my-md-1', method: :put do %>
+      <%= link_to dislike_post_path(post), remote: true, class: 'btn btn-sm btn-outline-primary my-md-1', id: "dislike-post-#{post.id}", method: :put do %>
       <i class="material-icons" style="font-size: 12px;">thumb_down</i>
       <%= post.get_downvotes.size %>
       <% end %>
