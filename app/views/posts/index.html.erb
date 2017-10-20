@@ -1,10 +1,8 @@
-<div id="main">
-  <h1>Posts</h1>
-  <div id="board">
-    <% @posts.each do |post| %>
-        <%= render partial: "posts/post", locals: {post: post} %>
-    <% end %>
-  </div>
-  <br>
-  <%= link_to 'New Post', new_post_path, remote: true, class: 'btn button big fit' %>
+<h1>Posts</h1>
+<div id="board">
+  <% @posts.each do |post| %>
+      <%= render partial: "posts/post", locals: {post: post} %>
+  <% end %>
 </div>
+<br>
+<%= link_to 'New Post', new_post_path, remote: true, class: 'btn btn-block btn-secondary' %>

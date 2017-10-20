@@ -6,8 +6,8 @@
         <%= post.user.name %>(<%= post.user.email %>)
 
         <% if current_user.id == post.user.id %>
-        <%= link_to 'Edit', edit_post_path(post), remote: true, class: 'button small' %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small' %>
+        <%= link_to 'Edit', edit_post_path(post), remote: true, class: 'btn btn-sm btn-block btn-outline-secondary my-md-1' %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-block btn-outline-secondary my-md-0' %>
         <% end %>
       </cite>
     </div>
