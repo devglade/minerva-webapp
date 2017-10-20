@@ -60,6 +60,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap_form'
 
+gem 'acts_as_votable', '~> 0.11.1'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano', '3.6.1'
