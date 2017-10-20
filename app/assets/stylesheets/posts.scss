@@ -74,3 +74,22 @@
   margin: 10px 0 0 0;
   text-align: right;
 }
+
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-width: 1px;
+}
+
+.right-button {
+  float: right;
+  margin-right: 2px;
+}
+
+.icon-button .material-icons {
+  font-size: 14px;
+}
