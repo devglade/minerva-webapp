@@ -15,17 +15,6 @@ ActiveRecord::Schema.define(version: 20171020061056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "recipient_id"
-    t.string "action"
-    t.string "notifiable_type"
-    t.integer "notifiable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -75,7 +64,6 @@ ActiveRecord::Schema.define(version: 20171020061056) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
-  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "retrospects", "users"
 end
