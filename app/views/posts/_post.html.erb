@@ -1,8 +1,9 @@
 <div class="post-container" draggable="true" id="drag_me">
-  <blockquote class="note yellow" id=<%= "post-#{post.id}" %>>
-    <div>
-        <%= simple_format(post.content) %>
-
+  <blockquote class="post yellow" id=<%= "post-#{post.id}" %>>
+    <div class="contents">
+        <%= simple_format( post.content.truncate(184) ) %>
+    </div>
+    <div class="buttons">
         <hr>
 
         <%= link_to like_post_path(post), remote: true, class: 'btn btn-sm btn-outline-primary icon-button', id: "like-post-#{post.id}", method: :put do %>

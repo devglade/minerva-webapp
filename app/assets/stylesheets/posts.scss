@@ -28,7 +28,7 @@
   -webkit-user-drag: element;
 }
 
-.note {
+.post {
   background: #eae672;
   color: #333;
   position: relative;
@@ -38,43 +38,26 @@
   font-size: 15 px;
   box-shadow: 0 5px 5px 1px rgba(0,0,0,0.3);
 
-  min-width: 250px;
-  min-height: auto;
-  max-width: auto;
-  max-height: auto;
+  min-width: 380px;
+  min-height: 240px;
+  max-width: 380px;
+  max-height: 240px;
 }
 
-.note div {
+.post .contents{
   text-align: left;
-
   word-wrap: break-word;
-  // overflow: hidden;
-  // text-overflow: ellipsis;
+  height: 170px;
 }
 
-.note:hover {
+.post .buttons{
+  text-align: left;
+  bottom: 0px;
+}
+
+.post:hover {
   background: yellow;
 }
-
-.note cite {
-  position: relative;
-  // left: 10px;
-  // right: 10px;
-  // bottom: 10px;
-}
-
-.note .button {
-  display: block;
-  margin: 1px 0 0 0;
-  text-align: center;
-}
-
-.note .author {
-  display: block;
-  margin: 10px 0 0 0;
-  text-align: right;
-}
-
 
 hr {
   display: block;
@@ -88,6 +71,7 @@ hr {
 .right-button {
   float: right;
   margin-right: 2px;
+  margin-bottom: 10px;
 }
 
 .icon-button .material-icons {
