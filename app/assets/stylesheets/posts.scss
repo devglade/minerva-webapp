@@ -34,11 +34,6 @@
   font-size: 12 px;
   box-shadow: 0 4px 4px 1px rgba(0,0,0,0.3);
 
-  .header{
-    text-align: right;
-    top: 0px;
-  }
-
   .contents{
     text-align: left;
     word-wrap: break-word;
@@ -54,12 +49,21 @@
     bottom: 0px;
   }
 
-  .rm2 {
-    margin-right: 2px;
+  .mr4 {
+    margin-right: 4px;
   }
+
+  .ml4 {
+    margin-left: 4px;
+  }
+
 
   .float-right {
     float: right;
+  }
+
+  .float-center {
+    text-align: center;
   }
 
   .material-icons {
