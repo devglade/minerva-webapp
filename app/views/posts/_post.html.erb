@@ -1,9 +1,14 @@
 <div class="post-container" draggable="true" id="drag_me">
   <blockquote class="post yellow" id=<%= "post-#{post.id}" %>>
-    <div class="contents">
+    <div class="contents fixed-height">
         <% if post.content.lines.count > 6 || post.content.mb_chars.length > 124 %>
-          <button class="btn btn-sm btn-secondary float-right more"><i class="material-icons">open_in_new</i></button>
+          <!-- <button class="btn btn-sm btn-secondary float-right more"><i class="material-icons">open_in_new</i></button> -->
+
+          <%= link_to post_path(post), remote: true, class: 'btn btn-sm btn-secondary float-right more' do %>
+            <i class="material-icons">open_in_new</i>
+          <% end %>
         <% end %>
+
         <%= simple_format( post.content ) %>
     </div>
     <div class="buttons">
