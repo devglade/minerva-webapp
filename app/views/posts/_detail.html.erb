@@ -29,15 +29,6 @@
                       <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= @post.user.name %>" data-content="<%= @post.user.email %>">
                         <%= @post.user.name.truncate(8) %> <i class="material-icons">face</i>
                       </button>
-
-                      <% if current_user.id == @post.user.id %>
-                          <%= link_to edit_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-secondary float-right' do %>
-                            <i class="material-icons">edit</i>
-                          <% end %>
-                          <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary float-right mr4' do %>
-                            <i class="material-icons">delete</i>
-                          <% end %>
-                      <% end %>
                   </div>
                 </blockquote>
           </div>
