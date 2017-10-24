@@ -24,10 +24,6 @@
   vertical-align: top;
 }
 
-#drag_me{
-  -webkit-user-drag: element;
-}
-
 .post {
   background: #eae672;
   color: #333;
@@ -42,21 +38,43 @@
   min-height: 240px;
   max-width: 380px;
   max-height: 240px;
+
+  .contents{
+    text-align: left;
+    word-wrap: break-word;
+    height: 170px;
+
+    overflow: hidden;
+    position:relative
+  }
+
+  .contents:after{
+    content:"... (continued)";
+    height: 2em;
+    display: block;
+    width: 100%;
+    position:absolute;
+    background-color: #eae672;
+    opacity: 0.8;
+    bottom: -0.3em;
+
+    :hover{
+      background-color: yellow;
+    }
+  }
+
+  .buttons{
+    text-align: left;
+    bottom: 0px;
+  }
 }
 
-.post .contents{
-  text-align: left;
-  word-wrap: break-word;
-  height: 170px;
+.post:hover{
+  background-color: yellow;
 }
 
-.post .buttons{
-  text-align: left;
-  bottom: 0px;
-}
-
-.post:hover {
-  background: yellow;
+#drag_me{
+  -webkit-user-drag: element;
 }
 
 hr {
