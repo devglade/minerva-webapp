@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: devglade
+  api_key: '996959394543569'
+  api_secret: Oz_8ne4maoFXG1CczRc8qRimqmw
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: devglade
+  api_key: '996959394543569'
+  api_secret: Oz_8ne4maoFXG1CczRc8qRimqmw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: devglade
+  api_key: '996959394543569'
+  api_secret: Oz_8ne4maoFXG1CczRc8qRimqmw
+  enhance_image_tag: true
+  static_image_support: false

@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use postgresql as the database for Active Record
@@ -50,20 +49,25 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'acts_as_votable', '~> 0.11.1'
 
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'bootstrap-sass'
+gem 'bootstrap_form'
+
+gem 'bourbon' #https://github.com/thoughtbot/bourbon
+
+gem 'cloudinary'
+
 gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap_form'
 
-gem 'acts_as_votable', '~> 0.11.1'
 gem 'material_icons'
 
-gem 'bourbon' #https://github.com/thoughtbot/bourbon
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano', '3.6.1'
@@ -73,7 +77,6 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano3-puma'
-
-  gem 'ruby-debug-ide'
   gem 'debase'
+  gem 'ruby-debug-ide'
 end
