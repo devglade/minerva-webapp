@@ -38,7 +38,8 @@
     text-align: left;
     word-wrap: break-word;
     padding-left: 4px;
-    height: 200px;
+    min-height: 132px;
+    max-height: 132px;
 
     overflow: hidden;
     position:relative;
