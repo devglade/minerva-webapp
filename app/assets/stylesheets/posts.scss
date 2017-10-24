@@ -13,9 +13,9 @@
 .post-container {
   position: relative;
 
-  min-width: 320px;
+  min-width: 100%;
+  max-width: 100%;
   min-height: auto;
-  max-width: 320px;
   max-height: auto;
   display: inline-block;
   padding: 2px;
@@ -42,11 +42,6 @@
 
     overflow: hidden;
     position:relative;
-  }
-
-  .fixed-height {
-    min-height: 144px;
-    max-height: 144px;
   }
 
   .buttons{
@@ -90,6 +85,16 @@
     margin-right: auto;
     border-width: 1px;
   }
+}
+
+.post-fixed-width {
+  min-width: 320px;
+  max-width: 320px;
+}
+
+.post-fixed-height {
+  min-height: 144px;
+  max-height: 144px;
 }
 
 textarea {

@@ -9,13 +9,13 @@
       </div>
         <div class="modal-body">
           <div class="form-group">
+            <div class="post-container">
               <blockquote class="post yellow" id=<%= "post-#{@post.id}" %>>
                   <div class="contents">
                       <%= simple_format( @post.content ) %>
                   </div>
                   <div class="buttons">
                       <hr>
-
                       <%= link_to like_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{@post.id}", method: :put do %>
                       <i class="material-icons">thumb_up</i>
                       <%= @post.get_upvotes.size %>
@@ -26,11 +26,12 @@
                       <%= @post.get_downvotes.size %>
                       <% end %>
 
-                      <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= @post.user.name %>" data-content="<%= @post.user.email %>">
-                        <%= @post.user.name.truncate(8) %> <i class="material-icons">face</i>
+                      <button class="btn btn-sm btn-outline-secondary float-right" data-toggle="popover" title="<%= @post.user.name %>" data-content="<%= @post.user.email %>">
+                        <%= @post.user.name %> <i class="material-icons">face</i>
                       </button>
                   </div>
                 </blockquote>
+              </div>
           </div>
         </div>
         <div class="modal-footer">
