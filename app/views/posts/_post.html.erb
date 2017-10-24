@@ -1,7 +1,10 @@
 <div class="post-container" draggable="true" id="drag_me">
   <blockquote class="post yellow" id=<%= "post-#{post.id}" %>>
     <div class="contents">
-        <%= simple_format( post.content ) %>
+        <% if post.content.lines.count > 6 || post.content.mb_chars.length > 124 %>
+          <button class="btn btn-sm btn-outline-primary float-right more">...</button>
+        <% end %>
+        <%= simple_format( post.content.truncate(124, omission: '', escape: true) ) %>
     </div>
     <div class="buttons">
         <hr>

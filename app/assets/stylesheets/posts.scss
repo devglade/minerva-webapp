@@ -38,8 +38,8 @@
     text-align: left;
     word-wrap: break-word;
     padding-left: 4px;
-    min-height: 132px;
-    max-height: 132px;
+    min-height: 144px;
+    max-height: 144px;
 
     overflow: hidden;
     position:relative;
@@ -56,6 +56,13 @@
 
   .ml4 {
     margin-left: 4px;
+  }
+
+  .more {
+    position:absolute;
+    bottom:0;
+    right:0;
+    font-size: 8px;
   }
 
 
@@ -79,6 +86,15 @@
     margin-right: auto;
     border-width: 1px;
   }
+}
+
+textarea {
+  min-height: 140px;
+}
+
+.modal-dialog {
+  max-width: 320px;
+  vertical-align: middle;
 }
 
 i {
