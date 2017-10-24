@@ -1,0 +1,50 @@
+<div id="post-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Post Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+          <div class="form-group">
+              <blockquote class="post yellow" id=<%= "post-#{@post.id}" %>>
+                  <div class="contents">
+                      <%= simple_format( @post.content ) %>
+                  </div>
+                  <div class="buttons">
+                      <hr>
+
+                      <%= link_to like_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{@post.id}", method: :put do %>
+                      <i class="material-icons">thumb_up</i>
+                      <%= @post.get_upvotes.size %>
+                      <% end %>
+
+                      <%= link_to dislike_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{@post.id}", method: :put do %>
+                      <i class="material-icons">thumb_down</i>
+                      <%= @post.get_downvotes.size %>
+                      <% end %>
+
+                      <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= @post.user.name %>" data-content="<%= @post.user.email %>">
+                        <%= @post.user.name.truncate(8) %> <i class="material-icons">face</i>
+                      </button>
+
+                      <% if current_user.id == @post.user.id %>
+                          <%= link_to edit_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-secondary float-right' do %>
+                            <i class="material-icons">edit</i>
+                          <% end %>
+                          <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary float-right mr4' do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                      <% end %>
+                  </div>
+                </blockquote>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">CLOSE</button>
+        </div>
+    </div>
+  </div>
+</div>
