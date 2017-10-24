@@ -1,7 +1,7 @@
 <div class="post-container" draggable="true" id="drag_me">
   <blockquote class="post yellow" id=<%= "post-#{post.id}" %>>
     <div class="contents">
-        <%= simple_format( post.content.truncate(184) ) %>
+        <%= simple_format( post.content ) %>
     </div>
     <div class="buttons">
         <hr>
