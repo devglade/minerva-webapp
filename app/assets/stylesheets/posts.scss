@@ -34,6 +34,11 @@
   font-size: 12 px;
   box-shadow: 0 4px 4px 1px rgba(0,0,0,0.3);
 
+  .header{
+    text-align: right;
+    top: 0px;
+  }
+
   .contents{
     text-align: left;
     word-wrap: break-word;
@@ -47,16 +52,18 @@
   .buttons{
     text-align: left;
     bottom: 0px;
+  }
 
-    .right-button {
-      float: right;
-      margin-right: 2px;
-      margin-bottom: 10px;
-    }
+  .rm2 {
+    margin-right: 2px;
+  }
 
-    .icon-button .material-icons {
-      font-size: 14px;
-    }
+  .float-right {
+    float: right;
+  }
+
+  .material-icons {
+    font-size: 14px;
   }
 
   hr {
@@ -67,6 +74,10 @@
     margin-right: auto;
     border-width: 1px;
   }
+}
+
+i {
+  vertical-align: middle !important;
 }
 
 .post:hover{
