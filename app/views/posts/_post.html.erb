@@ -2,9 +2,9 @@
   <blockquote class="post yellow" id=<%= "post-#{post.id}" %>>
     <div class="contents">
         <% if post.content.lines.count > 6 || post.content.mb_chars.length > 124 %>
-          <button class="btn btn-sm btn-outline-primary float-right more">...</button>
+          <button class="btn btn-sm btn-secondary float-right more"><i class="material-icons">open_in_new</i></button>
         <% end %>
-        <%= simple_format( post.content.truncate(124, omission: '', escape: true) ) %>
+        <%= simple_format( post.content ) %>
     </div>
     <div class="buttons">
         <hr>
