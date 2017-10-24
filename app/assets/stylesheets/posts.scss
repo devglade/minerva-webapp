@@ -39,10 +39,14 @@
     word-wrap: break-word;
     padding-left: 4px;
     min-height: 144px;
-    max-height: 144px;
 
     overflow: hidden;
     position:relative;
+  }
+
+  .fixed-height {
+    min-height: 144px;
+    max-height: 144px;
   }
 
   .buttons{
@@ -92,7 +96,7 @@ textarea {
   min-height: 140px;
 }
 
-.modal-dialog {
+.modal-small {
   max-width: 320px;
   vertical-align: middle;
 }
@@ -101,10 +105,18 @@ i {
   vertical-align: middle !important;
 }
 
-.post:hover{
-  background-color: yellow;
-}
+// .post:hover{
+//   background-color: yellow;
+// }
 
 #drag_me{
   -webkit-user-drag: element;
+}
+
+.affix {
+  width: 100%;
+  top:15px;
+  text-align: center;
+  position: fixed;
+  z-index: 9999;
 }
