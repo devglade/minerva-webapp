@@ -13,12 +13,12 @@
 .post-container {
   position: relative;
 
-  min-width: 270px;
+  min-width: 320px;
   min-height: auto;
-  max-width: auto;
+  max-width: 320px;
   max-height: auto;
   display: inline-block;
-  padding: 5px;
+  padding: 2px;
 
   align-items: center;
   vertical-align: top;
@@ -29,43 +29,43 @@
   color: #333;
   position: relative;
   margin: 0 auto;
-  padding: 10px;
+  padding: 8px;
 
-  font-size: 15 px;
-  box-shadow: 0 5px 5px 1px rgba(0,0,0,0.3);
-
-  min-width: 380px;
-  min-height: 240px;
-  max-width: 380px;
-  max-height: 240px;
+  font-size: 12 px;
+  box-shadow: 0 4px 4px 1px rgba(0,0,0,0.3);
 
   .contents{
     text-align: left;
     word-wrap: break-word;
-    height: 170px;
+    padding-left: 4px;
+    height: 200px;
 
     overflow: hidden;
-    position:relative
-  }
-
-  .contents:after{
-    content:"... (continued)";
-    height: 2em;
-    display: block;
-    width: 100%;
-    position:absolute;
-    background-color: #eae672;
-    opacity: 0.8;
-    bottom: -0.3em;
-
-    :hover{
-      background-color: yellow;
-    }
+    position:relative;
   }
 
   .buttons{
     text-align: left;
     bottom: 0px;
+
+    .right-button {
+      float: right;
+      margin-right: 2px;
+      margin-bottom: 10px;
+    }
+
+    .icon-button .material-icons {
+      font-size: 14px;
+    }
+  }
+
+  hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
   }
 }
 
@@ -75,23 +75,4 @@
 
 #drag_me{
   -webkit-user-drag: element;
-}
-
-hr {
-  display: block;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  border-width: 1px;
-}
-
-.right-button {
-  float: right;
-  margin-right: 2px;
-  margin-bottom: 10px;
-}
-
-.icon-button .material-icons {
-  font-size: 14px;
 }
