@@ -8,7 +8,7 @@
     <% if user_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/posts">회고</a>
+            <%= link_to '회고', posts_url, class: 'nav-link' %>
           </li>
         </ul>
         <ul class="navbar-right">
@@ -22,6 +22,12 @@
           </div>
         </ul>
     <% else %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to '사이트 소개', about_url, class: 'nav-link' %>
+          </li>
+
+        </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <%= link_to '가입하기', new_user_registration_url, title: '가입하기', class: 'btn btn-outline-success  mr-3 my-md-0' %>
