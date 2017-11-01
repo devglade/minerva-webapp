@@ -1,18 +1,26 @@
-<div id='main'>
-  <h2>Resend confirmation instructions</h2>
+<div id='wrapper'>
+    <div class="card card-info" >
+        <div class="card-header">
+          <h2>Resend confirmation instructions</h2>
+        </div>
 
-  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-    <%= devise_error_messages! %>
+        <div class="card-block">
+          <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+            <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Resend confirmation instructions" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="card-footer">
+            <%= render "users/shared/links" %>
+        </div>
     </div>
-
-    <div class="actions">
-      <%= f.submit "Resend confirmation instructions" %>
-    </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
 </div>

@@ -1,25 +1,26 @@
-<div id='main'>
-    <h2>Forgot your password?</h2>
-
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal' }) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="form-group">
-        <%= f.label :email, class: "col-sm-2 control-label" %>
-        <div class="col-sm-6">
-            <%= f.email_field :email, autofocus: true, class: "form-control" %>
+<div id='wrapper'>
+    <div class="card card-info" >
+        <div class="card-header">
+            <h2>Forgot your password?</h2>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-sm-6 col-sm-offset-2">
-            <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
+        <div class="card-block">
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal' }) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="form-group">
+                <%= f.label :email, class: "control-label" %>
+                <%= f.email_field :email, autofocus: true, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.submit "Send me reset password instructions", class: "btn btn-primary btn-block" %>
+            </div>
+            <% end %>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="card-footer">
             <%= render "users/shared/links" %>
         </div>
     </div>
-    <% end %>
 </div>
