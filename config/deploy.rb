@@ -1,6 +1,4 @@
 # config valid only for current version of Capistrano
-lock "3.9.0"
-
 set :ssh_options, {
   forward_agent: true,
   auth_methods: ["publickey"],

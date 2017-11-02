@@ -76,7 +76,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development do
   # Use Capistrano for deployment
-  gem 'capistrano', '3.6.1'
+  gem 'capistrano', '~> 3.10'
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger'
   gem 'capistrano-rack'
