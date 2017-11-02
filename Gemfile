@@ -85,4 +85,7 @@ group :development do
   gem 'capistrano3-puma'
   gem 'debase'
   gem 'ruby-debug-ide'
+
+  # 개발시에는 편지를 브라우져에서 오픈하도록 만들어주는 GEM
+  gem 'letter_opener'
 end
