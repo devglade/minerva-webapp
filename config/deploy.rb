@@ -5,11 +5,13 @@ set :ssh_options, {
   keys: ["#{Dir.home}/Key/devglade-key.pem"]
 }
 
-set :application,     "minerva"
+set :application,     'minerva-webapp'
 set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
-set :repo_url,        "git@github.com:devglade/minerva-webapp.git"
+set :repo_url,        'git@github.com:devglade/minerva-webapp.git'
+set :rbenv_type, :system
+set :rbenv_ruby, File.read('.ruby-version').strip
 
 set :pty,             true
 set :use_sudo,        false
