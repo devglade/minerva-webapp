@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_signup_complete, only: [:new, :create, :update, :destroy]
-  protect_from_forgery with: :exception
+  protect_from_forgery prepend: true
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
