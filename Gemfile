@@ -81,8 +81,8 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rack'
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rbenv',
-  gem 'capistrano-rbenv-install', '~> 1.2.0'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-install'
   gem 'capistrano3-puma'
   gem 'debase'
   gem 'ruby-debug-ide'
