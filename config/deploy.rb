@@ -14,6 +14,7 @@ set :rbenv_type, :system
 set :rbenv_ruby, File.read('.ruby-version').strip
 
 set :pty,             true
+set :use_sudo,        true
 set :stage,           :production
 set :deploy_via,      :remote_cache
 # set :deploy_to,       '/var/www/apps/minerva'
