@@ -81,6 +81,9 @@ GEM
     capistrano-rbenv (2.1.1)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano-rbenv-install (1.2.0)
+      capistrano (>= 3.0)
+      capistrano-rbenv (>= 2.0)
     capistrano3-puma (2.0.0)
       capistrano (~> 3.5)
       capistrano-bundler
@@ -468,6 +471,7 @@ DEPENDENCIES
   capistrano-rack
   capistrano-rails
   capistrano-rbenv
+  capistrano-rbenv-install
   capistrano3-puma
   capybara (~> 2.13)
   cloudinary
