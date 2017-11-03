@@ -321,7 +321,6 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    oauth (0.5.3)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
       jwt (~> 1.0)
@@ -339,17 +338,11 @@ GEM
     omniauth-kakao (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.3.1)
-    omniauth-linkedin (0.2.0)
-      omniauth-oauth (~> 1.0)
-    omniauth-oauth (1.1.0)
-      oauth
-      omniauth (~> 1.0)
+    omniauth-naver (0.1.0)
+      omniauth-oauth2 (~> 1.2)
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    omniauth-twitter (1.4.0)
-      omniauth-oauth (~> 1.1)
-      rack
     orm_adapter (0.5.0)
     pg (0.21.0)
     popper_js (1.11.1)
@@ -490,8 +483,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-github
   omniauth-kakao
-  omniauth-linkedin
-  omniauth-twitter
+  omniauth-naver
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.3)

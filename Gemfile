@@ -66,9 +66,10 @@ gem 'jquery-ui-rails'
 gem 'material_icons'
 
 gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-linkedin'
+# gem 'omniauth-twitter'
+# gem 'omniauth-linkedin'
 gem 'omniauth-kakao'
+gem 'omniauth-naver'
 gem 'omniauth-github'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
