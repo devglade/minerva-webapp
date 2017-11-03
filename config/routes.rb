@@ -11,8 +11,10 @@ Rails.application.routes.draw do
       registrations: 'users/registrations',
       mailer: 'users/mailer',
       shared: 'users/shared',
-      unlocks: 'users/unlocks'
+      unlocks: 'users/unlocks',
+      omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
   resources :retrospects
   resources :posts do
     member do
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
       put "dislike", to: "posts#downvote"
     end
   end
+
+  match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   controller :help_center do
     get '/about', action: :about
