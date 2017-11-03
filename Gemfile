@@ -76,13 +76,13 @@ gem 'omniauth-github'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development do
-  # Use Capistrano for deployment
   gem 'capistrano', '~> 3.10'
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger'
   gem 'capistrano-rack'
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv',
+  gem 'capistrano-rbenv-install', '~> 1.2.0'
   gem 'capistrano3-puma'
   gem 'debase'
   gem 'ruby-debug-ide'
