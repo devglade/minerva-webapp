@@ -10,14 +10,16 @@ set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 set :repo_url,        'git@github.com:devglade/minerva-webapp.git'
-set :rbenv_type, :system
+set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
 
 set :pty,             true
 set :use_sudo,        true
 set :stage,           :production
 set :deploy_via,      :remote_cache
-# set :deploy_to,       '/var/www/apps/minerva'
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
