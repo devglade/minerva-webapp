@@ -78,10 +78,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano', '~> 3.10'
-  gem 'capistrano-bundler',
+  gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-rack'
-  gem 'capistrano-rails',
+  gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-puma'
   gem 'capistrano3-nginx'
