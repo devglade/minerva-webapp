@@ -84,6 +84,7 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano3-puma'
+  gem 'capistrano3-nginx'
   gem 'debase'
   gem 'ruby-debug-ide'
 
