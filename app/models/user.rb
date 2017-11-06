@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :identities, dependent: :destroy
@@ -41,9 +41,7 @@ class User < ApplicationRecord
           password: Devise.friendly_token[0,20]
         )
 
-        if user.confirmation_required?
-          user.skip_confirmation!
-        end
+        user.skip_confirmation!
         user.save!
       end
     end
