@@ -24,7 +24,7 @@
                 <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <%= link_to '가입취소', destroy_user_registration_url, method: 'DELETE', class: 'dropdown-item' %>
+                  <%= link_to '가입취소', cancel_user_registration_url, method: 'GET', class: 'dropdown-item' %>
               </div>
             <% end %>
           </div>
