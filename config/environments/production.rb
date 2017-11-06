@@ -98,4 +98,17 @@ Rails.application.configure do
 
   config.action_cable.url = 'ws://minerva.devglade.com/cable'
   config.action_cable.allowed_request_origins = [ 'http://minerva.devglade.com' ]
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => 'http://minerva.devglade.com' }
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    enable_starttls_auto: true,
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD'],
+    authentication => :plain,
+    domain => 'minerva.devglade.com'
+  }
 end
