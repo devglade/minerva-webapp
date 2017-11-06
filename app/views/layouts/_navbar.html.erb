@@ -13,12 +13,12 @@
         </ul>
         <ul class="navbar-right">
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">설정</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">설정</a>
             <div class="dropdown-menu" aria-labelledby="dropdown06">
-              <%= if current_user.email_verified? %>
+              <% if current_user.email_verified? %>
                 <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
               <% else %>
-                <%= image_tag(current_user.image) + current_user.name : "회원가입 중..."   %>
+                <%= "회원가입 중..." %>
                 <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
                 <b class="caret"></b>
               <% end %>
