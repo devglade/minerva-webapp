@@ -256,7 +256,7 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
   # config.omniauth :twitter, ENV["TW_API_KEY"], ENV["TW_API_SECRET"]
   # config.omniauth :linkedin, ENV["IN_API_KEY"], ENV["IN_API_SECRET"]
-  config.omniauth :kakao, ENV["KAKAO_APP_KEY"], {:redirect_path => "/users/auth/callback"}
+  config.omniauth :kakao, ENV["KAKAO_APP_KEY"], {:redirect_path => "/users/kakao/callback"}
   config.omniauth :naver, ENV["NAVER_CLIENT_ID"], ENV["NAVER_CLIENT_SECRET"]
 
   # ==> Warden configuration
