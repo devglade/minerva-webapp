@@ -108,7 +108,7 @@ Rails.application.configure do
     enable_starttls_auto: true,
     user_name: ENV['GMAIL_USERNAME'],
     password: ENV['GMAIL_PASSWORD'],
-    authentication => :plain,
+    authentication_type => :plain,
     domain => 'minerva.devglade.com'
   }
 end
