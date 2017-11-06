@@ -41,7 +41,7 @@ class User < ApplicationRecord
           password: Devise.friendly_token[0,20]
         )
 
-        if user.:confirmable?
+        if user.confirmation_required?
           user.skip_confirmation!
         end
         user.save!
