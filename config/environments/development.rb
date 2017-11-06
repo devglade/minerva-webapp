@@ -60,9 +60,10 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: '587',
     enable_starttls_auto: true,
+    openssl_verify_mode: 'none'
     user_name: ENV['GMAIL_USERNAME'],
     password: ENV['GMAIL_PASSWORD'],
-    authentication: "plain",
+    authentication: 'plain',
     domain: 'minerva.devglade.com'
   }
 end
