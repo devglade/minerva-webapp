@@ -13,18 +13,20 @@
         </ul>
         <ul class="navbar-right">
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">설정</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown06">
-              <% if current_user.email_verified? %>
-                <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
-              <% else %>
+            <% if current_user.email_verified? %>
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">설정</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown06">
+                  <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
+              </div>
+            <% else %>
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <%= "회원가입 중..." %>
                 <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
-                <b class="caret"></b>
-              <% end %>
-              <!-- <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a> -->
-            </div>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdown07">
+                  <%= link_to '가입취소', cancel_user_registration_url, method: 'GET', class: 'dropdown-item' %>
+              </div>
+            <% end %>
           </div>
         </ul>
     <% else %>
