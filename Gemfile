@@ -52,8 +52,10 @@ end
 gem 'acts_as_votable', '~> 0.11.1'
 
 gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap-social-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
+gem 'font-awesome-rails'
 
 gem 'bourbon' #https://github.com/thoughtbot/bourbon
 
@@ -65,13 +67,14 @@ gem 'jquery-ui-rails'
 
 gem 'material_icons'
 
+gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 # gem 'omniauth-twitter'
 # gem 'omniauth-linkedin'
 gem 'omniauth-kakao'
 gem 'omniauth-naver'
 gem 'omniauth-github'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
