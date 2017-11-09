@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   end
 
   match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-  match '/auth/kakao/callback' => '/users/auth/kakao/callback', via: [:get, :post]
 
   controller :help_center do
     get '/about', action: :about
