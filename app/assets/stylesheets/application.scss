@@ -9,6 +9,8 @@
 @import "bootstrap";
 @import "bootstrap-social";
 @import 'font-awesome';
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 
 body {
   padding-top: 5rem;
@@ -42,5 +44,6 @@ body {
 
 .fa-naver:before {
   content: "N";
+  font-family: "Nanum Gothic", sans-serif;
   font-weight: bold;
 }
