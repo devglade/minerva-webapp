@@ -25,6 +25,10 @@ body {
   background-color: #FFDE00;
 }
 
+.fa-kakao:before {
+  content: "\f075";
+}
+
 .btn-naver {
   color: #fff;
   background-color: #1EC800;
@@ -34,4 +38,9 @@ body {
 .btn-naver:hover {
   color: #fff;
   background-color: #1EC000;
+}
+
+.fa-naver:before {
+  content: "N";
+  font-weight: bold;
 }
