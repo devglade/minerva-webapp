@@ -18,7 +18,7 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? && (action_name == 'sign_in' || action_name =='sign_up') %>
+<%- if devise_mapping.omniauthable? &&  action_name == 'new' && (controller_name == 'sessions' || controller_name == 'registrations') %>
   <br>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <% provider_name = provider.to_s %>
