@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       if current_user.update(user_params)
         current_user.skip_reconfirmation!
         sign_in(current_user, :bypass => true)
-        redirect_to current_user, notice: 'Your profile was successfully updated.'
+        redirect_to edit_user_registration_path(current_user), notice: 'Your profile was successfully updated.'
       else
         @show_errors = true
       end
