@@ -14,17 +14,6 @@
             </div>
 
             <div class="form-group">
-                <%= f.label :is_female, "Gender", class: 'control-label'  %>
-                <%= f.radio_button :is_female, true %> <%= f.label :is_female, "Female" %>
-                <%= f.radio_button :is_female, false %> <%= f.label :is_female, "Male" %>
-            </div>
-
-            <div class="form-group">
-                <%= f.label :date_of_birth, class: 'control-label'  %>
-                <%= f.date_select :date_of_birth, start_year: 1920, end_year: 2000, class: 'form-control'  %>
-            </div>
-
-            <div class="form-group">
                 <%= f.label :email, class: 'control-label'  %>
                 <%= f.email_field :email, class: 'form-control'  %>
             </div>
