@@ -258,7 +258,7 @@ Devise.setup do |config|
   # config.omniauth :linkedin, ENV["IN_API_KEY"], ENV["IN_API_SECRET"]
   config.omniauth :kakao, ENV["KAKAO_APP_KEY"], {:redirect_path => "/users/auth/kakao/callback"}
   config.omniauth :naver, ENV["NAVER_CLIENT_ID"], ENV["NAVER_CLIENT_SECRET"]
-  config.omniauth :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"]
+  # config.omniauth :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
