@@ -51,7 +51,7 @@ end
 
 gem 'acts_as_votable', '~> 0.11.1'
 
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'bootstrap-social-rails'
 gem 'bootstrap_form'
 gem 'font-awesome-rails'
