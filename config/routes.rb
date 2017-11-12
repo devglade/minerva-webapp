@@ -18,15 +18,15 @@ Rails.application.routes.draw do
   resources :retrospects
   resources :posts do
     member do
-      put "like", to: "posts#upvote"
-      put "dislike", to: "posts#downvote"
+      put 'like', to: 'posts#upvote'
+      put 'dislike', to: 'posts#downvote'
     end
   end
 
-  match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  match '/profile/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
   as :user do
-    match '/auth/kakao/callback' => 'users/omniauth_callbacks#kakao', via: [:get, :post]
+    match '/auth/kakao/callback', to: 'users/omniauth_callbacks#kakao', via: [:get, :post]
   end
 
   controller :help_center do
