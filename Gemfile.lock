@@ -54,9 +54,6 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.3, < 2)
       sass (>= 3.5.2)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     bootstrap-social-rails (4.12.0)
       railties (>= 3.1)
     bootstrap_form (2.7.0)
@@ -481,7 +478,6 @@ PLATFORMS
 DEPENDENCIES
   acts_as_votable (~> 0.11.1)
   bootstrap (~> 4.0.0.beta)
-  bootstrap-sass
   bootstrap-social-rails
   bootstrap_form
   bourbon
