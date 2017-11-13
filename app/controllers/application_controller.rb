@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :ensure_signup_complete, only: [:new, :create, :update, :destroy]
+  before_action :set_locale, :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   protect_from_forgery prepend: true
 
   def ensure_signup_complete
@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
     if current_user && !current_user.email_verified?
       redirect_to finish_signup_path(current_user)
     end
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || :ko
   end
 end
