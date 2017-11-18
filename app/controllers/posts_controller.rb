@@ -26,18 +26,7 @@ class PostsController < ApplicationController
     # POST /posts.json
     def create
       @post = Post.new(post_params.merge(user_id: current_user.id))
-      respond_to do |format|
-        if @post.save
-
-          broadcast_create_post(@post)
-
-          format.html { redirect_to @post, notice: 'Post was successfully created.' }
-          format.json { render :show, status: :created, location: @retrospect }
-        else
-          format.html { render :new }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
-        end
-      end
+      @post.save
     end
 
     # PATCH/PUT /posts/1
