@@ -3,4 +3,5 @@
   $(".modal").html '<%= j render partial: 'form', locals: {post: @post}  %>'
 <% else %>
   $(".modal").modal('hide')
+  $('#board').append '<%= j render partial: 'post', object: @post %>'
 <% end %>
