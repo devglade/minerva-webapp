@@ -27,6 +27,8 @@ class PostsController < ApplicationController
     def create
       @post = Post.new(post_params.merge(user_id: current_user.id))
       @post.save
+      broadcast_create_post @post
+      redirect_to action: :index
     end
 
     # PATCH/PUT /posts/1
