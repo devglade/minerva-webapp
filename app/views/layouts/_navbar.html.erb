@@ -1,49 +1,45 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top <%= ' bg-dark' if controller_name !='root' %>">
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar <%= ' bg-dark' if controller_name !='root' %>">
   <%= link_to t(:service_name), root_url, class: 'navbar-brand' %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <% if user_signed_in? %>
-        <ul class="navbar-nav mr-auto">
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+        <%= link_to '사이트 소개', about_url, class: 'nav-link' %>
+      </li>
+      <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to '회고', posts_url, class: 'nav-link' %>
           </li>
-        </ul>
-        <ul class="navbar-right">
-          <div class="nav-item dropdown">
+      <% end %>
+    </ul>
+  </div>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
+    <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            설정
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
             <% if current_user.email_verified? %>
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">설정</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown06">
+                <div class="dropdown-item" aria-labelledby="dropdown06">
                   <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
-              </div>
+                </div>
             <% else %>
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <%= "회원가입 중..." %>
-                <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <%= link_to '가입취소', cancel_user_registration_url, method: 'GET', class: 'dropdown-item' %>
-              </div>
+                <a class="dropdown-item" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <%= "회원가입 중..." %>
+                  <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
+                </a>
+                <%= link_to '가입취소', cancel_user_registration_url, method: 'GET', class: 'dropdown-item' %>
             <% end %>
           </div>
-        </ul>
+        </li>
     <% else %>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to '사이트 소개', about_url, class: 'nav-link' %>
-          </li>
-
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <%= link_to '가입하기', new_user_registration_url, title: '가입하기', class: 'btn btn-outline-success  mr-3 my-md-0' %>
-          </li>
-          <li class="navbar-item">
-            <%= link_to '로그인', new_user_session_url, title: '로그인', class: 'btn btn-outline-success r mr-3 my-md-0' %>
-          </li>
-        </ul>
+        <li class="nav-item">
+          <%= link_to '가입하기', new_user_registration_url, title: '가입하기', class: 'btn btn-outline-success  mr-3 my-md-0' %>
+        </li>
+        <li class="navbar-item">
+          <%= link_to '로그인', new_user_session_url, title: '로그인', class: 'btn btn-outline-success r mr-3 my-md-0' %>
+        </li>
     <% end %>
-  </div>
+  </ul>
 </nav>
