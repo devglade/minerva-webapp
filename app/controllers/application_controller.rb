@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :ensure_signup_complete, only: [:new, :create, :update, :destroy]
+  before_action :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   protect_from_forgery prepend: true
 
   def ensure_signup_complete
@@ -13,7 +13,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_locale
-    I18n.locale = params[:locale] || :ko
-  end
 end
