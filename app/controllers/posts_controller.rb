@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     # GET /posts
     # GET /posts.json
     def index
-      @posts = Post.all
+      @posts = Post.all.order('created_at DESC')
     end
 
     # GET /posts/1
@@ -26,9 +26,16 @@ class PostsController < ApplicationController
     # POST /posts.json
     def create
       @post = Post.new(post_params.merge(user_id: current_user.id))
-      @post.save
-      broadcast_create_post @post
-      redirect_to action: :index
+      respond_to do |format|
+        if @post.save
+          broadcast_create_post(@post)
+          format.json { render :show, status: :created, location: @post }
+          format.js { render js: '$(".modal").modal("hide");' }
+        else
+          format.html { render :new }
+          format.json { render json: @retrospect.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
     # PATCH/PUT /posts/1
@@ -36,11 +43,9 @@ class PostsController < ApplicationController
     def update
       respond_to do |format|
         if @post.update(post_params)
-
           broadcast_update_post(@post)
-
-          format.html { redirect_to @post, notice: 'Post was successfully updated.' }
           format.json { render :show, status: :ok, location: @post }
+          format.js { render js: '$(".modal").modal("hide");' }
         else
           format.html { render :edit }
           format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -56,7 +61,7 @@ class PostsController < ApplicationController
 
         broadcast_delete_post(@post)
 
-        format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+        #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
@@ -91,7 +96,7 @@ class PostsController < ApplicationController
       end
 
       def broadcast_create_post(post)
-        html = ApplicationController.render partial: "posts/post", locals: {current_user: current_user, post: post}, formats: [:html]
+        html = ApplicationController.render partial: "posts/item", locals: {current_user: current_user, post: post}, formats: [:html]
         ActionCable.server.broadcast "posts", {action: "create", id: "post-#{post.id}", html: html}
       end
 
@@ -100,7 +105,7 @@ class PostsController < ApplicationController
       end
 
       def broadcast_update_post(post)
-        html = ApplicationController.render partial: "posts/post", locals: {current_user: current_user, post: post}, formats: [:html]
+        html = ApplicationController.render partial: "posts/item", locals: {current_user: current_user, post: post}, formats: [:html]
         ActionCable.server.broadcast "posts", {action: "update", id: "post-#{post.id}", html: html}
       end
 end

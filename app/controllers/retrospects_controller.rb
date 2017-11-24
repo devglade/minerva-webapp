@@ -5,7 +5,7 @@ class RetrospectsController < ApplicationController
   # GET /retrospects
   # GET /retrospects.json
   def index
-    @retrospects = Retrospect.all
+    @retrospects = Retrospect.all.order('created_at DESC')
   end
 
   # GET /retrospects/1
@@ -29,8 +29,8 @@ class RetrospectsController < ApplicationController
 
     respond_to do |format|
       if @retrospect.save
-        format.html { redirect_to @retrospect, notice: 'Retrospect was successfully created.' }
         format.json { render :show, status: :created, location: @retrospect }
+        format.js { render js: '$(".modal").modal("hide");' }
       else
         format.html { render :new }
         format.json { render json: @retrospect.errors, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class RetrospectsController < ApplicationController
   def update
     respond_to do |format|
       if @retrospect.update(retrospect_params)
-        format.html { redirect_to @retrospect, notice: 'Retrospect was successfully updated.' }
         format.json { render :show, status: :ok, location: @retrospect }
+        format.js { render js: '$(".modal").modal("hide");' }
       else
         format.html { render :edit }
         format.json { render json: @retrospect.errors, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class RetrospectsController < ApplicationController
   def destroy
     @retrospect.destroy
     respond_to do |format|
-      format.html { redirect_to retrospects_url, notice: 'Retrospect was successfully destroyed.' }
+      # format.html { redirect_to retrospects_url, notice: 'Retrospect was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
