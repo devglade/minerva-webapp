@@ -1,32 +1,11 @@
-<div id="main">
-  <h1>Retrospects</h1>
+<h1>Retrospects</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>User</th>
-        <th></th>
-      </tr>
-    </thead>
+<%= link_to 'NEW', new_retrospect_path, remote: true, class: 'btn btn-block btn-secondary' %>
 
-    <tbody>
-      <% @retrospects.each do |retrospect| %>
-        <tr>
-          <td><%= retrospect.name %></td>
-          <td><%= retrospect.description %></td>
-          <td><%= retrospect.user.email %></td>
-          <td>
-            <%= link_to 'Show', retrospect, class: 'button small fit' %>
-            <%= link_to 'Edit', edit_retrospect_path(retrospect), class: 'button small fit' %>
-            <%= link_to 'Destroy', retrospect, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small fit' %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<br>
 
-  <br>
-
-  <%= link_to 'New Retrospect', new_retrospect_path, class: 'button big fit' %>
+<div class="list-group">
+  <% @retrospects.each do |retrospect| %>
+    <%= render partial: 'retrospects/item', locals: {retrospect: retrospect} %>
+  <% end %>
 </div>

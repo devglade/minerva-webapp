@@ -1,32 +1,29 @@
-<%= form_with(model: retrospect, local: true) do |form| %>
-  <% if retrospect.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(retrospect.errors.count, "error") %> prohibited this retrospect from being saved:</h2>
+<div class="modal fade" id="retrospect" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-small">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="retrospectTitle">Retrospect</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= bootstrap_form_for @retrospect, remote: true do |form| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= form.text_field :name, class: "form-control" %>
+          </div>
 
-      <ul>
-      <% retrospect.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <div class="form-group">
+            <%= form.text_area :description, class: "form-control"%>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="form-group">
+            <%= form.submit class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :retrospect_name %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :retrospect_description %>
-  </div>
-
-  <div class="field">
-    <!--<%= form.label :user_id %>-->
-    <%= form.hidden_field :user_id, id: :retrospect_user_id, value: current_user.id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
