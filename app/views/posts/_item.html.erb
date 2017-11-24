@@ -31,7 +31,7 @@
               <%= link_to edit_post_path(post), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">edit</i>
               <% end %>
-              <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
+              <%= link_to post, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">delete</i>
               <% end %>
           <% end %>

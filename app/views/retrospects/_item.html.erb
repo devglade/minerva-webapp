@@ -7,7 +7,7 @@
           <%= link_to edit_retrospect_path(retrospect), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
             <i class="material-icons">edit</i>
           <% end %>
-          <%= link_to retrospect, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
+          <%= link_to retrospect, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
             <i class="material-icons">delete</i>
           <% end %>
         <% end %>
