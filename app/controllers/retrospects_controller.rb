@@ -1,5 +1,6 @@
 class RetrospectsController < ApplicationController
   before_action :set_retrospect, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /retrospects
   # GET /retrospects.json
@@ -24,7 +25,7 @@ class RetrospectsController < ApplicationController
   # POST /retrospects
   # POST /retrospects.json
   def create
-    @retrospect = Retrospect.new(retrospect_params)
+    @retrospect = Retrospect.new(retrospect_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @retrospect.save
