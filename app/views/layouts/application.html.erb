@@ -11,17 +11,26 @@
 </head>
 
 <body class="<%= controller_name %> <%= controller_name %>-<%= controller.action_name %>" data-controller="<%= controller_name %>" data-action="<%= action_name %>">
-<% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/navbar' %>
 
-<%= render 'layouts/header' %>
-<%= render 'layouts/navbar' %>
-<%= yield %>
-<div class="modal fade" id="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="mLabel" aria-hidden="true"></div>
+    <% if notice %>
+        <div class="alert alert-dismissible fade show alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <%= notice %>
+        </div>
+    <% end %>
+    <% if alert %>
+        <div class="alert alert-dismissible fade show alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <%= alert %>
+        </div>
+    <% end %>
 
+    <%= yield %>
 </body>
 </html>
