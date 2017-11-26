@@ -3,6 +3,7 @@ require 'test_helper'
 class RetrospectsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in @user1
+    @retrospect = create(:retrospect)
   end
 
   test '로그인 안한 사용자는 회고를 볼 수 없다.' do
@@ -34,30 +35,27 @@ class RetrospectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show retrospect" do
-    retrospect = create(:retrospect)
-    get retrospect_path(retrospect)
+    get retrospect_path(@retrospect)
 
     assert_response :success
     assert_not_nil assigns(:retrospect)
   end
 
   test "should get edit" do
-    retrospect = create(:retrospect)
-
-    get edit_retrospect_path(retrospect), xhr: true
+    get edit_retrospect_path(@retrospect), xhr: true
     assert_response :success
   end
 
-  # test "should update retrospect" do
-  #   patch retrospect_url(@retrospect), params: {retrospect: {description: @retrospect.description, title: @retrospect.title, user_id: @retrospect.user_id}}
-  #   assert_redirected_to retrospect_url(@retrospect)
-  # end
-  #
-  # test "should destroy retrospect" do
-  #   assert_difference('Retrospect.count', -1) do
-  #     delete retrospect_url(@retrospect)
-  #   end
-  #
-  #   assert_redirected_to retrospects_url
-  # end
+  test "should update retrospect" do
+    patch retrospect_url(@retrospect), params: {retrospect: {description: @retrospect.description, title: @retrospect.title, user_id: @retrospect.user_id}}, xhr: true
+    assert_response :success
+  end
+
+    # test "should destroy retrospect" do
+    #   assert_difference('Retrospect.count', -1) do
+    #     delete retrospect_url(@retrospect)
+    #   end
+    #
+    #   assert_redirected_to retrospects_url
+    # end
 end
