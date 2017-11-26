@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :identities, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :retrospects, dependent: :destroy
+  has_many :spins, dependent: :destroy
 
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/

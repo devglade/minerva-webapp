@@ -1,0 +1,18 @@
+<tr>
+  <td><%= spin.status %></td>
+  <td><%= spin.title %></td>
+  <td><%= spin.summary %></td>
+  <!-- <td><%= link_to 'Show', spin %></td> -->
+  <td>
+    <div class="btn-group" role="group" aria-label="Spin Buttons">
+      <%= link_to edit_spin_path(spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+        <i class="material-icons">edit</i>
+      <% end %>
+      <%= link_to spin, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
+        <i class="material-icons">delete</i>
+      <% end %>
+    </div>
+  </td>
+</div>
+
+</tr>

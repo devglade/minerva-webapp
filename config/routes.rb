@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   }
 
   resources :retrospects
+  resources :spins
   resources :posts do
     member do
       put 'like', to: 'posts#upvote'

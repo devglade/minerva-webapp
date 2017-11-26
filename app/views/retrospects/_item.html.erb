@@ -1,6 +1,8 @@
 <div class="list-group-item list-group-item-action flex-column align-items-start">
   <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1"><%= retrospect.name %></h5>
+    <%= link_to retrospect, method: :get, class: 'btn' do %>
+      <h5 class="mb-1"><%= retrospect.name %></h5>
+    <% end %>
     <small>
       <div class="btn-group" role="group" aria-label="Retrospect Buttons">
         <% if current_user.id == retrospect.user.id %>

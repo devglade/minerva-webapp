@@ -1,19 +1,13 @@
-<div id="main">
-  <p>
-    <strong>Name:</strong>
-    <%= @retrospect.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @retrospect.description %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= @retrospect.user.email %>
-  </p>
-
-  <%= link_to 'Edit', edit_retrospect_path(@retrospect), class: 'button big fit' %> |
-  <%= link_to 'Back', retrospects_path, class: 'button big fit' %>
+<br>
+<div class="card">
+  <h4 class="card-header">
+    Retrospect
+    <%= link_to retrospects_path, class: 'btn btn-sm btn-outline-secondary float-right' do %>
+      <i class="material-icons">arrow_back</i>
+    <% end %>
+  </h4>
+  <div class="card-body">
+    <h4 class="card-title"><%= @retrospect.name %></h4>
+    <p class="card-text"><%= @retrospect.description %></p>
+  </div>
 </div>

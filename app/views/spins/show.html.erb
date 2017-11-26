@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @spin.status %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @spin.title %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @spin.summary %>
+</p>
+
+<%= link_to 'Edit', edit_spin_path(@spin) %> |
+<%= link_to 'Back', spins_path %>

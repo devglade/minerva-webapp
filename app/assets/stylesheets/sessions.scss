@@ -1,13 +1,15 @@
-.session-new {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
+#users {
+  .session-new {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
 
-.card {
-  max-width: 500px;
-  margin: 0 auto;
+  .card {
+    max-width: 500px;
+    margin: 0 auto;
 
-  .card-block {
-    padding: 20px;;
+    .card-block {
+      padding: 20px;;
+    }
   }
 }
