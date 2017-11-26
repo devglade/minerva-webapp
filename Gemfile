@@ -38,6 +38,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -47,6 +48,20 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Use Capistrano for deployment
+  gem 'capistrano', '~> 3.10'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rack'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-puma'
+  gem 'capistrano3-nginx'
+  gem 'debase'
+  gem 'ruby-debug-ide'
+  # 개발시에는 편지를 브라우져에서 오픈하도록 만들어주는 GEM
+  gem 'letter_opener'
 end
 
 gem 'acts_as_votable', '~> 0.11.1'
@@ -78,19 +93,3 @@ gem 'omniauth-google-oauth2'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-group :development do
-  # Use Capistrano for deployment
-  gem 'capistrano', '~> 3.10'
-  gem 'capistrano-bundler'
-  gem 'capistrano-passenger'
-  gem 'capistrano-rack'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano3-puma'
-  gem 'capistrano3-nginx'
-  gem 'debase'
-  gem 'ruby-debug-ide'
-
-  # 개발시에는 편지를 브라우져에서 오픈하도록 만들어주는 GEM
-  gem 'letter_opener'
-end
