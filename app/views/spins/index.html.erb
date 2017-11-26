@@ -6,18 +6,16 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Status</th>
-      <th>Title</th>
-      <th>Summary</th>
-      <th colspan="1"></th>
-    </tr>
+  <tr>
+    <th>Status</th>
+    <th>Title</th>
+    <th>Summary</th>
+    <th colspan="1"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @spins.each do |spin| %>
-      <%= render partial: 'spins/item', locals: {spin: spin} %>
-    <% end %>
+  <%= render partial: 'spin', collection: @spins %>
   </tbody>
 </table>
 

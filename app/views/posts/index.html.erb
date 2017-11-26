@@ -2,7 +2,5 @@
 <%= link_to 'NEW', new_post_path, remote: true, class: 'btn btn-block btn-secondary' %>
 <br>
 <div id="board">
-  <% @posts.each do |post| %>
-      <%= render partial: 'posts/item', locals: {post: post} %>
-  <% end %>
+  <%= render partial: 'post', collection: @posts %>
 </div>

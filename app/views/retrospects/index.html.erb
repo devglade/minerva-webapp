@@ -5,7 +5,5 @@
 <br>
 
 <div class="list-group">
-  <% @retrospects.each do |retrospect| %>
-    <%= render partial: 'retrospects/item', locals: {retrospect: retrospect} %>
-  <% end %>
+  <%= render partial: 'retrospect', collection: @retrospects %>
 </div>
