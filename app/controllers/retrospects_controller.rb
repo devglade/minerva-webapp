@@ -24,15 +24,7 @@ class RetrospectsController < ApplicationController
   # PATCH/PUT /retrospects/1
   # PATCH/PUT /retrospects/1.json
   def update
-    respond_to do |format|
-      if @retrospect.update(retrospect_params)
-        format.json {render :show, status: :ok, location: @retrospect}
-        format.js {render js: '$(".modal").modal("hide");'}
-      else
-        format.html {render :edit}
-        format.json {render json: @retrospect.errors, status: :unprocessable_entity}
-      end
-    end
+    @retrospect.update_attributes(retrospect_params)
   end
 
   # DELETE /retrospects/1

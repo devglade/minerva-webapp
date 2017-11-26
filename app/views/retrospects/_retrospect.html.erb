@@ -1,17 +1,17 @@
-<div class="list-group-item list-group-item-action flex-column align-items-start">
+<li id="retrospect-<%= retrospect.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
   <div class="d-flex w-100 justify-content-between">
     <%= link_to retrospect, method: :get, class: 'btn' do %>
-      <h5 class="mb-1"><%= retrospect.title %></h5>
+        <h5 class="mb-1"><%= retrospect.title %></h5>
     <% end %>
     <small>
       <div class="btn-group" role="group" aria-label="Retrospect Buttons">
         <% if current_user.id == retrospect.user.id %>
-          <%= link_to edit_retrospect_path(retrospect), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
-            <i class="material-icons">edit</i>
-          <% end %>
-          <%= link_to retrospect, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
-            <i class="material-icons">delete</i>
-          <% end %>
+            <%= link_to edit_retrospect_path(retrospect), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+                <i class="material-icons">edit</i>
+            <% end %>
+            <%= link_to retrospect, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+                <i class="material-icons">delete</i>
+            <% end %>
         <% end %>
         <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= retrospect.user.name %>" data-content="<%= retrospect.user.email %>">
           <%= retrospect.user.name.truncate(8) %> <i class="material-icons">face</i>
@@ -19,5 +19,5 @@
       </div>
     </small>
   </div>
-  <p class="mb-1"><%= retrospect.description %>.</p>
-</div>
+  <p class="mb-1"><%= retrospect.description %></p>
+</li>
