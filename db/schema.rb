@@ -27,13 +27,14 @@ ActiveRecord::Schema.define(version: 20171124092324) do
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
+    t.bigint "spin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "retrospects", force: :cascade do |t|
-    t.string "name", limit: 500
+    t.string "title", limit: 500
     t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -44,6 +45,8 @@ ActiveRecord::Schema.define(version: 20171124092324) do
   create_table "spins", force: :cascade do |t|
     t.integer "status"
     t.string "title"
+    t.bigint "retrospect_id"
+    t.bigint "user_id"
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

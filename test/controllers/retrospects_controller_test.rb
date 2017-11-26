@@ -17,7 +17,7 @@ class RetrospectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create retrospect" do
     assert_difference('Retrospect.count') do
-      post retrospects_url, params: { retrospect: { description: @retrospect.description, name: @retrospect.name, user_id: @retrospect.user_id } }
+      post retrospects_url, params: { retrospect: { description: @retrospect.description, title: @retrospect.title, user_id: @retrospect.user_id } }
     end
 
     assert_redirected_to retrospect_url(Retrospect.last)
@@ -34,7 +34,7 @@ class RetrospectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update retrospect" do
-    patch retrospect_url(@retrospect), params: { retrospect: { description: @retrospect.description, name: @retrospect.name, user_id: @retrospect.user_id } }
+    patch retrospect_url(@retrospect), params: { retrospect: { description: @retrospect.description, title: @retrospect.title, user_id: @retrospect.user_id } }
     assert_redirected_to retrospect_url(@retrospect)
   end
 
