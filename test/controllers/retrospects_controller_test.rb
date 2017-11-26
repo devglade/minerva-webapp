@@ -32,11 +32,14 @@ class RetrospectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'retrospects/create'
   end
-  #
-  # test "should show retrospect" do
-  #   get retrospect_url(@retrospect)
-  #   assert_response :success
-  # end
+
+  test "should show retrospect" do
+    retrospect = create(:retrospect)
+    get retrospect_path(retrospect)
+    
+    assert_response :success
+    assert_not_nil assigns(:retrospect)
+  end
   #
   # test "should get edit" do
   #   get edit_retrospect_url(@retrospect)
