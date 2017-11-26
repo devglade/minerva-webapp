@@ -15,12 +15,14 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :retrospects
-  resources :spins
-  resources :posts do
-    member do
-      put 'like', to: 'posts#upvote'
-      put 'dislike', to: 'posts#downvote'
+  resources :retrospects do
+    resources :spins do
+      resources :posts do
+        member do
+          put 'like', to: 'posts#upvote'
+          put 'dislike', to: 'posts#downvote'
+        end
+      end
     end
   end
 
