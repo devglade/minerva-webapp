@@ -1,2 +1,6 @@
 ko:
   service_name: '미네르바'
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "데이터 검증에 실패하였습니다. %{errors}"
