@@ -40,6 +40,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'factory_bot_rails'
   gem 'forgery'
+  gem 'rails-controller-testing'
 end
 
 group :development do

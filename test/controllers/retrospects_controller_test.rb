@@ -11,10 +11,12 @@ class RetrospectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should get new" do
-  #   get new_retrospect_path
-  #   assert_response :success
-  # end
+  test "should get new" do
+    get new_retrospect_path, xhr: true
+    assert_response :success
+    retrospect = assigns(:retrospect)
+    assert_not_nil retrospect
+  end
   #
   # test "should create retrospect" do
   #   assert_difference('Retrospect.count') do
