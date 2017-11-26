@@ -1,9 +1,15 @@
 require 'test_helper'
 
 class RetrospectsControllerTest < ActionDispatch::IntegrationTest
-
   setup do
     sign_in @user1
+  end
+
+  test '로그인 안한 사용자는 회고를 볼 수 없다.' do
+    sign_out @user1
+    get retrospects_path
+
+    assert_response 302
   end
 
   test "should get index" do
