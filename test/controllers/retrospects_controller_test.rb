@@ -36,16 +36,18 @@ class RetrospectsControllerTest < ActionDispatch::IntegrationTest
   test "should show retrospect" do
     retrospect = create(:retrospect)
     get retrospect_path(retrospect)
-    
+
     assert_response :success
     assert_not_nil assigns(:retrospect)
   end
-  #
-  # test "should get edit" do
-  #   get edit_retrospect_url(@retrospect)
-  #   assert_response :success
-  # end
-  #
+
+  test "should get edit" do
+    retrospect = create(:retrospect)
+
+    get edit_retrospect_path(retrospect), xhr: true
+    assert_response :success
+  end
+
   # test "should update retrospect" do
   #   patch retrospect_url(@retrospect), params: {retrospect: {description: @retrospect.description, title: @retrospect.title, user_id: @retrospect.user_id}}
   #   assert_redirected_to retrospect_url(@retrospect)
