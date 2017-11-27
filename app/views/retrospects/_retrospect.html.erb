@@ -1,6 +1,6 @@
 <li id="retrospect-<%= retrospect.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
   <div class="d-flex w-100 justify-content-between">
-    <%= link_to retrospect, method: :get, class: 'btn' do %>
+    <%= link_to retrospect_spins_path(retrospect_id: retrospect), method: :get, class: 'btn' do %>
         <h5 class="mb-1"><%= retrospect.title %></h5>
     <% end %>
     <small>
