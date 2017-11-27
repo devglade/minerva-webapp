@@ -29,9 +29,11 @@ Rails.application.routes.draw do
   get '/retrospects/:retrospect_id/spins/:spin_id/posts', to: 'posts#index'
   post '/retrospects/:retrospect_id/spins/:spin_id/posts', to: 'posts#create'
 
+  get '/spins/new', to: 'spins#new', as: :new_spin
   get '/spins', to: 'spins#index'
   post '/spins', to: 'spins#create'
 
+  get '/posts/new', to: 'posts#new', as: :new_post
   get '/posts', to: 'posts#index'
   post '/posts', to: 'posts#create'
 
