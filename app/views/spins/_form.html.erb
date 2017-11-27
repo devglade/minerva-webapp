@@ -11,7 +11,7 @@
       <%= bootstrap_form_for [:retrospect, @spin], remote: true do |form| %>
       <div class="modal-body">
         <div class="form-group">
-          <%= form.select :status, options_for_select(Spin.statuses), readonly: "true", selected: (form.object.status.nil? ? "opened" : form.object.status), class: "form-control" %>
+          <%= form.select :status, Spin.statuses.keys, default: "opened", class: "form-control" %>
         </div>
 
         <div class="form-group">

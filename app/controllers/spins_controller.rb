@@ -1,5 +1,7 @@
 class SpinsController < ApplicationController
   before_action :set_spin, only: [:show, :edit, :update, :destroy]
+  before_action :set_retrospect
+  before_action :authenticate_user!
 
   # GET /spins
   # GET /spins.json
@@ -62,6 +64,10 @@ class SpinsController < ApplicationController
   end
 
   private
+    def set_retrospect
+        @retrospect = Retrospect.find(params[:retrospect_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_spin
       @spin = Spin.find(params[:id])
