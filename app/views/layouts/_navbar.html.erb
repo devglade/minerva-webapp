@@ -20,7 +20,7 @@
             설정
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-            <% if current_user.email_verified? %>
+            <% if current_user.confirmed? %>
                 <div class="dropdown-item" aria-labelledby="dropdown06">
                   <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
                 </div>
