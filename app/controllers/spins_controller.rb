@@ -33,7 +33,7 @@ class SpinsController < ApplicationController
         format.json { render :show, status: :created, location: @spin }
         format.js { render js: '$(".modal").modal("hide");' }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @spin.errors, status: :unprocessable_entity }
       end
     end
