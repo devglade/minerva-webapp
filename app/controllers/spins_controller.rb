@@ -4,7 +4,7 @@ class SpinsController < ApplicationController
   # GET /spins
   # GET /spins.json
   def index
-    @spins = Spin.all
+    @spins = Spin.where(retrospect_id: params[:retrospect_id]).order('created_at DESC')
   end
 
   # GET /spins/1
