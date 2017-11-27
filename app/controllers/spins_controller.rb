@@ -1,7 +1,7 @@
 class SpinsController < ApplicationController
-  before_action :set_spin, only: [:show, :edit, :update, :destroy]
-  before_action :set_retrospect
   before_action :authenticate_user!
+  before_action :set_retrospect
+  before_action :set_spin, only: [:show, :edit, :update, :destroy]
 
   def index
     @spins = Spin.where(retrospect_id: params[:retrospect_id]).order('created_at DESC')
@@ -18,8 +18,7 @@ class SpinsController < ApplicationController
   end
 
   def create
-    @retrospect = Retrospect.find(params[:retrospect_id])
-    @spin = @retrospect.spins.build(spin_params.merge(user: current_user))
+    @spin = @retrospect.spins.build(spin_params)
     @spin.save
   end
 
@@ -55,6 +54,8 @@ class SpinsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def spin_params
-    params.require(:spin).permit(:status, :title, :summary)
+    local_params = params.require(:spin).permit(:status, :title, :summary)
+    local_params = local_params.merge(user: current_user)
+    return local_params
   end
 end
