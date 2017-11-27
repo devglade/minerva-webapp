@@ -1,5 +1,5 @@
 <h1>Posts</h1>
-<%= link_to 'NEW', new_post_path, remote: true, class: 'btn btn-block btn-secondary' %>
+<%= link_to 'NEW', new_retrospect_spin_post_path, remote: true, class: 'btn btn-block btn-secondary' %>
 <br>
 <div id="board">
   <%= render partial: 'post', collection: @posts %>

@@ -1,21 +1,7 @@
-<h1>Spins</h1>
-
 <br>
-
-<%= link_to 'NEW', new_spin_path, remote: true, class: 'btn btn-block btn-secondary' %>
-
-<table>
-  <thead>
-  <tr>
-    <th>Status</th>
-    <th>Title</th>
-    <th>Summary</th>
-    <th colspan="1"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <%= render partial: 'spin', collection: @spins %>
-  </tbody>
-</table>
-
+<div></div>
+<h1>Spins</h1>
+<br>
+<%= link_to 'NEW', new_retrospect_spin_path, remote: true, class: 'btn btn-block btn-secondary' %>
+<br>
+<%= render partial: 'spin', collection: @spins %>

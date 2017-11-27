@@ -15,5 +15,11 @@
   <%= @spin.summary %>
 </p>
 
-<%= link_to 'Edit', edit_spin_path(@spin) %> |
-<%= link_to 'Back', spins_path %>
+<div class="btn-group" role="group" aria-label="Spin Buttons">
+    <%= link_to edit_retrospect_spin_path(id: @spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+        <i class="material-icons">edit</i>
+    <% end %>
+    <%= link_to retrospect_spins_path, class: 'btn btn-sm btn-outline-secondary' do %>
+        <i class="material-icons">delete</i>
+    <% end %>
+</div>

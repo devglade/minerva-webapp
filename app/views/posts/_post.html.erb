@@ -4,7 +4,7 @@
         <% if post.content.lines.count > 6 || post.content.mb_chars.length > 124 %>
           <!-- <button class="btn btn-sm btn-secondary float-right more"><i class="material-icons">open_in_new</i></button> -->
 
-          <%= link_to post_path(post), remote: true, class: 'btn btn-sm btn-secondary float-right more' do %>
+          <%= link_to retrospect_spin_post_path(id: post), remote: true, class: 'btn btn-sm btn-secondary float-right more' do %>
             <i class="material-icons">open_in_new</i>
           <% end %>
         <% end %>
@@ -15,12 +15,12 @@
         <hr>
 
         <div class="btn-group" role="group" aria-label="like Buttons">
-          <%= link_to like_post_path(post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{post.id}", method: :put do %>
+          <%= link_to like_retrospect_spin_post_path(id: post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{post.id}", method: :put do %>
           <i class="material-icons">thumb_up</i>
           <%= post.get_upvotes.size %>
           <% end %>
 
-          <%= link_to dislike_post_path(post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{post.id}", method: :put do %>
+          <%= link_to dislike_retrospect_spin_post_path(id: post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{post.id}", method: :put do %>
           <i class="material-icons">thumb_down</i>
           <%= post.get_downvotes.size %>
           <% end %>
@@ -28,10 +28,10 @@
 
         <div class="btn-group float-right" role="group" aria-label="Post Buttons">
           <% if current_user.id == post.user.id %>
-              <%= link_to edit_post_path(post), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+              <%= link_to edit_retrospect_spin_post_path(id: post), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">edit</i>
               <% end %>
-              <%= link_to post, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
+              <%= link_to retrospect_spin_post_path(id: post), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">delete</i>
               <% end %>
           <% end %>
