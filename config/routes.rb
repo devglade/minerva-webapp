@@ -15,9 +15,9 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :retrospects, shallow: true do
-    resources :spins, shallow: true do
-      resources :posts, shallow: true do
+  resources :retrospects do
+    resources :spins do
+      resources :posts do
         member do
           put 'like', to: 'posts#upvote'
           put 'dislike', to: 'posts#downvote'
@@ -25,17 +25,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  get '/retrospects/:retrospect_id/spins/:spin_id/posts', to: 'posts#index'
-  post '/retrospects/:retrospect_id/spins/:spin_id/posts', to: 'posts#create'
-
-  get '/spins/new', to: 'spins#new', as: :new_spin
-  get '/spins', to: 'spins#index'
-  post '/spins', to: 'spins#create'
-
-  get '/posts/new', to: 'posts#new', as: :new_post
-  get '/posts', to: 'posts#index'
-  post '/posts', to: 'posts#create'
 
   match '/profile/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
