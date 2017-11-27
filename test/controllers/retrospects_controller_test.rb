@@ -47,8 +47,10 @@ class RetrospectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update retrospect" do
-    patch retrospect_url(@retrospect), params: {retrospect: {description: @retrospect.description, title: @retrospect.title, user_id: @retrospect.user_id}}, xhr: true
+    id = @retrospect.id
+    patch retrospect_url(@retrospect), params: {retrospect: {description: @retrospect.description, title: "test", user_id: @retrospect.user_id}}, xhr: true
     assert_response :success
+    assert_equal "test", Retrospect.find(id).title
   end
 
     # test "should destroy retrospect" do
