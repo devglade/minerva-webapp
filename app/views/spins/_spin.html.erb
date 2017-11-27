@@ -1,9 +1,11 @@
-<div class="card" style="width: 20rem;">
+<div class="card spin">
     <div class="card-body">
         <% index = @spins.count - spin_counter %>
         <h4 class="card-title">
             <span class="badge badge-info"><%= "##{index}" %></span>
-            <%= spin.title %>
+            <%= link_to retrospect_spin_posts_path(spin_id: spin) do %>
+                <%= spin.title %>
+            <% end %>
         </h4>
         <h6 class="card-subtitle mb-2 text-muted">
             <% if spin.status == "closed" %>
