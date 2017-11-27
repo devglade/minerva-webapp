@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     # GET /posts
     # GET /posts.json
     def index
-      @posts = Post.all.order('created_at DESC')
+      @posts = Post.where(spin_id: params[:spin_id]).order('created_at DESC')
     end
 
     # GET /posts/1
