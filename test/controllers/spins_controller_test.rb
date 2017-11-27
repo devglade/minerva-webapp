@@ -1,14 +1,16 @@
 require 'test_helper'
 
 class SpinsControllerTest < ActionDispatch::IntegrationTest
-  # setup do
-  #   @spin = spins(:one)
-  # end
-  #
-  # test "should get index" do
-  #   get spins_url
-  #   assert_response :success
-  # end
+  setup do
+    sign_in @user1
+    @retrospect = create(:retrospect)
+    @spin = create(:spin)
+  end
+
+  test "should get index" do
+    get retrospect_spin_path @retrospect, @spin
+    assert_response :success
+  end
   #
   # test "should get new" do
   #   get new_spin_url
