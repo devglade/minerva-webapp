@@ -11,11 +11,11 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
     get retrospect_spin_path @retrospect, @spin
     assert_response :success
   end
-  #
-  # test "should get new" do
-  #   get new_spin_url
-  #   assert_response :success
-  # end
+
+  test "should get new" do
+    get new_retrospect_spin @retrospect, @spin
+    assert_response :success
+  end
   #
   # test "should create spin" do
   #   assert_difference('Spin.count') do
