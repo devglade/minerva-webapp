@@ -1,7 +1,11 @@
 <br>
-<div></div>
-<h1>Spins</h1>
+<h1>
+        <span class="badge badge-primary"><%= @retrospect.title %></span>
+        <span class="badge badge-primary">Spins</span>
+</h1>
 <br>
 <%= link_to 'NEW', new_retrospect_spin_path, remote: true, class: 'btn btn-block btn-secondary' %>
 <br>
-<%= render partial: 'spin', collection: @spins %>
+<div id="outer">
+    <%= render partial: 'spin', collection: @spins %>
+</div>
