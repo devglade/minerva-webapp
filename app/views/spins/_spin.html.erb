@@ -6,7 +6,11 @@
             <%= spin.title %>
         </h4>
         <h6 class="card-subtitle mb-2 text-muted">
-            <span class="badge badge-success"><%= spin.status %></span>
+            <% if spin.status == "closed" %>
+                <span class="badge badge-secondary"><%= spin.status %></span>
+            <% else %>
+                <span class="badge badge-success"><%= spin.status %></span>
+            <% end %>
         </h6>
         <p class="card-text"><%= spin.summary %></p>
         <div class="btn-group" role="group" aria-label="Spin Buttons">
