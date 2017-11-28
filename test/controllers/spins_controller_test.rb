@@ -13,7 +13,7 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_retrospect_spin_url(@retrospect, @spin), xhr: true
+    get new_retrospect_spin_url(@retrospect), xhr: true
     assert_response :success
     spin = assigns(:spin)
     assert_not_nil spin
@@ -21,7 +21,7 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create spin" do
     assert_difference('Spin.count') do
-      post retrospect_spins_url @retrospect, @spin, params: { spin: { status: @spin.status, summary: @spin.summary, title: @spin.title } }
+      post retrospect_spins_url(@retrospect), params: { spin: { status: @spin.status, summary: @spin.summary, title: @spin.title } }, xhr: true
     end
     assert_response :success
   end
