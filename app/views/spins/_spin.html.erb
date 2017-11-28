@@ -12,22 +12,22 @@
         <h4 class="card-title">
             <span class="badge align-middle badge-info"><%= "##{index}" %></span>
             <% if spin.status == "closed" %>
-                <span class="badge align-middle badge-secondary"><%= spin.status %></span>
+                <span id="spin-<%= spin.id %>-status" class="badge align-middle badge-secondary"><%= spin.status %></span>
             <% else %>
-                <span class="badge align-middle badge-success"><%= spin.status %></span>
+                <span id="spin-<%= spin.id %>-status" class="badge align-middle badge-success"><%= spin.status %></span>
             <% end %>
         </h4>
     </div>
     <div class="card-body">
         <h3 class="card-subtitle mb-2 text-muted">
-            <%= link_to retrospect_spin_posts_path(spin_id: spin) do %>
+            <%= link_to retrospect_spin_posts_path(spin_id: spin), id: "spin-#{spin.id}-title"  do %>
                 <%= spin.title %>
             <% end %>
         </h3>
-        <p class="card-text"><%= spin.summary %></p>
+        <p id="spin-<%= spin.id %>-summary" class="card-text"><%= spin.summary %></p>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small class="text-muted">Created At : <%= spin.created_at %></small></li>
-        <li class="list-group-item"><small class="text-muted">Updated At : <%= spin.updated_at %></small></li>
+        <li class="list-group-item"><small id="spin-<%= spin.id %>-created_at" class="text-muted">Created At : <%= spin.created_at %></small></li>
+        <li class="list-group-item"><small id="spin-<%= spin.id %>-updated_at" class="text-muted">Updated At : <%= spin.updated_at %></small></li>
     </ul>
 </div>
