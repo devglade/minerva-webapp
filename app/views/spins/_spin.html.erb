@@ -1,6 +1,6 @@
-<div class="card spin">
+<div class="card spin" id="spin-<%= spin.id %>">
     <div class="card-header">
-        <% index = @spins.count - spin_counter %>
+
         <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
             <%= link_to edit_retrospect_spin_path(id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">edit</i>
@@ -10,7 +10,7 @@
             <% end %>
         </div>
         <h4 class="card-title">
-            <span class="badge align-middle badge-info"><%= "##{index}" %></span>
+
             <% if spin.status == "closed" %>
                 <span id="spin-<%= spin.id %>-status" class="badge align-middle badge-secondary"><%= spin.status %></span>
             <% else %>
