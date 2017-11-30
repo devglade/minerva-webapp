@@ -31,10 +31,6 @@ class RetrospectsController < ApplicationController
   # DELETE /retrospects/1.json
   def destroy
     @retrospect.destroy
-    respond_to do |format|
-      # format.html { redirect_to retrospects_url, notice: 'Retrospect was successfully destroyed.' }
-      format.json {head :no_content}
-    end
   end
 
   private
