@@ -23,23 +23,20 @@ class SpinsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @spin.update(spin_params)
-        format.json {render :show, status: :ok, location: @spin}
-        format.js {render js: '$(".modal").modal("hide");'}
-      else
-        format.html {render :edit}
-        format.json {render json: @spin.errors, status: :unprocessable_entity}
-      end
-    end
+    @spin.update_attributes(spin_params)
+    # respond_to do |format|
+    #   if @spin.update(spin_params)
+    #     format.json {render :show, status: :ok, location: @spin}
+    #     format.js {render js: '$(".modal").modal("hide");'}
+    #   else
+    #     format.html {render :edit}
+    #     format.json {render json: @spin.errors, status: :unprocessable_entity}
+    #   end
+    # end
   end
 
   def destroy
     @spin.destroy
-    respond_to do |format|
-      # format.html { redirect_to spins_url, notice: 'Spin was successfully destroyed.' }
-      format.json {head :no_content}
-    end
   end
 
   private
