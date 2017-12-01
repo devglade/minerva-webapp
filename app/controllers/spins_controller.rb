@@ -1,6 +1,6 @@
 class SpinsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_retrospect
+  before_action :set_retrospect, only: [:index, :new]
   before_action :set_spin, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,23 +20,20 @@ class SpinsController < ApplicationController
   def create
     @spin = @retrospect.spins.build(spin_params)
     @spin.save
+
+    broadcast_create_spin(@spin)
   end
 
   def update
     @spin.update_attributes(spin_params)
-    # respond_to do |format|
-    #   if @spin.update(spin_params)
-    #     format.json {render :show, status: :ok, location: @spin}
-    #     format.js {render js: '$(".modal").modal("hide");'}
-    #   else
-    #     format.html {render :edit}
-    #     format.json {render json: @spin.errors, status: :unprocessable_entity}
-    #   end
-    # end
+
+    broadcast_update_spin(@spin)
   end
 
   def destroy
     @spin.destroy
+
+    broadcast_delete_spin(@spin)
   end
 
   private
@@ -47,6 +44,7 @@ class SpinsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_spin
     @spin = Spin.find(params[:id])
+    @retrospect = @spin.retrospect
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -54,5 +52,19 @@ class SpinsController < ApplicationController
     local_params = params.require(:spin).permit(:status, :title, :summary)
     local_params = local_params.merge(user: current_user)
     return local_params
+  end
+
+  def broadcast_create_spin(spin)
+    html = ApplicationController.render partial: "spins/spin", locals: {current_user: current_user, spin: spin}, formats: [:html]
+    ActionCable.server.broadcast "spins", {action: "create", id: "spin-#{spin.id}", html: html}
+  end
+
+  def broadcast_delete_spin(spin)
+    ActionCable.server.broadcast "spins", {action: "delete", id: "spin-#{spin.id}"}
+  end
+
+  def broadcast_update_spin(spin)
+    html = ApplicationController.render partial: "spins/spin", locals: {current_user: current_user, spin: spin}, formats: [:html]
+    ActionCable.server.broadcast "spins", {action: "update", id: "spin-#{spin.id}", html: html}
   end
 end

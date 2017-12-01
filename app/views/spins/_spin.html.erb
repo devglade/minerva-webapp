@@ -2,10 +2,10 @@
     <div class="card-header">
 
         <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
-            <%= link_to edit_retrospect_spin_path(id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+            <%= link_to edit_retrospect_spin_path(retrospect_id: spin.retrospect, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">edit</i>
             <% end %>
-            <%= link_to retrospect_spin_path(id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+            <%= link_to retrospect_spin_path(retrospect_id: spin.retrospect, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">delete</i>
             <% end %>
         </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="card-body">
         <h3 class="card-subtitle mb-2 text-muted">
-            <%= link_to retrospect_spin_posts_path(spin_id: spin), id: "spin-#{spin.id}-title"  do %>
+            <%= link_to retrospect_spin_posts_path(retrospect_id: spin.retrospect, spin_id: spin), id: "spin-#{spin.id}-title"  do %>
                 <%= spin.title %>
             <% end %>
         </h3>
