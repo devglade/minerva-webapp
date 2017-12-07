@@ -5,6 +5,7 @@ class SpinsController < ApplicationController
 
   def index
     @spins = Spin.where(retrospect_id: params[:retrospect_id]).order('created_at DESC')
+    @opened_spin_count = Spin.where(retrospect_id: params[:retrospect_id], status: "opened").count
   end
 
   def show
