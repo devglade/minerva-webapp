@@ -1,6 +1,7 @@
 <div class="card spin" id="spin-<%= spin.id %>">
     <div class="card-header">
 
+        <% if current_user.id == spin.user.id %>
         <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
             <%= link_to edit_retrospect_spin_path(retrospect_id: spin.retrospect, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
                 <i class="material-icons">edit</i>
@@ -9,6 +10,8 @@
                 <i class="material-icons">delete</i>
             <% end %>
         </div>
+        <% end %>
+
         <h4 class="card-title">
 
             <% if spin.status == "closed" %>
