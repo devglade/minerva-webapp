@@ -252,12 +252,12 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :github, ENV["GITHUB_CLIENT_ID"], ENV["GITHUB_CLIENT_SECRET"], scope: 'user:email'
-  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"],scope: 'email', info_fields: 'name, email', image_size: 'large'
+  # config.omniauth :github, ENV["GITHUB_CLIENT_ID"], ENV["GITHUB_CLIENT_SECRET"], scope: 'user:email'
+  # config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"],scope: 'email', info_fields: 'name, email', image_size: 'large'
   # config.omniauth :twitter, ENV["TW_API_KEY"], ENV["TW_API_SECRET"]
   # config.omniauth :linkedin, ENV["IN_API_KEY"], ENV["IN_API_SECRET"]
-  config.omniauth :kakao, ENV["KAKAO_APP_KEY"], {:redirect_path => "/users/auth/kakao/callback"}
-  config.omniauth :naver, ENV["NAVER_CLIENT_ID"], ENV["NAVER_CLIENT_SECRET"]
+  # config.omniauth :kakao, ENV["KAKAO_APP_KEY"], {:redirect_path => "/users/auth/kakao/callback"}
+  # config.omniauth :naver, ENV["NAVER_CLIENT_ID"], ENV["NAVER_CLIENT_SECRET"]
   # config.omniauth :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"]
 
   # ==> Warden configuration

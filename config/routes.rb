@@ -12,7 +12,6 @@ Rails.application.routes.draw do
       mailer: 'users/mailer',
       shared: 'users/shared',
       unlocks: 'users/unlocks',
-      omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   resources :retrospects do
@@ -27,10 +26,6 @@ Rails.application.routes.draw do
   end
 
   match '/profile/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-
-  as :user do
-    match '/auth/kakao/callback', to: 'users/omniauth_callbacks#kakao', via: [:get, :post]
-  end
 
   controller :help_center do
     get '/about', action: :about
