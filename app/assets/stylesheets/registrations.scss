@@ -1,4 +1,4 @@
-.registrations-new {
+.registrations-new, .sessions-new {
   background: url(asset-path('universe.jpg')) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -7,7 +7,7 @@
 
   .card {
     margin: 80px auto;
-    max-width: 500px;
+    max-width: 330px;
     .card-block {
       padding: 20px;;
     }

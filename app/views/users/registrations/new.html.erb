@@ -1,23 +1,21 @@
-<div>
-  <div class="card">
-    <div class="card-header">
-      <h2>가입하기</h2>
-    </div>
+<div class="card">
+  <div class="card-header">
+    <h2>가입하기</h2>
+  </div>
 
-    <div class="card-block">
-      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
-        <%= f.text_field :name, required: true, placeholder: '이름', skip_label: true %>
-        <%= f.email_field :email, required: true, autofocus: true, placeholder: '이메일', skip_label: true %>
-        <%= f.password_field :password, required: true, autocomplete: 'off', placeholder: '비밀번호', skip_label: true %>
-        <%= f.password_field :password_confirmation, required: true, autocomplete: 'off', placeholder: '비밀번호 확인', skip_label: true %>
+  <div class="card-block">
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.text_field :name, required: true, placeholder: '이름', skip_label: true %>
+      <%= f.email_field :email, required: true, autofocus: true, placeholder: '이메일', skip_label: true %>
+      <%= f.password_field :password, required: true, autocomplete: 'off', placeholder: '비밀번호', skip_label: true %>
+      <%= f.password_field :password_confirmation, required: true, autocomplete: 'off', placeholder: '비밀번호 확인', skip_label: true %>
 
-        <%= f.submit "가입하기", class: 'btn btn-primary btn-block', data: {disable_with: '처리중'} %>
-      <% end %>
-    </div>
+      <%= f.submit "가입하기", class: 'btn btn-primary btn-block', data: {disable_with: '처리중'} %>
+    <% end %>
+  </div>
 
-    <div class="card-footer">
-      <%= render "users/shared/links" %>
-    </div>
+  <div class="card-footer">
+    <%= render "users/shared/links" %>
   </div>
 </div>
