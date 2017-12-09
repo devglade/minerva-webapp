@@ -14,7 +14,7 @@
 
 <body class="<%= controller_name %> <%= controller_name %>-<%= controller.action_name %>" data-controller="<%= controller_name %>" data-action="<%= action_name %>">
 <%= render 'layouts/header' %>
-<%= render 'layouts/navbar' unless controller_name == 'registrations'||'sessions' %>
+<%= render 'layouts/navbar' unless controller_name == 'registrations' || controller_name == 'sessions' %>
 
 <% if notice %>
   <div class="alert alert-dismissible fade show alert-success" role="alert">
