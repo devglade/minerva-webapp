@@ -4,16 +4,22 @@ Rails.application.routes.draw do
   end
   root to: 'root#index'
 
-  devise_for :users, controllers: {
-      sessions: 'users/sessions',
-      confirmations: 'users/confirmations',
-      passwords: 'users/passwords',
-      registrations: 'users/registrations',
-      mailer: 'users/mailer',
-      shared: 'users/shared',
-      unlocks: 'users/unlocks',
-  }
-
+  devise_for :users,
+             controllers: {
+                 sessions: 'users/sessions',
+                 confirmations: 'users/confirmations',
+                 passwords: 'users/passwords',
+                 registrations: 'users/registrations',
+                 mailer: 'users/mailer',
+                 shared: 'users/shared',
+                 unlocks: 'users/unlocks'
+             },
+             path_names: {
+                 sign_in: 'login',
+                 sign_out: 'logout',
+                 sign_up: 'signup'
+             }
+  
   resources :retrospects do
     resources :spins do
       resources :posts do
