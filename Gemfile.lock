@@ -61,6 +61,9 @@ GEM
       sass (~> 3.4)
       thor (~> 0.19)
     builder (3.2.3)
+    bullet (5.7.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.1.0)
     capistrano (3.10.1)
       airbrussh (>= 1.0.0)
@@ -435,6 +438,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    uniform_notifier (1.10.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -458,6 +462,7 @@ DEPENDENCIES
   bootstrap-social-rails
   bootstrap_form
   bourbon
+  bullet
   byebug
   capistrano (~> 3.10)
   capistrano-bundler

@@ -64,6 +64,8 @@ group :development do
   gem 'ruby-debug-ide', '>= 0.6.1.beta9'
   # 개발시에는 편지를 브라우져에서 오픈하도록 만들어주는 GEM
   gem 'letter_opener'
+  # help to kill N+1 queries and unused eager loading. https://github.com/flyerhzm/bullet
+  gem 'bullet'
 end
 
 gem 'acts_as_votable', '~> 0.11.1'
