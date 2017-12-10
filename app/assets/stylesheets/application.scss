@@ -8,37 +8,7 @@
 @import "bourbon";
 @import "bootstrap";
 @import "bootstrap-social";
-@import 'font-awesome';
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-.btn-kakao {
-  color: #3C1E1E;
-  background-color: #FFEC42;
-  border-color: #FFDE00;
-}
-
-.btn-kakao:hover {
-  color: #3C1E1E;
-  background-color: #FFDE00;
-}
-
-.fa-kakao:before {
-  content: "\f075";
-}
-
-.btn-naver {
-  color: #fff;
-  background-color: #1EC800;
-  border-color: #1EC000;
-}
-
-.btn-naver:hover {
-  color: #fff;
-  background-color: #1EC000;
-}
-
-.fa-naver:before {
-  content: "N";
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: bold;
+body {
+  font-family: 'Roboto', '맑은 고딕', malgun gothic, '돋움', Dotum, 'Helvetica Neue', Helvetica, verdana, Arial, sans-serif;
 }
