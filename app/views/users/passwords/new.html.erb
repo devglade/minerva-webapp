@@ -1,20 +1,13 @@
 <div class="card">
   <div class="card-header">
-    <h2>Forgot your password?</h2>
+    <h3>비밀번호를 잊으셨나요?</h3>
   </div>
 
   <div class="card-block">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: 'form-horizontal'}) do |f| %>
+    <%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: 'form-horizontal'}) do |f| %>
       <%= devise_error_messages! %>
-
-      <div class="form-group">
-        <%= f.label :email, class: "control-label" %>
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit "Send me reset password instructions", class: "btn btn-primary btn-block" %>
-      </div>
+      <%= f.email_field :email, required: true, autofocus: true, placeholder: '이메일', skip_label: true %>
+      <%= f.submit '비밀번호 재설정 메일보내기', class: 'btn btn-primary btn-block', data: {disable_with: '처리중'} %>
     <% end %>
   </div>
 
