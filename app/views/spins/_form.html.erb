@@ -7,24 +7,23 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
+      <div class="modal-body">
       <%= bootstrap_form_for [@retrospect, @spin], remote: true do |form| %>
-          <div class="modal-body">
-            <div class="form-group">
-              <%= form.select :status, Spin.statuses.keys, { prompt: "opened" }, disabled: true, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= form.select :status, Spin.statuses.keys, { prompt: "opened" }, disabled: true, class: "form-control" %>
+          </div>
 
-            <div class="form-group">
-              <%= form.text_field :title, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
 
-            <div class="form-group">
-              <%= form.text_area :summary, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= form.text_area :summary, class: "form-control" %>
+          </div>
 
-            <div class="actions">
-              <%= form.submit class: "btn btn-primary btn-block" %>
-            </div>
+          <div class="actions">
+            <%= form.submit class: "btn btn-primary btn-block" %>
+          </div>
       <% end %>
       </div>
     </div>
