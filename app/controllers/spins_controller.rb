@@ -1,6 +1,6 @@
 class SpinsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_retrospect, only: [:index, :new]
+  before_action :set_retrospect, only: [:index, :new, :create]
   before_action :set_spin, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,7 +19,7 @@ class SpinsController < ApplicationController
   end
 
   def create
-    @spin = @retrospect.spins.build(spin_params)
+    @spin = @retrospect.spins.build(spin_params.merge(status: "opened"))
     @spin.save
 
     broadcast_create_spin(@spin)
