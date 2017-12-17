@@ -1,9 +1,11 @@
-<h1>Retrospects</h1>
+<div class="container">
+  <h1>Retrospects</h1>
 
-<%= link_to 'NEW', new_retrospect_path, remote: true, class: 'btn btn-block btn-secondary' %>
+  <%= link_to 'NEW', new_retrospect_path, remote: true, class: 'btn btn-block btn-secondary' %>
 
-<br>
+  <br>
 
-<ul class="list-group retrospect-list-group">
-  <%= render partial: 'retrospect', collection: @retrospects %>
-</ul>
+  <ul class="list-group retrospect-list-group">
+    <%= render partial: 'retrospect', collection: @retrospects %>
+  </ul>
+</div>
