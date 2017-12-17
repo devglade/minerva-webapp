@@ -44,7 +44,7 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy spin" do
     assert_difference('Spin.count', -1) do
-      delete retrospect_spin_url(@retrospect, @spin, format: :json), xhr: true
+      delete retrospect_spin_url(@retrospect, @spin), xhr: true
     end
     assert_response :success
   end
