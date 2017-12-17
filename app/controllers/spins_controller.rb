@@ -4,8 +4,8 @@ class SpinsController < ApplicationController
   before_action :set_spin, only: [:show, :edit, :update, :destroy]
 
   def index
-    @spins = Spin.where(retrospect_id: params[:retrospect_id]).order('created_at DESC')
-    @opened_spin_count = Spin.where(retrospect_id: params[:retrospect_id], status: "opened").count
+    @spins = @retrospect.spins.by_created_at
+      # @opened_spin_count = @spins.opened.count
   end
 
   def show
