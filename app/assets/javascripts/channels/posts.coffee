@@ -11,7 +11,7 @@ App.posts = App.cable.subscriptions.create "PostsChannel",
     switch data.action
       when 'create'
         if $('#' + data.id).length == 0
-          $('#board').append data.html
+          $('#board').prepend data.html
       when 'delete'
         if $('#' + data.id).length > 0
           $('#' + data.id).remove()
