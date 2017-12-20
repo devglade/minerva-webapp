@@ -28,6 +28,7 @@ class PostsController < ApplicationController
   def create
     @post = @spin.posts.build(post_params)
     @post.save
+    broadcast_create_post @post
   end
 
   # PATCH/PUT /posts/1
