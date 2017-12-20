@@ -56,6 +56,5 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "다른 사람이 쓴 포스트는 삭제할 수 없다." do
-
   end
 end

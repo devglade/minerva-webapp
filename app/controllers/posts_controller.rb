@@ -51,6 +51,8 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    raise User::NotAuthorized, '삭제할 권한이 없습니다.' unless @post.updatable_by?(current_user)
+
     @post.destroy
     respond_to do |format|
 
