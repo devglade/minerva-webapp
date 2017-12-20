@@ -3,6 +3,7 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in @user1
+    @user2 = FactoryBot.create(:user)
     @retrospect = create(:retrospect)
     @spin = create(:spin)
     @post = create(:post)
@@ -42,5 +43,19 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       delete retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
     end
     assert_response :success
+  end
+
+  test "다른 사람이 쓴 포스트는 수정할 수 없다." do
+    sign_in @user1
+    post retrospect_spin_posts_url(@retrospect, @spin), params: {post: {content: "test"}}, xhr: true
+    sign_out @user1
+    sign_in @user2
+    last = Post.last
+    patch retrospect_spin_post_url @retrospect, @spin, last, params: {post: {content: "changed"}}, format: :js
+    assert_equal "test", last.content
+  end
+
+  test "다른 사람이 쓴 포스트는 삭제할 수 없다." do
+
   end
 end

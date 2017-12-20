@@ -34,6 +34,8 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    raise User::NotAuthorized, '수정할 권한이 없습니다.' unless @post.updatable_by?(current_user)
+
     respond_to do |format|
       if @post.update(post_params)
         broadcast_update_post(@post)

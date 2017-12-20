@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :retrospects, dependent: :destroy
   has_many :spins, dependent: :destroy
-
   acts_as_voter
+
+  class NotAuthorized < MinervaError
+    DEFAULT_MESSAGE = '해당 액션에 권한이 없습니다.'
+  end
 end
