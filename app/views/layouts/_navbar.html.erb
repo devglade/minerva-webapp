@@ -22,8 +22,13 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
             <% if current_user.confirmed? %>
                 <div class="dropdown-item" aria-labelledby="dropdown06">
-                  <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
+                    <%= link_to '프로필 수정', edit_user_registration_url, method: 'get', class: 'dropdown-item' %>
                 </div>
+                <div class="dropdown-item" aria-labelledby="dropdown06">
+                    <%= link_to '로그아웃', destroy_user_session_url, method: 'delete', class: 'dropdown-item' %>
+                </div>
+
+
             <% else %>
                 <a class="dropdown-item" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <%= "회원가입 중..." %>
