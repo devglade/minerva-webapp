@@ -65,6 +65,7 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
+    raise User::NotAuthorized, '자신이 쓴 글에는 좋아요를 할 수 없습니다.' unless @post.votable_by?(current_user)
     @post.upvote_by current_user
 
     broadcast_like_dislike_post(@post)
@@ -72,6 +73,7 @@ class PostsController < ApplicationController
 
   def downvote
     @post = Post.find(params[:id])
+    raise User::NotAuthorized, '자신이 쓴 글에는 싫어요를 할 수 없습니다.' unless @post.votable_by?(current_user)
     @post.downvote_by current_user
 
     broadcast_like_dislike_post(@post)
