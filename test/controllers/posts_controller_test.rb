@@ -41,6 +41,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy post" do
+    sign_out @user1
+    sign_in @post.user
     assert_difference('Post.count', -1) do
       delete retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
     end
@@ -58,6 +60,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "다른 사람이 쓴 포스트는 삭제할 수 없다." do
-
+    sign_out @user1
+    post retrospect_spin_posts_url(@retrospect, @spin), params: {post: {content: "test"}}, xhr: true
+    sign_out @user1
+    sign_in @user2
+    assert_difference('Post.count', 0) do
+      delete retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
+    end
+    assert_response :success
   end
 end
