@@ -35,17 +35,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     raise User::NotAuthorized, '수정할 권한이 없습니다.' unless @post.updatable_by?(current_user)
-
-    respond_to do |format|
-      if @post.update(post_params)
-        broadcast_update_post(@post)
-        format.json {render :show, status: :ok, location: @post}
-        format.js {render js: '$(".modal").modal("hide");'}
-      else
-        format.html {render :edit}
-        format.json {render json: @post.errors, status: :unprocessable_entity}
-      end
-    end
+    @post.update(post_params)
   end
 
   # DELETE /posts/1
@@ -91,10 +81,7 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     logger.debug params
-    local_params = params.require(:post).permit(:content)
-    local_params = local_params.merge(user: current_user)
-    local_params = local_params.merge(spin_id: params[:spin_id])
-    return local_params
+    params.require(:post).permit(:content).merge(user: current_user, spin_id: params[:spin_id])
   end
 
   def broadcast_like_dislike_post(post)

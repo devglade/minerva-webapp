@@ -32,13 +32,15 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update spin" do
+  test "should update post" do
+    sign_out @user1
+    sign_in @post.user
     patch retrospect_spin_post_url @retrospect, @spin, @post, params: {post: {content: "changed"}}, format: :js
     assert_response :success
-    assert_equal "changed", Post.find(@post.id).content
+    assert_equal "changed", assigns(:post).content
   end
 
-  test "should destroy spin" do
+  test "should destroy post" do
     assert_difference('Post.count', -1) do
       delete retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
     end
@@ -56,5 +58,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "다른 사람이 쓴 포스트는 삭제할 수 없다." do
+
   end
 end
