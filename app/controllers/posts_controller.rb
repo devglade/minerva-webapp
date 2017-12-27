@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_retrospect_spin
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /posts
   # GET /posts.json
@@ -64,7 +64,6 @@ class PostsController < ApplicationController
   end
 
   def upvote
-    @post = Post.find(params[:id])
     raise User::NotAuthorized, '자신이 쓴 글에는 좋아요를 할 수 없습니다.' unless @post.votable_by?(current_user)
     @post.upvote_by current_user
 
@@ -72,7 +71,6 @@ class PostsController < ApplicationController
   end
 
   def downvote
-    @post = Post.find(params[:id])
     raise User::NotAuthorized, '자신이 쓴 글에는 싫어요를 할 수 없습니다.' unless @post.votable_by?(current_user)
     @post.downvote_by current_user
 
