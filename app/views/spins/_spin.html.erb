@@ -1,26 +1,10 @@
 <div class="card spin" id="spin-<%= spin.id %>">
-    <div class="card-header">
+    <% if spin.status == "closed" %>
+        <img class="card-img-top" src="<%= asset_path('CLOSED.JPG') %>" alt="CLOSED">
+    <% else %>
+        <img class="card-img-top" src="<%= asset_path('OPENED.JPG') %>" alt="OPENED">
+    <% end %>
 
-        <% if current_user.id == spin.user.id %>
-        <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
-            <%= link_to edit_retrospect_spin_path(retrospect_id: spin.retrospect, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
-                <i class="material-icons">edit</i>
-            <% end %>
-            <%= link_to retrospect_spin_path(retrospect_id: spin.retrospect, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
-                <i class="material-icons">delete</i>
-            <% end %>
-        </div>
-        <% end %>
-
-        <h4 class="card-title">
-
-            <% if spin.status == "closed" %>
-                <span id="spin-<%= spin.id %>-status" class="badge align-middle badge-secondary"><%= spin.status %></span>
-            <% else %>
-                <span id="spin-<%= spin.id %>-status" class="badge align-middle badge-success"><%= spin.status %></span>
-            <% end %>
-        </h4>
-    </div>
     <div class="card-body">
         <h3 class="card-subtitle mb-2 text-muted">
             <%= link_to retrospect_spin_posts_path(retrospect_id: spin.retrospect, spin_id: spin), id: "spin-#{spin.id}-title"  do %>
@@ -29,8 +13,19 @@
         </h3>
         <p id="spin-<%= spin.id %>-summary" class="card-text"><%= spin.summary %></p>
     </div>
+
     <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small id="spin-<%= spin.id %>-created_at" class="text-muted">Created At : <%= spin.created_at %></small></li>
-        <li class="list-group-item"><small id="spin-<%= spin.id %>-updated_at" class="text-muted">Updated At : <%= spin.updated_at %></small></li>
+        <li class="list-group-item">
+             <% if current_user.id == spin.user.id %>
+            <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
+                <%= link_to edit_retrospect_spin_path(retrospect_id: spin.retrospect, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+                    <i class="material-icons">edit</i>
+                <% end %>
+                <%= link_to retrospect_spin_path(retrospect_id: spin.retrospect, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+                    <i class="material-icons">delete</i>
+                <% end %>
+            </div>
+            <% end %>
+        </li>
     </ul>
 </div>
