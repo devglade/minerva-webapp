@@ -55,15 +55,21 @@ class PostsController < ApplicationController
 
   def upvote
     raise User::NotAuthorized, '자신이 쓴 글에는 좋아요를 할 수 없습니다.' unless @post.votable_by?(current_user)
-    @post.upvote_by current_user
-
+    if current_user.voted_up_on? @post
+      @post.unvote_by current_user
+    else
+      @post.upvote_by current_user
+    end
     broadcast_like_dislike_post(@post)
   end
 
   def downvote
     raise User::NotAuthorized, '자신이 쓴 글에는 싫어요를 할 수 없습니다.' unless @post.votable_by?(current_user)
-    @post.downvote_by current_user
-
+    if current_user.voted_down_on? @post
+      @post.unvote_by current_user
+    else
+      @post.downvote_by current_user
+    end
     broadcast_like_dislike_post(@post)
   end
 
