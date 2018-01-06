@@ -69,4 +69,28 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
   end
+
+  test '자신의 글에 좋아요/싫어요를 못한다' do
+    sign_in @post.user
+    put like_retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
+    assert_template :access_denied
+    put dislike_retrospect_spin_post_path(@retrospect, @spin, @post), xhr:true
+    assert_template :access_denied
+  end
+
+  test '좋아요 취소가 되어야 한다.' do
+    sign_in @user2
+    put like_retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
+    assert_equal @post.get_upvotes.size, 1
+    put like_retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
+    assert_equal @post.get_upvotes.size, 0
+  end
+
+  test '싫어요 취소가 되어야 한다.' do
+    sign_in @user2
+    put dislike_retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
+    assert_equal @post.get_downvotes.size, 1
+    put dislike_retrospect_spin_post_path(@retrospect, @spin, @post), xhr: true
+    assert_equal @post.get_downvotes.size, 0
+  end
 end
