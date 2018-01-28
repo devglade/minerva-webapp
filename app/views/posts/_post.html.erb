@@ -1,45 +1,43 @@
-<div class="post-container post-fixed-width draggable" draggable="true" id="drag_me">
-  <blockquote class="post yellow" id=<%= "post-#{post.id}" %>>
-    <div class="contents post-fixed-height">
-        <% if post.content.lines.count > 6 || post.content.mb_chars.length > 124 %>
-          <!-- <button class="btn btn-sm btn-secondary float-right more"><i class="material-icons">open_in_new</i></button> -->
+<div class="post-container post-fixed-width draggable drag_me post yellow" draggable="true" id=<%= "post-#{post.id}" %>>
+  <div class="contents post-fixed-height">
+    <% if post.content.lines.count > 6 || post.content.mb_chars.length > 124 %>
+      <!-- <button class="btn btn-sm btn-secondary float-right more"><i class="material-icons">open_in_new</i></button> -->
 
-          <%= link_to retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-secondary float-right more' do %>
-            <i class="material-icons">open_in_new</i>
-          <% end %>
+      <%= link_to retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-secondary float-right more' do %>
+        <i class="material-icons">open_in_new</i>
+      <% end %>
+    <% end %>
+
+    <%= simple_format(post.content) %>
+  </div>
+  <div class="buttons">
+    <hr>
+
+    <div class="btn-group" role="group" aria-label="like Buttons">
+      <%= link_to like_retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{post.id}", method: :put do %>
+        <i class="material-icons">thumb_up</i>
+        <%= post.get_upvotes.size %>
+      <% end %>
+
+      <%= link_to dislike_retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{post.id}", method: :put do %>
+        <i class="material-icons">thumb_down</i>
+        <%= post.get_downvotes.size %>
+      <% end %>
+    </div>
+
+    <div class="btn-group float-right" role="group" aria-label="Post Buttons">
+      <% if current_user.id == post.user.id %>
+        <%= link_to edit_retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+          <i class="material-icons">edit</i>
         <% end %>
+        <%= link_to retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      <% end %>
 
-        <%= simple_format( post.content ) %>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="popover" title="<%= post.user.name %>" data-content="<%= post.user.email %>">
+        <%= post.user.name.truncate(8) %> <i class="material-icons">face</i>
+      </button>
     </div>
-    <div class="buttons">
-        <hr>
-
-        <div class="btn-group" role="group" aria-label="like Buttons">
-          <%= link_to like_retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{post.id}", method: :put do %>
-          <i class="material-icons">thumb_up</i>
-          <%= post.get_upvotes.size %>
-          <% end %>
-
-          <%= link_to dislike_retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{post.id}", method: :put do %>
-          <i class="material-icons">thumb_down</i>
-          <%= post.get_downvotes.size %>
-          <% end %>
-        </div>
-
-        <div class="btn-group float-right" role="group" aria-label="Post Buttons">
-          <% if current_user.id == post.user.id %>
-              <%= link_to edit_retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
-                <i class="material-icons">edit</i>
-              <% end %>
-              <%= link_to retrospect_spin_post_path(id: post, retrospect_id: post.spin.retrospect, spin_id: post.spin), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' do %>
-                <i class="material-icons">delete</i>
-              <% end %>
-          <% end %>
-
-          <button class="btn btn-sm btn-outline-secondary" data-toggle="popover" title="<%= post.user.name %>" data-content="<%= post.user.email %>">
-            <%= post.user.name.truncate(8) %> <i class="material-icons">face</i>
-          </button>
-        </div>
-    </div>
-  </blockquote>
+  </div>
 </div>
