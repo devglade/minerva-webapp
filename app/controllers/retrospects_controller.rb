@@ -26,6 +26,7 @@ class RetrospectsController < ApplicationController
   # PATCH/PUT /retrospects/1
   # PATCH/PUT /retrospects/1.json
   def update
+    raise User::NotAuthorized, '수정할 권한이 없습니다.' unless @retrospect.updatable_by?(current_user)
     @retrospect.update_attributes(retrospect_params)
 
     broadcast_update_retrospect(@retrospect)
@@ -34,6 +35,7 @@ class RetrospectsController < ApplicationController
   # DELETE /retrospects/1
   # DELETE /retrospects/1.json
   def destroy
+    raise User::NotAuthorized, '삭제할 권한이 없습니다.' unless @retrospect.updatable_by?(current_user)
     @retrospect.destroy
 
     broadcast_delete_retrospect(@retrospect)
