@@ -8,9 +8,9 @@
         </button>
       </div>
       <div class="modal-body">
-      <%= bootstrap_form_for [@retrospect, @spin], remote: true do |form| %>
+        <%= bootstrap_form_for [@retrospect, @spin], remote: true do |form| %>
           <div class="form-group">
-            <%= form.select :status, Spin.statuses.keys, { prompt: "opened" }, disabled: true, class: "form-control" %>
+            <%= form.select :status, Spin.statuses.keys, {prompt: "opened"}, class: "form-control" %>
           </div>
 
           <div class="form-group">
@@ -24,7 +24,7 @@
           <div class="actions">
             <%= form.submit class: "btn btn-primary btn-block" %>
           </div>
-      <% end %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@
   <%= link_to '회고 주제 등록하기', new_retrospect_spin_path, remote: true, class: 'btn btn-block btn-secondary' %>
   <br>
 
-  <div class="card-columns spin-card-columns">
+  <div class="d-flex flex-wrap justify-content-center" id="spin-board">
     <%= render partial: 'spin', collection: @spins %>
   </div>
 </div>

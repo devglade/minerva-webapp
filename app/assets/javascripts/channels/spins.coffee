@@ -10,7 +10,7 @@ App.spins = App.cable.subscriptions.create "SpinsChannel",
     switch data.action
       when 'create'
         if $('#' + data.id).length == 0
-          $('.spin-card-columns').prepend data.html
+          $('#spin-board').prepend data.html
       when 'delete'
         if $('#' + data.id).length > 0
           $('#' + data.id).remove()

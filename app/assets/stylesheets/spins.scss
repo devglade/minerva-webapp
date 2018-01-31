@@ -3,20 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .spin {
-    min-height: 200px;
-}
-
-.card-columns {
-    @media (min-width: 300px) {
-        column-count: 1;
-    }
-    @media (min-width: 600px) {
-        column-count: 2;
-    }
-    @media (min-width: 900px) {
-        column-count: 3;
-    }
-    @media (min-width: 1200px) {
-        column-count: 4;
-    }
+  min-height: 150px;
+  width: 18rem;
+  margin: 10px;
 }
