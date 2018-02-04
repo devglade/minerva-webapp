@@ -96,7 +96,7 @@ class PostsController < ApplicationController
 
   def broadcast_create_post(post)
     html = ApplicationController.render partial: "posts/post", locals: {current_user: current_user, post: post}, formats: [:html]
-    ActionCable.server.broadcast "posts", {action: "create", id: "post-#{post.id}", html: html}
+    ActionCable.server.broadcast "posts", {action: "create", id: "post-#{post.id}", spin_id: post.spin.id, html: html}
   end
 
   def broadcast_delete_post(post)
