@@ -5,7 +5,7 @@ class SpinsController < ApplicationController
 
   def index
     @spins = @retrospect.spins.by_created_at
-      # @opened_spin_count = @spins.opened.count
+    # @opened_spin_count = @spins.opened.count
   end
 
   def show
@@ -57,7 +57,7 @@ class SpinsController < ApplicationController
 
   def broadcast_create_spin(spin)
     html = ApplicationController.render partial: "spins/spin", locals: {current_user: current_user, spin: spin}, formats: [:html]
-    ActionCable.server.broadcast "spins", {action: "create", id: "spin-#{spin.id}", html: html}
+    ActionCable.server.broadcast "spins", {action: "create", id: "spin-#{spin.id}", retrospect_id: @retrospect.id, html: html}
   end
 
   def broadcast_delete_spin(spin)

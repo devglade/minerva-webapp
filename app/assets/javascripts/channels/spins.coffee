@@ -9,7 +9,7 @@ App.spins = App.cable.subscriptions.create "SpinsChannel",
     # Called when there's incoming data on the websocket for this channel
     switch data.action
       when 'create'
-        if $('#' + data.id).length == 0
+        if $(".container").data("retrospect") == data.retrospect_id
           $('#spin-board').prepend data.html
       when 'delete'
         if $('#' + data.id).length > 0
