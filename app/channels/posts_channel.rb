@@ -1,6 +1,6 @@
 class PostsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "posts"
+    stream_from "#{params[:parentId]}_posts"
   end
 
   def unsubscribed

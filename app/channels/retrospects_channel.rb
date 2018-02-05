@@ -1,6 +1,6 @@
 class RetrospectsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "retrospects"
+    stream_from "#{params[:parentId]}_retrospects"
   end
 
   def unsubscribed
