@@ -4,6 +4,11 @@ class RetrospectsController < ApplicationController
 
   def index
     @retrospects = Retrospect.all.order('created_at DESC')
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -54,16 +59,16 @@ class RetrospectsController < ApplicationController
 
   def broadcast_create_retrospect(retrospect)
     html = ApplicationController.render partial: "retrospects/retrospect", locals: {current_user: current_user, retrospect: retrospect}, formats: [:html]
-    ActionCable.server.broadcast "retrospects", {action: "create", id: "retrospect-#{retrospect.id}", html: html}
+    ActionCable.server.broadcast "all_retrospects", {action: "create", id: "retrospect-#{retrospect.id}", html: html}
   end
 
   def broadcast_delete_retrospect(retrospect)
-    ActionCable.server.broadcast "retrospects", {action: "delete", id: "retrospect-#{retrospect.id}"}
+    ActionCable.server.broadcast "all_retrospects", {action: "delete", id: "retrospect-#{retrospect.id}"}
   end
 
   def broadcast_update_retrospect(retrospect)
     html = ApplicationController.render partial: "retrospects/retrospect", locals: {current_user: current_user, retrospect: retrospect}, formats: [:html]
-    ActionCable.server.broadcast "retrospects", {action: "update", id: "retrospect-#{retrospect.id}", html: html}
+    ActionCable.server.broadcast "all_retrospects", {action: "update", id: "retrospect-#{retrospect.id}", html: html}
   end
 
 end

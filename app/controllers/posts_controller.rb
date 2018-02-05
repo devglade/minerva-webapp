@@ -7,6 +7,11 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.where(spin_id: params[:spin_id]).order('created_at DESC')
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /posts/1
@@ -91,20 +96,20 @@ class PostsController < ApplicationController
   end
 
   def broadcast_like_dislike_post(post)
-    ActionCable.server.broadcast "posts", {action: "like_dislike", id: "post-#{post.id}", like: "#{post.get_upvotes.size}", dislike: "#{post.get_downvotes.size}"}
+    ActionCable.server.broadcast "#{post.spin.id}_posts", {action: "like_dislike", id: "post-#{post.id}", like: "#{post.get_upvotes.size}", dislike: "#{post.get_downvotes.size}"}
   end
 
   def broadcast_create_post(post)
     html = ApplicationController.render partial: "posts/post", locals: {current_user: current_user, post: post}, formats: [:html]
-    ActionCable.server.broadcast "posts", {action: "create", id: "post-#{post.id}", spin_id: post.spin.id, html: html}
+    ActionCable.server.broadcast "#{post.spin.id}_posts", {action: "create", id: "post-#{post.id}", html: html}
   end
 
   def broadcast_delete_post(post)
-    ActionCable.server.broadcast "posts", {action: "delete", id: "post-#{post.id}"}
+    ActionCable.server.broadcast "#{post.spin.id}_posts", {action: "delete", id: "post-#{post.id}"}
   end
 
   def broadcast_update_post(post)
     html = ApplicationController.render partial: "posts/post", locals: {current_user: current_user, post: post}, formats: [:html]
-    ActionCable.server.broadcast "posts", {action: "update", id: "post-#{post.id}", html: html}
+    ActionCable.server.broadcast "#{post.spin.id}_posts", {action: "update", id: "post-#{post.id}", html: html}
   end
 end
