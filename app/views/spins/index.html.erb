@@ -1,4 +1,5 @@
-<div class="container" data-retrospect=<%=@retrospect.id%>>
+<%= javascript_tag "MakeSpinChannel(#{@retrospect.id})"  %>
+<div class="container">
   <br>
   <h1>
     <span class="badge badge-primary"><%= @retrospect.title %></span>
