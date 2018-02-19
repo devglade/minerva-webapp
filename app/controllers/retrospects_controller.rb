@@ -12,6 +12,7 @@ class RetrospectsController < ApplicationController
   end
 
   def show
+    render partial: @retrospect
   end
 
   def new
@@ -58,8 +59,7 @@ class RetrospectsController < ApplicationController
   end
 
   def broadcast_create_retrospect(retrospect)
-    html = ApplicationController.render partial: "retrospects/retrospect", locals: {current_user: current_user, retrospect: retrospect}, formats: [:html]
-    ActionCable.server.broadcast "all_retrospects", {action: "create", id: "retrospect-#{retrospect.id}", html: html}
+    ActionCable.server.broadcast "all_retrospects", {action: "create", id: retrospect.id}
   end
 
   def broadcast_delete_retrospect(retrospect)

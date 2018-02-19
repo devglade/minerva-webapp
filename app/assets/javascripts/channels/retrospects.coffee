@@ -14,7 +14,8 @@
       switch data.action
         when 'create'
           if $('#' + data.id).length == 0
-            $('.retrospect-list-group').prepend data.html
+            $.get('retrospects/'+ data.id).done (html)->
+             $('.retrospect-list-group').prepend html
         when 'delete'
           if $('#' + data.id).length > 0
             $('#' + data.id).remove()
