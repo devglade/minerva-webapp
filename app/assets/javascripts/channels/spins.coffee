@@ -13,14 +13,18 @@
   # Called when there's incoming data on the websocket for this channel
       switch data.action
         when 'create'
-          if $('#' + data.id).length == 0
-            $('#spin-board').prepend data.html
+          console.log $('#spin-' + data.id).length == 0
+          if $('#spin-' + data.id).length == 0
+            $.get('/spins/'+ data.id).done (html)->
+              $('#spin-board').prepend html
         when 'delete'
           if $('#' + data.id).length > 0
             $('#' + data.id).remove()
         when 'update'
-          if $('#' + data.id).length > 0
-            $('#' + data.id).replaceWith data.html
+          console.log $('#spin-' + data.id).length > 0
+          if $('#spin-' + data.id).length > 0
+            $.get('/spins/'+ data.id).done (html)->
+              $('#spin-' + data.id).replaceWith html
         else
           alert(data)
           break

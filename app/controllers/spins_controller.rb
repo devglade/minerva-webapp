@@ -14,6 +14,7 @@ class SpinsController < ApplicationController
   end
 
   def show
+    render partial: @spin
   end
 
   def new
@@ -61,8 +62,7 @@ class SpinsController < ApplicationController
   end
 
   def broadcast_create_spin(spin)
-    html = ApplicationController.render partial: "spins/spin", locals: {current_user: current_user, spin: spin}, formats: [:html]
-    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "create", id: "spin-#{spin.id}", html: html}
+    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "create", id: spin.id}
   end
 
   def broadcast_delete_spin(spin)
@@ -70,7 +70,6 @@ class SpinsController < ApplicationController
   end
 
   def broadcast_update_spin(spin)
-    html = ApplicationController.render partial: "spins/spin", locals: {current_user: current_user, spin: spin}, formats: [:html]
-    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "update", id: "spin-#{spin.id}", html: html}
+    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "update", id: spin.id}
   end
 end
