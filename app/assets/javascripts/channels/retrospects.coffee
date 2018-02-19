@@ -13,15 +13,16 @@
   # Called when there's incoming data on the websocket for this channel
       switch data.action
         when 'create'
-          if $('#' + data.id).length == 0
+          if $('#retrospect-' + data.id).length == 0
             $.get('retrospects/'+ data.id).done (html)->
              $('.retrospect-list-group').prepend html
         when 'delete'
           if $('#' + data.id).length > 0
             $('#' + data.id).remove()
         when 'update'
-          if $('#' + data.id).length > 0
-            $('#' + data.id).replaceWith data.html
+          if $('#retrospect-' + data.id).length > 0
+            $.get('retrospects/'+ data.id).done (html)->
+              $('#retrospect-' + data.id).replaceWith html
         else
           alert(data)
           break

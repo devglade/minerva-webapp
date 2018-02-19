@@ -67,8 +67,7 @@ class RetrospectsController < ApplicationController
   end
 
   def broadcast_update_retrospect(retrospect)
-    html = ApplicationController.render partial: "retrospects/retrospect", locals: {current_user: current_user, retrospect: retrospect}, formats: [:html]
-    ActionCable.server.broadcast "all_retrospects", {action: "update", id: "retrospect-#{retrospect.id}", html: html}
+    ActionCable.server.broadcast "all_retrospects", {action: "update", id: retrospect.id}
   end
 
 end
