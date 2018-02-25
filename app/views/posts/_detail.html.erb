@@ -16,12 +16,12 @@
                   </div>
                   <div class="buttons">
                       <hr>
-                      <%= link_to like_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{@post.id}", method: :put do %>
+                      <%= link_to like_retrospect_spin_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{@post.id}", method: :put do %>
                       <i class="material-icons">thumb_up</i>
                       <%= @post.get_upvotes.size %>
                       <% end %>
 
-                      <%= link_to dislike_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{@post.id}", method: :put do %>
+                      <%= link_to dislike_retrospect_spin_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{@post.id}", method: :put do %>
                       <i class="material-icons">thumb_down</i>
                       <%= @post.get_downvotes.size %>
                       <% end %>
