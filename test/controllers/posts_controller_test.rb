@@ -28,7 +28,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   test "should show post" do
-    get retrospect_spin_post_url @retrospect, @spin, @post
+    get retrospect_spin_post_url(@retrospect, @spin, @post), xhr: true
     assert_response :success
   end
 
