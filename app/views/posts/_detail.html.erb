@@ -7,36 +7,36 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <div class="post-container">
-              <blockquote class="post yellow" id=<%= "post-#{@post.id}" %>>
-                  <div class="contents">
-                      <%= simple_format(@post.content).gsub(URI.regexp, '<a href="\0" target="_blank">\0</a>').html_safe %>
-                  </div>
-                  <div class="buttons">
-                      <hr>
-                      <%= link_to like_retrospect_spin_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{@post.id}", method: :put do %>
-                      <i class="material-icons">thumb_up</i>
-                      <%= @post.get_upvotes.size %>
-                      <% end %>
-
-                      <%= link_to dislike_retrospect_spin_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{@post.id}", method: :put do %>
-                      <i class="material-icons">thumb_down</i>
-                      <%= @post.get_downvotes.size %>
-                      <% end %>
-
-                      <button class="btn btn-sm btn-outline-secondary float-right" data-toggle="popover" title="<%= @post.user.name %>" data-content="<%= @post.user.email %>">
-                        <%= @post.user.name %> <i class="material-icons">face</i>
-                      </button>
-                  </div>
-                </blockquote>
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="post-container">
+            <blockquote class="post yellow" id=<%= "post-#{@post.id}" %>>
+              <div class="contents">
+                <%= simple_format(@post.content).gsub(URI.regexp, '<a href="\0" target="_blank">\0</a>').html_safe %>
               </div>
+              <div class="buttons">
+                <hr>
+                <%= link_to like_retrospect_spin_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{@post.id}", method: :put do %>
+                  <i class="material-icons">thumb_up</i>
+                  <%= @post.get_upvotes.size %>
+                <% end %>
+
+                <%= link_to dislike_retrospect_spin_post_path(@post), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{@post.id}", method: :put do %>
+                  <i class="material-icons">thumb_down</i>
+                  <%= @post.get_downvotes.size %>
+                <% end %>
+
+                <button class="btn btn-sm btn-outline-secondary float-right" data-toggle="popover" title="<%= @post.user.name %>" data-content="<%= @post.user.email %>">
+                  <%= @post.user.name %> <i class="material-icons">face</i>
+                </button>
+              </div>
+            </blockquote>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">CLOSE</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">CLOSE</button>
+      </div>
     </div>
   </div>
 </div>
