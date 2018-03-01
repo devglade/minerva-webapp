@@ -62,11 +62,11 @@ class SpinsController < ApplicationController
   end
 
   def broadcast_create_spin(spin)
-    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "create", id: spin.id}
+    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "create", id: spin.id, retrospect_id: @retrospect.id}
   end
 
   def broadcast_delete_spin(spin)
-    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "delete", id: "spin-#{spin.id}"}
+    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "delete", id: spin.id}
   end
 
   def broadcast_update_spin(spin)
