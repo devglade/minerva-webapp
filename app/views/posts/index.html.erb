@@ -6,6 +6,6 @@
 <br>
 <%= link_to '글쓰기', new_retrospect_spin_post_path, remote: true, class: 'btn btn-block btn btn-outline-secondary' %>
 <br>
-<div id="board">
+<div id="board" data-spin=<%= @spin.id %>>
   <%= render partial: 'post', collection: @posts %>
 </div>

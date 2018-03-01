@@ -14,7 +14,7 @@
 
       switch data.action
         when 'create'
-          if $('#' + data.id).length == 0
+          if $("#board").data("spin") == data.spin_id && $('#' + data.id).length == 0
             $('#board').prepend data.html
         when 'delete'
           if $('#' + data.id).length > 0
