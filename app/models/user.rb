@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :identities, dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_many :retrospects, dependent: :destroy
+  has_many :projects, dependent: :destroy
   has_many :spins, dependent: :destroy
   acts_as_voter
 

@@ -1,6 +1,6 @@
 @MakeRetrospectChannel = (parentId) ->
   App.retrospects = App.cable.subscriptions.create({
-    channel:  'RetrospectsChannel',
+    channel:  'ProjectsChannel',
     parentId: parentId
   },
     connected: ->
@@ -13,16 +13,16 @@
   # Called when there's incoming data on the websocket for this channel
       switch data.action
         when 'create'
-          if $('#retrospect-' + data.id).length == 0
-            $.get('retrospects/'+ data.id).done (html)->
-             $('.retrospect-list-group').prepend html
+          if $('#project-' + data.id).length == 0
+            $.get('projects/'+ data.id).done (html)->
+             $('.project-list-group').prepend html
         when 'delete'
           if $('#' + data.id).length > 0
             $('#' + data.id).remove()
         when 'update'
-          if $('#retrospect-' + data.id).length > 0
-            $.get('retrospects/'+ data.id).done (html)->
-              $('#retrospect-' + data.id).replaceWith html
+          if $('#project-' + data.id).length > 0
+            $.get('projects/'+ data.id).done (html)->
+              $('#project-' + data.id).replaceWith html
         else
           alert(data)
           break

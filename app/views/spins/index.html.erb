@@ -1,11 +1,11 @@
-<%= javascript_tag "MakeSpinChannel(#{@retrospect.id})"  %>
-<div class="container" data-retrospect=<%=@retrospect.id%>>
+<%= javascript_tag "MakeSpinChannel(#{@project.id})"  %>
+<div class="container" data-retrospect=<%= @project.id%>>
   <br>
   <h1>
-    <span class="badge badge-primary"><%= @retrospect.title %></span>
+    <span class="badge badge-primary"><%= @project.title %></span>
   </h1>
   <br>
-  <%= link_to '회고 주제 등록하기', new_retrospect_spin_path, remote: true, class: 'btn btn-block btn-secondary' %>
+  <%= link_to '회고 주제 등록하기', new_project_spin_path, remote: true, class: 'btn btn-block btn-secondary' %>
   <br>
 
   <div class="d-flex flex-wrap justify-content-center" id="spin-board">

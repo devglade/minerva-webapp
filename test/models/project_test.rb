@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RetrospectTest < ActiveSupport::TestCase
+class ProjectTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

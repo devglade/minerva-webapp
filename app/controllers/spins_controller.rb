@@ -4,7 +4,7 @@ class SpinsController < ApplicationController
   before_action :set_spin, only: [:show, :edit, :update, :destroy]
 
   def index
-    @spins = @retrospect.spins.by_created_at
+    @spins = @project.spins.by_created_at
     # @opened_spin_count = @spins.opened.count
     #
     respond_to do |format|
@@ -25,7 +25,7 @@ class SpinsController < ApplicationController
   end
 
   def create
-    @spin = @retrospect.spins.build(spin_params.merge(status: "opened"))
+    @spin = @project.spins.build(spin_params.merge(status: "opened"))
     @spin.save
 
     broadcast_create_spin(@spin)
@@ -45,13 +45,13 @@ class SpinsController < ApplicationController
 
   private
   def set_retrospect
-    @retrospect = Retrospect.find(params[:retrospect_id])
+    @project = Project.find(params[:project_id])
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_spin
     @spin = Spin.find(params[:id])
-    @retrospect = @spin.retrospect
+    @project = @spin.project
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -62,14 +62,14 @@ class SpinsController < ApplicationController
   end
 
   def broadcast_create_spin(spin)
-    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "create", id: spin.id, retrospect_id: @retrospect.id}
+    ActionCable.server.broadcast "#{spin.project.id}_spins", {action: "create", id: spin.id, project_id: @project.id}
   end
 
   def broadcast_delete_spin(spin)
-    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "delete", id: spin.id}
+    ActionCable.server.broadcast "#{spin.project.id}_spins", {action: "delete", id: spin.id}
   end
 
   def broadcast_update_spin(spin)
-    ActionCable.server.broadcast "#{spin.retrospect.id}_spins", {action: "update", id: spin.id}
+    ActionCable.server.broadcast "#{spin.project.id}_spins", {action: "update", id: spin.id}
   end
 end

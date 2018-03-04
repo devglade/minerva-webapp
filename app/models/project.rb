@@ -1,4 +1,4 @@
-class Retrospect < ApplicationRecord
+class Project < ApplicationRecord
   belongs_to :user
   has_many :spins, -> {order('created_at desc').includes(:user)}, dependent: :destroy
 

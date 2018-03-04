@@ -7,7 +7,7 @@ FactoryBot.define do
     confirmed_at Time.now
   end
 
-  factory :retrospect do
+  factory :project do
     title {Forgery(:lorem_ipsum).words(20)}
     description {Forgery(:lorem_ipsum).words(20)}
     user

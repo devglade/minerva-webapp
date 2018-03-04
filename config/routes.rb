@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   authenticated :user do
-    root to: 'retrospects#index'
+    root to: 'projects#index'
   end
   root to: 'root#index'
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
                  sign_up: 'signup'
              }
   
-  resources :retrospects do
+  resources :projects do
     resources :spins do
       resources :posts do
         member do

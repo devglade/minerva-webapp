@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_retrospect_spin
+  before_action :set_project_spin
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /posts
@@ -79,9 +79,9 @@ class PostsController < ApplicationController
   end
 
   private
-  def set_retrospect_spin
+  def set_project_spin
     @spin = Spin.find(params[:spin_id])
-    @retrospect = Retrospect.find(@spin.retrospect.id)
+    @project = Project.find(@spin.project.id)
   end
 
   # Use callbacks to share common setup or constraints between actions.

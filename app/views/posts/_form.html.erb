@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= bootstrap_form_for [@retrospect, @spin, @post], remote: true do |f| %>
+      <%= bootstrap_form_for [@project, @spin, @post], remote: true do |f| %>
         <div class="modal-body">
           <div class="form-group">
             <%= f.text_area :content, class: 'form-control input-lg', placeholder: '하고 싶은 말을 적어보세요.' %>

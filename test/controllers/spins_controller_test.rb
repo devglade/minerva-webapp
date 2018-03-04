@@ -3,17 +3,17 @@ require 'test_helper'
 class SpinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in @user1
-    @retrospect = create(:retrospect)
+    @project = create(:project)
     @spin = create(:spin)
   end
 
   test "should get index" do
-    get retrospect_spin_url @retrospect, @spin
+    get project_spin_url @project, @spin
     assert_response :success
   end
 
   test "should get new" do
-    get new_retrospect_spin_url(@retrospect), xhr: true
+    get new_project_spin_url(@project), xhr: true
     assert_response :success
     spin = assigns(:spin)
     assert_not_nil spin
@@ -21,30 +21,30 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create spin" do
     assert_difference('Spin.count') do
-      post retrospect_spins_url(@retrospect), params: { spin: { status: @spin.status, summary: @spin.summary, title: @spin.title } }, xhr: true
+      post project_spins_url(@project), params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title } }, xhr: true
     end
     assert_response :success
   end
 
   test "should show spin" do
-    get retrospect_spin_url @retrospect, @spin
+    get project_spin_url @project, @spin
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_retrospect_spin_url(@retrospect, @spin, params: { spin: { status: @spin.status, summary: @spin.summary, title: @spin.title } }), xhr: true
+    get edit_project_spin_url(@project, @spin, params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title } }), xhr: true
     assert_response :success
   end
 
   test "should update spin" do
-    patch retrospect_spin_url @retrospect, @spin, params: { spin: { status: @spin.status, summary: @spin.summary, title: "changed" } }, format: :js
+    patch project_spin_url @project, @spin, params: {spin: {status: @spin.status, summary: @spin.summary, title: "changed" } }, format: :js
     assert_response :success
     assert_equal "changed", Spin.find(@spin.id).title
   end
 
   test "should destroy spin" do
     assert_difference('Spin.count', -1) do
-      delete retrospect_spin_url(@retrospect, @spin), xhr: true
+      delete project_spin_url(@project, @spin), xhr: true
     end
     assert_response :success
   end

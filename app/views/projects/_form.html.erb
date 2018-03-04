@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= bootstrap_form_for @retrospect, remote: true do |form| %>
+      <%= bootstrap_form_for @project, remote: true do |form| %>
         <div class="modal-body">
           <div class="form-group">
             <%= form.text_field :title, class: "form-control" %>

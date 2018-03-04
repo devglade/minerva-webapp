@@ -34,24 +34,24 @@ ActiveRecord::Schema.define(version: 20171101100710) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "retrospects", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string "title", limit: 500, null: false
     t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_retrospects_on_user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "spins", force: :cascade do |t|
     t.integer "status"
     t.string "title", null: false
     t.text "summary", null: false
-    t.bigint "retrospect_id", null: false
+    t.bigint "project_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["retrospect_id"], name: "index_spins_on_retrospect_id"
+    t.index ["project_id"], name: "index_spins_on_project_id"
     t.index ["user_id"], name: "index_spins_on_user_id"
   end
 
@@ -95,5 +95,5 @@ ActiveRecord::Schema.define(version: 20171101100710) do
   add_foreign_key "identities", "users"
   add_foreign_key "posts", "spins"
   add_foreign_key "posts", "users"
-  add_foreign_key "retrospects", "users"
+  add_foreign_key "projects", "users"
 end

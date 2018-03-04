@@ -13,7 +13,7 @@
   # Called when there's incoming data on the websocket for this channel
       switch data.action
         when 'create'
-          if $(".container").data("retrospect") == data.retrospect_id && $('#spin-' + data.id).length == 0
+          if $(".container").data("retrospect") == data.project_id && $('#spin-' + data.id).length == 0
             $.get('/spins/'+ data.id).done (html)->
               $('#spin-board').prepend html
         when 'delete'

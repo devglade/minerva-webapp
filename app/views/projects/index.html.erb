@@ -1,0 +1,12 @@
+<%= javascript_tag "MakeRetrospectChannel('all')" %>
+<div class="container">
+  <h1>Retrospects</h1>
+
+  <%= link_to '프로젝트 명이나 팀이름을 등록하세요', new_project_path, remote: true, class: 'btn btn-block btn-secondary' %>
+
+  <br>
+
+  <ul class="list-group project-list-group">
+    <%= render partial: 'project', collection: @projects %>
+  </ul>
+</div>

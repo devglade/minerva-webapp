@@ -2,7 +2,7 @@ class Spin < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   belongs_to :user
-  belongs_to :retrospect
+  belongs_to :project
   scope :opened, -> { where(status: 'opened') }
   scope :by_created_at, -> { order(created_at: :DESC) }
 
