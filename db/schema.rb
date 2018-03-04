@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124092324) do
+ActiveRecord::Schema.define(version: 20171101100710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,16 +25,17 @@ ActiveRecord::Schema.define(version: 20171124092324) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text "content"
+    t.text "content", null: false
     t.bigint "user_id"
     t.bigint "spin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["spin_id"], name: "index_posts_on_spin_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "retrospects", force: :cascade do |t|
-    t.string "title", limit: 500
+    t.string "title", limit: 500, null: false
     t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -44,12 +45,14 @@ ActiveRecord::Schema.define(version: 20171124092324) do
 
   create_table "spins", force: :cascade do |t|
     t.integer "status"
-    t.string "title"
-    t.bigint "retrospect_id"
-    t.bigint "user_id"
-    t.text "summary"
+    t.string "title", null: false
+    t.text "summary", null: false
+    t.bigint "retrospect_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["retrospect_id"], name: "index_spins_on_retrospect_id"
+    t.index ["user_id"], name: "index_spins_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,6 +93,7 @@ ActiveRecord::Schema.define(version: 20171124092324) do
   end
 
   add_foreign_key "identities", "users"
+  add_foreign_key "posts", "spins"
   add_foreign_key "posts", "users"
   add_foreign_key "retrospects", "users"
 end

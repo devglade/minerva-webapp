@@ -4,7 +4,8 @@ class CreateSpins < ActiveRecord::Migration[5.1]
       t.integer :status
       t.string :title, null: false
       t.text :summary, null: false
-      t.references :retrospects, foreign_key: true, null: false
+      t.belongs_to :retrospect, null: false
+      t.belongs_to :user, null: false
 
       t.timestamps
     end
