@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101100710) do
+ActiveRecord::Schema.define(version: 20180311122925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(version: 20171101100710) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.bigint "spin_id"
+    t.bigint "section_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_posts_on_section_id"
     t.index ["spin_id"], name: "index_posts_on_spin_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -41,6 +43,15 @@ ActiveRecord::Schema.define(version: 20171101100710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "order", default: 0, null: false
+    t.bigint "spin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spin_id"], name: "index_sections_on_spin_id"
   end
 
   create_table "spins", force: :cascade do |t|
@@ -93,7 +104,5 @@ ActiveRecord::Schema.define(version: 20171101100710) do
   end
 
   add_foreign_key "identities", "users"
-  add_foreign_key "posts", "spins"
-  add_foreign_key "posts", "users"
   add_foreign_key "projects", "users"
 end

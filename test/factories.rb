@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :section do
+    
+  end
   factory :user do
     name {Forgery(:internet).user_name}
     email {Forgery(:internet).email_address}
