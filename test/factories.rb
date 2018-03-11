@@ -1,7 +1,4 @@
 FactoryBot.define do
-  factory :section do
-    
-  end
   factory :user do
     name {Forgery(:internet).user_name}
     email {Forgery(:internet).email_address}
@@ -20,13 +17,20 @@ FactoryBot.define do
     status 1
     title {Forgery(:lorem_ipsum).words(20)}
     summary {Forgery(:lorem_ipsum).words(20)}
-    retrospect
+    project
     user
+  end
+
+  factory :section do
+    title {Forgery(:lorem_ipsum).words(20)}
+    order 0
+    spin
   end
 
   factory :post do
     content {Forgery(:lorem_ipsum).words(20)}
     user
     spin
+    section
   end
 end
