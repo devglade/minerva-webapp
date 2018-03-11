@@ -19,11 +19,13 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil spin
   end
 
-  test "should create spin" do
+  test "스핀을 만들면 기본으로 section 2개를 만들어준다." do
     assert_difference('Spin.count') do
-      post project_spins_url(@project), params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title } }, xhr: true
+      post project_spins_url(@project), params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title}}, xhr: true
     end
     assert_response :success
+    spin = Spin.last
+    assert_equal spin.sections.count, 2
   end
 
   test "should show spin" do
@@ -32,12 +34,12 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    get edit_project_spin_url(@project, @spin, params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title } }), xhr: true
+    get edit_project_spin_url(@project, @spin, params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title}}), xhr: true
     assert_response :success
   end
 
   test "should update spin" do
-    patch project_spin_url @project, @spin, params: {spin: {status: @spin.status, summary: @spin.summary, title: "changed" } }, format: :js
+    patch project_spin_url @project, @spin, params: {spin: {status: @spin.status, summary: @spin.summary, title: "changed"}}, format: :js
     assert_response :success
     assert_equal "changed", Spin.find(@spin.id).title
   end
