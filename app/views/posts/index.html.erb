@@ -2,6 +2,7 @@
 <h1>
   <span class="badge badge-primary"><%= @project.title %></span>
   <span class="badge badge-primary"><%= @spin.title %></span>
+  <span>그동안 있었던 일들을 모두 작성해보세요.</span>
 </h1>
 <br>
 <%= link_to '글쓰기', new_project_spin_post_path, remote: true, class: 'btn btn-block btn btn-outline-secondary' %>
