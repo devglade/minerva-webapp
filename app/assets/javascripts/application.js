@@ -16,5 +16,4 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
-//= require interact.js
 //= require_tree .
