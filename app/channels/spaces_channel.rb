@@ -1,4 +1,4 @@
-class SpaceChannel < ApplicationCable::Channel
+class SpacesChannel < ApplicationCable::Channel
   def subscribed
     stream_from "#{params[:parentId]}_spaces"
   end
