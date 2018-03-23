@@ -1,0 +1,22 @@
+<div class="card space" id="space-<%= space.id %>">
+  <div class="card-header">
+    <h4><%= link_to space.name, space_projects_path(space), id: "space-#{space.id}-title", class: 'card-title' %></h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <% if current_user.id == space.user.id %>
+        <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
+          <%= link_to edit_space_path(space), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+          <%= link_to space, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+            <i class="material-icons">delete</i>
+          <% end %>
+        </div>
+      <% end %>
+      <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= space.user.name %>" data-content="<%= space.user.email %>">
+        <%= space.user.name.truncate(8) %> <i class="material-icons">face</i>
+      </button>
+    </li>
+  </ul>
+</div>
