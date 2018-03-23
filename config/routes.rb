@@ -28,6 +28,7 @@ Rails.application.routes.draw do
           put 'dislike', to: 'posts#downvote'
         end
       end
+      resources :sections, except: [:index, :show]
     end
   end
 
