@@ -1,4 +1,4 @@
-<%= javascript_tag "MakeRetrospectChannel('all')" %>
+<%= javascript_tag "MakeRetrospectChannel(#{@space.id})" %>
 <div class="container" data-space="<%= @space.id%>">
   <%= link_to '프로젝트 명이나 팀이름을 등록하세요', new_space_project_path, remote: true, class: 'btn btn-block btn-secondary' %>
   <br>
