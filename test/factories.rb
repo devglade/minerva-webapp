@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :space do
+    name "MyString"
+    url "MyString"
+    is_public false
+    user nil
+  end
   factory :user do
     name {Forgery(:internet).user_name}
     email {Forgery(:internet).email_address}

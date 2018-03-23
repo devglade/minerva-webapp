@@ -14,12 +14,12 @@
     <hr>
 
     <div class="btn-group" role="group" aria-label="like Buttons">
-      <%= link_to like_project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{post.id}", method: :put do %>
+      <%= link_to like_space_project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "like-post-#{post.id}", method: :put do %>
         <i class="material-icons">thumb_up</i>
         <%= post.get_upvotes.size %>
       <% end %>
 
-      <%= link_to dislike_project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{post.id}", method: :put do %>
+      <%= link_to dislike_space_project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-primary', id: "dislike-post-#{post.id}", method: :put do %>
         <i class="material-icons">thumb_down</i>
         <%= post.get_downvotes.size %>
       <% end %>
@@ -27,10 +27,10 @@
 
     <div class="btn-group float-right" role="group" aria-label="Post Buttons">
       <% if current_user.id == post.user.id %>
-        <%= link_to edit_project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+        <%= link_to edit_space_project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
           <i class="material-icons">edit</i>
         <% end %>
-        <%= link_to project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+        <%= link_to space_project_spin_post_path(id: post, project_id: post.spin.project, spin_id: post.spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
           <i class="material-icons">delete</i>
         <% end %>
       <% end %>

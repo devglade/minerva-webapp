@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_retrospect, only: [:show, :edit, :update, :destroy]
+  before_action :set_space
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -26,31 +27,35 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params.merge(user_id: current_user.id))
     @project.save
 
-    broadcast_create_retrospect(@project)
+    broadcast_create_project(@project)
   end
 
-  # PATCH/PUT /retrospects/1
-  # PATCH/PUT /retrospects/1.json
+  # PATCH/PUT /projects/1
+  # PATCH/PUT /projects/1.json
   def update
     raise User::NotAuthorized, '수정할 권한이 없습니다.' unless @project.updatable_by?(current_user)
     @project.update_attributes(project_params)
 
-    broadcast_update_retrospect(@project)
+    broadcast_update_project(@project)
   end
 
-  # DELETE /retrospects/1
-  # DELETE /retrospects/1.json
+  # DELETE /projects/1
+  # DELETE /projects/1.json
   def destroy
     raise User::NotAuthorized, '삭제할 권한이 없습니다.' unless @project.updatable_by?(current_user)
     @project.destroy
 
-    broadcast_delete_retrospect(@project)
+    broadcast_delete_project(@project)
   end
 
   private
+  def set_space
+    @space = Space.find(params[:space_id])
+  end
   # Use callbacks to share common setup or constraints between actions.
-  def set_retrospect
+  def set_project
     @project = Project.find(params[:id])
+    @space = @project.space
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -58,16 +63,16 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:title, :description, :user_id)
   end
 
-  def broadcast_create_retrospect(retrospect)
-    ActionCable.server.broadcast "all_projects", {action: "create", id: retrospect.id}
+  def broadcast_create_project(project)
+    ActionCable.server.broadcast "all_projects", {action: "create", id: project.id}
   end
 
-  def broadcast_delete_retrospect(retrospect)
-    ActionCable.server.broadcast "all_projects", {action: "delete", id: "project-#{retrospect.id}"}
+  def broadcast_delete_project(project)
+    ActionCable.server.broadcast "all_projects", {action: "delete", id: "project-#{project.id}"}
   end
 
-  def broadcast_update_retrospect(retrospect)
-    ActionCable.server.broadcast "all_projects", {action: "update", id: retrospect.id}
+  def broadcast_update_project(project)
+    ActionCable.server.broadcast "all_projects", {action: "update", id: project.id}
   end
 
 end

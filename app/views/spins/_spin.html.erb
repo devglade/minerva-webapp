@@ -6,7 +6,7 @@
   <% end %>
 
   <div class="card-body">
-    <h4><%= link_to spin.title, project_spin_posts_path(project_id: spin.project, spin_id: spin), id: "spin-#{spin.id}-title", class: 'card-title' %></h4>
+    <h4><%= link_to spin.title, space_project_spin_posts_path(project_id: spin.project, spin_id: spin), id: "spin-#{spin.id}-title", class: 'card-title' %></h4>
     <p id="spin-<%= spin.id %>-summary" class="card-text"><%= spin.summary %></p>
   </div>
 
@@ -14,10 +14,10 @@
     <li class="list-group-item">
       <% if current_user.id == spin.user.id %>
         <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
-          <%= link_to edit_project_spin_path(project_id: spin.project, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+          <%= link_to edit_space_project_spin_path(project_id: spin.project, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
             <i class="material-icons">edit</i>
           <% end %>
-          <%= link_to project_spin_path(project_id: spin.project, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+          <%= link_to space_project_spin_path(project_id: spin.project, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
             <i class="material-icons">delete</i>
           <% end %>
         </div>

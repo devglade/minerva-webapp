@@ -46,12 +46,14 @@ class SpinsController < ApplicationController
   private
   def set_retrospect
     @project = Project.find(params[:project_id])
+    @space = @project.space
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_spin
     @spin = Spin.find(params[:id])
     @project = @spin.project
+    @space = @project.space
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

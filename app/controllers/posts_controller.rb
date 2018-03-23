@@ -81,12 +81,16 @@ class PostsController < ApplicationController
   private
   def set_project_spin
     @spin = Spin.find(params[:spin_id])
-    @project = Project.find(@spin.project.id)
+    @project = @spin.project
+    @space = @project.space
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    @spin = @post.spin
+    @project = @spin.project
+    @space = @project.space
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

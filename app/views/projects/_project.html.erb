@@ -1,15 +1,15 @@
 <li id="project-<%= project.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
   <div class="d-flex w-100 justify-content-between">
-    <%= link_to project_spins_path(project_id: project), method: :get do %>
+    <%= link_to space_project_spins_path(space_id: project.space, project_id: project), method: :get do %>
       <h5 class="mb-1"><%= project.title %></h5>
     <% end %>
     <small>
       <div class="btn-group" role="group" aria-label="project Buttons">
         <% if current_user.id == project.user.id %>
-          <%= link_to edit_project_path(project), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
+          <%= link_to edit_space_project_path(space_id: project.space, id: project), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
             <i class="material-icons">edit</i>
           <% end %>
-          <%= link_to project, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
+          <%= link_to space_project_path(space_id: project.space, id: project), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
             <i class="material-icons">delete</i>
           <% end %>
         <% end %>

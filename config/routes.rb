@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   authenticated :user do
-    root to: 'projects#index'
+    root to: 'spaces#index'
   end
   root to: 'root#index'
 
@@ -19,13 +19,14 @@ Rails.application.routes.draw do
                  sign_out: 'logout',
                  sign_up: 'signup'
              }
-  
-  resources :projects do
-    resources :spins do
-      resources :posts do
-        member do
-          put 'like', to: 'posts#upvote'
-          put 'dislike', to: 'posts#downvote'
+  resources :spaces do
+    resources :projects do
+      resources :spins do
+        resources :posts do
+          member do
+            put 'like', to: 'posts#upvote'
+            put 'dislike', to: 'posts#downvote'
+          end
         end
       end
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311122925) do
+ActiveRecord::Schema.define(version: 20180323145547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180311122925) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "space_id", default: 1, null: false
+    t.index ["space_id"], name: "index_space_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -52,6 +54,16 @@ ActiveRecord::Schema.define(version: 20180311122925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spin_id"], name: "index_sections_on_spin_id"
+  end
+
+  create_table "spaces", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.boolean "is_public"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
   create_table "spins", force: :cascade do |t|
@@ -105,4 +117,5 @@ ActiveRecord::Schema.define(version: 20180311122925) do
 
   add_foreign_key "identities", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "spaces", "users"
 end
