@@ -1,5 +1,7 @@
+<%= javascript_tag "MakeSpaceChannel('all')" %>
 <div class="container">
-<%= link_to '프로젝트를 공유할 공간 생성하기', new_space_path, remote: true, class: 'btn btn-block btn-secondary' %>
+  <br>
+  <%= link_to '프로젝트를 공유할 공간 생성하기', new_space_path, remote: true, class: 'btn btn-block btn-secondary' %>
   <br>
   <div class="d-flex flex-wrap justify-content-center" id="space-board">
     <%= render partial: 'space', collection: @spaces %>
