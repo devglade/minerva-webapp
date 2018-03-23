@@ -29,6 +29,7 @@ Rails.application.routes.draw do
           end
         end
       end
+      resources :sections, except: [:index, :show]
     end
   end
 

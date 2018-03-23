@@ -37,6 +37,5 @@ FactoryBot.define do
     content {Forgery(:lorem_ipsum).words(20)}
     user
     spin
-    section
   end
 end
