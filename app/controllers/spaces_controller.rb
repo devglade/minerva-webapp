@@ -4,12 +4,15 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    @spaces = Space.where.not(user_id: current_user.id).where(is_public: true).order('created_at DESC')
+    @spaces_mine = Space.where(user_id: current_user.id).order('created_at DESC')
+    @spaces_membered = nil
   end
 
   # GET /spaces/1
   # GET /spaces/1.json
   def show
+    render partial: @space
   end
 
   # GET /spaces/new
@@ -24,41 +27,28 @@ class SpacesController < ApplicationController
   # POST /spaces
   # POST /spaces.json
   def create
-    @space = Space.new(space_params)
+    @space = Space.new(space_params.merge(user_id: current_user.id))
+    @space.save
 
-    respond_to do |format|
-      if @space.save
-        format.html { redirect_to @space, notice: 'Space was successfully created.' }
-        format.json { render :show, status: :created, location: @space }
-      else
-        format.html { render :new }
-        format.json { render json: @space.errors, status: :unprocessable_entity }
-      end
-    end
+    broadcast_create_space(@space)
   end
 
   # PATCH/PUT /spaces/1
   # PATCH/PUT /spaces/1.json
   def update
-    respond_to do |format|
-      if @space.update(space_params)
-        format.html { redirect_to @space, notice: 'Space was successfully updated.' }
-        format.json { render :show, status: :ok, location: @space }
-      else
-        format.html { render :edit }
-        format.json { render json: @space.errors, status: :unprocessable_entity }
-      end
-    end
+    raise User::NotAuthorized, '수정할 권한이 없습니다.' unless @space.updatable_by?(current_user)
+    @space.update_attributes(space_params)
+
+    broadcast_update_space(@space)
   end
 
   # DELETE /spaces/1
   # DELETE /spaces/1.json
   def destroy
+    raise User::NotAuthorized, '삭제할 권한이 없습니다.' unless @space.updatable_by?(current_user)
     @space.destroy
-    respond_to do |format|
-      format.html { redirect_to spaces_url, notice: 'Space was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    broadcast_delete_space(@space)
   end
 
   private
@@ -70,5 +60,17 @@ class SpacesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
       params.require(:space).permit(:name, :url, :is_public, :user_id)
+    end
+
+    def broadcast_create_space(space)
+      ActionCable.server.broadcast "all_spaces", {action: "create", id: space.id}
+    end
+
+    def broadcast_delete_space(space)
+      ActionCable.server.broadcast "all_spaces", {action: "delete", id: "space-#{space.id}"}
+    end
+
+    def broadcast_update_space(space)
+      ActionCable.server.broadcast "all_spaces", {action: "update", id: space.id}
     end
 end

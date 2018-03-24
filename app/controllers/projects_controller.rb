@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
-  before_action :set_space
+  before_action :set_space, only: [:index, :new, :create]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
-    @projects = Project.all.order('created_at DESC')
+    @projects = @space.projects.by_created_at
 
     respond_to do |format|
       format.html
@@ -64,15 +64,15 @@ class ProjectsController < ApplicationController
   end
 
   def broadcast_create_project(project)
-    ActionCable.server.broadcast "all_projects", {action: "create", id: project.id}
+    ActionCable.server.broadcast "#{project.space.id}_projects", {action: "create", id: project.id}
   end
 
   def broadcast_delete_project(project)
-    ActionCable.server.broadcast "all_projects", {action: "delete", id: "project-#{project.id}"}
+    ActionCable.server.broadcast "#{project.space.id}_projects", {action: "delete", id: "project-#{project.id}"}
   end
 
   def broadcast_update_project(project)
-    ActionCable.server.broadcast "all_projects", {action: "update", id: project.id}
+    ActionCable.server.broadcast "#{project.space.id}_projects", {action: "update", id: project.id}
   end
 
 end

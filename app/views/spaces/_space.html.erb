@@ -13,10 +13,11 @@
             <i class="material-icons">delete</i>
           <% end %>
         </div>
+      <% else %>
+        <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= space.user.name %>" data-content="<%= space.user.email %>">
+          <%= space.user.name.truncate(8) %> <i class="material-icons">face</i>
+        </button>
       <% end %>
-      <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= space.user.name %>" data-content="<%= space.user.email %>">
-        <%= space.user.name.truncate(8) %> <i class="material-icons">face</i>
-      </button>
     </li>
   </ul>
 </div>
