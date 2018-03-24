@@ -1,6 +1,6 @@
 class SpinsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_retrospect, only: [:index, :new, :create]
+  before_action :set_project, only: [:index, :new, :create]
   before_action :set_spin, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -44,7 +44,7 @@ class SpinsController < ApplicationController
   end
 
   private
-  def set_retrospect
+  def set_project
     @project = Project.find(params[:project_id])
     @space = @project.space
   end

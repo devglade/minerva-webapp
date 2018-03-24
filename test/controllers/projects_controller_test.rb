@@ -16,7 +16,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test '로그인 안한 사용자는 회고를 쓸 수 없다.' do
     sign_out @user1
-    assert_no_difference 'Retrospect.count' do
+    assert_no_difference 'Project.count' do
       post projects_url, params: {project: attributes_for(:project)}, xhr: true
     end
   end
@@ -29,19 +29,19 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     get new_project_path, xhr: true
     assert_response :success
-    retrospect = assigns(:project)
-    assert_not_nil retrospect
+    project = assigns(:project)
+    assert_not_nil project
   end
 
-  test "should create retrospect" do
-    assert_difference 'Retrospect.count' do
+  test "should create project" do
+    assert_difference 'Project.count' do
       post projects_url, params: {project: attributes_for(:project)}, xhr: true
     end
     assert_response :success
-    assert_template 'retrospects/create'
+    assert_template 'projects/create'
   end
 
-  test "should show retrospect" do
+  test "should show project" do
     get project_path(@project)
 
     assert_response :success
@@ -53,7 +53,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update retrospect" do
+  test "should update project" do
     id = @project.id
     sign_in @project.user
     patch project_url(@project), params: {project: {description: @project.description, title: "test", user_id: @project.user_id}}, xhr: true
@@ -61,7 +61,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "test", Project.find(id).title
   end
 
-  test "should destroy retrospect" do
+  test "should destroy project" do
     sign_in @project.user
     assert_difference('Project.count', -1) do
       delete project_url(@project), xhr: true

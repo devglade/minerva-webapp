@@ -8,7 +8,7 @@ class ActiveSupport::TestCase
 
   setup do
     @user1 = FactoryBot.create(:user)
-    # @retrospect = FactoryBot.create(:retrospect)
+    # @project = FactoryBot.create(:project)
     # @post= FactoryBot.create(:post)
 
   end
