@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params.merge(user_id: current_user.id))
+    @project.space = @space
     @project.save
 
     broadcast_create_project(@project)
