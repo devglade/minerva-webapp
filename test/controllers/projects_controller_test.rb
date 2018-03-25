@@ -4,12 +4,13 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in @user1
     @user2 = FactoryBot.create(:user)
+    @space = FactoryBot.create(:space)
     @project = create(:project)
   end
 
   test '로그인 안한 사용자는 회고를 볼 수 없다.' do
     sign_out @user1
-    get projects_path
+    get space_projects_path @space
 
     assert_response 302
   end
@@ -17,7 +18,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test '로그인 안한 사용자는 회고를 쓸 수 없다.' do
     sign_out @user1
     assert_no_difference 'Project.count' do
-      post projects_url, params: {project: attributes_for(:project)}, xhr: true
+      post space_projects_path(@space), params: {project: attributes_for(:project)}, xhr: true
     end
   end
 
