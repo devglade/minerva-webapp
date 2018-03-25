@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :space do
-    name "MyString"
-    url "MyString"
-    is_public false
-    user nil
+    name Forgery(:lorem_ipsum).words(10)
+    url Forgery('internet').domain_name
+    is_public Forgery('basic').boolean
+    user
   end
   factory :user do
     name {Forgery(:internet).user_name}
@@ -17,6 +17,7 @@ FactoryBot.define do
     title {Forgery(:lorem_ipsum).words(20)}
     description {Forgery(:lorem_ipsum).words(20)}
     user
+    space
   end
 
   factory :spin do
