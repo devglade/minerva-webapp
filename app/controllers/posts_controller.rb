@@ -90,6 +90,7 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    @section = @post.section
     @spin = @post.spin
     @project = @spin.project
     @space = @project.space

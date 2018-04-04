@@ -37,6 +37,7 @@ FactoryBot.define do
   factory :post do
     content {Forgery(:lorem_ipsum).words(20)}
     user
+    section
     spin
   end
 end
