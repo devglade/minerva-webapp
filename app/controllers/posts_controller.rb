@@ -32,6 +32,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = @spin.posts.build(post_params)
+    #TODO 임시로 기본값을 첫번째껄로 넣어줌.
+    @post.section_id = @spin.sections.first.id
     @post.save
     broadcast_create_post @post
   end
