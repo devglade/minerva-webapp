@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :spaces do
     resources :projects do
       resources :spins do
-        resources :posts do
+        resources :posts, except: [:index] do
           member do
             put 'like', to: 'posts#upvote'
             put 'dislike', to: 'posts#downvote'

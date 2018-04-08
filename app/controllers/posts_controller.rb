@@ -3,17 +3,6 @@ class PostsController < ApplicationController
   before_action :set_project_spin
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = Post.where(spin_id: params[:spin_id]).order('created_at DESC')
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
   # GET /posts/1
   # GET /posts/1.json
   def show

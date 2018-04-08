@@ -14,7 +14,11 @@ class SpinsController < ApplicationController
   end
 
   def show
-    render partial: @spin
+    @posts = @spin.posts
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

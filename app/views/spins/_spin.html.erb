@@ -6,7 +6,7 @@
   <% end %>
 
   <div class="card-body">
-    <h4><%= link_to spin.title, space_project_spin_posts_path(project_id: spin.project, spin_id: spin), id: "spin-#{spin.id}-title", class: 'card-title' %></h4>
+    <h4><%= link_to spin.title, space_project_spin_path(project_id: spin.project, id: spin), id: "spin-#{spin.id}-title", class: 'card-title' %></h4>
     <p id="spin-<%= spin.id %>-summary" class="card-text"><%= spin.summary %></p>
   </div>
 

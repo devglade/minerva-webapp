@@ -20,6 +20,11 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil spin
   end
 
+  test '[spin] should get show' do
+    get space_project_spin_path(@space, @project, @spin)
+    assert_response :success
+  end
+
   test "[spin] 스핀을 만들면 기본으로 section 2개를 만들어준다." do
     assert_difference('Spin.count') do
       post space_project_spins_path(@space, @project), params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title}}, xhr: true

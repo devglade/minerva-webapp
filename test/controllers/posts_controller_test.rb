@@ -11,11 +11,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = create(:post)
   end
 
-  test "[post] should get index" do
-    get space_project_spin_posts_url @space, @project, @spin
-    assert_response :success
-  end
-
   test "[post] should get new" do
     get new_space_project_spin_post_url(@space, @project, @spin), xhr: true
     assert_response :success
@@ -76,7 +71,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in @post.user
     put like_space_project_spin_post_path(@space, @project, @spin, @post), xhr: true
     assert_template :access_denied
-    put dislike_space_project_spin_post_path(@space, @project, @spin, @post), xhr:true
+    put dislike_space_project_spin_post_path(@space, @project, @spin, @post), xhr: true
     assert_template :access_denied
   end
 
