@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   match '/profile/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-  get '/spins/:id', to: 'spins#show'
+  get '/spins/:id', to: 'spins#_spin'
 
   controller :help_center do
     get '/about', action: :about
