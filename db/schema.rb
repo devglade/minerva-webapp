@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20180323145547) do
   create_table "posts", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "user_id", null: false
-    t.bigint "spin_id"
-    t.bigint "section_id", null: false
+    t.bigint "spin_id", null: false
+    t.bigint "section_id"
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_posts_on_section_id"
@@ -49,7 +50,7 @@ ActiveRecord::Schema.define(version: 20180323145547) do
 
   create_table "sections", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "order", default: 0, null: false
+    t.integer "position", default: 0, null: false
     t.bigint "spin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

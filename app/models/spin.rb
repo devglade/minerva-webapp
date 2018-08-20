@@ -11,9 +11,9 @@ class Spin < ApplicationRecord
       opened: 1,
   }
 
-  after_create do |spin|
-    Section.create(title: "좋았던 점", order: 0, spin_id: spin.id)
-    Section.create(title: "안좋았던 점", order: 1, spin_id: spin.id)
-  end
+  # after_create do |spin|
+  #   Section.create(title: "좋았던 점", position: 0, spin_id: spin.id)
+  #   Section.create(title: "안좋았던 점", position: 1, spin_id: spin.id)
+  # end
 
 end

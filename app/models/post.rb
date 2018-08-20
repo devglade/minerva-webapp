@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  acts_as_list scope: :section
+
   belongs_to :user
   belongs_to :spin
   belongs_to :section
@@ -11,4 +13,6 @@ class Post < ApplicationRecord
   def votable_by?(current_user)
     current_user.id != user_id
   end
+
+  validates :content, presence: true
 end

@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.belongs_to :user, null: false
       t.belongs_to :spin, null: false
       t.belongs_to :section
+      t.integer :position
       t.timestamps
     end
   end

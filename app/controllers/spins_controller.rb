@@ -14,7 +14,7 @@ class SpinsController < ApplicationController
   end
 
   def show
-    @posts = @spin.posts
+    @sections = Section.sorted
     respond_to do |format|
       format.html
       format.js
@@ -48,6 +48,7 @@ class SpinsController < ApplicationController
   end
 
   private
+
   def set_project
     @project = Project.find(params[:project_id])
     @space = @project.space
