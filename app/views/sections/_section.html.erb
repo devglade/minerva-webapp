@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>title:</strong>
+  <%= section.title %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= section.position %>
+</p>
+
+<%= link_to 'Edit', edit_space_project_spin_section_path(space, project, spin, section) %> |
+<%= link_to 'Delete', space_project_spin_section_path(space, project, spin, section), method: :delete %>

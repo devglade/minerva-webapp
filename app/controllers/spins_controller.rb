@@ -56,7 +56,7 @@ class SpinsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_spin
-    @spin = Spin.find(params[:id])
+    @spin = Spin.find_by_id(params[:id])
     @project = @spin.project
     @space = @project.space
   end
