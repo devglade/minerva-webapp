@@ -87,3 +87,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'acts_as_list'
 
+gem 'webpacker', '~> 3.5' #https://github.com/rails/webpacker
+
