@@ -17,11 +17,13 @@ document.addEventListener("turbolinks:load", function () {
         const app = new Vue({
             el: element,
             data: {
-                sections: JSON.parse(element.dataset.sections)
+                sections: JSON.parse(element.dataset.sections),
+                space_id: element.dataset.spaceId,
+                project_id: element.dataset.projectId,
+                spin_id: element.dataset.spinId,
             },
-            template: "<App :original_sections='sections' />",
+            template: "<App :original_sections='sections' :space_id='space_id' :project_id='project_id' :spin_id='spin_id' />",
             components: {App}
         })
     }
-
 })

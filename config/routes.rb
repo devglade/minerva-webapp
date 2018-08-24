@@ -22,13 +22,14 @@ Rails.application.routes.draw do
   resources :spaces do
     resources :projects do
       resources :spins do
-        resources :sections
-        # resources :posts, except: [:index] do
-        #   member do
-        #     put 'like', to: 'posts#upvote'
-        #     put 'dislike', to: 'posts#downvote'
-        #   end
-        # end
+        resources :sections do
+          resources :posts, except: [:index] do
+            member do
+              put 'like', to: 'posts#upvote'
+              put 'dislike', to: 'posts#downvote'
+            end
+          end
+        end
       end
     end
   end

@@ -14,7 +14,6 @@ class SpinsController < ApplicationController
   end
 
   def show
-
     @sections = Section.sorted
     logger.debug @sections.first.posts.inspect
     respond_to do |format|

@@ -21,10 +21,16 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = @spin.posts.build(post_params)
-    #TODO 임시로 기본값을 첫번째껄로 넣어줌.
-    @post.section_id = @spin.sections.first.id
-    @post.save
-    broadcast_create_post @post
+
+    respond_to do |format|
+      if @post.save
+        format.html {redirect_to space_project_spin_path(@space, @project, @spin)}
+        format.json {render json: @post}
+      else
+        format.html {render :new}
+        format.json {render json: @post.errors, status: :unprocessable_entity}
+      end
+    end
   end
 
   # PATCH/PUT /posts/1
@@ -70,6 +76,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def set_project_spin
     @spin = Spin.find(params[:spin_id])
     @project = @spin.project
@@ -88,7 +95,8 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     logger.debug params
-    params.require(:post).permit(:content).merge(user: current_user, spin_id: params[:spin_id])
+    params.require(:post).permit(:content, :position).merge(user: current_user,
+                                                            section_id: params[:section_id], spin_id: params[:spin_id])
   end
 
   def broadcast_like_dislike_post(post)
