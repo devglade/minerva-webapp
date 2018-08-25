@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project_spin
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :move]
 
   # GET /posts/1
   # GET /posts/1.json
@@ -73,6 +73,12 @@ class PostsController < ApplicationController
       @post.downvote_by current_user
     end
     broadcast_like_dislike_post(@post)
+  end
+
+  def move
+    @post.update(post_params)
+    render action: :index
+
   end
 
   private

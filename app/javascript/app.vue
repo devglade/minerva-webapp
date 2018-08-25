@@ -3,10 +3,11 @@
         <div v-for="(section, index) in sections" class="col-3">
             <h6> {{section.title}}</h6>
             <hr/>
-
-            <div v-for="(post, index) in section.posts" class="card card-body">
-                {{post.content}}
-            </div>
+            <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
+                <div v-for="(post, index) in section.posts" class="card card-body">
+                    {{post.content}}
+                </div>
+            </draggable>
 
             <div class="card card-body">
                 <textarea v-model="messages[section.id]" class="form-control"></textarea>
@@ -42,6 +43,31 @@
                     type: "PATCH",
                     data: data,
                     dataType: "json",
+                })
+            },
+            postMoved: function (event) {
+                const evt = event.added || event.moved
+                if (evt == undefined) {
+                    return
+                }
+                const element = evt.element
+
+                const section_index = this.sections.findIndex((section) => {
+                    return section.posts.find((post) => {
+                        return post.id === element.id
+                    })
+                });
+
+                var data = new FormData
+                data.append("post[section_id]", this.sections[section_index].id)
+                data.append("post[position]", evt.newIndex + 1)
+
+                Rails.ajax({
+                    beforeSend: () => true,
+                    url: `/spaces/${this.space_id}/projects/${this.project_id}/spins/${this.spin_id}/sections/${this.sections[section_index].id}/posts/${element.id}/move`,
+                    type: "PATCH",
+                    data: data,
+                    dataType: "json"
                 })
             },
             submitMessages: function (space_id, project_id, spin_id, section_id) {
