@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     resources :projects do
       resources :spins do
         resources :sections do
+          member do
+            patch :move
+          end
           resources :posts, except: [:index] do
             member do
               put 'like', to: 'posts#upvote'

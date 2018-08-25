@@ -1,3 +1,3 @@
-<%= tag.div id: :boards, data: {sections: spin.sections.to_json(include: :posts), space_id: spin.project.space.id, project_id: spin.project.id, spin_id: spin.id} %>
+<%= tag.div id: :boards, data: {sections: sections.to_json(include: :posts), space_id: spin.project.space.id, project_id: spin.project.id, spin_id: spin.id} %>
 <!--<%#= link_to 'Edit', edit_space_project_spin_section_path(space, project, spin, section) %> |-->
 <%#= link_to 'Delete', space_project_spin_section_path(space, project, spin, section), method: :delete %>

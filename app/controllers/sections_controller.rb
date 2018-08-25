@@ -1,13 +1,14 @@
 class SectionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project_spin
-  before_action :set_section, only: [:show, :edit, :update, :destroy]
+  before_action :set_section, only: [:show, :edit, :update, :destroy, :move]
 
   def new
     @section = Section.new
   end
 
   def show
+    # redirect_to :controller => 'spins', :action => 'show', :id => @spin.id
   end
 
   def create
@@ -39,6 +40,12 @@ class SectionsController < ApplicationController
         format.json {render json: @section.errors, status: :unprocessable_entity}
       end
     end
+  end
+
+  def move
+    @section.insert_at section_params[:position].to_i
+
+    render action: :show
   end
 
   def destroy
