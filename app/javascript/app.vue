@@ -11,7 +11,7 @@
 
             <div class="card card-body">
                 <textarea v-model="messages[section.id]" class="form-control"></textarea>
-                <button v-on:click="submitMessages(space_id, project_id, spin_id, section.id)"
+                <button v-on:click="submitMessages(section.id)"
                         class="btn btn-secondary">Add
                 </button>
             </div>
@@ -70,13 +70,13 @@
                     dataType: "json"
                 })
             },
-            submitMessages: function (space_id, project_id, spin_id, section_id) {
+            submitMessages: function (section_id) {
                 var data = new FormData;
                 data.append("post[section_id]", section_id);
                 data.append("post[content]", this.messages[section_id]);
                 Rails.ajax({
                     beforeSend: () => true,
-                    url: '/spaces/' + space_id + '/projects/' + project_id + '/spins/' + spin_id + '/sections/' + section_id + '/posts',
+                    url: `/spaces/${this.space_id}/projects/${this.project_id}/spins/${this.spin_id}/sections/${section_id}/posts`,
                     type: "POST",
                     data: data,
                     dataType: "json",
