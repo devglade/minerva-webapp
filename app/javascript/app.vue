@@ -1,20 +1,17 @@
 <template>
-    <draggable v-model="sections" class="row dragArea" :options="{groups: 'sections'}" @end="sectionMoved">
-        <div v-for="(section, index) in sections" class="col-3">
+    <draggable v-model="sections" :options="{groups: 'sections'}" class="board dragArea" @end="sectionMoved">
+        <div v-for="(section, index) in sections" class="section">
             <h6> {{section.title}}</h6>
-            <hr/>
             <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
                 <div v-for="(post, index) in section.posts" class="card card-body">
-                    {{post.content}}
+                    <div class="card-text">
+                        {{post.content}}
+                    </div>
                 </div>
             </draggable>
 
-            <div class="card card-body">
-                <textarea v-model="messages[section.id]" class="form-control"></textarea>
-                <button v-on:click="submitMessages(section.id)"
-                        class="btn btn-secondary">Add
-                </button>
-            </div>
+            <textarea v-model="messages[section.id]" class="form-control mb-1"></textarea>
+            <button v-on:click="submitMessages(section.id)" class="btn btn-secondary">Add</button>
         </div>
     </draggable>
 </template>
@@ -96,8 +93,23 @@
         min-height: 10px;
     }
 
-    p {
-        font-size: 2em;
-        text-align: center;
+    .board {
+        white-space: nowrap;
+        overflow-x: auto;
     }
+
+    .card-text {
+        white-space: normal;
+    }
+
+    .section {
+        display: inline-block;
+        border-radius: 3px;
+        padding: 20px;
+        background: #E2E4E6;
+        width: 270px;
+        vertical-align: top;
+        margin-right: 56px;
+    }
+
 </style>

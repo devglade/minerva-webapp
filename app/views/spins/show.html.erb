@@ -8,6 +8,6 @@
 <%= link_to '섹션만들기', new_space_project_spin_section_path(@space, @project, @spin) %>
 <%#= link_to '글쓰기', new_space_project_spin_post_path(@space, @project, @spin), remote: true, class: 'btn btn-block btn btn-outline-secondary' %>
 <br>
-<div id="board" data-spin=<%= @spin.id %>>
+<div id="board" class="container-fluid" data-spin=<%= @spin.id %>>
   <%= render partial: 'sections/section', collection: @spin.sections, locals: {spin: @spin, project: @spin.project, space: @spin.project.space, sections: @sections} %>
 </div>
