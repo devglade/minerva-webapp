@@ -75,6 +75,13 @@ $ redis-server
 ```
 하면 redis가 실행된다.
 
+### Webpacker
+회고 포스트 작성 화면은 vue.js 를 사용하였는데 개발모드일때는 
+```
+bin/webpack-dev-server
+```
+를 실행해 webpack서버를 띄워놓으면 vue수정을 할때마다 자동으로 브라우저 재로딩이 되서 편하다. 
+
 ## Project Install
 
 ### Checkout
