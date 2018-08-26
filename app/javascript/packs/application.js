@@ -10,14 +10,16 @@
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
 
-
+window.store = {}
 document.addEventListener("turbolinks:load", function () {
     var element = document.querySelector("#boards")
     if (element !== undefined) {
+        window.store.sections = JSON.parse(element.dataset.sections);
+
         const app = new Vue({
             el: element,
             data: {
-                sections: JSON.parse(element.dataset.sections),
+                sections: window.store.sections,
                 space_id: element.dataset.spaceId,
                 project_id: element.dataset.projectId,
                 spin_id: element.dataset.spinId,
