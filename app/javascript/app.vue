@@ -7,7 +7,7 @@
 
 <script>
     import draggable from 'vuedraggable'
-    import sectionList from 'componenets/section_list'
+    import sectionList from 'components/section_list'
 
     const Rails = require('rails-ujs');
 

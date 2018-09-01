@@ -2,11 +2,7 @@
     <div class="section">
         <h6> {{section.title}}</h6>
         <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
-            <div v-for="(post, index) in section.posts" class="card card-body mb-3">
-                <div class="card-text">
-                    {{post.content}}
-                </div>
-            </div>
+            <post v-for="(post, index) in section.posts" :post="post" :section="section" :space_id="space_id" :project_id="project_id"></post>
         </draggable>
 
         <a v-if="!editing" v-on:click="startEditing">Add a post</a>
@@ -18,11 +14,13 @@
 
 <script>
     import draggable from 'vuedraggable'
+    import post from 'components/post'
     import * as Rails from "rails-ujs";
 
+
     export default {
-        components: {draggable},
-        props: ["section", "space_id", "project_id", "spin_id"],
+        components: {draggable, post},
+        props: ["section", "space_id", "project_id"],
         data: function () {
             return {
                 editing: false,
@@ -87,10 +85,6 @@
 <style scoped>
     .dragArea {
         min-height: 10px;
-    }
-
-    .card-text {
-        white-space: normal;
     }
 
     .section {
