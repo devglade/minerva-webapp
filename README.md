@@ -32,9 +32,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ```shell
 $ rbenv install -l # 설치 할 수 있는 ruby 버전 확인
-$ rbenv install 2.5.0 -k # 가끔 ruby source가 필요한 gem이 있기 때문에
+$ rbenv install 2.5.1 -k # 가끔 ruby source가 필요한 gem이 있기 때문에
                          # -k 옵션을 줘서 컴파일 후 소스를 삭제하지 않고 남겨둔다.
-$ rbenv global 2.5.0 
+$ rbenv global 2.5.1 
 $ rbenv install bundler
 $ rbenv rehash 
 ```
