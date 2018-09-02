@@ -37,7 +37,6 @@ $ rbenv install 2.5.1 -k # 가끔 ruby source가 필요한 gem이 있기 때문�
 $ rbenv global 2.5.1 
 $ rbenv rehash 
 $ gem install bundler
-$ 
 ```
 
 rbenv에서 디렉토리 별로 ruby 버전을 지정하고 싶으면 rbenv global 명령 대신 rbenv local 명령을 사용하면 된다.
