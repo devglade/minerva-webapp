@@ -1,6 +1,7 @@
 /*
  *= require rails_bootstrap_forms
  *= require jquery-ui
+ *= require bootstrap-theme
  *= require_self
  *= require material_icons
  *= require_directory .
@@ -8,11 +9,12 @@
 @import "bourbon";
 @import "bootstrap";
 @import "bootstrap-social";
+@import "common";
+
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800&subset=korean');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css);
 
 body {
-  font-family: 'Roboto', '맑은 고딕', malgun gothic, '돋움', Dotum, 'Helvetica Neue', Helvetica, verdana, Arial, sans-serif;
-}
-
-.navbar-global {
-
+  @include font-sans-serif;
 }

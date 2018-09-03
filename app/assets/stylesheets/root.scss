@@ -1,21 +1,18 @@
+@import "common";
+
 .root-index {
-  background: url(asset-path('universe.jpg')) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+
+  .title {
+    font-weight: 700;
+  }
 
   .description {
     font-size: rem(30) !important;
-    color: white;
     padding-top: 2em;
   }
 
 
-  .title {
-    font-size: rem(64) !important;
-    color: white;
-  }
+
   h1{
     line-height: 1.5em;
   }
