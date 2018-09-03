@@ -35,13 +35,13 @@ $ rbenv install -l # 설치 할 수 있는 ruby 버전 확인
 $ rbenv install 2.5.1 -k # 가끔 ruby source가 필요한 gem이 있기 때문에
                          # -k 옵션을 줘서 컴파일 후 소스를 삭제하지 않고 남겨둔다.
 $ rbenv global 2.5.1 
-$ rbenv install bundler
 $ rbenv rehash 
+$ gem install bundler
 ```
 
 rbenv에서 디렉토리 별로 ruby 버전을 지정하고 싶으면 rbenv global 명령 대신 rbenv local 명령을 사용하면 된다.
 
-`$ rbenv local 2.5.0`
+`$ rbenv local 2.5.1`
 
 이 명령을 실행하면 명령이 실행된 디렉토리에 해당 버전이 명시된 .ruby-version 생성된다.
 `brew search rbenv` 명령으로 다른 plugin도 찾아볼 수 있으니 유용한 것이 있으면 설치하면 된다.
