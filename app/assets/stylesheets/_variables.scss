@@ -279,13 +279,40 @@ $grey-800: #424242;
 $grey-900: #212121;
 
 // Blue Grey
-$blue-grey-50: #eceff1;
-$blue-grey-100: #cfd8dc;
-$blue-grey-200: #b0bec5;
-$blue-grey-300: #90a4ae;
-$blue-grey-400: #78909c;
-$blue-grey-500: #607d8b;
-$blue-grey-600: #546e7a;
-$blue-grey-700: #455a64;
-$blue-grey-800: #37474f;
-$blue-grey-900: #263238;
+$blue-grey-10: #FBFBFD; //$color-background
+$blue-grey-25: #F7F7FB;
+$blue-grey-50: #ECEFF5; //$color-background:hover, $color-default, $color-code-background
+$blue-grey-75: #E1E7EE; //$color-border
+$blue-grey-100: #CDD7E0;
+$blue-grey-200: #B2C0CC;
+$blue-grey-300: #98A8B9; //$color-text-secondary
+$blue-grey-400: #7890A0;
+$blue-grey-500: #5F7F90;
+$blue-grey-600: #4F6B81;
+$blue-grey-700: #44576C; //$color-border--dark
+$blue-grey-800: #37485D;
+$blue-grey-880: #2D4053;
+$blue-grey-900: #263747; //$color-code-background--dark, $color-text--primary
+$blue-grey-920: #202B3D; //$color-table-background--dark
+$blue-grey-940: #172334;
+$blue-grey-990: #142029; //$color-border--dark
+$blue-grey-999: #0C151C;
+
+//color-variables
+$color-text-primary: $blue-grey-900;
+$color-text-secondary: $blue-grey-400;
+
+$color-background: $blue-grey-10;
+$color-text--primary: $blue-grey-920;
+$color-text--secondary: $blue-grey-400;
+$color-border: $blue-grey-75;
+$color-border--hover: $blue-grey-200;
+$color-border--dark: $blue-grey-940;
+$color-border--translucent: rgba(50,50,124,.12);
+$color-table-background: rgba(50,50,144,.02);
+$color-table-background--dark: $blue-grey-920;
+$color-code-background: $blue-grey-50;
+$color-code-background--dark: $blue-grey-900;
+
+$color-primary: $deep-purple-a400;
+$color-primary-hover: $deep-purple-a700;

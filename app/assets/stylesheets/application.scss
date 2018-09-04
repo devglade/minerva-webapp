@@ -17,4 +17,28 @@
 
 body {
   @include font-sans-serif;
+  color: $color-text-primary;
+  background-color: $color-background;
+}
+
+.navbar-global {
+  @include elevation-1;
+  background-color: white;
+
+  .navbar-brand {
+    transition: 2s ease;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+
+    &:hover {
+      -webkit-transform: rotate(-1440deg);
+      -moz-transform: rotate(-1440deg);
+      -ms-transform: rotate(-1440deg);
+      -o-transform: rotate(-1440deg);
+      transform: rotate(-1440deg);
+    }
+  }
 }
