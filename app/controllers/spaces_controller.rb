@@ -4,8 +4,7 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.where.not(user_id: current_user.id).where(is_public: true).order('created_at DESC')
-    @spaces_mine = Space.where(user_id: current_user.id).order('created_at DESC')
+    @spaces_mine = Space.mine(current_user.id)
     @spaces_membered = nil
   end
 
@@ -52,25 +51,26 @@ class SpacesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_space
-      @space = Space.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def space_params
-      params.require(:space).permit(:name, :url, :is_public, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_space
+    @space = Space.find(params[:id])
+  end
 
-    def broadcast_create_space(space)
-      ActionCable.server.broadcast "all_spaces", {action: "create", id: space.id}
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def space_params
+    params.require(:space).permit(:name, :url, :is_public, :user_id)
+  end
 
-    def broadcast_delete_space(space)
-      ActionCable.server.broadcast "all_spaces", {action: "delete", id: "space-#{space.id}"}
-    end
+  def broadcast_create_space(space)
+    ActionCable.server.broadcast "all_spaces", {action: "create", id: space.id}
+  end
 
-    def broadcast_update_space(space)
-      ActionCable.server.broadcast "all_spaces", {action: "update", id: space.id}
-    end
+  def broadcast_delete_space(space)
+    ActionCable.server.broadcast "all_spaces", {action: "delete", id: "space-#{space.id}"}
+  end
+
+  def broadcast_update_space(space)
+    ActionCable.server.broadcast "all_spaces", {action: "update", id: space.id}
+  end
 end
