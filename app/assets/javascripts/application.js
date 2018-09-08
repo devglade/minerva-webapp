@@ -17,4 +17,5 @@
 //= require jquery-ui
 //= require turbolinks
 //= require minerva
+//= require cloudinary
 //= require_tree .

@@ -1,0 +1,34 @@
+.registrations-edit {
+  .file-upload {
+    $button-height: rem(20);
+
+    height: $button-height;
+    color: #2B88D9;
+
+    .clickable-area {
+      position: absolute;
+      top: 0;
+    }
+  }
+  .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+  .alert {
+    text-align: center;
+  }
+
+  .file-upload:hover {
+    text-decoration: underline;
+  }
+
+  .link {
+    text-align: right;
+  }
+}
+
+.img-circle {
+  border-radius: 50%;
+}
