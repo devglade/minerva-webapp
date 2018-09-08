@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
+//= require minerva
 //= require_tree .
