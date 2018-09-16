@@ -4,8 +4,8 @@
   <title>RetroSpin</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= favicon_link_tag %>
@@ -36,5 +36,6 @@
 <% end %>
 
 <%= yield %>
+<%= render 'layouts/scripts' %>
 </body>
 </html>

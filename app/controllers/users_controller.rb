@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, :finish_signup
+  before_action :authenticate_user!
 
   def finish_signup
     if request.patch? && params[:user] #&& params[:user][:email]
@@ -13,14 +13,34 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-    def set_user
-      @user = User.find(params[:id])
+  def update_image
+    if params[:image_id].present?
+      begin
+        preloaded = Cloudinary::PreloadedFile.new(params[:image_id])
+        fail 'Invalid upload signature' unless preloaded.valid?
+        current_user.image_id = preloaded.public_id
+      rescue
+        current_user.image_id = params[:image_id]
+      end
+      current_user.save!
+      Cloudinary::Uploader.remove_tag 'temporary', [current_user.image_id]
     end
 
-    def user_params
-      accessible = [ :name, :email ] # extend with your own params
-      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-      params.require(:user).permit(accessible)
+    if flash[:first]
+      redirect_to survey_answers_url
+      return
     end
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    accessible = [:name, :email] # extend with your own params
+    accessible << [:password, :password_confirmation] unless params[:user][:password].blank?
+    params.require(:user).permit(accessible)
+  end
 end

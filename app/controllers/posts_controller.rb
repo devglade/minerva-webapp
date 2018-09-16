@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html {redirect_to space_project_spin_path(@space, @project, @spin)}
-        format.json {render :show, status: :created, location: @post}
+        format.json {render json: @post.to_json, status: :created}
       else
         format.html {render :new}
         format.json {render json: @post.errors, status: :unprocessable_entity}
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         format.html {redirect_to space_project_spin_path(@space, @project, @post), notice: 'Post was successfully updated.'}
-        format.json {render :show, status: :ok, location: @post}
+        format.json {render json: @post.to_json, status: :ok}
       else
         format.html {render :edit}
         format.json {render json: @post.errors, status: :unprocessable_entity}

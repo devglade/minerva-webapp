@@ -28,7 +28,7 @@
     import * as Rails from "rails-ujs";
 
     export default {
-        props: ["section", "space_id", "project_id", "post"],
+        props: ["section", "post"],
         data: function () {
             return {
                 editing: false,
@@ -49,7 +49,7 @@
 
                 Rails.ajax({
                     beforeSend: () => true,
-                    url: `/spaces/${this.space_id}/projects/${this.project_id}/spins/${this.section.spin_id}/sections/${this.section.id}/posts/${this.post.id}`,
+                    url: window.location.href + `/sections/${this.section.id}/posts/${this.post.id}`,
                     type: "PATCH",
                     data: data,
                     dataType: "json",

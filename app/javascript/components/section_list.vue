@@ -2,7 +2,7 @@
     <div class="section">
         <h6> {{section.title}}</h6>
         <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
-            <post v-for="(post, index) in section.posts" :post="post" :section="section" :space_id="space_id" :project_id="project_id"></post>
+            <post v-for="(post, index) in section.posts" :post="post" :section="section"></post>
         </draggable>
 
         <a v-if="!editing" v-on:click="startEditing">Add a post</a>
@@ -40,7 +40,7 @@
                 data.append("post[content]", this.messages);
                 Rails.ajax({
                     beforeSend: () => true,
-                    url: `/spaces/${this.space_id}/projects/${this.project_id}/spins/${this.section.spin_id}/sections/${this.section.id}/posts`,
+                    url: window.location.href + `/sections/${this.section.id}/posts`,
                     type: "POST",
                     data: data,
                     dataType: "json",
@@ -73,7 +73,7 @@
                 data.append("post[position]", evt.newIndex + 1);
                 Rails.ajax({
                     beforeSend: () => true,
-                    url: `/spaces/${this.space_id}/projects/${this.project_id}/spins/${element.spin_id}/sections/${sectionId}/posts/${element.id}/move`,
+                    url: window.location.href + `/sections/${sectionId}/posts/${element.id}/move`,
                     type: "PATCH",
                     data: data,
                     dataType: "json"

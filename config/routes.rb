@@ -19,6 +19,11 @@ Rails.application.routes.draw do
                  sign_out: 'logout',
                  sign_up: 'signup'
              }
+
+  resource :user, only: [:show, :edit, :update] do
+    put :update_image
+  end
+
   resources :spaces do
     resources :projects do
       resources :spins do

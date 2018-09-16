@@ -1,24 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    <h2>프로필 수정</h2>
+  </div>
 
-<div class="card" >
-    <div class="card-header">
-        <h2>프로필 수정</h2>
+  <div class="card-block">
+    <div clsss="center card-body" id="preview">
+      <%= profile_image_tag(current_user, {width: 100, height: 100, class: 'img-circle setting-profile-picture'}) %>
     </div>
-
-    <div class="card-block">
-        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
-
-            <%= f.text_field :name, autofocus: true %>
-            <%= f.email_field :email, readonly: true %>
-            <%= f.password_field :password, autocomplete: "off", placeholder: '(leave blank if you don\'t want to change it)'  %>
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
-            <%= f.password_field :current_password, autocomplete: "off", placeholer: '(we need your current password to confirm your changes)' %>
-
-            <%= f.submit "Update", class: "btn btn-primary btn-block" %>
-        <% end %>
+    <div class="file-upload link">
+      <%= form_tag(update_image_user_url, method: :put) do %>
+        사진 변경하기
+        <%= cl_image_upload_tag(:image_id, upload_preset: 'k6l2yyvk') %>
+      <% end %>
     </div>
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="card-footer">
-        <%= link_to "Back", :back %>
-    </div>
+      <%= f.text_field :name, autofocus: true %>
+      <%= f.email_field :email, readonly: true %>
+      <%= f.password_field :current_password, autocomplete: "off", placeholer: '(we need your current password to confirm your changes)' %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: '(leave blank if you don\'t want to change it)' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+      <%= f.submit "Update", class: "btn btn-primary btn-block" %>
+    <% end %>
+  </div>
+
+  <div class="card-footer">
+    <%= link_to "Back", :back %>
+  </div>
 </div>
+<%= content_for :page_specific_javascripts do %>
+  <%= cloudinary_js_config %>
+<% end %>
