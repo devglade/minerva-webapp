@@ -1,7 +1,6 @@
 <template>
     <draggable v-model="sections" :options="{groups: 'sections'}" class="board dragArea" @end="sectionMoved">
-        <sectionList v-for="(section, index) in sections" :section="section" :space_id="space_id"
-                     :project_id="project_id"></sectionList>
+        <sectionList v-for="(section, index) in sections" :section="section"></sectionList>
     </draggable>
 </template>
 
@@ -13,7 +12,7 @@
 
     export default {
         components: {draggable, sectionList},
-        props: ["original_sections", "space_id", "project_id"],
+        props: ["original_sections"],
         data: function () {
             return {
                 sections: this.original_sections,
@@ -25,7 +24,7 @@
                 data.append("section[position]", event.newIndex + 1)
                 Rails.ajax({
                     beforeSend: () => true,
-                    url: `/spaces/${this.space_id}/projects/${this.project_id}/spins/${window.store.sections[event.newIndex].spin_id}/sections/${this.sections[event.newIndex].id}/move`,
+                    url: window.location.href + `/sections/${this.sections[event.newIndex].id}/move`,
                     type: "PATCH",
                     data: data,
                     dataType: "json",
