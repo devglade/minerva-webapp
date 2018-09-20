@@ -1,5 +1,5 @@
 <template>
-    <div class="section">
+    <div class="section-list">
         <h6> {{section.title}}</h6>
         <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
             <post v-for="(post, index) in section.posts" :post="post" :section="section"></post>
@@ -87,13 +87,4 @@
         min-height: 10px;
     }
 
-    .section {
-        display: inline-block;
-        border-radius: 3px;
-        padding: 20px;
-        background: #E2E4E6;
-        width: 270px;
-        vertical-align: top;
-        margin-right: 56px;
-    }
 </style>

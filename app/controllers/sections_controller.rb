@@ -18,7 +18,7 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.save
         format.html {redirect_to space_project_spin_path(@space, @project, @spin), notice: 'Section was successfully created.'}
-        format.json {render :show, status: :created, location: @section}
+        format.json {render json: @section.to_json, status: :created}
       else
         format.html {render :new}
         format.json {render json: @section.errors, status: :unprocessable_entity}
