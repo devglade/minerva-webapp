@@ -25,9 +25,14 @@ window.store = new Vuex.Store({
             state.sections.push(data)
         },
         addPost(state, data) {
-            const index = state.sections.findIndex(item => item.id == data.section_id)
+            const index = state.sections.findIndex(item => item.id === data.section_id)
             state.sections[index].posts.push(data)
         },
+        editPost(state, data){
+            const list_index = state.sections.findIndex((item) => item.id === data.section_id)
+            const card_index = state.sections[list_index].posts.findIndex((item) => item.id === data.id)
+            state.sections[list_index].posts.splice(card_index, 1, data)
+        }
     }
 });
 document.addEventListener("turbolinks:load", function () {

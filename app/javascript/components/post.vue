@@ -54,9 +54,7 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        const section_index = window.store.sections.findIndex((item) => item.id === data.section_id);
-                        const post_index = window.store.sections[section_index].posts.findIndex((item) => item.id === this.post.id)
-                        window.store.sections[section_index].posts.splice(post_index, 1, data)
+                        this.$store.commit('editPost', data)
 
                         this.editing = false
                     }
