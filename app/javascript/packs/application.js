@@ -8,21 +8,37 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import Vue from 'vue/dist/vue.esm'
+import Vuex from 'vuex'
 import App from '../app.vue'
+import TurbolinksAdapter from 'vue-turbolinks'
 
-window.store = {}
+Vue.use(Vuex)
+Vue.use(TurbolinksAdapter)
+
+window.store = new Vuex.Store({
+    state: {
+        sections: []
+    },
+
+    mutations: {
+        addSection(state, data) {
+            state.sections.push(data)
+        },
+        addPost(state, data) {
+            const index = state.sections.findIndex(item => item.id == data.section_id)
+            state.sections[index].posts.push(data)
+        },
+    }
+});
 document.addEventListener("turbolinks:load", function () {
     var element = document.querySelector("#boards")
     if (element !== undefined) {
-        window.store.sections = JSON.parse(element.dataset.sections);
+        window.store.state.sections = JSON.parse(element.dataset.sections)
 
         const app = new Vue({
             el: element,
-            data: {
-                sections: window.store.sections,
-                spin_id: element.dataset.spinId,
-            },
-            template: "<App :original_sections='sections' :spin_id='spin_id' />",
+            store: window.store,
+            template: "<App />",
             components: {App}
         })
     }

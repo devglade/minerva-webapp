@@ -45,8 +45,7 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        const index = window.store.sections.findIndex(item => item.id === this.section.id);
-                        window.store.sections[index].posts.push(data);
+                        window.store.commit('addPost', data)
                         this.messages = "";
                     }
                 });

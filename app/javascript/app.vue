@@ -18,14 +18,18 @@
 
     export default {
         components: {draggable, sectionList},
-        props: ["original_sections"],
         data: function () {
             return {
-                sections: this.original_sections,
                 editing: false,
                 message: "",
             }
         },
+        computed: {
+            sections() {
+                return this.$store.state.sections;
+            }
+        },
+
         methods: {
             startEditing: function () {
                 this.editing = true
@@ -56,7 +60,7 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        window.store.sections.push(data);
+                        window.store.commit('addSection', data);
                         this.message = ""
                         this.editing = false
                     }
