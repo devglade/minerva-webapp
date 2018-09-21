@@ -7,7 +7,7 @@
 
         <a v-if="!editing" v-on:click="startEditing">Add a post</a>
         <textarea v-if="editing" ref="message" v-model="messages" class="form-control mb-1"></textarea>
-        <button v-if="editing" v-on:click="submitMessages" class="btn btn-secondary">Add</button>
+        <button v-if="editing" v-on:click="createPost" class="btn btn-secondary">Add</button>
         <a v-if="editing" v-on:click="editing=false">Cancel</a>
     </div>
 </template>
@@ -34,7 +34,7 @@
                     this.$refs.message.focus();
                 })
             },
-            submitMessages: function () {
+            createPost: function () {
                 var data = new FormData;
                 data.append("post[section_id]", this.section.id);
                 data.append("post[content]", this.messages);

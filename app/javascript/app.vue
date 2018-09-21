@@ -4,7 +4,7 @@
         <div class="section-list">
             <a v-if="!editing" v-on:click="startEditing">Add a list</a>
             <textarea v-if="editing" v-model="message" ref="message" class="form-control mb-1"></textarea>
-            <button v-if="editing" v-on:click="submitMessage" class="btn btn-secondary">Add</button>
+            <button v-if="editing" v-on:click="createSection" class="btn btn-secondary">Add</button>
             <a v-if="editing" v-on:click="editable=false">Cancel</a>
         </div>
     </draggable>
@@ -45,7 +45,7 @@
                     dataType: "json",
                 })
             },
-            submitMessage: function () {
+            createSection: function () {
                 var data = new FormData
                 data.append("section[title]", this.message)
 
