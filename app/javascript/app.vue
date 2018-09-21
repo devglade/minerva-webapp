@@ -60,7 +60,6 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        window.store.commit('addSection', data);
                         this.message = ""
                         this.editing = false
                     }
