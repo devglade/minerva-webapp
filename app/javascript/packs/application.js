@@ -26,9 +26,13 @@ window.store = new Vuex.Store({
         },
         addPost(state, data) {
             const index = state.sections.findIndex(item => item.id === data.section_id)
+            if (state.sections[index].posts === undefined) {
+                state.sections[index].posts = [];
+            }
             state.sections[index].posts.push(data)
+
         },
-        editPost(state, data){
+        editPost(state, data) {
             const section_index = state.sections.findIndex((item) => item.id === data.section_id)
             const post_index = state.sections[section_index].posts.findIndex((item) => item.id === data.id)
             state.sections[section_index].posts.splice(post_index, 1, data)
