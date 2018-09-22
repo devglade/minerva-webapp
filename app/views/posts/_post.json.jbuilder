@@ -1,2 +1,1 @@
-json.extract! post, :id, :section_id, :content, :position, :created_at, :updated_at
-json.url space_project_spin_section_post_url(post, format: :json)
+json.extract! post, :id, :section_id, :content, :user_id, :spin_id, :section_id, :position, :created_at, :updated_at

@@ -45,7 +45,6 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        window.store.commit('addPost', data)
                         this.messages = "";
                     }
                 });

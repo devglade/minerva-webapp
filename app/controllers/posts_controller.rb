@@ -24,6 +24,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        ActionCable.server.broadcast "board", {commit: 'addPost', payload: render_to_string(:show, format: :json)}
+
         format.html {redirect_to space_project_spin_path(@space, @project, @spin)}
         format.json {render json: @post.to_json, status: :created}
       else
@@ -37,8 +39,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     raise User::NotAuthorized, '수정할 권한이 없습니다.' unless @post.updatable_by?(current_user)
+
     respond_to do |format|
       if @post.update(post_params)
+        ActionCable.server.broadcast "board", {commit: 'editPost', payload: render_to_string(:show, format: :json)}
+
         format.html {redirect_to space_project_spin_path(@space, @project, @post), notice: 'Post was successfully updated.'}
         format.json {render json: @post.to_json, status: :ok}
       else

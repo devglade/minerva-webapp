@@ -29,9 +29,9 @@ window.store = new Vuex.Store({
             state.sections[index].posts.push(data)
         },
         editPost(state, data){
-            const list_index = state.sections.findIndex((item) => item.id === data.section_id)
-            const card_index = state.sections[list_index].posts.findIndex((item) => item.id === data.id)
-            state.sections[list_index].posts.splice(card_index, 1, data)
+            const section_index = state.sections.findIndex((item) => item.id === data.section_id)
+            const post_index = state.sections[section_index].posts.findIndex((item) => item.id === data.id)
+            state.sections[section_index].posts.splice(post_index, 1, data)
         }
     }
 });

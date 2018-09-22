@@ -54,8 +54,6 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        this.$store.commit('editPost', data)
-
                         this.editing = false
                     }
                 })
