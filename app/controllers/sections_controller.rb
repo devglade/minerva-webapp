@@ -15,10 +15,10 @@ class SectionsController < ApplicationController
     @spin = Spin.find_by_id(params[:spin_id])
     @section = @spin.sections.build(section_params)
 
-    ActionCable.server.broadcast "board", {commit: 'addSection', payload: render_to_string(:show, format: :json)}
 
     respond_to do |format|
       if @section.save
+        ActionCable.server.broadcast "board", {commit: 'addSection', payload: render_to_string(:show, format: :json)}
         format.html {redirect_to space_project_spin_path(@space, @project, @spin), notice: 'Section was successfully created.'}
         format.json {render json: @section.to_json, status: :created}
       else
