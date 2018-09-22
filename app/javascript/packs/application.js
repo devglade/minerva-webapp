@@ -36,6 +36,25 @@ window.store = new Vuex.Store({
             const section_index = state.sections.findIndex((item) => item.id === data.section_id)
             const post_index = state.sections[section_index].posts.findIndex((item) => item.id === data.id)
             state.sections[section_index].posts.splice(post_index, 1, data)
+        },
+
+        movePost(state, data) {
+            const old_list_index = state.sections.findIndex((section) => {
+                return section.posts.find((card) => {
+                    return card.id === data.id
+                })
+            })
+            const old_card_index = state.sections[old_list_index].posts.findIndex((item) => item.id === data.id)
+            const new_list_index = state.sections.findIndex((item) => item.id === data.section_id)
+
+            if (old_list_index !== new_list_index) {
+                // Remove card from old list, add to new one
+                state.sections[old_list_index].posts.splice(old_card_index, 1)
+                state.sections[new_list_index].posts.splice(data.position - 1, 0, data)
+            } else {
+                state.sections[new_list_index].posts.splice(old_card_index, 1)
+                state.sections[new_list_index].posts.splice(data.position - 1, 0, data)
+            }
         }
     }
 });

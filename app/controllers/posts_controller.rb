@@ -90,8 +90,8 @@ class PostsController < ApplicationController
 
   def move
     @post.update(post_params)
-    render action: :index
-
+    ActionCable.server.broadcast "board", {commit: 'movePost', payload: render_to_string(:show, format: :json)}
+    render action: :show
   end
 
   private

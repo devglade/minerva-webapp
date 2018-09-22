@@ -54,19 +54,19 @@
             },
             postMoved: function (event) {
                 const evt = event.added || event.moved
-                if (evt == undefined) {
+                if (evt === undefined) {
                     return
                 }
                 const element = evt.element
 
-                const section_index = window.store.sections.findIndex((section) => {
+                const section_index = window.store.state.sections.findIndex((section) => {
                     return section.posts.find((post) => {
                         return post.id === element.id
                     })
                 });
 
                 var data = new FormData;
-                let sectionId = window.store.sections[section_index].id;
+                let sectionId = window.store.state.sections[section_index].id;
                 data.append("post[section_id]", sectionId);
                 data.append("post[position]", evt.newIndex + 1);
                 Rails.ajax({
