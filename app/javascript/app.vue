@@ -1,5 +1,5 @@
 <template>
-    <draggable v-model="sections" :options="{groups: 'sections'}" class="board dragArea" @end="sectionMoved">
+    <draggable class="board dragArea" @end="sectionMoved">
         <sectionList v-for="(section, index) in sections" :section="section"></sectionList>
         <div class="section-list">
             <a v-if="!editing" v-on:click="startEditing">Add a list</a>
