@@ -1,8 +1,9 @@
 <template>
     <div class="section-list">
         <h6> {{section.title}}</h6>
+
         <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
-            <post v-for="(post, index) in section.posts" :post="post" :section="section"></post>
+            <post v-for="post in section.posts" :key="post.id" :post="post" :section="section"></post>
         </draggable>
 
         <a v-if="!editing" v-on:click="startEditing">Add a post</a>
@@ -21,12 +22,14 @@
     export default {
         components: {draggable, post},
         props: ["section", "space_id", "project_id"],
+
         data: function () {
             return {
                 editing: false,
                 messages: ""
             }
         },
+
         methods: {
             startEditing: function () {
                 this.editing = true
@@ -34,10 +37,12 @@
                     this.$refs.message.focus();
                 })
             },
+
             createPost: function () {
                 var data = new FormData;
                 data.append("post[section_id]", this.section.id);
                 data.append("post[content]", this.messages);
+
                 Rails.ajax({
                     beforeSend: () => true,
                     url: window.location.href + `/sections/${this.section.id}/posts`,
@@ -45,20 +50,20 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        this.messages = "";
+                        this.message = ""
+                        this.$nextTick(() => {
+                            this.$refs.message.focus()
+                        })
                     }
                 });
-                this.$nextTick(() => {
-                    this.$refs.message.focus();
-                })
             },
+
             postMoved: function (event) {
                 const evt = event.added || event.moved
                 if (evt === undefined) {
                     return
                 }
                 const element = evt.element
-
                 const section_index = window.store.state.sections.findIndex((section) => {
                     return section.posts.find((post) => {
                         return post.id === element.id
@@ -69,6 +74,7 @@
                 let sectionId = window.store.state.sections[section_index].id;
                 data.append("post[section_id]", sectionId);
                 data.append("post[position]", evt.newIndex + 1);
+
                 Rails.ajax({
                     beforeSend: () => true,
                     url: window.location.href + `/sections/${sectionId}/posts/${element.id}/move`,

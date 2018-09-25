@@ -12,6 +12,7 @@
     received: (data) ->
       json = JSON.parse(data.payload)
       if spinId == json.spin_id
-        window.store.commit(data.commit, JSON.parse(data.payload))
+        if(data.commit)
+          window.store.commit(data.commit, JSON.parse(data.payload))
   )
 # Called when there's incoming data on the websocket for this channel

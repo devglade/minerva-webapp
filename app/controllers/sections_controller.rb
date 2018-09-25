@@ -45,8 +45,8 @@ class SectionsController < ApplicationController
   end
 
   def move
-    @section.insert_at section_params[:position].to_i
-
+    @section.insert_at(section_params[:position].to_i)
+    ActionCable.server.broadcast "board", {commit: 'moveSection', payload: render_to_string(:show, format: :json)}
     render action: :show
   end
 

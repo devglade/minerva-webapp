@@ -1,13 +1,16 @@
 <template>
-    <draggable class="board dragArea" @end="sectionMoved">
-        <sectionList v-for="(section, index) in sections" :section="section"></sectionList>
+    <div class="board ">
+        <draggable v-model="sections" :options="{groups: 'sections'}" class="dragArea d-inline-block" @end="sectionMoved">
+            <sectionList v-for="(section, index) in sections" :section="section"></sectionList>
+        </draggable>
+
         <div class="section-list">
             <a v-if="!editing" v-on:click="startEditing">Add a list</a>
             <textarea v-if="editing" v-model="message" ref="message" class="form-control mb-1"></textarea>
             <button v-if="editing" v-on:click="createSection" class="btn btn-secondary">Add</button>
             <a v-if="editing" v-on:click="editable=false">Cancel</a>
         </div>
-    </draggable>
+    </div>
 </template>
 
 <script>
@@ -25,9 +28,14 @@
             }
         },
         computed: {
-            sections() {
-                return this.$store.state.sections;
-            }
+            sections: {
+                get() {
+                    return this.$store.state.sections
+                },
+                set(value) {
+                    this.$store.state.sections = value
+                },
+            },
         },
 
         methods: {
@@ -41,6 +49,7 @@
             sectionMoved: function (event) {
                 var data = new FormData
                 data.append("section[position]", event.newIndex + 1)
+
                 Rails.ajax({
                     beforeSend: () => true,
                     url: window.location.href + `/sections/${this.sections[event.newIndex].id}/move`,
@@ -49,6 +58,7 @@
                     dataType: "json",
                 })
             },
+
             createSection: function () {
                 var data = new FormData
                 data.append("section[title]", this.message)
