@@ -60,6 +60,10 @@ window.store = new Vuex.Store({
                 state.sections[new_list_index].posts.splice(old_card_index, 1)
                 state.sections[new_list_index].posts.splice(data.position - 1, 0, data)
             }
+        },
+        destroySection(state, data) {
+            const index = state.sections.findIndex(item => item.id === data.id);
+            state.sections.splice(index, 1)
         }
     }
 });
@@ -67,7 +71,6 @@ document.addEventListener("turbolinks:load", function () {
     var element = document.querySelector("#boards")
     if (element !== undefined) {
         window.store.state.sections = JSON.parse(element.dataset.sections)
-
         const app = new Vue({
             el: element,
             store: window.store,
