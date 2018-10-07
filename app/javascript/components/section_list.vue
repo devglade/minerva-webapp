@@ -1,7 +1,7 @@
 <template>
-    <div class="section-list">
-        <h6> {{section.title}}</h6>
 
+    <div class="section-list">
+        <span> {{section.title}}</span>
         <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
             <post v-for="post in section.posts" :key="post.id" :post="post" :section="section"></post>
         </draggable>
@@ -21,7 +21,7 @@
 
     export default {
         components: {draggable, post},
-        props: ["section", "space_id", "project_id"],
+        props: ["section", "current_user"],
 
         data: function () {
             return {

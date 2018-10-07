@@ -28,7 +28,7 @@
     import * as Rails from "rails-ujs";
 
     export default {
-        props: ["section", "post"],
+        props: ["section", "post", "current_user"],
         data: function () {
             return {
                 editing: false,

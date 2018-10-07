@@ -71,8 +71,11 @@ document.addEventListener("turbolinks:load", function () {
         const app = new Vue({
             el: element,
             store: window.store,
-            template: "<App />",
-            components: {App}
+            template: '<App :current_user="current_user"/>',
+            components: {App},
+            data: {
+                current_user: JSON.parse(element.dataset.currentUser)
+            }
         })
     }
-})
+});

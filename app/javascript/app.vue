@@ -1,7 +1,9 @@
 <template>
     <div class="board ">
-        <draggable v-model="sections" :options="{groups: 'sections'}" class="dragArea d-inline-block" @end="sectionMoved">
-            <sectionList v-for="(section, index) in sections" :section="section"></sectionList>
+        <draggable v-model="sections" :options="{groups: 'sections'}" class="dragArea d-inline-block"
+                   @end="sectionMoved">
+            <sectionList v-for="(section, index) in sections" :section="section"
+                         :current_user="current_user"></sectionList>
         </draggable>
 
         <div class="section-list">
@@ -20,6 +22,7 @@
     const Rails = require('rails-ujs');
 
     export default {
+        props: ['current_user'],
         components: {draggable, sectionList},
         data: function () {
             return {
