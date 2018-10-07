@@ -2,6 +2,7 @@
 
     <div class="section-list">
         <span> {{section.title}}</span>
+        <span class="float-right link" v-if="section.posts.length ===0" v-on:click="deleteSection">삭제</span>
         <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
             <post v-for="post in section.posts" :key="post.id" :post="post" :section="section"></post>
         </draggable>
@@ -26,7 +27,7 @@
         data: function () {
             return {
                 editing: false,
-                messages: ""
+                messages: "",
             }
         },
 
@@ -83,12 +84,28 @@
                     dataType: "json"
                 })
             },
+
+            deleteSection: function () {
+                Rails.ajax({
+                    beforeSend: () => true,
+                    url: window.location.href + `/sections/${this.section.id}`,
+                    type: "DELETE",
+                    dataType: "json",
+                    success: (data) => {
+
+                    }
+                })
+            }
         }
     }
 </script>
 <style scoped>
     .dragArea {
         min-height: 10px;
+    }
+
+    .link {
+        cursor: pointer;
     }
 
 </style>
