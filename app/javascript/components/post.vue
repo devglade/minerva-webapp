@@ -2,6 +2,14 @@
     <div>
         <div @click="editing=true" class="card card-body mb-3 card-text">
             {{post.content}}
+            <div class="user-image">
+                <div v-if="post.user.image_id ==null">
+                    <img class="profile-img" src="~images/img_profile_default.png">
+                </div>
+                <div v-else>
+                    <img :src="getImgUrl(post.user.image_id)" class="profile-img">
+                </div>
+            </div>
         </div>
 
         <div v-if='editing' class="modal-backdrop show"></div>
@@ -26,6 +34,7 @@
 
 <script>
     import * as Rails from "rails-ujs";
+    import 'images/img_profile_default.png'
 
     export default {
         props: ["section", "post", "current_user"],
@@ -37,6 +46,13 @@
         },
 
         methods: {
+            getImgUrl(image_id) {
+                if (image_id != null) {
+                    return `http://res.cloudinary.com/minerva-webapp/image/upload/v1539405240/${image_id}`
+                } else {
+                    return '~images/img_profile_default.png'
+                }
+            },
             closeModal: function (event) {
                 if (event.target.classList.contains("modal")) {
                     this.editing = false
@@ -65,5 +81,11 @@
 <style scoped>
     .card-text {
         white-space: normal;
+    }
+
+    .profile-img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
     }
 </style>

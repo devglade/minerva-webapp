@@ -25,9 +25,8 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         ActionCable.server.broadcast "board", {commit: 'addPost', payload: render_to_string(:show, format: :json)}
-
         format.html {redirect_to space_project_spin_path(@space, @project, @spin)}
-        format.json {render json: @post.to_json, status: :created}
+        format.json {render json: @post.to_json(include: :user), status: :created}
       else
         format.html {render :new}
         format.json {render json: @post.errors, status: :unprocessable_entity}
