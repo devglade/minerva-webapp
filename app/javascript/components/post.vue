@@ -2,13 +2,16 @@
     <div>
         <div @click="editing=true" class="card card-body mb-3 card-text">
             {{post.content}}
-            <div class="user-image">
-                <div v-if="post.user.image_id ==null">
-                    <img class="profile-img" src="~images/img_profile_default.png">
+            <div class="user-info">
+                <div class="user-image">
+                    <div v-if="post.user.image_id ==null">
+                        <img class="profile-img" src="~images/img_profile_default.png">
+                    </div>
+                    <div v-else>
+                        <img :src="getImgUrl(post.user.image_id)" class="profile-img">
+                    </div>
                 </div>
-                <div v-else>
-                    <img :src="getImgUrl(post.user.image_id)" class="profile-img">
-                </div>
+                {{post.user.name}}
             </div>
         </div>
 
@@ -83,9 +86,18 @@
         white-space: normal;
     }
 
+    .user-info {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        align-items: center;
+    }
+
     .profile-img {
         height: 40px;
         width: 40px;
         border-radius: 50%;
+        margin-right: 5px;
     }
 </style>
