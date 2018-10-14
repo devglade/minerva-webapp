@@ -51,7 +51,7 @@
                     data: data,
                     dataType: "json",
                     success: (data) => {
-                        this.message = ""
+                        this.messages = ""
                         this.$nextTick(() => {
                             this.$refs.message.focus()
                         })
