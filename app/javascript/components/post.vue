@@ -26,9 +26,18 @@
                     <div class="modal-body">
                         <input v-model="content" class="form-control"/>
                     </div>
-                    <div class="modal-footer">
-                        <button @click="save" type="button" class="btn btn-primary">Save changes</button>
+                    <div v-if="current_user.id === post.user.id">
+                        <div class="modal-footer">
+                            <button @click="save" type="button" class="btn btn-primary">저장</button>
+                            <button @click="deletePost" type="button" class="btn btn-primary">삭제</button>
+                        </div>
                     </div>
+                    <div v-else>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">닫기</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -72,7 +81,21 @@
                     type: "PATCH",
                     data: data,
                     dataType: "json",
-                    success: (data) => {
+                    success: () => {
+                        this.editing = false
+                    }
+                })
+            },
+
+            deletePost: function () {
+                console.log("deletePost")
+                Rails.ajax({
+                    beforeSend: () => true,
+                    url: window.location.href + `/sections/${this.section.id}/posts/${this.post.id}`,
+                    type: "DELETE",
+                    dataType: "json",
+
+                    success: () => {
                         this.editing = false
                     }
                 })

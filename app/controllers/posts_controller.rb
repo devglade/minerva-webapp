@@ -59,10 +59,8 @@ class PostsController < ApplicationController
 
     @post.destroy
     respond_to do |format|
-
-      broadcast_delete_post(@post)
-
-      #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      ActionCable.server.broadcast "board", {commit: 'destroyPost', payload: "{\"spin_id\":#{@spin.id},\"section_id\":#{@section.id},\"id\":#{@post.id}}"}
+      format.html {redirect_to space_project_spin_path @space, @project, @spin, notice: 'Section was successfully destroyed'}
       format.json {head :no_content}
     end
   end

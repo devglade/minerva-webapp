@@ -64,7 +64,14 @@ window.store = new Vuex.Store({
         destroySection(state, data) {
             const index = state.sections.findIndex(item => item.id === data.id);
             state.sections.splice(index, 1)
+        },
+
+        destroyPost(state, data) {
+            const section_index = state.sections.findIndex(item => item.id === data.section_id);
+            const post_index = state.sections[section_index].posts.findIndex(item => item.id === data.id)
+            state.sections[section_index].posts.splice(post_index, 1)
         }
+
     }
 });
 document.addEventListener("turbolinks:load", function () {

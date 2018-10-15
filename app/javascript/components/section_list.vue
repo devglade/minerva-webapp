@@ -4,7 +4,8 @@
         <span> {{section.title}}</span>
         <span class="float-right link" v-if="section.posts.length ===0" v-on:click="deleteSection">삭제</span>
         <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
-            <post v-for="post in section.posts" :key="post.id" :post="post" :section="section"></post>
+            <post v-for="post in section.posts" :key="post.id" :post="post" :section="section"
+                  :current_user="current_user"></post>
         </draggable>
 
         <a v-if="!editing" v-on:click="startEditing">Add a post</a>
