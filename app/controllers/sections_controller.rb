@@ -53,11 +53,9 @@ class SectionsController < ApplicationController
   def destroy
     @section.destroy
     respond_to do |format|
-      format.html do
-        ActionCable.server.broadcast "board", {commit: 'destroySection', payload: "{\"spin_id\":#{@spin.id},\"id\":#{@section.id}}"}
-        format.html {redirect_to space_project_spin_path @space, @project, @spin, notice: 'Section was successfully destroyed'}
-        format.json {head :no_content}
-      end
+      ActionCable.server.broadcast "board", {commit: 'destroySection', payload: "{\"spin_id\":#{@spin.id},\"id\":#{@section.id}}"}
+      format.html {redirect_to space_project_spin_path @space, @project, @spin, notice: 'Section was successfully destroyed'}
+      format.json {head :no_content}
     end
   end
 
