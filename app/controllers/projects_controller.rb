@@ -50,9 +50,11 @@ class ProjectsController < ApplicationController
   end
 
   private
+
   def set_space
     @space = Space.find(params[:space_id])
   end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.find(params[:id])
