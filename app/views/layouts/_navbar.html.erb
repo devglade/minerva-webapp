@@ -9,6 +9,9 @@
         <li class="nav-item">
           <%= link_to '공간', spaces_path, class: 'nav-link' %>
         </li>
+        <%= bootstrap_form_tag url: search_spaces_path, method: :get do |f| %>
+          <input class="form-control" name="text" type="text" id="text" placeholder="회고공간을 검색해보세요" required="required">
+        <% end %>
       <% end %>
     </ul>
   </div>
