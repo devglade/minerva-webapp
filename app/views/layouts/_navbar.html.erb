@@ -3,7 +3,11 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav ml-auto">
+      <%= bootstrap_form_tag url: search_spaces_path, method: :get do |f| %>
+        <input class="form-control" name="text" type="text" id="text" placeholder="회고공간을 검색해보세요" required="required">
+      <% end %>
       <% if user_signed_in? %>
+
         <li class="nav-item"><%= link_to '사이트 소개', about_url, class: 'nav-link' %></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">설정</a>

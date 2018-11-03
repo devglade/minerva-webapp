@@ -24,8 +24,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        ActionCable.server.broadcast "board", {commit: 'addPost', payload: render_to_string(:show, format: :json)}
         format.html {redirect_to space_project_spin_path(@space, @project, @spin)}
-        format.json {render json: @post.to_json, status: :created}
+        format.json {render json: @post.to_json(include: :user), status: :created}
       else
         format.html {render :new}
         format.json {render json: @post.errors, status: :unprocessable_entity}
@@ -37,8 +38,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     raise User::NotAuthorized, '수정할 권한이 없습니다.' unless @post.updatable_by?(current_user)
+
     respond_to do |format|
       if @post.update(post_params)
+        ActionCable.server.broadcast "board", {commit: 'editPost', payload: render_to_string(:show, format: :json)}
+
         format.html {redirect_to space_project_spin_path(@space, @project, @post), notice: 'Post was successfully updated.'}
         format.json {render json: @post.to_json, status: :ok}
       else
@@ -55,10 +59,8 @@ class PostsController < ApplicationController
 
     @post.destroy
     respond_to do |format|
-
-      broadcast_delete_post(@post)
-
-      #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      ActionCable.server.broadcast "board", {commit: 'destroyPost', payload: "{\"spin_id\":#{@spin.id},\"section_id\":#{@section.id},\"id\":#{@post.id}}"}
+      format.html {redirect_to space_project_spin_path @space, @project, @spin, notice: 'Section was successfully destroyed'}
       format.json {head :no_content}
     end
   end
@@ -85,8 +87,8 @@ class PostsController < ApplicationController
 
   def move
     @post.update(post_params)
-    render action: :index
-
+    ActionCable.server.broadcast "board", {commit: 'movePost', payload: render_to_string(:show, format: :json)}
+    render action: :show
   end
 
   private

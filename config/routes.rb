@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   end
 
   resources :spaces do
+    collection do
+      get :search
+    end
     resources :projects do
       resources :spins do
         resources :sections do

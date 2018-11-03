@@ -1,15 +1,15 @@
 <div id='users'>
-  <div class="card card-info" >
+  <div class="card card-info">
     <div class="card-header">
       <h2>Resend unlock instructions</h2>
     </div>
 
     <div class="card-block">
-      <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post}) do |f| %>
         <%= devise_error_messages! %>
 
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email %><br/>
           <%= f.email_field :email, autofocus: true %>
         </div>
 
@@ -20,7 +20,7 @@
     </div>
 
     <div class="card-footer">
-        <%= render "users/shared/links" %>
+      <%= render "users/shared/links" %>
     </div>
   </div>
 </div>

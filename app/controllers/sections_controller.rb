@@ -15,10 +15,12 @@ class SectionsController < ApplicationController
     @spin = Spin.find_by_id(params[:spin_id])
     @section = @spin.sections.build(section_params)
 
+
     respond_to do |format|
       if @section.save
+        ActionCable.server.broadcast "board", {commit: 'addSection', payload: render_to_string(:show, format: :json)}
         format.html {redirect_to space_project_spin_path(@space, @project, @spin), notice: 'Section was successfully created.'}
-        format.json {render :show, status: :created, location: @section}
+        format.json {render json: @section.to_json, status: :created}
       else
         format.html {render :new}
         format.json {render json: @section.errors, status: :unprocessable_entity}
@@ -43,17 +45,16 @@ class SectionsController < ApplicationController
   end
 
   def move
-    @section.insert_at section_params[:position].to_i
-
+    @section.insert_at(section_params[:position].to_i)
+    ActionCable.server.broadcast "board", {commit: 'moveSection', payload: render_to_string(:show, format: :json)}
     render action: :show
   end
 
   def destroy
     @section.destroy
     respond_to do |format|
-      format.html do
-        redirect_to space_project_spin_path(@space, @project, @spin), notice: 'Section was successfully destroyed.'
-      end
+      ActionCable.server.broadcast "board", {commit: 'destroySection', payload: "{\"spin_id\":#{@spin.id},\"id\":#{@section.id}}"}
+      format.html {redirect_to space_project_spin_path @space, @project, @spin, notice: 'Section was successfully destroyed'}
       format.json {head :no_content}
     end
   end

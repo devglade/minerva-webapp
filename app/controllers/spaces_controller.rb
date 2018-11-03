@@ -50,6 +50,10 @@ class SpacesController < ApplicationController
     broadcast_delete_space(@space)
   end
 
+  def search
+    @text = params[:text]
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
