@@ -86,7 +86,10 @@ class PostsController < ApplicationController
   end
 
   def move
-    @post.update(post_params)
+    user = Post.find(params[:id]).user
+    data = params.require(:post).permit(:content, :position).merge(user: user,
+                                                                   section_id: params[:section_id], spin_id: params[:spin_id])
+    @post.update(data)
     ActionCable.server.broadcast "board", {commit: 'movePost', payload: render_to_string(:show, format: :json)}
     render action: :show
   end

@@ -76,7 +76,7 @@
                 let sectionId = window.store.state.sections[section_index].id;
                 data.append("post[section_id]", sectionId);
                 data.append("post[position]", evt.newIndex + 1);
-
+                data.append("post[id]", element.id);
                 Rails.ajax({
                     beforeSend: () => true,
                     url: window.location.href + `/sections/${sectionId}/posts/${element.id}/move`,
