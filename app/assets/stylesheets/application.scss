@@ -15,14 +15,26 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900');
 @import url(//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css);
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+  url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+  url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
 body /*bootstrap theme*/ {
   color: $color-text--primary;
 
   .btn {
     font-weight: 500;
     font-size: 16px;
-    line-height: 20px;
-    padding: 8px 12px 10px 12px;
+    line-height: 24px;
+    padding: 6px 12px 8px 12px;
   }
 
   .btn-sm {
@@ -35,6 +47,26 @@ body /*bootstrap theme*/ {
     font-size: 24px;
     line-height: 24px;
     padding: 10px 16px 12px 16px;
+  }
+
+  .btn-svg {
+    font-size: 0;
+    padding: 7px 12px 7px 8px;
+
+    i, span {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    i {
+      font-size: 24px;
+      margin-right: rem-calc(4);
+    }
+
+    span {
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 
   .form-control {
@@ -62,16 +94,44 @@ body /*bootstrap theme*/ {
       color: $blue-grey-200;
     }
   }
+
+  .container-lg {
+    max-width: rem-calc(1400);
+  }
 }
 
 body {
   @include font-sans-serif;
   color: $color-text-primary;
+  background-color: $color-background;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 
 .navbar-global {
-  background-color: $color-background;
-
   .navbar-brand {
     font-size: 0;
 

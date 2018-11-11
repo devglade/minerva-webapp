@@ -77,9 +77,9 @@
 @mixin elevation-4 {
   @include transition();
   z-index: 9999;
-  box-shadow: rem-calc(0 24 24) rgba(20, 20, 84, .08),
-  rem-calc(0 40 48 -4) rgba(20, 20, 84, .12),
-  rem-calc(0 48 56 -4) rgba(20, 20, 84, .08),
-  rem-calc(20 32 32 -4) rgba(20, 20, 84, .04),
-  rem-calc(-20 32 32 -4) rgba(20, 20, 84, .04);
+  box-shadow: rem-calc(0 32 32 -12) rgba(20, 20, 84, .06),
+  rem-calc(0 64 48 -16) rgba(20, 20, 84, .04),
+  rem-calc(0 64 56 -16) rgba(20, 20, 84, .03),
+  rem-calc(20 40 48 -8) rgba(20, 20, 84, .02),
+  rem-calc(-20 40 48 -8) rgba(20, 20, 84, .02);
 }

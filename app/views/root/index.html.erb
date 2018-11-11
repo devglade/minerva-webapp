@@ -1,10 +1,66 @@
 <header class="root-hero">
   <div class="container">
-    <h1 class="hero-headline">애자일 팀에 사용하는 최고의 회고 도구</h1>
-    <h4 class="hero-sub-headline">효과적인 프로젝트 회고를 설계하고 진행하세요</h4>
-    <%= link_to '무료로 시작하기', new_user_registration_url, title: '무료로 시작하기', class: 'btn btn-primary btn-sign-up' %>
+    <h6 class="hero-product-name">RETROSPIN</h6>
+    <h1 class="hero-headline">애자일 팀에 사용하는 ────<br> ──── 최고의 회고 도구</h1>
+    <h4 class="hero-sub-headline">온라인으로 프로젝트 회고를 설계하고 진행하세요</h4>
+    <%= link_to new_user_registration_url, title: '무료로 시작하기', class: 'btn btn-svg btn-primary btn-sign-up' do %>
+      <i class="material-icons">favorite_border</i>
+      <span>무료로 온라인 회고 시작</span>
+    <% end %>
   </div>
   <div class="hero-image"></div>
 </header>
+
+<div class="root-content container">
+  <section>
+    <h2 class="section-headline">최고의 팀을 만드는 애자일 회고를 온라인으로 합니다.</h2>
+    <p class="section-sub-headline">RETROSPIN을 통해 조직의 모든 팀원과 회고보드를 생성하고 온라인으로 포스트를 등록하세요.</p>
+    <ul class="list-features">
+      <li class="row">
+        <div class="col-6 col-md-8 left feature-image">
+          <%= image_tag("img-broswer-sample.png", class: 'img-broswer', alt: "로고이미지") %>
+        </div>
+        <div class="col-12 col-md-4 right feature-body">
+          <h6 class="label">기능 1</h6>
+          <h4>이런 이런 기능이 있습니다.</h4>
+          <p>컨테이너는 사이트 콘텐츠를 중앙에 배치하게 합니다. 반응형 픽셀 너비를 위해서는 .container를, 모든 뷰포트 와 디바이스 크기에 꽉차는 width: 100% 너비를 위해서는 .container-fluid 를 사용하세요.</p>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-12 col-md-4 left feature-body">
+          <h6 class="label">기능 2</h6>
+          <h4>저런 저런 꽤 괜찮은 기능</h4>
+          <p>행(row)은 칼럼(column)을 감싸고 있습니다. 각 칼럼은 그들 사이의 공간을 제어하기 위해 수평 padding (gutter라고 부름)을 가지고 있습니다. 이 padding은 마이너스 마진이 적용된 행(row)의 양쪽 끝에서는 상쇄 됩니다. 이렇게 하면 칼럼에 있는 모든 콘텐츠가 왼쪽에서 수평방향으로 정렬됩니다.
+          </p>
+        </div>
+        <div class="col-12 col-md-8 right feature-image">
+          <%= image_tag("img-broswer-sample.png", class: 'img-broswer', alt: "로고이미지") %>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-6 col-md-8 left feature-image">
+          <%= image_tag("img-broswer-sample.png", class: 'img-broswer', alt: "로고이미지") %>
+        </div>
+        <div class="col-12 col-md-4 right feature-body">
+          <h6 class="label">기능 3</h6>
+          <h4>이런 이런 기능이 있습니다.</h4>
+          <p>컨테이너는 사이트 콘텐츠를 중앙에 배치하게 합니다. 반응형 픽셀 너비를 위해서는 .container를, 모든 뷰포트 와 디바이스 크기에 꽉차는 width: 100% 너비를 위해서는 .container-fluid 를 사용하세요.</p>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-12 col-md-4 left feature-body">
+          <h6 class="label">기능 4</h6>
+          <h4>저런 저런 꽤 괜찮은 기능</h4>
+          <p>행(row)은 칼럼(column)을 감싸고 있습니다. 각 칼럼은 그들 사이의 공간을 제어하기 위해 수평 padding (gutter라고 부름)을 가지고 있습니다. 이 padding은 마이너스 마진이 적용된 행(row)의 양쪽 끝에서는 상쇄 됩니다. 이렇게 하면 칼럼에 있는 모든 콘텐츠가 왼쪽에서 수평방향으로 정렬됩니다.
+          </p>
+        </div>
+        <div class="col-12 col-md-8 right feature-image">
+          <%= image_tag("img-broswer-sample.png", class: 'img-broswer', alt: "로고이미지") %>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
+
 
 
