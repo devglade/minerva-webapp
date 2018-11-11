@@ -1,14 +1,6 @@
-@mixin font-sans-serif {
-  font-family: "roboto", "맑은 고딕", 'Spoqa Han Sans', malgun gothic, "돋움", Dotum, sans-serif;
-}
-
-@mixin font-serif {
-  font-family: 'Nanum Myeongjo', serif;
-}
-
-@mixin font-mono {
-  font-family: Hack, Menlo, Monaco, Consolas, "Courier New", monospace, "맑은 고딕", malgun gothic, "돋움", Dotum, Sans-Serif;
-}
+@mixin font-sans-serif {font-family: 'Noto Sans KR', malgun gothic, "돋움", Dotum, sans-serif;}
+@mixin font-serif {font-family: 'Nanum Myeongjo', serif;}
+@mixin font-mono {font-family: Hack, Menlo, Monaco, Consolas, "Courier New", monospace, "맑은 고딕", malgun gothic, "돋움", Dotum, Sans-Serif;}
 
 @mixin h1 {
   font-size: 40px;

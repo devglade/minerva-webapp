@@ -17,7 +17,29 @@
   }
 }
 
-.full-cover {
-  padding: 100px;
-}
+.root-hero {
+  padding: rem-calc(80 0);
+  background-color: $color-background;
 
+  .container {
+    text-align: center;
+  }
+
+  .hero-headline {
+    font-size: rem-calc(48);
+    line-height: rem-calc(64);
+    font-weight: 700;
+  }
+
+  .btn-sign-up {
+    margin-top: rem-calc(32);
+  }
+
+  .hero-image {
+    margin-top: rem-calc(80);
+    width: 100%;
+    height: rem-calc(500);
+    background: asset_url('bg-root-hero.png') no-repeat center bottom;
+    background-size: rem-calc(2000 500);
+  }
+}

@@ -279,30 +279,33 @@ $grey-800: #424242;
 $grey-900: #212121;
 
 // Blue Grey
-$blue-grey-10: #FBFBFD; //$color-background
-$blue-grey-25: #F7F7FB;
-$blue-grey-50: #ECEFF5; //$color-background:hover, $color-default, $color-code-background
-$blue-grey-75: #E1E7EE; //$color-border
-$blue-grey-100: #CDD7E0;
-$blue-grey-200: #B2C0CC;
-$blue-grey-300: #98A8B9; //$color-text-secondary
-$blue-grey-400: #7890A0;
-$blue-grey-500: #5F7F90;
-$blue-grey-600: #4F6B81;
-$blue-grey-700: #44576C; //$color-border--dark
-$blue-grey-800: #37485D;
-$blue-grey-880: #2D4053;
-$blue-grey-900: #263747; //$color-code-background--dark, $color-text--primary
-$blue-grey-920: #202B3D; //$color-table-background--dark
-$blue-grey-940: #172334;
-$blue-grey-990: #142029; //$color-border--dark
-$blue-grey-999: #0C151C;
+$blue-grey-10: #FBFBFC; //$color-background
+$blue-grey-25: #F7F7F8;
+$blue-grey-50: #ECEFF1; //$color-background:hover, $color-default, $color-code-background
+$blue-grey-75: #E1E7EB; //$color-border
+$blue-grey-100: #CDD7DC;
+$blue-grey-200: #B0BEC5;
+$blue-grey-300: #90A4AE; //$color-text-secondary
+$blue-grey-400: #78909C;
+$blue-grey-500: #607D8B;
+$blue-grey-600: #546E7A;
+$blue-grey-700: #455A64; //$color-border--dark
+$blue-grey-800: #37474F;
+$blue-grey-880: #2F3E45;
+$blue-grey-900: #263238; //$color-code-background--dark, $color-text--primary
+$blue-grey-920: #202A2F; //$color-table-background--dark
+$blue-grey-940: #1E262A;
+$blue-grey-990: #1E2224; //$color-border--dark
+$blue-grey-999: #0C0D0E;
+
+// Warm Grey
+$warm-grey-25: #FCFBF8;
 
 //color-variables
 $color-text-primary: $blue-grey-900;
 $color-text-secondary: $blue-grey-400;
 
-$color-background: $blue-grey-10;
+$color-background: $blue-grey-25;
 $color-text--primary: $blue-grey-920;
 $color-text--secondary: $blue-grey-400;
 $color-border: $blue-grey-75;

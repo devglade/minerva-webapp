@@ -1,13 +1,17 @@
 <nav class="navbar navbar-global navbar-expand-lg navbar-light">
-  <%= link_to root_url, class:'navbar-brand' do %><% image_tag("bi-symbol-primary-md.png", size: "30x30", alt: "로고이미지") %><% end %>
+  <%= link_to root_url, class:'navbar-brand' do %>
+    <%= image_tag("bi-nav-head.png", class: "bi-nav-head", size: "58x30", alt: "로고이미지") %>
+    <%= image_tag("bi-nav-body.png", class: "bi-nav-body", size: "19x30", alt: "로고이미지") %>
+    <%= image_tag("bi-nav-tail.png", class: "bi-nav-tail", size: "55x30", alt: "로고이미지") %>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav ml-auto">
-      <%= bootstrap_form_tag url: search_spaces_path, method: :get do |f| %>
-        <input class="form-control" name="text" type="text" id="text" placeholder="회고공간을 검색해보세요" required="required">
-      <% end %>
-      <% if user_signed_in? %>
+    <%= bootstrap_form_tag url: search_spaces_path, method: :get do |f| %>
+      <input class="form-control form-search" name="text" type="text" id="text" placeholder="공개된 회고 검색" required="required">
+    <% end %>
 
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
         <li class="nav-item"><%= link_to '사이트 소개', about_url, class: 'nav-link' %></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">설정</a>
@@ -25,7 +29,7 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item"><%= link_to '가입하기', new_user_registration_url, title: '가입하기', class: 'btn btn-sm btn-primary' %></li>
+        <li class="nav-item"><%= link_to '계정 생성', new_user_registration_url, title: '가입하기', class: 'btn btn-sm btn-primary' %></li>
         <li class="nav-item"><%= link_to '로그인', new_user_session_url, title: '로그인', class: 'btn btn-sm btn-primary' %></li>
       <% end %>
     </ul>
