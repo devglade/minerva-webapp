@@ -1,19 +1,9 @@
 @import "common";
 
 .root-index {
-
-  .title {
-    font-weight: 700;
-  }
-
-  .description {
-    font-size: rem(30) !important;
-    padding-top: 2em;
-  }
-
-
-  h1 {
-    line-height: 1.5em;
+  .navbar-nav {
+    position: sticky;
+    top: rem-calc(14);
   }
 }
 
@@ -50,42 +40,104 @@
 
   section {
     padding: rem-calc(40 0);
+
+    .headline,
+    .sub-headline {
+      text-align: center;
+    }
+
+    .sub-headline {
+      @include h4;
+      margin-top: 12px;
+      color: $color-text-secondary;
+    }
+
+    .list-features {
+      list-style: none;
+      margin: rem-calc(56 0 0 0);
+      padding: 0;
+
+      li {
+        margin-top: rem-calc(80);
+
+        &:nth-child(n+2) {margin-top: rem-calc(160);}
+      }
+
+      .left {
+        &.feature-image .img-broswer {float: right;}
+
+        &.feature-body {padding-left: rem-calc(80);}
+      }
+
+      .right {
+        &.feature-body {padding-left: rem-calc(80);}
+      }
+
+      .feature-body {
+        .material-icons {
+          color: $color-primary;
+        }
+
+        .label {
+          margin-top: rem-calc(8);
+          color: $color-primary;
+          font-weight: 700;
+        }
+
+        h4 {
+          margin-top: rem-calc(40);
+          font-weight: 900;
+        }
+
+        p {
+          margin-top: rem-calc(12);
+          line-height: rem-calc(28);
+          color: $blue-grey-700;
+        }
+      }
+
+      .img-broswer {
+        @include elevation-4;
+        width: rem-calc(720);
+        height: rem-calc(400);
+      }
+    }
   }
 
-  .section-headline,
-  .section-sub-headline {
+  .section-header {
     text-align: center;
+
+    .img-root-feature {
+      margin-top: rem-calc(96);
+      width: 100%;
+      max-width: rem-calc(640);
+    }
+
+    .title {
+      margin-top: rem-calc(40);
+    }
+  }
+}
+
+footer {
+  margin-top: rem-calc(120);
+  border-top: rem-calc(2) solid $color-border;
+  padding: rem-calc(80 16);
+
+  .service-name {
+    @include h6;
+    font-weight: 900;
   }
 
-  .section-sub-headline {margin-top: 8px;}
-
-  .list-features {
+  .footer-options {
+    @include h6;
     list-style: none;
-    margin: rem-calc(40 0 0 0);
+    margin: rem-calc(12 0 0 0);
     padding: 0;
-
-    li {
-      margin-top: rem-calc(80);
-
-      &:nth-child(n+2) {margin-top: rem-calc(160);}
-    }
-
-    .left {
-      &.feature-image .img-broswer {float: right;}
-
-      &.feature-body {padding-left: rem-calc(80);}
-    }
-
-    .right {
-      &.feature-body {padding-left: rem-calc(80);}
-    }
-
-    .img-broswer {
-      @include elevation-4;
-      width: rem-calc(720);
-      height: rem-calc(400);
-    }
   }
 
+  & * {color: $color-text-secondary;}
 
+  a {text-decoration: none;}
+  a:hover {color: $color-primary;}
 }

@@ -1,7 +1,7 @@
 <header class="root-hero">
   <div class="container">
     <h6 class="hero-product-name">RETROSPIN</h6>
-    <h1 class="hero-headline">애자일 팀에 사용하는 ────<br> ──── 최고의 회고 도구</h1>
+    <h1 class="hero-headline">애자일 팀을 위한 ────<br> ──── 온라인 회고 도구</h1>
     <h4 class="hero-sub-headline">온라인으로 프로젝트 회고를 설계하고 진행하세요</h4>
     <%= link_to new_user_registration_url, title: '무료로 시작하기', class: 'btn btn-svg btn-primary btn-sign-up' do %>
       <i class="material-icons">favorite_border</i>
@@ -12,15 +12,16 @@
 </header>
 
 <div class="root-content container">
-  <section>
-    <h2 class="section-headline">최고의 팀을 만드는 애자일 회고를 온라인으로 합니다.</h2>
-    <p class="section-sub-headline">RETROSPIN을 통해 조직의 모든 팀원과 회고보드를 생성하고 온라인으로 포스트를 등록하세요.</p>
+  <section class="section-features">
+    <h3 class="headline">최고의 팀들이 진행하는 애자일 회고, 이제 온라인으로 합니다.</h3>
+    <p class="sub-headline">팀원을 초대하고, 스핀을 생성하여 간편하게 포스트를 등록하세요.</p>
     <ul class="list-features">
       <li class="row">
         <div class="col-6 col-md-8 left feature-image">
           <%= image_tag("img-broswer-sample.png", class: 'img-broswer', alt: "로고이미지") %>
         </div>
         <div class="col-12 col-md-4 right feature-body">
+          <i class="material-icons">adjust</i>
           <h6 class="label">기능 1</h6>
           <h4>이런 이런 기능이 있습니다.</h4>
           <p>컨테이너는 사이트 콘텐츠를 중앙에 배치하게 합니다. 반응형 픽셀 너비를 위해서는 .container를, 모든 뷰포트 와 디바이스 크기에 꽉차는 width: 100% 너비를 위해서는 .container-fluid 를 사용하세요.</p>
@@ -28,6 +29,7 @@
       </li>
       <li class="row">
         <div class="col-12 col-md-4 left feature-body">
+          <i class="material-icons">adjust</i>
           <h6 class="label">기능 2</h6>
           <h4>저런 저런 꽤 괜찮은 기능</h4>
           <p>행(row)은 칼럼(column)을 감싸고 있습니다. 각 칼럼은 그들 사이의 공간을 제어하기 위해 수평 padding (gutter라고 부름)을 가지고 있습니다. 이 padding은 마이너스 마진이 적용된 행(row)의 양쪽 끝에서는 상쇄 됩니다. 이렇게 하면 칼럼에 있는 모든 콘텐츠가 왼쪽에서 수평방향으로 정렬됩니다.
@@ -42,6 +44,7 @@
           <%= image_tag("img-broswer-sample.png", class: 'img-broswer', alt: "로고이미지") %>
         </div>
         <div class="col-12 col-md-4 right feature-body">
+          <i class="material-icons">adjust</i>
           <h6 class="label">기능 3</h6>
           <h4>이런 이런 기능이 있습니다.</h4>
           <p>컨테이너는 사이트 콘텐츠를 중앙에 배치하게 합니다. 반응형 픽셀 너비를 위해서는 .container를, 모든 뷰포트 와 디바이스 크기에 꽉차는 width: 100% 너비를 위해서는 .container-fluid 를 사용하세요.</p>
@@ -49,6 +52,7 @@
       </li>
       <li class="row">
         <div class="col-12 col-md-4 left feature-body">
+          <i class="material-icons">adjust</i>
           <h6 class="label">기능 4</h6>
           <h4>저런 저런 꽤 괜찮은 기능</h4>
           <p>행(row)은 칼럼(column)을 감싸고 있습니다. 각 칼럼은 그들 사이의 공간을 제어하기 위해 수평 padding (gutter라고 부름)을 가지고 있습니다. 이 padding은 마이너스 마진이 적용된 행(row)의 양쪽 끝에서는 상쇄 됩니다. 이렇게 하면 칼럼에 있는 모든 콘텐츠가 왼쪽에서 수평방향으로 정렬됩니다.
@@ -60,7 +64,28 @@
       </li>
     </ul>
   </section>
+
+  <section class="process">
+    <div class="section-header">
+      <%= image_tag('bg-root-feature.png', class: 'img-root-feature', alt: '레트로 스핀의 기능' ) %>
+      <h3 class="title">쉽게 애자일로 가기</h3>
+      <p>노련한 애자일 전문가이든, 업무를 막 시작했든, Jira Software를 통해 애자일의 파워를 갖출 수 있습니다.</p>
+      <%= link_to '계정 생성', new_user_registration_url, title: '가입하기', class: 'btn btn-primary' %>
+    </div>
+
+  </section>
 </div>
+
+<footer>
+  <div class="container">
+    <%= link_to 'RETROSPIN', root_url, class:'service-name' %>
+    <ul class="footer-options">
+      <li>Made by <a href="https://github.com/JooyeonSong" target="_blank">JooyeonSong</a> / <a href="https://github.com/WiseBell" target="_blank">WiseBell</a> / <a href="https://github.com/los0731" target="_blank">los0731</a></li>
+      <li><a href="https://github.com/devglade/minerva-webapp" target="_blank">Bug Report & Contribution</a></li>
+    </ul>
+  </div>
+
+</footer>
 
 
 

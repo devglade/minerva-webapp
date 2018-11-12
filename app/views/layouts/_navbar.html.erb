@@ -4,6 +4,7 @@
     <%= image_tag("bi-nav-body.png", class: "bi-nav-body", size: "19x30", alt: "로고이미지") %>
     <%= image_tag("bi-nav-tail.png", class: "bi-nav-tail", size: "55x30", alt: "로고이미지") %>
   <% end %>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
   <div class="collapse navbar-collapse" id="navbarText">
     <%= bootstrap_form_tag url: search_spaces_path, method: :get do |f| %>
