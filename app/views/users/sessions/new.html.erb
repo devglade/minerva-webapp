@@ -8,11 +8,8 @@
   <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.email_field :email, autofocus: true, placeholder: '이메일', skip_label: true %>
     <%= f.password_field :password, placeholder: '비밀번호', skip_label: true %>
-
     <%= f.check_box :remember_me, as: :boolean, label: '로그인 상태 유지', checked: true %>
-
     <%= f.submit "Sign in", class: 'btn btn-primary btn-block' %>
-
   <% end %>
 
   <%= render "users/shared/links" %>

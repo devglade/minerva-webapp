@@ -18,9 +18,9 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/navbar' unless controller_name == 'registrations' || controller_name == 'sessions' || controller_name == 'passwords' || controller_name == 'confirmations' %>
 
-<div class="container container-alerts">
+<div class="main">
   <% if notice %>
-    <div class="alert alert-dismissible fade show alert-primary" role="alert">
+    <div class="alert alert-dismissible alert-primary alert-notice fade show" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <i class="material-icons" aria-hidden="true">close</i>
       </button>
@@ -28,19 +28,16 @@
     </div>
   <% end %>
   <% if alert %>
-    <div class="alert alert-dismissible fade show alert-warning" role="alert">
+    <div class="alert alert-dismissible alert-danger alert-notice fade show" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <i class="material-icons" aria-hidden="true">close</i>
       </button>
       <%= alert %>
     </div>
   <% end %>
-</div>
 
-<div class="main">
   <%= yield %>
 </div>
-
 
 <%= render 'layouts/footer' %>
 <%= render 'layouts/scripts' %>

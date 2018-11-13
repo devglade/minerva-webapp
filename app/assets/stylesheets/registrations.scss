@@ -12,9 +12,12 @@ $width-session: rem-calc(360);
 .sessions-new,
 .passwords-new,
 .confirmations-new {
-  .container-alerts {
-    max-width: $width-session;
-    padding: rem-calc(0 24);
+  .alert-notice {
+    width: calc(#{$width-session} - #{rem-calc(48)});
+    position: fixed;
+    top: rem-calc(16);
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .form-session {
@@ -48,7 +51,6 @@ $width-session: rem-calc(360);
     }
   }
 }
-
 
 .nav-logo {
   margin-top: $height-navbar;

@@ -120,6 +120,7 @@ body /*bootstrap theme*/ {
   }
 
   .alert {
+    margin: rem-calc(16 0 0 0);
     border-width: rem-calc(2);
     padding: rem-calc(16);
 
@@ -137,6 +138,8 @@ body /*bootstrap theme*/ {
         line-height: rem-calc(24);
       }
     }
+
+    &.alert-dismissible {padding-right: rem-calc(48);}
   }
 
   .card {
@@ -168,6 +171,8 @@ body /*bootstrap theme*/ {
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+.main {min-height: calc(100vh - (#{$height-navbar} + #{$height-footer} + #{$margin-footer}));}
 
 .navbar-global {
   height: $height-navbar;
@@ -235,13 +240,4 @@ body /*bootstrap theme*/ {
   a {text-decoration: none;}
   a:hover {color: $color-primary;}
 }
-
-.main {
-  min-height: calc(100vh - (#{$height-navbar} + #{$height-footer} + #{$margin-footer}));
-}
-
-.container-alerts .alert {
-  margin-top: rem-calc(16);
-}
-
 
