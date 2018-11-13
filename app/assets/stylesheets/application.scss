@@ -6,6 +6,7 @@
  *= require material_icons
  *= require_directory .
  */
+
 @import "bourbon";
 @import "bootstrap";
 @import "bootstrap-social";
@@ -28,7 +29,21 @@
 }
 
 body /*bootstrap theme*/ {
+  @include font-sans-serif;
+  width: 100%;
+  word-break: keep-all;
+  font-size: 16px;
   color: $color-text--primary;
+  background-color: $color-background;
+
+  a {
+    @include transition();
+    &:hover {text-decoration: none;}
+  }
+
+  .container-sm {max-width: rem-calc(800);}
+
+  .container-lg {max-width: rem-calc(1400);}
 
   .btn {
     font-weight: 500;
@@ -73,7 +88,7 @@ body /*bootstrap theme*/ {
     line-height: 20px;
     padding: 7px 12px 9px 12px;
     border: rem-calc(2) solid $color-border;
-    background-color: $color-background;
+    background-color: white;
     font-weight: 500;
 
     &:focus {
@@ -95,15 +110,38 @@ body /*bootstrap theme*/ {
     }
   }
 
-  .container-lg {
-    max-width: rem-calc(1400);
+  .form-group {
+    label {
+      @include h7;
+      font-weight: 500;
+      margin-bottom: rem-calc(4);
+      color: $color-text-secondary;
+    }
   }
-}
 
-body {
-  @include font-sans-serif;
-  color: $color-text-primary;
-  background-color: $color-background;
+  .alert {
+    border-width: rem-calc(2);
+    padding: rem-calc(16);
+
+    button.close {
+      padding: 0;
+      font-size: 0;
+      transform: translateY(-50%);
+      top: 50%;
+      right: rem-calc(12);
+
+
+      span {
+        vertical-align: top;
+        font-size: rem-calc(24);
+        line-height: rem-calc(24);
+      }
+    }
+  }
+
+  .card {
+    border-color: $color-border;
+  }
 }
 
 .material-icons {
@@ -132,6 +170,7 @@ body {
 }
 
 .navbar-global {
+  height: $height-navbar;
   .navbar-brand {
     font-size: 0;
 
@@ -171,3 +210,38 @@ body {
     li:nth-child(n+2) {margin-left: 8px;}
   }
 }
+
+.footer-wrap {
+  height: $height-footer;
+  margin-top: $margin-footer;
+  border-top: rem-calc(2) solid $color-border;
+  padding: rem-calc(80 16);
+
+  .service-name {
+    @include h6;
+    font-weight: 900;
+  }
+
+  .footer-options {
+    @include h7;
+    list-style: none;
+    margin: rem-calc(12 0 0 0);
+    padding: 0;
+    font-weight: 500;
+  }
+
+  & * {color: $color-text-secondary;}
+
+  a {text-decoration: none;}
+  a:hover {color: $color-primary;}
+}
+
+.main {
+  min-height: calc(100vh - (#{$height-navbar} + #{$height-footer} + #{$margin-footer}));
+}
+
+.container-alerts .alert {
+  margin-top: rem-calc(16);
+}
+
+

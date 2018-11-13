@@ -1,10 +1,7 @@
 @import "common";
 
 .root-index {
-  .navbar-nav {
-    position: sticky;
-    top: rem-calc(14);
-  }
+  background-color: $color-background;
 }
 
 .root-hero {
@@ -119,25 +116,3 @@
   }
 }
 
-footer {
-  margin-top: rem-calc(120);
-  border-top: rem-calc(2) solid $color-border;
-  padding: rem-calc(80 16);
-
-  .service-name {
-    @include h6;
-    font-weight: 900;
-  }
-
-  .footer-options {
-    @include h6;
-    list-style: none;
-    margin: rem-calc(12 0 0 0);
-    padding: 0;
-  }
-
-  & * {color: $color-text-secondary;}
-
-  a {text-decoration: none;}
-  a:hover {color: $color-primary;}
-}

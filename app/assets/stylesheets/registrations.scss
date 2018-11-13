@@ -1,20 +1,39 @@
-.registrations-new, .sessions-new, .passwords-new, .confirmations-new {
-  background: url(asset-path('universe.jpg')) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+@import "common";
+$width-session: rem-calc(360);
 
-  .card {
-    margin: 80px auto;
-    max-width: 330px;
-    .card-block {
-      padding: 20px;;
+.registrations-new,
+.sessions-new,
+.passwords-new,
+.confirmations-new,
+.registrations-edit,
+.registrations-update { .footer-wrap {display: none;} }
+
+.registrations-new,
+.sessions-new,
+.passwords-new,
+.confirmations-new {
+  .container-alerts {
+    max-width: $width-session;
+    padding: rem-calc(0 24);
+  }
+
+  .form-session {
+    margin: rem-calc(64) auto 0 auto;
+    padding: rem-calc(0 24);
+    max-width: $width-session;
+
+    .form-check-input {margin-top: rem-calc(6);}
+    .form-check-label {
+      @include h6;
+      color: $color-text-secondary;
     }
+    .form-check + .btn {margin-top: rem-calc(8);}
+    .form-group + .btn {margin-top: rem-calc(32);}
   }
 }
 
-.registrations-edit, .registrations-update {
+.registrations-edit,
+.registrations-update {
   background: url(asset-path('universe.jpg')) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -26,6 +45,50 @@
     max-width: 500px;
     .card-block {
       padding: 20px;;
+    }
+  }
+}
+
+
+.nav-logo {
+  margin-top: $height-navbar;
+  padding-top: rem-calc(80);
+  text-align: center;
+
+  .btn-root {
+    @include transition();
+    display: inline-block;
+    vertical-align: top;
+    padding: rem-calc(16);
+    border-radius: rem-calc(16);
+    border: rem-calc(2) solid $color-border;
+
+    &:hover {background-color: white;}
+  }
+}
+
+.list-session {
+  list-style: none;
+  margin: rem-calc(40 0 0 0);
+  padding: 0;
+  font-size: 0;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    vertical-align: top;
+
+    & + li {
+      margin-left: rem-calc(8);
+      padding-left: rem-calc(8);
+      border-left: rem-calc(1) solid $color-border;
+    }
+
+    a {
+      @include h6;
+      color: $color-text-secondary;
+      font-weight: 500;
+      &:hover {color: $color-primary;}
     }
   }
 }
