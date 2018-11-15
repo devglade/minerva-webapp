@@ -5,38 +5,51 @@
 @mixin font-mono {font-family: Hack, Menlo, Monaco, Consolas, "Courier New", monospace, "맑은 고딕", malgun gothic, "돋움", Dotum, Sans-Serif;}
 
 @mixin h1 {
-  font-size: 40px;
-  line-height: 50px;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 56px;
 }
 
 @mixin h2 {
+  font-weight: 900;
   font-size: 32px;
   line-height: 46px;
 }
 
 @mixin h3 {
+  font-weight: 700;
   font-size: 26px;
   line-height: 32px;
 }
 
 @mixin h4 {
+  font-weight: 500;
   font-size: 20px;
   line-height: 28px;
 }
 
 @mixin h5 {
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }
 
 @mixin h6 {
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 }
 
 @mixin h7 {
+  font-weight: 400;
   font-size: 12px;
   line-height: 18px;
+}
+
+@mixin p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
 }
 
 @mixin transition($transition-duration:.06s, $transition-property:all, $transition-timing-function:ease-in-out, $transition-delay:initial) {
@@ -61,24 +74,24 @@
 
 @mixin elevation-2 {
   @include transition();
-  z-index: 10;
-  box-shadow: rem-calc(0 3 7) rgba(20, 20, 84, .04),
-  rem-calc(0 8 12) rgba(20, 20, 84, .12),
-  rem-calc(0 16 25 -2) rgba(20, 20, 84, .08);
+  z-index: 11;
+  box-shadow: rem-calc(0 3 7) rgba(20, 20, 84, .02),
+  rem-calc(0 8 12) rgba(20, 20, 84, .1),
+  rem-calc(0 16 25 -2) rgba(20, 20, 84, .06);
 }
 
 @mixin elevation-3 {
   @include transition();
-  z-index: 100;
-  box-shadow: rem-calc(0 8 12) rgba(20, 20, 84, .08),
-  rem-calc(0 20 28 -2) rgba(20, 20, 84, .14),
-  rem-calc(0 24 34 -2) rgba(20, 20, 84, .08),
-  rem-calc(0 32 40 -32) rgba(20, 20, 84, .06);
+  z-index: 12;
+  box-shadow: rem-calc(0 12 16) rgba(20, 20, 84, .05),
+  rem-calc(0 20 36 -8) rgba(20, 20, 84, .08),
+  rem-calc(0 40 40 -16) rgba(20, 20, 84, .04),
+  rem-calc(0 48 48 -32) rgba(20, 20, 84, .03);
 }
 
 @mixin elevation-4 {
   @include transition();
-  z-index: 9999;
+  z-index: 13;
   box-shadow: rem-calc(0 32 32 -12) rgba(20, 20, 84, .06),
   rem-calc(0 64 48 -16) rgba(20, 20, 84, .04),
   rem-calc(0 64 56 -16) rgba(20, 20, 84, .03),

@@ -16,18 +16,6 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900');
 @import url(//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css);
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-  local('MaterialIcons-Regular'),
-  url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-  url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-  url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
-}
-
 body /*bootstrap theme*/ {
   @include font-sans-serif;
   width: 100%;
@@ -40,6 +28,16 @@ body /*bootstrap theme*/ {
     @include transition();
     &:hover {text-decoration: none;}
   }
+
+  h1, h2, h3, h4, h5, h6 {margin: 0;}
+
+  h1 {@include h1;}
+  h2 {@include h2;}
+  h3 {@include h3;}
+  h4 {@include h4;}
+  h5 {@include h5;}
+  h6 {@include h6;}
+  p {@include p;}
 
   .container-sm {max-width: rem-calc(800);}
 
@@ -62,6 +60,15 @@ body /*bootstrap theme*/ {
     font-size: 24px;
     line-height: 24px;
     padding: 10px 16px 12px 16px;
+  }
+
+  .btn-default {
+    color: $color-text-primary;
+    background-color: $blue-grey-50;
+    &:hover,
+    &:focus {
+      background-color: $blue-grey-75;
+    }
   }
 
   .btn-svg {
@@ -145,6 +152,19 @@ body /*bootstrap theme*/ {
   .card {
     border-color: $color-border;
   }
+
+  .dropdown-menu {
+    @include elevation-3;
+    margin-top: rem-calc(8);
+    border: rem-calc(2) solid $color-border;
+    border: 0;
+
+    .dropdown-item {
+      @include h6;
+      font-weight: 500;
+      padding: rem-calc(4 12);
+    }
+  }
 }
 
 .material-icons {
@@ -220,7 +240,7 @@ body /*bootstrap theme*/ {
   height: $height-footer;
   margin-top: $margin-footer;
   border-top: rem-calc(2) solid $color-border;
-  padding: rem-calc(80 16);
+  padding: rem-calc(80 0);
 
   .service-name {
     @include h6;

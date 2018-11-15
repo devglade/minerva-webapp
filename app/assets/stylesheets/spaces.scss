@@ -1,3 +1,133 @@
-// Place all the styles related to the Spaces controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "common";
+
+.spaces-index {
+  .container-space {
+    header {
+      text-align: center;
+
+      h1 {
+        margin-top: rem-calc(40);
+        font-weight: 900;
+      }
+
+      h4 {
+        margin-top: rem-calc(16);
+        color: $blue-grey-300;
+      }
+    }
+  }
+}
+
+.list-spaces {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .list-space-item {
+    @include elevation-1;
+    position: relative;
+    margin-top: rem-calc(64);
+    border-radius: rem-calc(3);
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+
+    > a * {@include transition();}
+
+    .space-top {
+      padding: rem-calc(16);
+      font-size: 0;
+      background-color: rgba(20,20,60,.0);
+      box-shadow: rem-calc(0 1) transparent;
+      color: transparent;
+
+      h6 {
+        text-transform: uppercase;
+        margin-left: rem-calc(4);
+        display: inline-block;
+        vertical-align: middle;
+        line-height: rem-calc(24);
+        font-weight: 700;
+      }
+    }
+
+    .space-body {
+      padding: rem-calc(40 40 120 40);
+      text-align: center;
+
+      .title {
+        font-size: rem-calc(96);
+        line-height: rem-calc(96);
+        font-weight: 100;
+        color: $color-text-primary;
+      }
+    }
+
+    .dropdown {
+      position: absolute;
+      top: rem-calc(16);
+      right: rem-calc(16);
+
+      > a {
+        color: $blue-grey-200;
+        &:hover {
+          color: $color-primary;
+          background-color: $blue-grey-50;
+          border-radius: rem-calc(3);
+        }
+      }
+      
+      a, i {
+        display: inline-block;
+        vertical-align: top !important;
+      }
+
+      .dropdown-menu {@include transition(0s);}
+    }
+
+    &:hover {
+      z-index: 13;
+      box-shadow:
+              rem-calc(8 8 8 -8) rgba(50, 50, 110, 0.14),
+              rem-calc(80 24 80 -16) rgba(50, 50, 110, 0.10),
+              rem-calc(24 100 56 -32) rgba(50, 50, 110, 0.06),
+              rem-calc(160 160 190 -50) rgba(50, 50, 110, 0.14),
+              rem-calc(0 0 40) rgba(50,50,110,0.04);
+      .space-top {
+        background-color: white;
+        box-shadow: rem-calc(0 1) rgba(20,20,60,.04);
+        color: $blue-grey-200;
+      }
+    }
+
+    &:nth-last-child(5) {
+      background: asset_url('bg-space-5.png') no-repeat bottom;
+      background-size: cover;
+      .space-body .title {color: white;}
+    }
+
+    &:nth-last-child(4) {
+      background: asset_url('bg-space-6.png') repeat center;
+      background-size: rem-calc(640) auto;
+      .space-body .title {color: $green-700;}
+    }
+
+    &:nth-last-child(3) {
+      background: asset_url('bg-space-7.png') no-repeat center;
+      background-size: cover;
+      .space-body .title {color: $green-900;}
+    }
+
+    &:nth-last-child(2) {
+      background: asset_url('bg-space-1.png') center;
+      .space-body .title {color: $deep-purple-700;}
+    }
+
+  }
+
+  .create-space {
+    .space-top .material-icons {float: right;}
+    .space-body .title {color: $blue-grey-100;}
+    &:hover {.space-body .title {color: $color-primary;}}
+  }
+}
