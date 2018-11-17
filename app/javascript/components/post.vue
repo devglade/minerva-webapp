@@ -17,8 +17,8 @@
                     </div>
                 </div>
                 <div class="btn-group">
-                    <i @click="like" class="material-icons">thumb_up</i>
-                    <i @click="dislike" class="material-icons">thumb_down</i>
+                    <i @click="like" class="material-icons">thumb_up</i>{{post.upvote_count}}
+                    <i @click="dislike" class="material-icons">thumb_down</i>{{post.downvote_count}}
                 </div>
             </div>
         </div>
