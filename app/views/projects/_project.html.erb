@@ -1,23 +1,39 @@
-<li id="project-<%= project.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
-  <div class="d-flex w-100 justify-content-between">
+<li id="project-<%= project.id %>" class="list-item">
+  <div class="left">
     <%= link_to space_project_spins_path(space_id: project.space, project_id: project), method: :get do %>
-      <h5 class="mb-1"><%= project.title %></h5>
+      <h4 class="project-title"><%= project.title %></h4>
+      <% if project.description.present? %>
+        <p class="project-description"><%= project.description %></p>
+      <% end %>
+      <h6 class="project-author"><%= project.user.name.truncate(8) %> (<%= project.user.email %>)</h6>
     <% end %>
-    <small>
-      <div class="btn-group" role="group" aria-label="project Buttons">
-        <% if current_user.id == project.user.id %>
-          <%= link_to edit_space_project_path(space_id: project.space, id: project), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
-            <i class="material-icons">edit</i>
-          <% end %>
-          <%= link_to space_project_path(space_id: project.space, id: project), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
-            <i class="material-icons">delete</i>
-          <% end %>
-        <% end %>
-        <button class="btn btn-sm btn-outline-secondary float-right ml4" data-toggle="popover" title="<%= project.user.name %>" data-content="<%= project.user.email %>">
-          <%= project.user.name.truncate(8) %> <i class="material-icons">face</i>
-        </button>
-      </div>
-    </small>
   </div>
-  <p class="mb-1"><%= project.description %></p>
+
+  <div class="right">
+    <a href="#" class="retrospective add">
+      <!-- TODO: tooltip을 추가해주세요. '팀 등록'-->
+      <i class="material-icons">add</i>
+    </a>
+
+    <%= 8.times do %>
+    <!-- TODO: 최신 스핀들이 있고, 클릭시 스핀으로 바로 이동하게 해주세요.-->
+    <a href="#" class="retrospective">
+      <h5>18년 11월 18일 회고</h5>
+      <h6>스프린트 3차</h6>
+    </a>
+    <% end %>
+
+  </div>
+
+  <div class="dropdown">
+    <a href="" id="dropdown_project" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <i class="material-icons">more_vert</i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+      <% if current_user.id == project.user.id %>
+        <%= link_to '프로젝트 수정', edit_space_project_path(space_id: project.space, id: project), remote: true, class: 'dropdown-item' %>
+        <%= link_to '프로젝트 삭제', space_project_path(space_id: project.space, id: project), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
+      <% end %>
+    </div>
+  </div>
 </li>

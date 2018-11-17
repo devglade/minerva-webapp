@@ -1,0 +1,130 @@
+@import "common";
+
+.projects-index {
+  .footer-wrap .container {
+    max-width: 100%;
+  }
+}
+
+.list-projects {
+  list-style: none;
+  margin: rem-calc(16 0 0 0);
+  padding: 0;
+
+  .list-item {
+    $width-info: rem-calc(640);
+    position: relative;
+    padding: rem-calc(40 0);
+    border-top: rem-calc(1) solid $color-border;
+    font-size: 0;
+
+    .left,
+    .right {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .left {
+      padding-left: rem-calc(30);
+      width: $width-info;
+
+      > a {
+        color: $color-text-primary;
+        &:hover { .project-title {color: $color-primary;} }
+      }
+
+      .project-title {
+        @include transition();
+        font-weight: 700;
+      }
+
+      .project-description {
+        margin: rem-calc(4 0 0 0);
+        line-height: rem-calc(24);
+
+        & + .project-author {margin-top: rem-calc(16);}
+      }
+
+      .project-author {
+        @include h7;
+        margin: rem-calc(8 0 0 0);
+        color: $color-text-secondary;
+      }
+    }
+
+    .right {
+      width: calc(100% - #{$width-info});
+      position: relative;
+      font-size: 0;
+      white-space: nowrap;
+      overflow: hidden;
+
+      .retrospective {
+        display: inline-block;
+        padding: rem-calc(12 16);
+        vertical-align: top;
+        width: rem-calc(200);
+        height: rem-calc(120);
+        border-radius: rem-calc(3);
+        background-color: $blue-grey-50;
+        color: $color-text-primary;
+        white-space: normal;
+
+        h5 {font-weight: 700;}
+        h6 {
+          @include h7;
+          margin-top: rem-calc(4);
+        }
+
+        &.add {
+          color: $color-text-secondary;
+          padding: rem-calc(48 88);
+        }
+
+        &:hover {color: $color-primary;}
+
+        & + .retrospective {margin-left: rem-calc(8);}
+
+
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: rem-calc(200);
+        height: rem-calc(400);
+        background-color: red;
+        top: 0;
+        right: 0;
+        pointer-events: none;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbfbfc+0,fbfbfc+80&0+0,1+80 */
+        background: -moz-linear-gradient(left, rgba(251,251,252,0) 0%, rgba(251,251,252,1) 80%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(251,251,252,0) 0%,rgba(251,251,252,1) 80%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(251,251,252,0) 0%,rgba(251,251,252,1) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00fbfbfc', endColorstr='#fbfbfc',GradientType=1 ); /* IE6-9 */
+      }
+    }
+
+    .dropdown {
+      position: absolute;
+      top: rem-calc(16);
+      right: rem-calc(16);
+
+      > a {
+        display: inline-block;
+        vertical-align: top;
+        padding: rem-calc(8);
+        color: $color-text-secondary;
+        border-radius: rem-calc(100);
+        background-color: $color-background;
+
+        &:hover {
+          color: $color-primary;
+          background-color: $blue-grey-50;
+        }
+      }
+    }
+  }
+}

@@ -1,20 +1,19 @@
 @import "common";
 
-.spaces-index {
-  .btn-space {margin-right: rem-calc(8);}
-  .container-space {
-    header {
-      text-align: center;
+.btn-space {margin-right: rem-calc(8);}
 
-      h1 {
-        margin-top: rem-calc(40);
-        font-weight: 900;
-      }
+.container-space {
+  header {
+    text-align: center;
 
-      h4 {
-        margin-top: rem-calc(16);
-        color: $blue-grey-300;
-      }
+    h1 {
+      margin-top: rem-calc(40);
+      font-weight: 900;
+    }
+
+    h4 {
+      margin-top: rem-calc(16);
+      color: $blue-grey-300;
     }
   }
 }

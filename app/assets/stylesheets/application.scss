@@ -167,15 +167,12 @@ body /*bootstrap theme*/ {
   }
 
   .dropdown-menu {
-    @include transition();
     @include elevation-2;
-    margin-top: 0;
+    @include transition(0s);
+    margin-top: rem-calc(8);
     border: rem-calc(2) solid $color-border;
     border: 0;
     background-color: $color-primary;
-    display: block;
-    opacity: 0;
-    pointer-events: none;
 
     .dropdown-item {
       @include h6;
@@ -187,12 +184,6 @@ body /*bootstrap theme*/ {
         color: white;
         background-color: $deep-purple-a700;
       }
-    }
-
-    &.show {
-      margin-top: rem-calc(8);
-      opacity: 1;
-      pointer-events: auto;
     }
   }
 
@@ -265,13 +256,21 @@ body /*bootstrap theme*/ {
       transform: rotate(0deg);
     }
 
-    &:hover .bi-nav-body {
-      transition: 1s ease;
-      -webkit-transform: rotate(-720deg);
-      -moz-transform: rotate(-720deg);
-      -ms-transform: rotate(-720deg);
-      -o-transform: rotate(-720deg);
-      transform: rotate(-720deg);
+    h4 {
+      font-weight: 500;
+      i {margin-top: rem-calc(-3);}
+    }
+
+    &:hover {
+      .bi-nav-body {
+        transition: 1s ease;
+        -webkit-transform: rotate(-720deg);
+        -moz-transform: rotate(-720deg);
+        -ms-transform: rotate(-720deg);
+        -o-transform: rotate(-720deg);
+        transform: rotate(-720deg);
+      }
+      h4 {color: $color-primary;}
     }
   }
 
