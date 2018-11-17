@@ -1,20 +1,27 @@
 <template>
     <div>
-        <div @click="editing=true" class="card card-body mb-3 card-text">
-            {{post.content}}
-            <div class="user-info">
-                <div class="user-image">
-                    <div v-if="post.user.image_id ==null">
-                        <img class="profile-img" src="~images/img_profile_default.png">
-                    </div>
-                    <div v-else>
-                        <img :src="getImgUrl(post.user.image_id)" class="profile-img">
+        <div>
+            <div class="card card-body mb-3 card-text">
+                <div @click="editing=true">
+                    {{post.content}}
+                    <div class="user-info">
+                        <div class="user-image">
+                            <div v-if="post.user.image_id ==null">
+                                <img class="profile-img" src="~images/img_profile_default.png">
+                            </div>
+                            <div v-else>
+                                <img :src="getImgUrl(post.user.image_id)" class="profile-img">
+                            </div>
+                        </div>
+                        {{post.user.name}}
                     </div>
                 </div>
-                {{post.user.name}}
+                <div class="btn-group">
+                    <i @click="like" class="material-icons">thumb_up</i>{{post.upvote_count}}
+                    <i @click="dislike" class="material-icons">thumb_down</i>{{post.downvote_count}}
+                </div>
             </div>
         </div>
-
         <div v-if='editing' class="modal-backdrop show"></div>
 
         <div v-if='editing' @click="closeModal" class="modal show" style="display: block">
@@ -88,7 +95,6 @@
             },
 
             deletePost: function () {
-                console.log("deletePost")
                 Rails.ajax({
                     beforeSend: () => true,
                     url: window.location.href + `/sections/${this.section.id}/posts/${this.post.id}`,
@@ -100,6 +106,29 @@
                     }
                 })
             },
+
+            like: function () {
+                Rails.ajax({
+                    beforeSend: () => true,
+                    url: window.location.href + `/sections/${this.section.id}/posts/${this.post.id}/like`,
+                    type: "PUT",
+                    dataType: "json",
+                    success: () => {
+                        console.log("SUCCESS")
+                    }
+                })
+            },
+            dislike: function () {
+                Rails.ajax({
+                    beforeSend: () => true,
+                    url: window.location.href + `/sections/${this.section.id}/posts/${this.post.id}/dislike`,
+                    type: "PUT",
+                    dataType: "json",
+                    success: () => {
+                        console.log("SUCCESS")
+                    }
+                })
+            }
         }
     }
 </script>

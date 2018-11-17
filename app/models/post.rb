@@ -16,4 +16,11 @@ class Post < ApplicationRecord
 
   validates :content, presence: true
 
+  def upvote_count
+    get_upvotes.size
+  end
+
+  def downvote_count
+    get_downvotes.size
+  end
 end
