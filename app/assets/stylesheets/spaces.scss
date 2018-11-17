@@ -105,6 +105,7 @@
     }
 
     &:nth-last-child(2n) {
+      //건물
       background: asset_url('bg-space-1.png') no-repeat center;
       background-size: cover;
       .space-body .title {
@@ -113,6 +114,7 @@
     }
 
     &:nth-last-child(3n) {
+      //나뭇닢
       background: asset_url('bg-space-2.png') no-repeat center;
       background-size: cover;
       .space-body .title {
@@ -121,6 +123,7 @@
     }
 
     &:nth-last-child(4n) {
+      //겨울광장
       background: asset_url('bg-space-3.png') repeat center bottom;
       background-size: cover;
       .space-body .title {
@@ -129,6 +132,7 @@
     }
 
     &:nth-last-child(5n) {
+      //걸파워
       background: asset_url('bg-space-4.png') no-repeat bottom;
       background-size: cover;
       .space-body .title {
@@ -137,6 +141,7 @@
     }
 
     &:nth-last-child(6n) {
+      //가을언덕
       background: asset_url('bg-space-5.png') no-repeat bottom;
       background-size: cover;
       .space-body .title {
@@ -145,6 +150,7 @@
     }
 
     &:nth-last-child(7n) {
+      //요가
       background: asset_url('bg-space-6.png') center;
       background-size: rem-calc(640) auto;
       .space-body .title {
@@ -153,6 +159,7 @@
     }
 
     &:nth-last-child(8n) {
+      //스키
       background: asset_url('bg-space-7.png') center;
       background-size: rem-calc(640) auto;
       .space-body .title {
