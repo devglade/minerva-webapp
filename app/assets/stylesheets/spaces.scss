@@ -1,6 +1,7 @@
 @import "common";
 
 .spaces-index {
+  .btn-space {margin-right: rem-calc(8);}
   .container-space {
     header {
       text-align: center;
@@ -95,8 +96,6 @@
         display: inline-block;
         vertical-align: top !important;
       }
-
-      .dropdown-menu {@include transition(0s);}
     }
 
     &:hover {

@@ -71,6 +71,17 @@ body /*bootstrap theme*/ {
     }
   }
 
+  .btn-primary {
+    color: white;
+    background-color: $color-primary;
+    border: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: $deep-purple-a700;
+    }
+  }
+
   .btn-svg {
     font-size: 0;
     padding: 7px 12px 7px 8px;
@@ -126,6 +137,8 @@ body /*bootstrap theme*/ {
     }
   }
 
+  .form-check-input {cursor: pointer;}
+
   .alert {
     margin: rem-calc(16 0 0 0);
     border-width: rem-calc(2);
@@ -154,15 +167,60 @@ body /*bootstrap theme*/ {
   }
 
   .dropdown-menu {
-    @include elevation-3;
-    margin-top: rem-calc(8);
+    @include transition();
+    @include elevation-2;
+    margin-top: 0;
     border: rem-calc(2) solid $color-border;
     border: 0;
+    background-color: $color-primary;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
 
     .dropdown-item {
       @include h6;
       font-weight: 500;
       padding: rem-calc(4 12);
+      color: white;
+
+      &:hover, &:focus, &:active {
+        color: white;
+        background-color: $deep-purple-a700;
+      }
+    }
+
+    &.show {
+      margin-top: rem-calc(8);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  .modal-backdrop {
+    background-color: $blue-grey-940;
+  }
+
+  .modal-content {
+    //border: 0;
+    .modal-header {
+      padding: rem-calc(24 24 0 24);
+      border-bottom: 0;
+
+      h3 {font-weight: 900;}
+      .close {
+        padding: rem-calc(8);
+        color: $color-text-primary;
+        opacity: .3;
+        outline: none;
+        &:hover {opacity: 1;}
+      }
+    }
+    .modal-body {
+      padding: rem-calc(24);
+    }
+    .modal-footer {
+      padding: rem-calc(0 24 24 24);
+      border-top: 0;
     }
   }
 }

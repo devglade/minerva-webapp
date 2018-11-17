@@ -13,6 +13,12 @@
 
     <ul class="navbar-nav">
       <% if user_signed_in? %>
+        <% if controller_name == 'spaces' %>
+          <li class="nav-item">
+            <%= link_to '새로운 공간 생성', new_space_path, class: 'btn btn-sm btn-primary btn-space', remote: true %>
+          </li>
+        <% end %>
+
         <li class="nav-item">
           <%= link_to '사이트 소개', about_url, class: 'btn btn-sm btn-default' %>
         </li>

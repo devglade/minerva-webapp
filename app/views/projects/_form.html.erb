@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-small">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="retrospectTitle">Retrospect</h5>
+        <h3 class="modal-title" id="retrospectTitle">Retrospect</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,15 +10,13 @@
       <%= bootstrap_form_for [@space, @project], remote: true do |form| %>
         <div class="modal-body">
           <div class="form-group">
-            <%= form.text_field :title, class: "form-control" %>
+            <%= form.text_field :title, class: "form-control", autofocus: true, :required => true %>
           </div>
 
           <div class="form-group">
             <%= form.text_area :description, class: "form-control" %>
           </div>
-        </div>
 
-        <div class="modal-footer">
           <div class="form-group">
             <%= form.submit class: "btn btn-primary btn-block" %>
           </div>
