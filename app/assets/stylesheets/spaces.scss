@@ -35,11 +35,13 @@
     > a * {@include transition();}
 
     .space-top {
+      @include transform(translateY(rem-calc(-16)));
       padding: rem-calc(16);
+      opacity: 0;
       font-size: 0;
-      background-color: rgba(20,20,60,.0);
-      box-shadow: rem-calc(0 1) transparent;
-      color: transparent;
+      background-color: white;
+      color: $blue-grey-200;
+      box-shadow: rem-calc(0 1) rgba(20,20,60,.04);
 
       h6 {
         text-transform: uppercase;
@@ -64,6 +66,9 @@
     }
 
     .dropdown {
+      @include transition();
+      @include transform(translateY(rem-calc(-16)));
+      opacity: 0;
       position: absolute;
       top: rem-calc(16);
       right: rem-calc(16);
@@ -93,34 +98,66 @@
               rem-calc(24 100 56 -32) rgba(50, 50, 110, 0.06),
               rem-calc(160 160 190 -50) rgba(50, 50, 110, 0.14),
               rem-calc(0 0 40) rgba(50,50,110,0.04);
-      .space-top {
-        background-color: white;
-        box-shadow: rem-calc(0 1) rgba(20,20,60,.04);
-        color: $blue-grey-200;
+      .space-top, .dropdown {
+        @include transform(translateY(0));
+        opacity: 1;
       }
     }
 
-    &:nth-last-child(5) {
+    &:nth-last-child(2n) {
+      background: asset_url('bg-space-1.png') no-repeat center;
+      background-size: cover;
+      .space-body .title {
+        color: white;
+      }
+    }
+
+    &:nth-last-child(3n) {
+      background: asset_url('bg-space-2.png') no-repeat center;
+      background-size: cover;
+      .space-body .title {
+        color: $green-700;
+      }
+    }
+
+    &:nth-last-child(4n) {
+      background: asset_url('bg-space-3.png') repeat center bottom;
+      background-size: cover;
+      .space-body .title {
+        color: white;
+      }
+    }
+
+    &:nth-last-child(5n) {
+      background: asset_url('bg-space-4.png') no-repeat bottom;
+      background-size: cover;
+      .space-body .title {
+        color: white;
+      }
+    }
+
+    &:nth-last-child(6n) {
       background: asset_url('bg-space-5.png') no-repeat bottom;
       background-size: cover;
-      .space-body .title {color: white;}
+      .space-body .title {
+        color: white;
+      }
     }
 
-    &:nth-last-child(4) {
-      background: asset_url('bg-space-6.png') repeat center;
+    &:nth-last-child(7n) {
+      background: asset_url('bg-space-6.png') center;
       background-size: rem-calc(640) auto;
-      .space-body .title {color: $green-700;}
+      .space-body .title {
+        color: $light-blue-500;
+      }
     }
 
-    &:nth-last-child(3) {
-      background: asset_url('bg-space-7.png') no-repeat center;
-      background-size: cover;
-      .space-body .title {color: $green-900;}
-    }
-
-    &:nth-last-child(2) {
-      background: asset_url('bg-space-1.png') center;
-      .space-body .title {color: $deep-purple-700;}
+    &:nth-last-child(8n) {
+      background: asset_url('bg-space-7.png') center;
+      background-size: rem-calc(640) auto;
+      .space-body .title {
+        color: $purple-500;
+      }
     }
 
   }

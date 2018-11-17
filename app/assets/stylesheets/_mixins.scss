@@ -52,7 +52,7 @@
   line-height: 28px;
 }
 
-@mixin transition($transition-duration:.06s, $transition-property:all, $transition-timing-function:ease-in-out, $transition-delay:initial) {
+@mixin transition($transition-duration:.2s, $transition-property:all, $transition-timing-function:ease-in-out, $transition-delay:initial) {
   transition-duration: $transition-duration;
   transition-property: $transition-property;
   transition-timing-function: $transition-timing-function;
@@ -97,4 +97,12 @@
   rem-calc(0 64 56 -16) rgba(20, 20, 84, .03),
   rem-calc(20 40 48 -8) rgba(20, 20, 84, .02),
   rem-calc(-20 40 48 -8) rgba(20, 20, 84, .02);
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transform: $value;
 }
