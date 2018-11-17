@@ -1,7 +1,15 @@
 <li class="list-space-item <% if current_user.id == space.user.id %>owner<% else %>member<% end %>" id="space-<%= space.id %>">
   <%= link_to space_projects_path(space), id: "space-#{space.id}-title", class: '' do %>
     <div class="space-top">
-      <h6><%= space.name %></h6>
+      <h6>
+        <%= space.name %>
+        <% if current_user.id == space.user.id %>
+          <spqn class="ownership">owner</spqn>
+        <% else %>
+          <span class="ownership">member</span>
+        <% end %>
+      </h6>
+
     </div>
     <div class="space-body">
       <h1 class="title"><%= space.name %></h1>

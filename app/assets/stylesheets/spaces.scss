@@ -51,6 +51,15 @@
         line-height: rem-calc(24);
         font-weight: 700;
       }
+
+      .ownership {
+        @include h7;
+        margin-left: rem-calc(8);
+        padding: rem-calc(0 4 1 4);
+        border-radius: rem-calc(3);
+        border: rem-calc(2) solid $blue-grey-100;
+        font-weight: 900;
+      }
     }
 
     .space-body {
@@ -166,7 +175,6 @@
         color: $purple-500;
       }
     }
-
   }
 
   .create-space {
