@@ -18,7 +18,7 @@
     "grunt-svgstore": "^1.0.0",
     "load-grunt-tasks": "^4.0.0",
     "svg4everybody": "2.1.9",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "2.11.2"
   },
   "description": "# Getting Started",
   "version": "1.0.0",
