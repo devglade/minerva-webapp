@@ -72,7 +72,7 @@ class PostsController < ApplicationController
     else
       @post.upvote_by current_user
     end
-    broadcast_like_dislike_post(@post)
+    broadcast_upvote_downvote(@post)
   end
 
   def downvote
@@ -82,7 +82,7 @@ class PostsController < ApplicationController
     else
       @post.downvote_by current_user
     end
-    broadcast_like_dislike_post(@post)
+    broadcast_upvote_downvote(@post)
   end
 
   def move
@@ -118,8 +118,9 @@ class PostsController < ApplicationController
                                                             section_id: params[:section_id], spin_id: params[:spin_id])
   end
 
-  def broadcast_like_dislike_post(post)
-    ActionCable.server.broadcast "#{post.spin.id}_posts", {action: "like_dislike", id: "post-#{post.id}", like: "#{post.get_upvotes.size}", dislike: "#{post.get_downvotes.size}"}
+  def broadcast_upvote_downvote(post)
+    ActionCable.server.broadcast "board", {commit: 'upVoteDownVoteUpdate', payload: "{\"spin_id\":#{@spin.id},
+\"section_id\":#{@section.id},\"id\":#{post.id}, \"upvote_count\":#{post.get_upvotes.size}, \"downvote_count\":#{post.get_downvotes.size}}"}
   end
 
   def broadcast_create_post(post)
