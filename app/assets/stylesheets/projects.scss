@@ -1,109 +1,111 @@
 @import "common";
 
 .projects-index {
+  .main {
+    //background: asset_url('bg-projects') no-repeat center bottom;
+    //background-size: 60% auto;
+  }
   .footer-wrap .container {
     max-width: 100%;
   }
+}
+
+.container-projects {
+  header {
+    text-align: center;
+
+    h1 {
+      margin-top: rem-calc(40);
+      font-weight: 900;
+    }
+
+    h4 {
+      margin-top: rem-calc(16);
+      color: $blue-grey-300;
+    }
+  }
+
+  .image-wrap {
+    text-align: center;
+
+    .bg-projects {
+      margin-top: rem-calc(40);
+      width: 100%;
+      max-width: rem-calc(1600);
+    }
+  }
+
 }
 
 .list-projects {
   list-style: none;
   margin: rem-calc(16 0 0 0);
   padding: 0;
+  text-align: center;
 
   .list-item {
     $width-info: rem-calc(640);
     position: relative;
-    padding: rem-calc(40 0);
-    border-top: rem-calc(1) solid $color-border;
+    display: inline-block;
+    vertical-align: top;
+    padding: rem-calc(8);
+    max-width: rem-calc(400);
+    width: 30%;
     font-size: 0;
 
-    .left,
-    .right {
-      display: inline-block;
-      vertical-align: top;
-    }
+    &:hover {z-index: 21;}
 
-    .left {
-      padding-left: rem-calc(30);
-      width: $width-info;
+    .content {
+      $padding-content: rem-calc(40);
+      @include transition();
+      @include elevation-1;
+      position: relative;
+      display: block;
+      padding: $padding-content;
+      border-radius: rem-calc(3);
+      height: rem-calc(400);
+      text-align: left;
+      color: $color-text-primary;
+      background-color: white;
+      overflow: hidden;
 
-      > a {
-        color: $color-text-primary;
-        &:hover { .project-title {color: $color-primary;} }
-      }
-
-      .project-title {
-        @include transition();
-        font-weight: 700;
-      }
+      .project-title {@include transition();}
 
       .project-description {
-        margin: rem-calc(4 0 0 0);
-        line-height: rem-calc(24);
+        @include h5;
+        position: relative;
+        color: $color-text-secondary;
+        margin-top: rem-calc(16);
+        overflow: hidden;
+        height: rem-calc(200);
 
-        & + .project-author {margin-top: rem-calc(16);}
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: rem-calc(64);
+          /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+80&0+0,1+80 */
+          background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 80%); /* FF3.6-15 */
+          background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+        }
       }
 
       .project-author {
-        @include h7;
-        margin: rem-calc(8 0 0 0);
-        color: $color-text-secondary;
-      }
-    }
-
-    .right {
-      width: calc(100% - #{$width-info});
-      position: relative;
-      font-size: 0;
-      white-space: nowrap;
-      overflow: hidden;
-
-      .retrospective {
-        display: inline-block;
-        padding: rem-calc(12 16);
-        vertical-align: top;
-        width: rem-calc(200);
-        height: rem-calc(120);
-        border-radius: rem-calc(3);
-        background-color: $blue-grey-50;
-        color: $color-text-primary;
-        white-space: normal;
-
-        h5 {font-weight: 700;}
-        h6 {
-          @include h7;
-          margin-top: rem-calc(4);
-        }
-
-        &.add {
-          color: $color-text-secondary;
-          padding: rem-calc(48 88);
-        }
-
-        &:hover {color: $color-primary;}
-
-        & + .retrospective {margin-left: rem-calc(8);}
-
-
-      }
-
-      &:after {
-        content: '';
+        color: $blue-grey-300;
+        font-weight: 700;
         position: absolute;
-        display: block;
-        width: rem-calc(200);
-        height: rem-calc(400);
-        background-color: red;
-        top: 0;
-        right: 0;
-        pointer-events: none;
+        bottom: $padding-content;
+        left: $padding-content;
+      }
 
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbfbfc+0,fbfbfc+80&0+0,1+80 */
-        background: -moz-linear-gradient(left, rgba(251,251,252,0) 0%, rgba(251,251,252,1) 80%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(left, rgba(251,251,252,0) 0%,rgba(251,251,252,1) 80%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to right, rgba(251,251,252,0) 0%,rgba(251,251,252,1) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00fbfbfc', endColorstr='#fbfbfc',GradientType=1 ); /* IE6-9 */
+      &:hover {
+        @include elevation-2;
+        .project-title {color: $color-primary;}
       }
     }
 
@@ -111,6 +113,7 @@
       position: absolute;
       top: rem-calc(16);
       right: rem-calc(16);
+      z-index: 22;
 
       > a {
         display: inline-block;
@@ -118,7 +121,6 @@
         padding: rem-calc(8);
         color: $color-text-secondary;
         border-radius: rem-calc(100);
-        background-color: $color-background;
 
         &:hover {
           color: $color-primary;
@@ -126,5 +128,25 @@
         }
       }
     }
+
+    &.create-project .content {
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $blue-grey-25;
+      color: $blue-grey-100;
+
+      i {
+        font-size: rem-calc(48);
+        line-height: rem-calc(48);
+      }
+
+      &:hover {
+        color: $color-primary;
+        background-color: $blue-grey-50;
+      }
+    }
   }
 }
+

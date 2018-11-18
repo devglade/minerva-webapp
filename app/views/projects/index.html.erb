@@ -1,8 +1,23 @@
 <%= javascript_tag "MakeRetrospectChannel(#{@space.id})" %>
 
 <div class="container-fluid container-projects" data-space="<%= @space.id %>">
-  <%#= link_to '프로젝트 명이나 팀이름을 등록하세요', new_space_project_path, remote: true, class: 'btn btn-primary' %>
+  <header>
+    <h1>팀을 등록하세요</h1>
+    <h4>
+      하나의 공간에 여러 팀들이 회고를 진행할 수 있습니다.
+    </h4>
+  </header>
+
   <ul class="list-projects">
     <%= render partial: 'project', collection: @projects %>
+
+    <li class="list-item create-project">
+      <%= link_to new_space_project_path, remote: true, class: 'content' do %>
+        <i class="material-icons">add</i>
+      <% end %>
+    </li>
   </ul>
+  <div class="image-wrap">
+    <%= image_tag("bg-projects", class: "bg-projects", alt: "배경이미지") %>
+  </div>
 </div>

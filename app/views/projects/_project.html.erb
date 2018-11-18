@@ -1,29 +1,11 @@
 <li id="project-<%= project.id %>" class="list-item">
-  <div class="left">
-    <%= link_to space_project_spins_path(space_id: project.space, project_id: project), method: :get do %>
-      <h4 class="project-title"><%= project.title %></h4>
-      <% if project.description.present? %>
-        <p class="project-description"><%= project.description %></p>
-      <% end %>
-      <h6 class="project-author"><%= project.user.name.truncate(8) %> (<%= project.user.email %>)</h6>
+  <%= link_to space_project_spins_path(space_id: project.space, project_id: project), class: 'content', method: :get do %>
+    <h2 class="project-title"><%= project.title %></h2>
+    <% if project.description.present? %>
+      <p class="project-description"><%= project.description %></p>
     <% end %>
-  </div>
-
-  <div class="right">
-    <a href="#" class="retrospective add">
-      <!-- TODO: tooltip을 추가해주세요. '팀 등록'-->
-      <i class="material-icons">add</i>
-    </a>
-
-    <%= 8.times do %>
-    <!-- TODO: 최신 스핀들이 있고, 클릭시 스핀으로 바로 이동하게 해주세요.-->
-    <a href="#" class="retrospective">
-      <h5>18년 11월 18일 회고</h5>
-      <h6>스프린트 3차</h6>
-    </a>
-    <% end %>
-
-  </div>
+    <h6 class="project-author"><%= project.user.name.truncate(8) %> (<%= project.user.email %>)</h6>
+  <% end %>
 
   <div class="dropdown">
     <a href="" id="dropdown_project" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
