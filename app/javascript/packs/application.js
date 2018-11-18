@@ -80,7 +80,7 @@ window.store = new Vuex.Store({
 });
 document.addEventListener("turbolinks:load", function () {
     var element = document.querySelector("#boards")
-    if (element !== undefined) {
+    if (element != null) {
         window.store.state.sections = JSON.parse(element.dataset.sections)
         const app = new Vue({
             el: element,
