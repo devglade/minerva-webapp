@@ -17,8 +17,9 @@
                     </div>
                 </div>
                 <div class="btn-group">
-                    <i @click="like" class="material-icons">thumb_up</i>{{post.upvote_count}}
-                    <i @click="dislike" class="material-icons">thumb_down</i>{{post.downvote_count}}
+                    <i @click="like" class="material-icons">thumb_up</i><span v-bind:id="`upvote-post-` + post.id">{{post.upvote_count}}</span>
+                    <i @click="dislike" class="material-icons">thumb_down</i><span
+                        v-bind:id="`downvote-post-` + post.id">{{post.downvote_count}}</span>
                 </div>
             </div>
         </div>
@@ -113,9 +114,6 @@
                     url: window.location.href + `/sections/${this.section.id}/posts/${this.post.id}/like`,
                     type: "PUT",
                     dataType: "json",
-                    success: () => {
-                        console.log("SUCCESS")
-                    }
                 })
             },
             dislike: function () {
@@ -124,9 +122,6 @@
                     url: window.location.href + `/sections/${this.section.id}/posts/${this.post.id}/dislike`,
                     type: "PUT",
                     dataType: "json",
-                    success: () => {
-                        console.log("SUCCESS")
-                    }
                 })
             }
         }

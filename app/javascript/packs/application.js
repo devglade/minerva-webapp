@@ -70,13 +70,17 @@ window.store = new Vuex.Store({
             const section_index = state.sections.findIndex(item => item.id === data.section_id);
             const post_index = state.sections[section_index].posts.findIndex(item => item.id === data.id)
             state.sections[section_index].posts.splice(post_index, 1)
-        }
+        },
 
+        upVoteDownVoteUpdate(state, data) {
+            $('#upvote-post-' + data.id).html(data.upvote_count)
+            $('#downvote-post-' + data.id).html(data.downvote_count)
+        }
     }
 });
 document.addEventListener("turbolinks:load", function () {
     var element = document.querySelector("#boards")
-    if (element !== undefined) {
+    if (element != null) {
         window.store.state.sections = JSON.parse(element.dataset.sections)
         const app = new Vue({
             el: element,
