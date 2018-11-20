@@ -293,6 +293,21 @@ body /*bootstrap theme*/ {
   }
 }
 
+.header {
+  text-align: center;
+  padding: rem-calc(40 0);
+
+  .headline {
+    @include h2;
+    font-weight: 900;
+  }
+
+  .sub-headline {
+    margin-top: rem-calc(16);
+    color: $blue-grey-300;
+  }
+}
+
 .footer-wrap {
   height: $height-footer;
   margin-top: $margin-footer;

@@ -11,29 +11,6 @@
 }
 
 .container-projects {
-  header {
-    text-align: center;
-
-    h1 {
-      margin-top: rem-calc(40);
-      font-weight: 900;
-    }
-
-    h4 {
-      margin-top: rem-calc(16);
-      color: $blue-grey-300;
-    }
-  }
-
-  .image-wrap {
-    text-align: center;
-
-    .bg-projects {
-      margin-top: rem-calc(40);
-      width: 100%;
-      max-width: rem-calc(1600);
-    }
-  }
 
 }
 
@@ -45,25 +22,28 @@
 
   .list-item {
     $width-info: rem-calc(640);
+    $padding-content: rem-calc(40);
+    $height-content: rem-calc(360);
     position: relative;
     display: inline-block;
     vertical-align: top;
-    padding: rem-calc(8);
+    padding: rem-calc(16);
     max-width: rem-calc(400);
     width: 30%;
     font-size: 0;
 
-    &:hover {z-index: 21;}
+    &:hover {
+      z-index: 21;
+    }
 
     .content {
-      $padding-content: rem-calc(40);
       @include transition();
       @include elevation-1;
       position: relative;
       display: block;
       padding: $padding-content;
       border-radius: rem-calc(3);
-      height: rem-calc(400);
+      height: $height-content;
       text-align: left;
       color: $color-text-primary;
       background-color: white;
@@ -111,8 +91,8 @@
 
     .dropdown {
       position: absolute;
-      top: rem-calc(16);
-      right: rem-calc(16);
+      top: rem-calc(24);
+      right: rem-calc(24);
       z-index: 22;
 
       > a {
