@@ -1,4 +1,4 @@
-<li class="list-space-item <% if current_user.id == space.user.id %>owner<% else %>member<% end %>" id="space-<%= space.id %>">
+<li class="list-space-item <% if current_user.id == space.user.id %>owner<% else %>member<% end %> " id="space-<%= space.id %>">
   <%= link_to space_projects_path(space), id: "space-#{space.id}-title", class: 'content' do %>
     <h3 class="title">
       <% if current_user.id == space.user.id %>

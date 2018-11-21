@@ -3,12 +3,12 @@
     <%= link_to root_url, class:'navbar-brand' do %>
       <h4><i class="material-icons">arrow_back</i> 뒤로</h4>
     <% end %>
-    <h3 class="header-title"><%= @space.name %></h3>
+    <h3 class="header-title"><%= @space.name %><span>의 팀 목록</span></h3>
   <% elsif controller_name == 'spins' %>
     <%= link_to space_projects_url, class:'navbar-brand' do %>
       <h4><i class="material-icons">arrow_back</i> 팀 목록</h4>
     <% end %>
-    <h3 class="header-title"><%= @project.title %></h3>
+    <h3 class="header-title"><%= @project.title %><span>의 회고 목록</span></h3>
   <% else %>
     <%= link_to root_url, class:'navbar-brand' do %>
       <%= image_tag("bi-nav-head.png", class: "bi-nav-head", size: "58x30", alt: "로고이미지") %>

@@ -179,12 +179,12 @@ body /*bootstrap theme*/ {
     .dropdown-item {
       @include h6;
       font-weight: 500;
-      padding: rem-calc(4 12);
+      padding: rem-calc(4 12 6 12);
       color: white;
 
       &:hover, &:focus, &:active {
         color: white;
-        background-color: $deep-purple-a700;
+        background-color: $color-primary-hover;
       }
     }
   }
@@ -309,7 +309,7 @@ body /*bootstrap theme*/ {
   padding: rem-calc(40 0);
 
   .headline {
-    @include h2;
+    @include h1;
     font-weight: 900;
   }
 
@@ -352,10 +352,10 @@ body /*bootstrap theme*/ {
 
   > a {
     display: inline-block;
-    vertical-align: top;
     padding: rem-calc(8);
-    color: $color-text-secondary;
     border-radius: rem-calc(100);
+    vertical-align: top;
+    color: $color-text-secondary;
 
     &:hover {
       color: $color-primary;

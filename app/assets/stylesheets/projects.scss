@@ -1,10 +1,6 @@
 @import "common";
 
 .projects-index {
-  .main {
-    //background: asset_url('bg-projects') no-repeat center bottom;
-    //background-size: 60% auto;
-  }
   .footer-wrap .container {
     max-width: 100%;
   }
@@ -16,8 +12,8 @@
 
 .list-projects {
   list-style: none;
-  margin: rem-calc(16 0 0 0);
-  padding: 0;
+  margin: 0;
+  padding: rem-calc(40 0 0 0);
   text-align: center;
 
   .list-item {
@@ -88,9 +84,7 @@
       color: $blue-grey-100;
       background-color: $blue-grey-25;
 
-      &:not(:hover) {
-        box-shadow: none;
-      }
+      &:not(:hover) {box-shadow: none;}
 
       i {
         font-size: rem-calc(48);

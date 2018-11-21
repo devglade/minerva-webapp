@@ -1,11 +1,16 @@
 @import "common";
 
+.container-space {
+  //padding-top: rem-calc(40);
+  //max-width: rem-calc(1800);
+}
+
 .btn-space {margin-right: rem-calc(8);}
 
 .list-spaces {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: rem-calc(40 0 0 0);
 
   .list-space-item {
     position: relative;
@@ -76,12 +81,12 @@
         @include elevation-2;
         padding: rem-calc(8);
         border-radius: rem-calc(100);
-        color: $blue-grey-200;
-        background-color: white;
+        color: white;
+        background-color: $color-text-primary;
 
         &:hover {
           @include elevation-3;
-          color: $color-primary;
+          color: $color-text-secondary;
         }
       }
 
@@ -92,13 +97,14 @@
     }
 
     &:hover {
+      z-index: 11;
       .dropdown {
         @include transform(translate(rem-calc(-16), 0));
         opacity: 100;
       }
     }
 
-    &:nth-child(n+2) .content {margin-top: rem-calc(80);}
+    &:nth-child(n+2) .content {margin-top: rem-calc(64);}
 
     &:nth-last-child(2n) .content {
       //건물

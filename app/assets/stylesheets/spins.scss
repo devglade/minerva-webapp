@@ -110,6 +110,26 @@
         transition-delay: .2s;
       }
     }
+
+    &.create-spin .spin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $blue-grey-100;
+      background: $blue-grey-25;
+
+      i {
+        font-size: rem-calc(48);
+        line-height: rem-calc(48);
+      }
+
+      &:not(:hover) {box-shadow: none;}
+
+      &:hover {
+        color: $color-primary;
+        background-color: $blue-grey-50;
+      }
+    }
   }
 }
 
