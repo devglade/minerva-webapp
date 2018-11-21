@@ -22,8 +22,8 @@
 
   .list-item {
     $width-info: rem-calc(640);
-    $padding-content: rem-calc(40);
-    $height-content: rem-calc(360);
+    $padding-content: rem-calc(32);
+    $height-content: rem-calc(280);
     position: relative;
     display: inline-block;
     vertical-align: top;
@@ -34,7 +34,6 @@
 
     .content {
       @include matrix-3d;
-
       position: relative;
       display: block;
       padding: $padding-content;
@@ -42,8 +41,6 @@
       text-align: left;
       color: $color-text-primary;
       background-color: white;
-
-
 
       .project-title {@include transition();}
 
@@ -53,7 +50,7 @@
         color: $color-text-secondary;
         margin-top: rem-calc(16);
         overflow: hidden;
-        height: rem-calc(200);
+        height: rem-calc(124);
 
         &:after {
           content: '';
@@ -84,33 +81,16 @@
       }
     }
 
-    .dropdown {
-      position: absolute;
-      top: rem-calc(24);
-      right: rem-calc(24);
-      z-index: 22;
-
-      > a {
-        display: inline-block;
-        vertical-align: top;
-        padding: rem-calc(8);
-        color: $color-text-secondary;
-        border-radius: rem-calc(100);
-
-        &:hover {
-          color: $color-primary;
-          background-color: $blue-grey-50;
-        }
-      }
-    }
-
     &.create-project .content {
-      box-shadow: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $blue-grey-25;
       color: $blue-grey-100;
+      background-color: $blue-grey-25;
+
+      &:not(:hover) {
+        box-shadow: none;
+      }
 
       i {
         font-size: rem-calc(48);

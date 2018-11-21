@@ -25,7 +25,7 @@
         position: absolute;
         top: 0;
         left: rem-calc(40);
-        min-width: rem-calc(320);
+        width: rem-calc(320);
         display: inline-block;
         margin-top: rem-calc(-1);
         padding: rem-calc(24 24 28 24);
@@ -33,7 +33,6 @@
         border-bottom-right-radius: rem-calc(3);
         vertical-align: middle;
         text-transform: uppercase;
-        line-height: rem-calc(24);
         font-weight: 900;
         text-align: left;
         color: $color-text-primary;
@@ -41,9 +40,10 @@
 
         .ownership {
           @include h7;
-          transform: translateY(rem-calc(-2));
+          margin-bottom: rem-calc(12);
           padding: rem-calc(0 4 1 4);
           border-radius: rem-calc(3);
+          display: inline-block;
           border: rem-calc(2) solid $color-primary;
           color: $color-primary;
           vertical-align: bottom;

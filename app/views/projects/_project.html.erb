@@ -1,13 +1,17 @@
 <li id="project-<%= project.id %>" class="list-item">
   <%= link_to space_project_spins_path(space_id: project.space, project_id: project), class: 'content', method: :get do %>
+    <div class="decoration-pattern"></div>
     <h3 class="project-title"><%= project.title %></h3>
     <% if project.description.present? %>
       <p class="project-description"><%= project.description %></p>
     <% end %>
-    <h6 class="project-author"><%= project.user.name.truncate(8) %> (<%= project.user.email %>)</h6>
+    <h6 class="project-author">
+      <%= project.user.name.truncate(8) %><br>
+      <%= project.user.email %>
+    </h6>
   <% end %>
 
-  <div class="dropdown">
+  <div class="dropdown btn-dropdown">
     <a href="" id="dropdown_project" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       <i class="material-icons">more_vert</i>
     </a>

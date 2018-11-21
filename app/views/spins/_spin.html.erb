@@ -1,27 +1,28 @@
-<div class="card spin" id="spin-<%= spin.id %>">
-  <% if spin.status == "closed" %>
-    <img class="card-img-top" src="<%= asset_path('CLOSED.JPG') %>" alt="CLOSED">
-  <% else %>
-    <img class="card-img-top" src="<%= asset_path('OPENED.JPG') %>" alt="OPENED">
-  <% end %>
+<li class="list-spin-item">
+  <%= link_to space_project_spin_path(project_id: spin.project, id: spin), id: "spin-#{spin.id}", class: 'spin' do %>
+    <% if spin.status == "closed" %>
+    <% else %>
+    <% end %>
 
-  <div class="card-body">
-    <h4><%= link_to spin.title, space_project_spin_path(project_id: spin.project, id: spin), id: "spin-#{spin.id}-title", class: 'card-title' %></h4>
+    <h2 class="spin-title"><%= spin.title %></h2>
     <p id="spin-<%= spin.id %>-summary" class="card-text"><%= spin.summary %></p>
-  </div>
-
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
+  <% end %>
+  <div class="dropdown btn-dropdown">
+    <a href="" id="dropdown_project" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <i class="material-icons">more_vert</i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
       <% if current_user.id == spin.user.id %>
         <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
-          <%= link_to edit_space_project_spin_path(project_id: spin.project, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' do %>
-            <i class="material-icons">edit</i>
-          <% end %>
-          <%= link_to space_project_spin_path(project_id: spin.project, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' do %>
-            <i class="material-icons">delete</i>
-          <% end %>
+          <%= link_to '스핀 수정', edit_space_project_spin_path(project_id: spin.project, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' %>
+          <%= link_to '스핀 삭제', space_project_spin_path(project_id: spin.project, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' %>
         </div>
       <% end %>
-    </li>
-  </ul>
-</div>
+    </div>
+  </div>
+  <div class="span-backdrop-1"></div>
+  <div class="span-backdrop-2"></div>
+  <div class="span-backdrop-3"></div>
+  <div class="span-backdrop-4"></div>
+
+</li>

@@ -15,6 +15,8 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800&subset=korean');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900');
 @import url(//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css);
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfkpJRUw0RGNraDFnVzRFdjhaQnRFQ3BzZ00tRFZobGlKcmprb1hiSUFvZkE/nanumbarunpenr.css"); @import url("https://googledrive.com/host/0BxmAw3HA4YGCfnE1U2tYVjN2UkVLWnEzaVdsWDRUZ3VFbmpJckF3UG56WkpLSUxKMXFaTlU/nanumbarunpenr.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfkpJRUw0RGNraDFnVzRFdjhaQnRFQ3BzZ00tRFZobGlKcmprb1hiSUFvZkE/nanumbarunpenr.css"); @import url("https://googledrive.com/host/0BxmAw3HA4YGCfnE1U2tYVjN2UkVLWnEzaVdsWDRUZ3VFbmpJckF3UG56WkpLSUxKMXFaTlU/nanumbarunpenb.css");
 
 body /*bootstrap theme*/ {
   @include font-sans-serif;
@@ -274,6 +276,15 @@ body /*bootstrap theme*/ {
     }
   }
 
+  .header-title {
+    @include transform(translateX(-50%));
+    font-weight: 900;
+    position: absolute;
+    top: rem-calc(11);
+    left: 50%;
+
+  }
+
   .form-search {
     margin-right: 16px;
     padding-left: rem-calc(40);
@@ -331,5 +342,25 @@ body /*bootstrap theme*/ {
 
   a {text-decoration: none;}
   a:hover {color: $color-primary;}
+}
+
+.btn-dropdown {
+  position: absolute;
+  top: rem-calc(24);
+  right: rem-calc(24);
+  z-index: 22;
+
+  > a {
+    display: inline-block;
+    vertical-align: top;
+    padding: rem-calc(8);
+    color: $color-text-secondary;
+    border-radius: rem-calc(100);
+
+    &:hover {
+      color: $color-primary;
+      background-color: rgba(50,50,80,.08);
+    }
+  }
 }
 

@@ -1,9 +1,111 @@
-// Place all the styles related to the Spins controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "common";
 
-.spin {
-  min-height: 150px;
-  width: 18rem;
-  margin: 10px;
+.spins-index {
 }
+
+.list-spins {
+  $spin-size: rem-calc(320);
+  list-style: none;
+  padding: 0;
+  margin: rem-calc(80 0 0 0);
+  font-size: 0;
+
+  .list-spin-item {
+    position: relative;
+    padding: rem-calc(40);
+    display: inline-block;
+    vertical-align: top;
+
+    .spin {
+      @include elevation-1;
+      position: relative;
+      display: block;
+      width: $spin-size;
+      height: $spin-size;
+      padding: rem-calc(32);
+      background-image: linear-gradient(0deg, $amber-500 1.25%, $amber-300 1.25%, $amber-300 50%, $amber-500 50%, $amber-500 51.25%, $amber-300 51.25%, $amber-300 100%);
+      background-size: 80.00px 80.00px;
+
+      .spin-title {
+        font-weight: 900;
+        font-family: nanumbarunpen, 'Noto Sans KR', malgun gothic, "돋움", Dotum, sans-serif;
+        color: $color-text-primary;
+      }
+    }
+
+    .btn-dropdown {
+      top: rem-calc(48);
+      right: rem-calc(48);
+
+      > a {color: $color-text-primary;}
+    }
+
+    .span-backdrop-1,
+    .span-backdrop-2,
+    .span-backdrop-3,
+    .span-backdrop-4 {
+      @include transition();
+      @include elevation-0;
+      position: absolute;
+      width: $spin-size;
+      height: $spin-size;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      transform: rotate(0deg) translate(40px, 40px);
+    }
+
+    .span-backdrop-1 {
+      background-image: linear-gradient(0deg, $light-blue-700 1.25%, $light-blue-500 1.25%, $light-blue-500 50%, $light-blue-700 50%, $light-blue-700 51.25%, $light-blue-500 51.25%, $light-blue-500 100%);
+      background-size: 80.00px 80.00px;
+      z-index: -4;
+    }
+    .span-backdrop-2 {
+      background-image: linear-gradient(0deg, $pink-500 1.25%, $pink-300 1.25%, $pink-300 50%, $pink-500 50%, $pink-500 51.25%, $pink-300 51.25%, $pink-300 100%);
+      background-size: 80.00px 80.00px;
+      z-index: -3;
+    }
+    .span-backdrop-3 {
+      background-image: linear-gradient(0deg, $teal-400 1.25%, $teal-200 1.25%, $teal-200 50%, $teal-400 50%, $teal-400 51.25%, $teal-200 51.25%, $teal-200 100%);
+      background-size: 80.00px 80.00px;
+      z-index: -2;
+    }
+    .span-backdrop-4 {
+      background-image: linear-gradient(0deg, $orange-700 1.25%, $orange-500 1.25%, $orange-500 50%, $orange-700 50%, $orange-700 51.25%, $orange-500 51.25%, $orange-500 100%);
+      background-size: 80.00px 80.00px;
+      z-index: -4;
+    }
+
+    &:hover {
+      z-index: 11;
+      .span-backdrop-1 {
+        @include elevation-4;
+        z-index: -4;
+        transform: rotate(-10deg) translate(47px, 45px);
+        transition-delay: .6s;
+      }
+
+      .span-backdrop-2 {
+        @include elevation-1;
+        z-index: -3;
+        transform: rotate(-4deg) translate(42px, 42px);
+        transition-delay: .4s;
+      }
+
+      .span-backdrop-3 {
+        @include elevation-1;
+        z-index: -2;
+        transform: rotate(4deg) translate(40px, 40px);
+        transition-delay: .1s;
+      }
+
+      .span-backdrop-4 {
+        @include elevation-1;
+        z-index: -4;
+        transform: rotate(-8deg) translate(36px, 44px);
+        transition-delay: .2s;
+      }
+    }
+  }
+}
+

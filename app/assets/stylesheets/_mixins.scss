@@ -119,17 +119,19 @@
   &:before {
     @include transition();
     content: '';
-    width: 100%;
-    height: rem-calc(40);
-    background-color: $blue-grey-100;
-    position: absolute;
-    bottom: rem-calc(-23);
-    left: 0;
     display: block;
+    position: absolute;
+    height: rem-calc(40);
+    bottom: rem-calc(-23);
+    width: 100%;
+    left: 0;
     opacity: 0;
+    background-color: $blue-grey-100;
     transform: matrix3d(0.98, 0, 0, 0, 0, 0, 0.64, 0.001, 0, -0.64, 0.77, 0, 0, 0, 0, 1);
     -webkit-transform: matrix3d(0.98, 0, 0, 0, 0, 0, 0.64, 0.001, 0, -0.64, 0.77, 0, 0, 0, 0, 1);
   }
+
+  &:before {z-index: 1;}
 
   &:hover {
     @include elevation-4;
@@ -146,7 +148,6 @@
     }
 
     &:before {
-      z-index: 1;
       background-color: rgba(20,20,50,.24);
     }
   }
