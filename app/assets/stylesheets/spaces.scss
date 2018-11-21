@@ -8,124 +8,105 @@
   padding: 0;
 
   .list-space-item {
-    @include transition();
-    @include elevation-1;
     position: relative;
-    margin-top: rem-calc(64);
-    //border-radius: rem-calc(3);
-    width: 100%;
-    background-color: white;
 
     > a * {@include transition();}
 
-    .space-top {
-      @include transform(translateY(rem-calc(-16)));
-      padding: rem-calc(16);
-      opacity: 0;
-      font-size: 0;
+    .content {
+      @include matrix-3d;
+      display: block;
+      margin-top: rem-calc(64);
+      padding: rem-calc(144 40);
+      width: 100%;
       background-color: white;
-      color: $blue-grey-200;
-      box-shadow: rem-calc(0 1) rgba(20,20,60,.04);
-
-      h6 {
-        text-transform: uppercase;
-        margin-left: rem-calc(4);
-        display: inline-block;
-        vertical-align: middle;
-        line-height: rem-calc(24);
-        font-weight: 700;
-      }
-
-      .ownership {
-        @include h7;
-        margin-left: rem-calc(8);
-        padding: rem-calc(0 4 1 4);
-        border-radius: rem-calc(3);
-        border: rem-calc(2) solid $blue-grey-100;
-        font-weight: 900;
-      }
-    }
-
-    .space-body {
-      padding: rem-calc(40 40 120 40);
       text-align: center;
 
       .title {
-        font-size: rem-calc(96);
-        line-height: rem-calc(96);
-        font-weight: 100;
+        @include elevation-1;
+        position: absolute;
+        top: 0;
+        left: rem-calc(40);
+        min-width: rem-calc(320);
+        display: inline-block;
+        margin-left: rem-calc(4);
+        padding: rem-calc(24);
+        border-bottom-left-radius: rem-calc(3);
+        border-bottom-right-radius: rem-calc(3);
+        vertical-align: middle;
+        text-transform: uppercase;
+        line-height: rem-calc(24);
+        font-weight: 900;
+        text-align: left;
         color: $color-text-primary;
+        background-color: white;
+
+        .ownership {
+          @include h7;
+          transform: translateY(rem-calc(-2));
+          padding: rem-calc(0 4 1 4);
+          border-radius: rem-calc(3);
+          border: rem-calc(2) solid $color-primary;
+          color: $color-primary;
+          vertical-align: bottom;
+          font-weight: 900;
+        }
+      }
+
+      &.create-space {
+        .title {
+          @include elevation-0;
+          background-color: $color-primary;
+          color: white;
+        }
+
+        h1 {
+          font-size: rem-calc(100);
+          line-height: 0;
+          font-weight: 100;
+          color: $blue-grey-100;
+        }
+
+        &:hover h1 {
+          color: $color-primary;
+        }
       }
     }
 
     .dropdown {
       @include transition();
-      @include transform(translateY(rem-calc(-16)));
+      @include transform(translate(rem-calc(-16)));
       opacity: 0;
       position: absolute;
       top: rem-calc(16);
       right: rem-calc(16);
 
       > a {
+        @include elevation-2;
+        padding: rem-calc(8);
+        border-radius: rem-calc(100);
         color: $blue-grey-200;
+        background-color: white;
+
         &:hover {
+          @include elevation-3;
           color: $color-primary;
-          background-color: $blue-grey-50;
-          border-radius: rem-calc(3);
         }
       }
-      
+
       a, i {
         display: inline-block;
         vertical-align: top !important;
       }
     }
 
-    &:after,
-    &:before {
-      @include transition();
-      content: '';
-      width: 100%;
-      height: rem-calc(40);
-      background-color: $blue-grey-200;
-      position: absolute;
-      bottom: rem-calc(-23);
-      left: 0;
-      display: block;
-      opacity: 0;
-      transform: matrix3d(0.98, 0, 0, 0, 0, 0, 0.64, 0.001, 0, -0.64, 0.77, 0, 0, 0, 0, 1);
-      -webkit-transform: matrix3d(0.98, 0, 0, 0, 0, 0, 0.64, 0.001, 0, -0.64, 0.77, 0, 0, 0, 0, 1);
-    }
-
-
-
     &:hover {
-      @include elevation-4;
-      z-index: 13;
-      transform: matrix3d(1, 0, 0, 0, 0, 0.98, 0, -0.0002, 0, 0, 1, 0, 0, -20, 0, 1);
-      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 0.98, 0, -0.0002, 0, 0, 1, 0, 0, -20, 0, 1);
-
-      .space-top, .dropdown {
-        @include transform(translateY(0));
-        opacity: 1;
+      .dropdown {
+        @include transform(translate(rem-calc(-16), 0));
+        opacity: 100;
       }
-
-      &:after,
-      &:before {
-        bottom: rem-calc(-29);
-        opacity: 1;
-        transform: matrix3d(0.98, 0, 0, 0, 0, 0.48, 0, 0.001, 0, 0, 0.77, 0, 0, 0, 0, 1);
-        -webkit-transform: matrix3d(0.98, 0, 0, 0, 0, 0.48, 0, 0.001, 0, 0, 0.77, 0, 0, 0, 0, 1);
-      }
-
-      &:before {
-        z-index: 1;
-        background-color: rgba(20,20,50,.24);
-      }
-
     }
 
-    &:nth-last-child(2n) {
+    &:nth-last-child(2n) .content {
       //건물
       background: asset_url('bg-space-1.png') no-repeat center;
       background-size: cover;
@@ -139,7 +120,7 @@
       }
     }
 
-    &:nth-last-child(3n) {
+    &:nth-last-child(3n) .content {
       //나뭇닢
       background: asset_url('bg-space-2.png') no-repeat center;
       background-size: cover;
@@ -152,7 +133,7 @@
       }
     }
 
-    &:nth-last-child(4n) {
+    &:nth-last-child(4n) .content {
       //겨울광장
       background: asset_url('bg-space-3.png') repeat center bottom;
       background-size: cover;
@@ -166,7 +147,7 @@
       }
     }
 
-    &:nth-last-child(5n) {
+    &:nth-last-child(5n) .content {
       //걸파워
       background: asset_url('bg-space-4.png') no-repeat bottom;
       background-size: cover;
@@ -181,7 +162,7 @@
       }
     }
 
-    &:nth-last-child(6n) {
+    &:nth-last-child(6n) .content {
       //가을언덕
       background: asset_url('bg-space-5.png') no-repeat bottom;
       background-size: cover;
@@ -195,7 +176,7 @@
       }
     }
 
-    &:nth-last-child(7n) {
+    &:nth-last-child(7n) .content {
       //요가
       background: asset_url('bg-space-6.png') center;
       background-size: rem-calc(640) auto;
@@ -209,7 +190,7 @@
       }
     }
 
-    &:nth-last-child(8n) {
+    &:nth-last-child(8n) .content {
       //스키
       background: asset_url('bg-space-7.png') center;
       background-size: rem-calc(640) auto;
@@ -222,11 +203,5 @@
         color: $purple-500;
       }
     }
-  }
-
-  .create-space {
-    .space-top .material-icons {float: right;}
-    .space-body .title {color: $blue-grey-100;}
-    &:hover {.space-body .title {color: $color-primary;}}
   }
 }

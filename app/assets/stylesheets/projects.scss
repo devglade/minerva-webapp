@@ -32,22 +32,18 @@
     width: 30%;
     font-size: 0;
 
-    &:hover {
-      z-index: 21;
-    }
-
     .content {
-      @include transition();
-      @include elevation-1;
+      @include matrix-3d;
+
       position: relative;
       display: block;
       padding: $padding-content;
-      border-radius: rem-calc(3);
       height: $height-content;
       text-align: left;
       color: $color-text-primary;
       background-color: white;
-      overflow: hidden;
+
+
 
       .project-title {@include transition();}
 
@@ -84,7 +80,6 @@
       }
 
       &:hover {
-        @include elevation-2;
         .project-title {color: $color-primary;}
       }
     }

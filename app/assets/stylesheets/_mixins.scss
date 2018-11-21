@@ -110,3 +110,44 @@
   -o-transform: $value;
   transform: $value;
 }
+
+@mixin matrix-3d {
+  @include transition();
+  @include elevation-1;
+
+  &:after,
+  &:before {
+    @include transition();
+    content: '';
+    width: 100%;
+    height: rem-calc(40);
+    background-color: $blue-grey-100;
+    position: absolute;
+    bottom: rem-calc(-23);
+    left: 0;
+    display: block;
+    opacity: 0;
+    transform: matrix3d(0.98, 0, 0, 0, 0, 0, 0.64, 0.001, 0, -0.64, 0.77, 0, 0, 0, 0, 1);
+    -webkit-transform: matrix3d(0.98, 0, 0, 0, 0, 0, 0.64, 0.001, 0, -0.64, 0.77, 0, 0, 0, 0, 1);
+  }
+
+  &:hover {
+    @include elevation-4;
+    z-index: 21;
+    transform: matrix3d(1, 0, 0, 0, 0, 0.98, 0, -0.0002, 0, 0, 1, 0, 0, -20, 0, 1);
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 0.98, 0, -0.0002, 0, 0, 1, 0, 0, -20, 0, 1);
+
+    &:after,
+    &:before {
+      bottom: rem-calc(-29);
+      opacity: 1;
+      transform: matrix3d(0.98, 0, 0, 0, 0, 0.48, 0, 0.001, 0, 0, 0.77, 0, 0, 0, 0, 1);
+      -webkit-transform: matrix3d(0.98, 0, 0, 0, 0, 0.48, 0, 0.001, 0, 0, 0.77, 0, 0, 0, 0, 1);
+    }
+
+    &:before {
+      z-index: 1;
+      background-color: rgba(20,20,50,.24);
+    }
+  }
+}
