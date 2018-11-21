@@ -15,7 +15,6 @@
     .content {
       @include matrix-3d;
       display: block;
-      margin-top: rem-calc(64);
       padding: rem-calc(144 40);
       width: 100%;
       background-color: white;
@@ -28,8 +27,8 @@
         left: rem-calc(40);
         min-width: rem-calc(320);
         display: inline-block;
-        margin-left: rem-calc(4);
-        padding: rem-calc(24);
+        margin-top: rem-calc(-1);
+        padding: rem-calc(24 24 28 24);
         border-bottom-left-radius: rem-calc(3);
         border-bottom-right-radius: rem-calc(3);
         vertical-align: middle;
@@ -53,22 +52,15 @@
       }
 
       &.create-space {
-        .title {
-          @include elevation-0;
-          background-color: $color-primary;
-          color: white;
-        }
-
         h1 {
           font-size: rem-calc(100);
           line-height: 0;
           font-weight: 100;
           color: $blue-grey-100;
+          transform: translateY(rem-calc(-8));
         }
 
-        &:hover h1 {
-          color: $color-primary;
-        }
+        &:hover h1 {color: $color-primary;}
       }
     }
 
@@ -105,6 +97,8 @@
         opacity: 100;
       }
     }
+
+    &:nth-child(n+2) .content {margin-top: rem-calc(80);}
 
     &:nth-last-child(2n) .content {
       //건물
