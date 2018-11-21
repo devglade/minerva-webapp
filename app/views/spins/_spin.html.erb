@@ -13,13 +13,12 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
       <% if current_user.id == spin.user.id %>
-        <div class="btn-group float-right" role="group" aria-label="Spin Buttons">
-          <%= link_to '스핀 수정', edit_space_project_spin_path(project_id: spin.project, id: spin), remote: true, class: 'btn btn-sm btn-outline-secondary' %>
-          <%= link_to '스핀 삭제', space_project_spin_path(project_id: spin.project, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-secondary' %>
-        </div>
+        <%= link_to '이름 수정', edit_space_project_spin_path(project_id: spin.project, id: spin), remote: true, class: 'dropdown-item' %>
+        <%= link_to '삭제', space_project_spin_path(project_id: spin.project, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
       <% end %>
     </div>
   </div>
+
   <div class="span-backdrop-1"></div>
   <div class="span-backdrop-2"></div>
   <div class="span-backdrop-3"></div>
