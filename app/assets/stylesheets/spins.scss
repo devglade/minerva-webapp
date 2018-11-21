@@ -28,8 +28,12 @@
 
       .spin-title {
         font-weight: 900;
-        font-family: nanumbarunpen, 'Noto Sans KR', malgun gothic, "돋움", Dotum, sans-serif;
         color: $color-text-primary;
+      }
+
+      .spin-description {
+        margin-top: rem-calc(16);
+        color: $deep-orange-700;
       }
     }
 
