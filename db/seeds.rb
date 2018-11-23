@@ -1,7 +1,10 @@
 user_1 = User.create(email: 'neoswirl@gmail.com', password: 'password', name: '노현종', confirmed_at: Time.now)
 user_2 = User.create(email: 'wndus85@gmail.com', password: 'password', name: '송주연', confirmed_at: Time.now)
 
-space = Space.create name: '데브글레이드', url: 'devglade', is_public: true, user_id: user_2.id
+space = Space.create name: '데브글레이드', url: 'devglade', description: '회고를 중요시하는 팀입니다.', is_public: true, user_id: user_2.id
+space = Space.create name: '구글', url: 'google', description: '세계최고 검색사이트를 만드는 회사', is_public: true, user_id: user_2.id
+space = Space.create name: '페이스북', url: 'facebook', is_public: true, user_id: user_2.id
+space = Space.create name: '내 공간', url: 'my', is_public: false, user_id: user_2.id
 project = Project.create title: '데브글레이드 회고', description: 'RetroSpin 개발 회고', user_id: user_1.id, space_id: space.id
 project = Project.create title: '나만의 회고', description: 'RetroSpin 개발 회고', user_id: user_2.id, space_id: space.id
 
