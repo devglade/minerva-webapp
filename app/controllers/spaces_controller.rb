@@ -28,7 +28,7 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params.merge(user_id: current_user.id))
     @space.save
-
+    flash.now[:error] = @space.errors.messages[:url] if @space.errors.any?
     broadcast_create_space(@space)
   end
 
@@ -51,7 +51,11 @@ class SpacesController < ApplicationController
   end
 
   def search
-    @text = params[:text]
+    if params[:text].present?
+      @spaces = Space.opend.where("name = ?", params[:text])
+    else
+      @spaces = Space.opend.all
+    end
   end
 
   private
