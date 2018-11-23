@@ -1,38 +1,45 @@
 <nav class="navbar navbar-global navbar-expand-lg navbar-light">
-  <% if controller_name == 'projects' %>
-<!--    <div class="breadcrumb">-->
-      <%#= link_to root_url, class:'navbar-brand' do %>
-<!--        <h5><i class="material-icons">arrow_back</i> 공간</h5>-->
-      <%# end %>
-<!--    </div>-->
+  <nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to root_url, class:'navbar-brand' do %>
+          <%= image_tag("bi-nav-head.png", class: "bi-nav-head", size: "58x30", alt: "로고이미지") %>
+          <%= image_tag("bi-nav-body.png", class: "bi-nav-body", size: "19x30", alt: "로고이미지") %>
+          <%= image_tag("bi-nav-tail.png", class: "bi-nav-tail", size: "55x30", alt: "로고이미지") %>
+        <% end %>
+      </li>
+      <% if controller_name == 'projects' %>
+        <li class="breadcrumb-item active">
+          <%= @space.name %>
+        </li>
+      <% elsif controller_name == 'spins' and action_name == 'index' %>
+        <li class="breadcrumb-item">
+          <%= link_to space_projects_path do %>
+            <%= @space.name %>
+          <% end %>
+        </li>
+        <li class="breadcrumb-item active">
+          <%= @project.title %>
+        </li>
+      <% elsif controller_name == 'spins' and action_name == 'show' %>
+        <li class="breadcrumb-item">
+          <%= link_to space_projects_path do %>
+            <%= @space.name %>
+          <% end %>
+        </li>
+        <li class="breadcrumb-item">
+          <%= link_to space_project_spin_path do %>
+            <%= @project.title %>
+          <% end %>
+        </li>
+        <li class="breadcrumb-item active">
+          <%= @spin.title %>
+        </li>
+      <% end %>
+    </ol>
+  </nav>
 
-    <nav aria-label="breadcrumb" role="navigation">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">홈</a></li>
-        <li class="breadcrumb-item"><a href="#">그렙</a></li>
-        <li class="breadcrumb-item active"><a href="#">디자인팀</a></li>
-        <li class="breadcrumb-item active">회고 20181125</li>
-      </ol>
-    </nav>
 
-    <h3 class="header-title"><%= @space.name %><span>의 팀 목록</span></h3>
-  <% elsif controller_name == 'spins' and action_name == 'index' %>
-    <%= link_to space_projects_url, class:'navbar-brand' do %>
-      <h4><i class="material-icons">arrow_back</i> 팀 목록</h4>
-    <% end %>
-    <h3 class="header-title"><%= @project.title %><span>의 회고 목록</span></h3>
-  <% elsif controller_name == 'spins' and action_name == 'show' %>
-    <%= link_to space_project_spins_path, class:'navbar-brand' do %>
-      <h4><i class="material-icons">arrow_back</i> 회고 목록</h4>
-    <% end %>
-    <h3 class="header-title"><%= @project.title %><span>의 회고 목록</span></h3>
-  <% else %>
-    <%= link_to root_url, class:'navbar-brand' do %>
-      <%= image_tag("bi-nav-head.png", class: "bi-nav-head", size: "58x30", alt: "로고이미지") %>
-      <%= image_tag("bi-nav-body.png", class: "bi-nav-body", size: "19x30", alt: "로고이미지") %>
-      <%= image_tag("bi-nav-tail.png", class: "bi-nav-tail", size: "55x30", alt: "로고이미지") %>
-    <% end %>
-  <% end %>
 
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>

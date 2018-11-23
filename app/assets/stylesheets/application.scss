@@ -250,6 +250,8 @@ body /*bootstrap theme*/ {
 
   .navbar-brand {
     font-size: 0;
+    padding: 0;
+    vertical-align: top;
 
     .bi-nav-body {
       -webkit-transform: rotate(0deg);
@@ -290,7 +292,7 @@ body /*bootstrap theme*/ {
   }
 
   .form-search {
-    margin-right: 16px;
+    margin: rem-calc(0 16);
     padding-left: rem-calc(40);
     background: asset_url('img-search-deemed.png') no-repeat rem-calc(12) center;
     background-size: rem-calc(24);
@@ -317,10 +319,24 @@ body /*bootstrap theme*/ {
     border-radius: 0;
 
     .breadcrumb-item {
-      @include h5;
       display: inline-block;
       vertical-align: top;
       font-weight: 700;
+      font-size: 19px;
+      line-height: 28px;
+
+      .navbar-brand {
+        margin-right: rem-calc(4);
+      }
+
+      & + .breadcrumb-item:before {
+        color: $blue-grey-200;
+      }
+
+      a {
+        color: $color-text-primary;
+        &:hover {color: $color-primary;}
+      }
     }
 
     .active {
