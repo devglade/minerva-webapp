@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323145547) do
+ActiveRecord::Schema.define(version: 20181123143127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,12 +60,13 @@ ActiveRecord::Schema.define(version: 20180323145547) do
   create_table "spaces", force: :cascade do |t|
     t.string "name", null: false
     t.string "url", null: false
-    t.string "description", null: true
+    t.string "description"
     t.boolean "is_public"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_spaces_on_user_id"
+    t.index ["name"], name: "index_joos_on_name"
   end
 
   create_table "spins", force: :cascade do |t|

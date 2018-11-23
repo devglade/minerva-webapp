@@ -51,7 +51,11 @@ class SpacesController < ApplicationController
   end
 
   def search
-    @text = params[:text]
+    if params[:text].present?
+      @spaces = Space.opend.where("name = ?", params[:text])
+    else
+      @spaces = Space.opend.all
+    end
   end
 
   private

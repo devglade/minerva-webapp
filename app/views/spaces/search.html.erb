@@ -1,1 +1,12 @@
-검색결과페이지
+<% if @spaces.size == 0 %>
+  검색결과가 없습니다.
+<% else %>
+  <table>
+    <% @spaces.each do |space| %>
+      <tr>
+        <td>이름 : <%= space.name %></td>
+        <td>설명 :<%= space.description %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
