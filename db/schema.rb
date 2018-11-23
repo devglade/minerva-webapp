@@ -58,8 +58,9 @@ ActiveRecord::Schema.define(version: 20180323145547) do
   end
 
   create_table "spaces", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
+    t.string "name", null: false
+    t.string "url", null: false
+    t.string "description", null: true
     t.boolean "is_public"
     t.bigint "user_id"
     t.datetime "created_at", null: false
