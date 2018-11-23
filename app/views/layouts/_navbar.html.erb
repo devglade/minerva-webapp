@@ -1,12 +1,29 @@
 <nav class="navbar navbar-global navbar-expand-lg navbar-light">
   <% if controller_name == 'projects' %>
-    <%= link_to root_url, class:'navbar-brand' do %>
-      <h4><i class="material-icons">arrow_back</i> 뒤로</h4>
-    <% end %>
+<!--    <div class="breadcrumb">-->
+      <%#= link_to root_url, class:'navbar-brand' do %>
+<!--        <h5><i class="material-icons">arrow_back</i> 공간</h5>-->
+      <%# end %>
+<!--    </div>-->
+
+    <nav aria-label="breadcrumb" role="navigation">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">홈</a></li>
+        <li class="breadcrumb-item"><a href="#">그렙</a></li>
+        <li class="breadcrumb-item active"><a href="#">디자인팀</a></li>
+        <li class="breadcrumb-item active">회고 20181125</li>
+      </ol>
+    </nav>
+
     <h3 class="header-title"><%= @space.name %><span>의 팀 목록</span></h3>
-  <% elsif controller_name == 'spins' %>
+  <% elsif controller_name == 'spins' and action_name == 'index' %>
     <%= link_to space_projects_url, class:'navbar-brand' do %>
       <h4><i class="material-icons">arrow_back</i> 팀 목록</h4>
+    <% end %>
+    <h3 class="header-title"><%= @project.title %><span>의 회고 목록</span></h3>
+  <% elsif controller_name == 'spins' and action_name == 'show' %>
+    <%= link_to space_project_spins_path, class:'navbar-brand' do %>
+      <h4><i class="material-icons">arrow_back</i> 회고 목록</h4>
     <% end %>
     <h3 class="header-title"><%= @project.title %><span>의 회고 목록</span></h3>
   <% else %>
@@ -21,7 +38,8 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
   <div class="collapse navbar-collapse" id="navbarText">
-    <% unless controller_name == 'projects' || 'spins' %>
+    <% if controller_name == 'root' %>
+    <% elsif controller_name == 'spaces' %>
       <%= bootstrap_form_tag url: search_spaces_path, method: :get do |f| %>
         <input class="form-control form-search" name="text" type="text" id="text" placeholder="공개된 회고 검색" required="required">
       <% end %>
@@ -39,7 +57,7 @@
           </li>
         <% elsif controller_name == 'spins' %>
           <li class="nav-item">
-            <%= link_to '회고 주제 등록', new_space_project_spin_path, remote: true, class: 'btn btn-sm btn-primary btn-project' %>
+            <%= link_to '회고 주제 등록', new_space_project_spin_path, remote: true, class: 'btn btn-sm btn-primary btn-spin' %>
           </li>
         <% end %>
 

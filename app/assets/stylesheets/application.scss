@@ -247,6 +247,7 @@ body /*bootstrap theme*/ {
 
 .navbar-global {
   height: $height-navbar;
+
   .navbar-brand {
     font-size: 0;
 
@@ -260,7 +261,10 @@ body /*bootstrap theme*/ {
 
     h4 {
       font-weight: 500;
-      i {margin-top: rem-calc(-3);}
+      i {
+        margin-top: rem-calc(-3);
+        vertical-align: middle;
+      }
     }
 
     &:hover {
@@ -301,6 +305,27 @@ body /*bootstrap theme*/ {
     margin-left: auto;
 
     li:nth-child(n+2) {margin-left: 8px;}
+  }
+
+  .breadcrumb {
+    display: inline-block;
+    vertical-align: super;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0;
+
+    .breadcrumb-item {
+      @include h5;
+      display: inline-block;
+      vertical-align: top;
+      font-weight: 700;
+    }
+
+    .active {
+      color: $color-text-primary;
+    }
   }
 }
 
@@ -364,3 +389,4 @@ body /*bootstrap theme*/ {
   }
 }
 
+.will-be {display: none !important;}
