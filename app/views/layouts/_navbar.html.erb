@@ -41,7 +41,7 @@
     <% if controller_name == 'root' %>
     <% elsif controller_name == 'spaces' %>
       <%= bootstrap_form_tag url: search_spaces_path, method: :get do |f| %>
-        <input class="form-control form-search" name="text" type="text" id="text" placeholder="공개된 회고 검색" required="required">
+        <input class="form-control form-search" name="text" type="text" id="text" placeholder="공개된 회고 검색">
       <% end %>
     <% end %>
 
