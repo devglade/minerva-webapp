@@ -17,8 +17,8 @@
             $.get('projects/' + data.id).done (html)->
               $('.create-project').after html
         when 'delete'
-          if $('#' + data.id).length > 0
-            $('#' + data.id).remove()
+          if $('#project' + data.id).length > 0
+            $('#project' + data.id).remove()
         when 'update'
           if $('#project-' + data.id).length > 0
             $.get('projects/' + data.id).done (html)->
