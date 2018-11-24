@@ -1,7 +1,7 @@
 <template>
   <div class="section 22222">
     <div class="section-header">
-      <h3 class="section-title">{{section.title}}</h3>
+      <h4 class="section-title">{{section.title}}</h4>
       <div class="dropdown btn-dropdown">
         <a href="" id="dropdown_section" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           <i class="material-icons">more_vert</i>
@@ -13,17 +13,33 @@
       </div>
     </div>
 
-
-
-    <draggable v-model="section.posts" :options="{group: 'posts'}" class="dragArea" @change="postMoved">
-      <post v-for="post in section.posts" :key="post.id" :post="post" :section="section"
-            :current_user="current_user"></post>
+    <draggable class="section-body"
+               v-model="section.posts"
+               :options="{group: 'posts'}"
+               @change="postMoved">
+      <post v-for="post in section.posts"
+            :key="post.id"
+            :post="post"
+            :section="section"
+            :current_user="current_user">
+      </post>
     </draggable>
 
-    <a v-if="!editing" v-on:click="startEditing">Add a post</a>
-    <textarea v-if="editing" ref="message" v-model="messages" class="form-control"></textarea>
-    <button v-if="editing" v-on:click="createPost" class="btn btn-secondary">Add</button>
-    <a v-if="editing" v-on:click="editing=false">Cancel</a>
+    <div class="section-footer">
+      <a class="btn btn-default btn-block btn-add-post" v-if="!editing" v-on:click="startEditing">
+        <i class="material-icons">add</i>
+      </a>
+
+      <div class="form-group">
+        <textarea class="form-control"
+                  v-if="editing" ref="message" v-model="messages"
+                  rows="4" placeholder="포스트 내용 입력"></textarea>
+        <div class="btn-wrap">
+          <button class="btn btn-primary btn-add-post" v-if="editing" v-on:click="createPost">추가</button>
+          <a class="btn btn-cancel" v-if="editing" v-on:click="editing=false">취소</a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

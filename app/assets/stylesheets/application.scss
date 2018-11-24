@@ -184,7 +184,7 @@ body /*bootstrap theme*/ {
 
       &:hover, &:focus, &:active {
         color: white;
-        background-color: $color-primary-hover;
+        background-color: $color-primary--hover;
       }
     }
   }
@@ -335,8 +335,8 @@ body /*bootstrap theme*/ {
       }
 
       a {
-        color: $color-text-primary;
-        &:hover {color: $color-primary;}
+        color: $color-primary;
+        &:hover {color: $color-primary--hover;}
       }
     }
 

@@ -149,13 +149,16 @@
   }
 
   .spin-board-wrap {
+    $height-board: calc(100vh - #{$height-navbar});
+    $height-section-body: calc(100vh - #{$height-navbar} - 80px);
     margin: 0;
     padding: 0;
 
     .spin-board {
       white-space: nowrap;
-      overflow: scroll;
-      height: calc(100vh - #{$height-navbar});
+      overflow-x: auto;
+      height: $height-board;
+      padding: rem-calc(0 24);
 
 
       .section-group {
@@ -170,32 +173,100 @@
         position: relative;
         display: inline-block;
         vertical-align: top;
-        padding: rem-calc(24);
+        margin-right: rem-calc(16);
+        border-radius: rem-calc(4);
         min-width: rem-calc(320);
-        max-width: rem-calc(480);
         width: 30%;
+        max-width: rem-calc(800);
+        background-color: $color-background;
 
-        &:first-child {margin-left: rem-calc(24);}
-        &:last-child {margin-right: rem-calc(24);}
+        //&:hover {background-color: $blue-grey-100;}
+
+        &.sortable-chosen,
+        &.sortable-ghost {
+          background-color: $color-background--hover;
+          .section-footer {background-color: $color-background--hover;}
+        }
 
         .section-header {
-          margin-bottom: rem-calc(24);
-          .section-title {font-weight: 900;}
-          .dropdown {top: rem-calc(20);}
+          .section-title {
+            @include transition();
+            padding: rem-calc(16);
+            font-weight: 900;
+            border-radius: rem-calc(3);
+            cursor: grab;
+
+            &:hover {background-color: $color-background--hover;}
+            &:active {cursor: grabbing;}
+          }
+          .dropdown {
+            top: rem-calc(10);
+            right: rem-calc(10);
+          }
         }
 
-        &:hover {
-          background-color: $blue-grey-100;
+        .section-body,
+        .section-footer {
+          @include transition();
+          padding: rem-calc(16);
         }
 
-        &.sortable-chosen {
-          background-color: red;
+        .section-body {
+
         }
-        
+
+        .section-footer {
+          position: sticky;
+          bottom: 0;
+          width: 100%;
+          background-color: $color-background;
+
+          .btn-add {
+            padding: rem-calc(7 12);
+            color: $color-text-secondary;
+            &:hover {color: $color-primary;}
+          }
+
+          .form-group {
+            margin: 0;
+
+            textarea + .btn-wrap {margin-top: rem-calc(8);}
+          }
+
+          .btn-wrap {text-align: right;}
+        }
+      }
+
+      .create-section {
+        height: $height-board;
+
+        &:focus-within {background-color: $color-background--hover;}
+
+        .btn-create {
+          display: inline-block;
+          vertical-align: top;
+          padding: rem-calc(24);
+          border-radius: rem-calc(3);
+          color: $color-text-secondary;
+          background-color: $color-background--hover;
+
+          &:hover {
+            color: $color-primary;
+            background-color: $blue-grey-75;
+          }
+        }
+
+        .section-header {
+          padding: rem-calc(20 24);
+
+          .form-group {
+            display: flex;
+            margin: 0;
+
+            .form-control {margin-right: rem-calc(8);}
+          }
+        }
       }
     }
-
-
   }
 }
-
