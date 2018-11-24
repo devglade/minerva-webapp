@@ -4,24 +4,25 @@
     parentId: parentId
   },
     connected: ->
-  # Called when the subscription is ready for use on the server
+# Called when the subscription is ready for use on the server
 
     disconnected: ->
-  # Called when the subscription has been terminated by the server
+# Called when the subscription has been terminated by the server
 
     received: (data) ->
-  # Called when there's incoming data on the websocket for this channel
+      console.log(data)
+      # Called when there's incoming data on the websocket for this channel
       switch data.action
         when 'create'
           if $(".container").data("retrospect") == data.project_id && $('#spin-' + data.id).length == 0
-            $.get('/spins/'+ data.id).done (html)->
-              $('#spin-board').prepend html
+            $.get('spins/' + data.id + '/get_spin').done (html)->
+              $('.create-spin').after html
         when 'delete'
           if $('#spin-' + data.id).length > 0
             $('#spin-' + data.id).remove()
         when 'update'
           if $('#spin-' + data.id).length > 0
-            $.get('/spins/'+ data.id).done (html)->
+            $.get('/spins/' + data.id).done (html)->
               $('#spin-' + data.id).replaceWith html
         else
           alert(data)

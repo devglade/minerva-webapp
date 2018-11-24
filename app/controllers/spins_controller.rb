@@ -1,7 +1,7 @@
 class SpinsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:index, :new, :create]
-  before_action :set_spin, only: [:show, :edit, :update, :destroy]
+  before_action :set_spin, only: [:show, :edit, :update, :destroy, :get_spin]
 
   def index
     @spins = @project.spins.by_created_at
@@ -19,6 +19,10 @@ class SpinsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def get_spin
+    render partial: @spin
   end
 
   def new
