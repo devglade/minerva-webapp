@@ -1,29 +1,6 @@
 <template>
-  <div class="33333">
-    <div class="post">
-      <div @click="editing=true">
-        {{post.content}}
-        <div class="user-info">
-          <div class="user-image">
-            <div v-if="post.user.image_id ==null">
-              <img class="profile-img" src="~images/img_profile_default.png">
-            </div>
-            <div v-else>
-              <img :src="getImgUrl(post.user.image_id)" class="profile-img">
-            </div>
-          </div>
-          {{post.user.name}}
-        </div>
-      </div>
-      <div class="btn-group">
-        <i @click="like" class="material-icons">thumb_up</i><span v-bind:id="`upvote-post-` + post.id">{{post.upvote_count}}</span>
-        <i @click="dislike" class="material-icons">thumb_down</i><span
-        v-bind:id="`downvote-post-` + post.id">{{post.downvote_count}}</span>
-      </div>
-    </div>
-
+  <div class="post">
     <div v-if='editing' class="modal-backdrop show"></div>
-
     <div v-if='editing' @click="closeModal" class="modal show" style="display: block">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -46,6 +23,29 @@
           </div>
 
         </div>
+      </div>
+    </div>
+
+    <p class="post-content" @click="editing=true">
+      {{post.content}}
+    </p>
+    <div class="post-footer">
+      <div class="user-info">
+        <div class="user-image">
+          <img class="profile-img" src="~images/img_profile_default.png" v-if="post.user.image_id ==null">
+          <img v-else :src="getImgUrl(post.user.image_id)" class="profile-img">
+        </div>
+        <h5 class="user-name">{{post.user.name}}</h5>
+      </div>
+      <div class="btn-wrap">
+        <button @click="like" class="btn btn-like">
+          <i class="material-icons">mood</i>
+          <span v-bind:id="`upvote-post-` + post.id">{{post.upvote_count}}</span>
+        </button>
+        <button @click="dislike" class="btn btn-unlike">
+          <i class="material-icons">mood_bad</i>
+          <span v-bind:id="`downvote-post-` + post.id">{{post.downvote_count}}</span>
+        </button>
       </div>
     </div>
   </div>

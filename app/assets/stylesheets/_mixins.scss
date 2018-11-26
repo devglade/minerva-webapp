@@ -153,3 +153,48 @@
     }
   }
 }
+
+@mixin post-it {
+  @include elevation-1;
+  position: relative;
+  display: block;
+  padding: rem-calc(32);
+  background-image: linear-gradient(0deg, $amber-500 1.25%, $amber-300 1.25%, $amber-300 50%, $amber-500 50%, $amber-500 51.25%, $amber-300 51.25%, $amber-300 100%);
+  background-size: rem-calc(80 80);
+
+  .title {
+    @include font-pen;
+    font-weight: 900;
+    color: $color-text-primary;
+  }
+
+  .description {
+    margin-top: rem-calc(16);
+    color: $deep-orange-700;
+  }
+}
+
+@mixin post-it-white {
+  background-image: linear-gradient(0deg, $color-border 1.25%, white 1.25%, white 50%, $color-border 50%, $color-border 51.25%, white 51.25%, white 100%);
+  background-size: rem-calc(80 80);
+}
+@mixin post-it-yellow {
+  background-image: linear-gradient(0deg, $amber-500 1.25%, $amber-300 1.25%, $amber-300 50%, $amber-500 50%, $amber-500 51.25%, $amber-300 51.25%, $amber-300 100%);
+  background-size: rem-calc(80 80);
+}
+@mixin post-it-blue {
+  background-image: linear-gradient(0deg, $light-blue-700 1.25%, $light-blue-500 1.25%, $light-blue-500 50%, $light-blue-700 50%, $light-blue-700 51.25%, $light-blue-500 51.25%, $light-blue-500 100%);
+  background-size: rem-calc(80 80);
+}
+@mixin post-it-pink {
+  background-image: linear-gradient(0deg, $pink-500 1.25%, $pink-300 1.25%, $pink-300 50%, $pink-500 50%, $pink-500 51.25%, $pink-300 51.25%, $pink-300 100%);
+  background-size: rem-calc(80 80);
+}
+@mixin post-it-teal {
+  background-image: linear-gradient(0deg, $teal-400 1.25%, $teal-200 1.25%, $teal-200 50%, $teal-400 50%, $teal-400 51.25%, $teal-200 51.25%, $teal-200 100%);
+  background-size: rem-calc(80 80);
+}
+@mixin post-it-orange {
+  background-image: linear-gradient(0deg, $orange-700 1.25%, $orange-500 1.25%, $orange-500 50%, $orange-700 50%, $orange-700 51.25%, $orange-500 51.25%, $orange-500 100%);
+  background-size: rem-calc(80 80);
+}

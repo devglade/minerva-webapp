@@ -1,15 +1,13 @@
 <template>
-  <div class="section 22222">
-    <div class="section-header">
-      <h4 class="section-title">{{section.title}}</h4>
-      <div class="dropdown btn-dropdown">
-        <a href="" id="dropdown_section" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <i class="material-icons">more_vert</i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">이름 수정</a>
-          <a class="dropdown-item" href="#" v-if="section.posts.length ===0" v-on:click="deleteSection" data-confirm="이 섹션을 제거하면 이곳에 포함된 모든 포스트잇들도 모두 삭제됩니다. 이 섹션을 제거할까요? ">그룹 제거</a>
-        </div>
+  <div class="section">
+    <h4 class="section-title">{{section.title}}</h4>
+    <div class="dropdown btn-dropdown">
+      <a href="" id="dropdown_section" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <i class="material-icons">more_vert</i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">이름 수정</a>
+        <a class="dropdown-item" href="#" v-if="section.posts.length ===0" v-on:click="deleteSection" data-confirm="이 섹션을 제거하면 이곳에 포함된 모든 포스트잇들도 모두 삭제됩니다. 이 섹션을 제거할까요? ">그룹 제거</a>
       </div>
     </div>
 
@@ -23,23 +21,20 @@
             :section="section"
             :current_user="current_user">
       </post>
-    </draggable>
+      <div class="form-group form-post">
+        <textarea class="form-control" rows="4" placeholder="포스트 내용 입력"
+                  v-if="editing" ref="message" v-model="messages" v-on:keydown.meta.enter="createPost"></textarea>
 
-    <div class="section-footer">
-      <a class="btn btn-default btn-block btn-add-post" v-if="!editing" v-on:click="startEditing">
-        <i class="material-icons">add</i>
-      </a>
-
-      <div class="form-group">
-        <textarea class="form-control"
-                  v-if="editing" ref="message" v-model="messages"
-                  rows="4" placeholder="포스트 내용 입력"></textarea>
         <div class="btn-wrap">
           <button class="btn btn-primary btn-add-post" v-if="editing" v-on:click="createPost">추가</button>
           <a class="btn btn-cancel" v-if="editing" v-on:click="editing=false">취소</a>
         </div>
       </div>
-    </div>
+    </draggable>
+
+    <button class="btn btn-primary btn-md btn-add" v-if="!editing" v-on:click="startEditing">
+      포스트 작성
+    </button>
   </div>
 </template>
 

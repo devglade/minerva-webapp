@@ -19,25 +19,9 @@
       vertical-align: top;
 
       .spin {
-        @include elevation-1;
-        position: relative;
-        display: block;
+        @include post-it;
         width: $spin-size;
         height: $spin-size;
-        padding: rem-calc(32);
-        background-image: linear-gradient(0deg, $amber-500 1.25%, $amber-300 1.25%, $amber-300 50%, $amber-500 50%, $amber-500 51.25%, $amber-300 51.25%, $amber-300 100%);
-        background-size: 80.00px 80.00px;
-
-        .spin-title {
-          @include font-pen;
-          font-weight: 900;
-          color: $color-text-primary;
-        }
-
-        .spin-description {
-          margin-top: rem-calc(16);
-          color: $deep-orange-700;
-        }
       }
 
       .btn-dropdown {
@@ -63,23 +47,19 @@
       }
 
       .span-backdrop-1 {
-        background-image: linear-gradient(0deg, $light-blue-700 1.25%, $light-blue-500 1.25%, $light-blue-500 50%, $light-blue-700 50%, $light-blue-700 51.25%, $light-blue-500 51.25%, $light-blue-500 100%);
-        background-size: 80.00px 80.00px;
+        @include post-it-blue;
         z-index: -4;
       }
       .span-backdrop-2 {
-        background-image: linear-gradient(0deg, $pink-500 1.25%, $pink-300 1.25%, $pink-300 50%, $pink-500 50%, $pink-500 51.25%, $pink-300 51.25%, $pink-300 100%);
-        background-size: 80.00px 80.00px;
+        @include post-it-pink;
         z-index: -3;
       }
       .span-backdrop-3 {
-        background-image: linear-gradient(0deg, $teal-400 1.25%, $teal-200 1.25%, $teal-200 50%, $teal-400 50%, $teal-400 51.25%, $teal-200 51.25%, $teal-200 100%);
-        background-size: 80.00px 80.00px;
+        @include post-it-teal;
         z-index: -2;
       }
       .span-backdrop-4 {
-        background-image: linear-gradient(0deg, $orange-700 1.25%, $orange-500 1.25%, $orange-500 50%, $orange-700 50%, $orange-700 51.25%, $orange-500 51.25%, $orange-500 100%);
-        background-size: 80.00px 80.00px;
+        @include post-it-orange;
         z-index: -4;
       }
 
@@ -135,8 +115,6 @@
       }
     }
   }
-
-
 }
 
 .spins-show {
@@ -145,21 +123,23 @@
   .btn-spin {display: none;}
 
   .navbar-global {
-    z-index: 11;
+    @include elevation-1;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 31;
   }
 
   .spin-board-wrap {
-    $height-board: calc(100vh - #{$height-navbar});
-    $height-section-body: calc(100vh - #{$height-navbar} - 80px);
-    margin: 0;
+    $height-section-body: calc(100vh - #{$height-navbar} - 132px);
+    $padding-length: 24;
+    margin: rem-calc(64 0 0 0);
     padding: 0;
 
     .spin-board {
       white-space: nowrap;
-      overflow-x: auto;
-      height: $height-board;
-      padding: rem-calc(0 24);
-
+      padding: rem-calc(0 16);
 
       .section-group {
         font-size: 0;
@@ -173,78 +153,204 @@
         position: relative;
         display: inline-block;
         vertical-align: top;
-        margin-right: rem-calc(16);
+        margin-right: rem-calc(40);
+        padding-bottom: rem-calc(40);
         border-radius: rem-calc(4);
         min-width: rem-calc(320);
         width: 30%;
-        max-width: rem-calc(800);
-        background-color: $color-background;
+        max-width: rem-calc(640);
 
-        //&:hover {background-color: $blue-grey-100;}
-
-        &.sortable-chosen,
-        &.sortable-ghost {
-          background-color: $color-background--hover;
-          .section-footer {background-color: $color-background--hover;}
-        }
-
-        .section-header {
-          .section-title {
-            @include transition();
-            padding: rem-calc(16);
-            font-weight: 900;
-            border-radius: rem-calc(3);
-            cursor: grab;
-
-            &:hover {background-color: $color-background--hover;}
-            &:active {cursor: grabbing;}
-          }
-          .dropdown {
-            top: rem-calc(10);
-            right: rem-calc(10);
-          }
-        }
-
-        .section-body,
-        .section-footer {
+        .section-title {
           @include transition();
-          padding: rem-calc(16);
+          padding: rem-calc(8 $padding-length);
+          font-weight: 900;
+          border-top-left-radius: rem-calc(3);
+          border-top-right-radius: rem-calc(3);
+          cursor: grab;
+
+          &:active {cursor: grabbing;}
+
+          &:hover {
+            &,
+            & ~ .section-body {
+              background-color: $blue-grey-50;
+              box-shadow: none;
+            }
+          }
+        }
+
+        .dropdown {
+          top: rem-calc(2);
+          right: 0;
         }
 
         .section-body {
+          @include transition();
+          @include elevation-1;
+          padding: rem-calc($padding-length);
+          min-height: rem-calc(144);
+          border-bottom-right-radius: rem-calc(3);
+          border-bottom-left-radius: rem-calc(3);
+          background-color: white;
+          white-space: normal;
+          column-gap: rem-calc($padding-length);
 
+          @media (min-width: 1800px) {column-count: 2;}
+
+          .post,
+          .form-post {
+            @include post-it;
+            display: inline-block;
+            width: 100%;
+            border-radius: rem-calc(3);
+            white-space: normal;
+            background-size: rem-calc(80 60);
+          }
+
+          .post {
+            @include font-pen;
+            margin-bottom: rem-calc($padding-length);
+            padding: rem-calc(12 16);
+            cursor: grab;
+
+            &:active {cursor: grabbing;}
+
+            @media (min-width: 1800px) {flex-direction: column;}
+
+            .post-content {
+              cursor: zoom-in;
+              font-size: rem-calc(18);
+              line-height: rem-calc(30);
+              font-weight: 700;
+              margin-bottom: rem-calc(8);
+              display: inline-block;
+
+              &:active {cursor: grabbing;}
+            }
+
+            .post-footer {
+              font-size: 0;
+
+              .user-info,
+              .btn-wrap {
+                @include h5;
+                display: inline-block;
+                vertical-align: top;
+              }
+
+              .user-info {
+                .user-image,
+                .user-name {
+                  display: inline-block;
+                  vertical-align: top;
+
+                  img {
+                    @include elevation-1;
+                    width: rem-calc(32);
+                    border-radius: rem-calc(1000);
+                  }
+                }
+
+                .user-name {
+                  margin: rem-calc(4 0 0 6);
+                  font-weight: 700;
+                }
+              }
+
+              .btn-wrap {
+                float: right;
+                font-size: 0;
+
+                .btn {
+                  background-color: transparent;
+                  padding-left: rem-calc(6);
+                  padding-right: rem-calc(6);
+
+                  i {color: rgba(50,50,80,.4);}
+
+                  &:hover i {color: $color-text--primary;}
+                }
+              }
+            }
+          }
+
+          .form-post {
+            padding: 0;
+
+            textarea {
+              @include font-pen;
+              width: 100%;
+              font-weight: 700;
+              padding: rem-calc(12 16);
+              font-size: rem-calc(20);
+              line-height: rem-calc(34);
+              background-color: transparent;
+              color: $color-text-primary;
+              border: 0;
+
+              &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: rgba(50,50,80,.4);
+                opacity: 1; /* Firefox */
+              }
+              &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: rgba(50,50,80,.4);
+              }
+              &::-ms-input-placeholder { /* Microsoft Edge */
+                color: rgba(50,50,80,.4);
+              }
+
+              & + .btn-wrap {
+                text-align: right;
+                padding: rem-calc(8);
+              }
+            }
+          }
         }
 
-        .section-footer {
+        .btn-add {
           position: sticky;
-          bottom: 0;
-          width: 100%;
-          background-color: $color-background;
+          z-index: 21;
+          bottom: rem-calc(16);
+          margin: rem-calc(16 0 0 $padding-length);
+          & + .section-footer {display: none;}
+        }
 
-          .btn-add {
-            padding: rem-calc(7 12);
-            color: $color-text-secondary;
-            &:hover {color: $color-primary;}
+        &:nth-child(2) {
+          .post,
+          .form-post {
+            @include post-it-pink;
           }
+        }
 
-          .form-group {
-            margin: 0;
-
-            textarea + .btn-wrap {margin-top: rem-calc(8);}
+        &:nth-child(3) {
+          .post,
+          .form-post {
+            @include post-it-blue;
           }
+        }
 
-          .btn-wrap {text-align: right;}
+        &:nth-child(4) {
+          .post,
+          .form-post {
+            @include post-it-teal;
+          }
+        }
+
+        &:nth-child(5) {
+          .post,
+          .form-post {
+            @include post-it-orange;
+          }
         }
       }
 
       .create-section {
-        height: $height-board;
-
-        &:focus-within {background-color: $color-background--hover;}
+        background-color: transparent;
 
         .btn-create {
           display: inline-block;
           vertical-align: top;
+          margin: rem-calc(44 0 0 24);
           padding: rem-calc(24);
           border-radius: rem-calc(3);
           color: $color-text-secondary;
@@ -257,7 +363,7 @@
         }
 
         .section-header {
-          padding: rem-calc(20 24);
+          padding: rem-calc(2 24);
 
           .form-group {
             display: flex;
@@ -270,3 +376,5 @@
     }
   }
 }
+
+.sortable-ghost {opacity: .24;}

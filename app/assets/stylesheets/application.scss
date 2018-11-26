@@ -49,13 +49,13 @@ body /*bootstrap theme*/ {
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    padding: 6px 12px 8px 12px;
+    padding: 7px 12px;
   }
 
   .btn-sm {
     font-size: 14px;
     line-height: 20px;
-    padding: 2px 8px 4px 8px;
+    padding: 3px 8px;
   }
 
   .btn-lg {
@@ -106,7 +106,7 @@ body /*bootstrap theme*/ {
 
   .form-control {
     line-height: 20px;
-    padding: 7px 12px 9px 12px;
+    padding: 8px 12px;
     border: rem-calc(2) solid $color-border;
     background-color: white;
     font-weight: 500;
