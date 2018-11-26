@@ -1,5 +1,5 @@
-<li class="list-spin-item">
-  <%= link_to space_project_spin_path(project_id: spin.project, id: spin), id: "spin-#{spin.id}", class: 'spin' do %>
+<li id="spin-<%= spin.id %>" class="list-spin-item">
+  <%= link_to space_project_spin_path(project_id: spin.project, id: spin), class: 'spin' do %>
     <% if spin.status == "closed" %>
     <% else %>
     <% end %>

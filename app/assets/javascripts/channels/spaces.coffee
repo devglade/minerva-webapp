@@ -1,6 +1,6 @@
 @MakeSpaceChannel = (parentId) ->
   App.spaces = App.cable.subscriptions.create({
-    channel:  'SpacesChannel',
+    channel: 'SpacesChannel',
     parentId: parentId
   },
     connected: ->
@@ -14,14 +14,15 @@
       switch data.action
         when 'create'
           if $('#space-' + data.id).length == 0
-            $.get('spaces/'+ data.id).done (html)->
-              $('.space-board').prepend html
+            $.get('spaces/' + data.id).done (html)->
+              console.log(html)
+              $('#space-board').prepend html
         when 'delete'
           if $('#' + data.id).length > 0
             $('#' + data.id).remove()
         when 'update'
           if $('#space-' + data.id).length > 0
-            $.get('spaces/'+ data.id).done (html)->
+            $.get('spaces/' + data.id).done (html)->
               $('#space-' + data.id).replaceWith html
         else
           alert(data)
