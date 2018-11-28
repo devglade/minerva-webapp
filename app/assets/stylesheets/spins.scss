@@ -2,7 +2,11 @@
 
 .spins-index {
   .container-spins {
-    padding-top: rem-calc(40);
+    padding-top: rem-calc(8);
+
+    @media (min-width: 992px) {
+      padding-top: rem-calc(40);
+    }
   }
 
   .list-spins {
@@ -18,15 +22,37 @@
       display: inline-block;
       vertical-align: top;
 
+      @media (max-width: 991px) {
+        display: block;
+        margin: 0 auto;
+        padding: rem-calc(16 0);
+        max-width: rem-calc(320);
+      }
+
       .spin {
         @include post-it;
         width: $spin-size;
         height: $spin-size;
+
+        @media (max-width: 991px) {
+          padding: rem-calc(16);
+          width: 100%;
+          height: rem-calc(160);
+
+          .title {
+            @include h3;
+          }
+        }
       }
 
       .btn-dropdown {
         top: rem-calc(48);
         right: rem-calc(48);
+
+        @media (max-width: 991px) {
+          top: rem-calc(24);
+          right: rem-calc(8);
+        }
 
         > a {color: $color-text-primary;}
       }
@@ -44,6 +70,8 @@
         top: 0;
         left: 0;
         transform: rotate(0deg) translate(40px, 40px);
+
+        @media (max-width: 991px) {display: none;}
       }
 
       .span-backdrop-1 {
@@ -71,21 +99,18 @@
           transform: rotate(-10deg) translate(47px, 45px);
           transition-delay: .6s;
         }
-
         .span-backdrop-2 {
           @include elevation-1;
           z-index: -3;
           transform: rotate(-4deg) translate(42px, 42px);
           transition-delay: .4s;
         }
-
         .span-backdrop-3 {
           @include elevation-1;
           z-index: -2;
           transform: rotate(4deg) translate(40px, 40px);
           transition-delay: .1s;
         }
-
         .span-backdrop-4 {
           @include elevation-1;
           z-index: -4;
@@ -94,23 +119,38 @@
         }
       }
 
-      &.create-spin .spin {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $blue-grey-100;
-        background: $blue-grey-25;
-
-        i {
-          font-size: rem-calc(48);
-          line-height: rem-calc(48);
+      &.create-spin {
+        @media (max-width: 991px) {
+          padding: 0;
         }
 
-        &:not(:hover) {box-shadow: none;}
+        .spin {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $blue-grey-100;
+          background: $blue-grey-25;
 
-        &:hover {
-          color: $color-primary;
-          background-color: $blue-grey-50;
+          @media (max-width: 991px) {
+            height: rem-calc(64);
+            color: $color-primary;
+            background-color: $blue-grey-50;
+            box-shadow: none;
+          }
+
+          i {
+            @media (min-width: 992px) {
+              font-size: rem-calc(48);
+              line-height: rem-calc(48);
+            }
+          }
+
+          &:not(:hover) {box-shadow: none;}
+
+          &:hover {
+            color: $color-primary;
+            background-color: $blue-grey-50;
+          }
         }
       }
     }

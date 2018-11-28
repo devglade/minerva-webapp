@@ -1,20 +1,16 @@
 @import "common";
 
-.projects-index {
-  .footer-wrap .container {
-    max-width: 100%;
-  }
-}
-
-.container-projects {
-
-}
+.projects-index .footer-wrap .container {max-width: 100%;}
 
 .list-projects {
   list-style: none;
   margin: 0;
   padding: rem-calc(40 0 0 0);
   text-align: center;
+
+  @media (max-width: 991px) {
+    padding-top: 0;
+  }
 
   .list-item {
     $width-info: rem-calc(640);
@@ -26,10 +22,16 @@
     padding: rem-calc(16);
     max-width: rem-calc(400);
     width: 30%;
+    min-width: rem-calc(320);
     font-size: 0;
 
+    @media (max-width: 991px) {
+      display: block;
+      margin: 0 auto;
+      padding: rem-calc(8 0);
+    }
+
     .content {
-      @include matrix-3d;
       position: relative;
       display: block;
       padding: $padding-content;
@@ -37,6 +39,12 @@
       text-align: left;
       color: $color-text-primary;
       background-color: white;
+
+      @media (min-width: 992px) {@include matrix-3d;}
+      @media (max-width: 991px) {
+        @include elevation-1;
+        height: rem-calc(200);
+      }
 
       .project-title {@include transition();}
 
@@ -47,6 +55,8 @@
         margin-top: rem-calc(16);
         overflow: hidden;
         height: rem-calc(124);
+
+        @media (max-width: 991px) {display: none;}
 
         &:after {
           content: '';
@@ -84,11 +94,20 @@
       color: $blue-grey-100;
       background-color: $blue-grey-25;
 
+      @media (max-width: 991px) {
+        @include elevation-0;
+        height: rem-calc(64);
+        color: $color-primary;
+        background-color: $blue-grey-50;
+      }
+
       &:not(:hover) {box-shadow: none;}
 
       i {
-        font-size: rem-calc(48);
-        line-height: rem-calc(48);
+        @media (min-width: 992px) {
+          font-size: rem-calc(48);
+          line-height: rem-calc(48);
+        }
       }
 
       &:hover {

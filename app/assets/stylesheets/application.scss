@@ -254,6 +254,11 @@ body /*bootstrap theme*/ {
     padding: 0;
     vertical-align: top;
 
+    @media (max-width: 991px) {
+      .bi-nav-head,
+      .bi-nav-tail {display: none;}
+    }
+
     .bi-nav-body {
       -webkit-transform: rotate(0deg);
       -moz-transform: rotate(0deg);
@@ -344,20 +349,85 @@ body /*bootstrap theme*/ {
       color: $color-text-primary;
     }
   }
+
+  .navbar-toggler {
+    @include transition();
+    border: 0;
+    padding: rem-calc(13 8);
+
+    &:hover {
+      background-color: $color-background--hover;
+
+      .navbar-toggler-bar {background-color: $color-primary;}
+    }
+
+    &:focus {outline: none;}
+
+    .navbar-toggler-bar {
+      @include transition();
+      display: block;
+      width: rem-calc(28);
+      height: rem-calc(2);
+      border-radius: rem-calc(3);
+      background-color: $blue-grey-500;
+
+      & + .navbar-toggler-bar {margin-top: rem-calc(4);}
+    }
+  }
+
+  .navbar-collapse.show {
+    @include elevation-3;
+    padding: rem-calc(16);
+    background-color: $color-background;
+    border-radius: rem-calc(3);
+  }
+
+  @media (max-width: 991px) {
+    .form-search {margin: rem-calc(16 0 0 0);}
+
+    .navbar-nav {
+      text-align: center;
+
+      .nav-item {
+        margin: rem-calc(16 0 0 0);
+
+        &:nth-child(n+2) {margin-left: 0;}
+
+        .btn {
+          margin: 0;
+          min-width: rem-calc(120);
+        }
+      }
+
+    }
+  }
 }
 
 .header {
   text-align: center;
   padding: rem-calc(40 0);
 
+  @media (max-width: 991px) {
+    padding: rem-calc(24 0);
+  }
+
   .headline {
     @include h1;
     font-weight: 900;
+
+    @media (max-width: 991px) {
+      @include h3;
+    }
   }
 
   .sub-headline {
     margin-top: rem-calc(16);
     color: $blue-grey-300;
+
+    @media (max-width: 991px) {
+      @include h5;
+      margin-top: rem-calc(8);
+    }
   }
 }
 
@@ -407,3 +477,4 @@ body /*bootstrap theme*/ {
 }
 
 .will-be {display: none !important;}
+

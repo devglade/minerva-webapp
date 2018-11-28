@@ -12,18 +12,27 @@
   margin: 0;
   padding: rem-calc(40 0 0 0);
 
+  @media (max-width: 991px) {padding: 0;}
+
   .list-space-item {
     position: relative;
 
     > a * {@include transition();}
 
     .content {
-      @include matrix-3d;
       display: block;
       padding: rem-calc(144 40);
       width: 100%;
       background-color: white;
       text-align: center;
+
+      @media (max-width: 991px) {
+        padding: rem-calc(80 40);
+      }
+
+      @media (min-width: 992px) {
+        @include matrix-3d;
+      }
 
       .title {
         @include elevation-1;
@@ -43,6 +52,14 @@
         color: $color-text-primary;
         background-color: white;
 
+        @media (max-width: 991px) {
+          @include h5;
+          padding: rem-calc(16);
+          left: rem-calc(16);
+          font-weight: 700;
+          width: unset;
+        }
+
         .ownership {
           @include h7;
           margin-bottom: rem-calc(12);
@@ -57,12 +74,23 @@
       }
 
       &.create-space {
+        @media (max-width: 991px) {
+          padding: rem-calc(64 16);
+          background-color: $color-background--hover;
+        }
+
         h1 {
           font-size: rem-calc(100);
           line-height: 0;
           font-weight: 100;
           color: $blue-grey-100;
           transform: translateY(rem-calc(-8));
+
+          @media (max-width: 991px) {
+            transform: translateY(0);
+            color: $color-primary;
+            @include h4;
+          }
         }
 
         &:hover h1 {color: $color-primary;}
@@ -76,6 +104,12 @@
       position: absolute;
       top: rem-calc(16);
       right: rem-calc(16);
+
+      @media (max-width: 991px) {
+        top: rem-calc(8);
+        right: rem-calc(-8);
+        opacity: 1;
+      }
 
       > a {
         @include elevation-2;
@@ -100,11 +134,17 @@
       z-index: 11;
       .dropdown {
         @include transform(translate(rem-calc(-16), 0));
-        opacity: 100;
+        opacity: 1;
       }
     }
 
-    &:nth-child(n+2) .content {margin-top: rem-calc(64);}
+    &:nth-child(n+2) .content {
+      margin-top: rem-calc(64);
+
+      @media (max-width: 991px) {
+        margin-top: rem-calc(32);
+      }
+    }
 
     &:nth-last-child(2n) .content {
       //건물
