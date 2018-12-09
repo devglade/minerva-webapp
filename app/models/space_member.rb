@@ -1,0 +1,2 @@
+class SpaceMember < ApplicationRecord
+end

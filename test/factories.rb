@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :space_member do
+    
+  end
   factory :space do
     name Forgery(:lorem_ipsum).words(10)
     url Forgery('internet').domain_name
