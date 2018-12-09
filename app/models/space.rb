@@ -16,4 +16,7 @@ class Space < ApplicationRecord
     SpaceMember.create(space_id: space.id, user_id: space.user_id)
   end
 
+  def isAllowed current_user_id
+    space_members.include?(SpaceMember.find_by_user_id(current_user_id))
+  end
 end

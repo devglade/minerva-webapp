@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def access_denied(exception)
     @message = exception.message
     respond_to do |format|
-      format.html {render 'errors/access_denied', status: :unauthorized, layout: 'error'}
+      format.html {render 'errors/access_denied', status: :unauthorized}
       format.js {render 'errors/access_denied'}
     end
   rescue ActionController::UnknownFormat

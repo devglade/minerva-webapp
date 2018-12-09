@@ -4,8 +4,8 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    raise User::NotAuthorized unless @space.isAllowed current_user.id
     @projects = @space.projects.by_created_at
-
     respond_to do |format|
       format.html
       format.js
