@@ -1,6 +1,6 @@
 class SpaceMember < ApplicationRecord
 
-  def isAllowed current_user
-    SpaceMember.find_by_user_id(current_user.id) != nil
-  end
+  has_many :spaces
+  has_many :user
+
 end

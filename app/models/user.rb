@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :spins, dependent: :destroy
+  has_many :spaces, through: :space_members
   acts_as_voter
 
   class NotAuthorized < MinervaError
