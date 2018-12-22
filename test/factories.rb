@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :invitation do
+    
+  end
   factory :space_member do
     
   end
