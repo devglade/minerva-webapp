@@ -30,9 +30,9 @@ Rails.application.routes.draw do
     end
     resources :projects do
       resources :spins do
-          member do
-            get :get_spin #show는 post를 같이 보여주고 있어서 get_spin을 만듦.ㅠ
-          end
+        member do
+          get :get_spin #show는 post를 같이 보여주고 있어서 get_spin을 만듦.ㅠ
+        end
         resources :sections do
           member do
             patch :move
@@ -56,4 +56,6 @@ Rails.application.routes.draw do
     get '/about', action: :about
   end
   mount ActionCable.server => '/cable'
+
+  resources :invitations
 end
