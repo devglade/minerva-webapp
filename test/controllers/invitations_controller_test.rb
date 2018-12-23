@@ -7,8 +7,17 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
     @space = create(:space)
   end
 
-  test 'invitation should get new' do
+  test 'should get new' do
     get new_invitation_path(space_id: @space), xhr: true
     assert_response :success
+  end
+
+  test 'should create invitation' do
+    assert_difference('Invitation.count') do
+      post invitations_path(space_id: @space.id), params: {invitation: {space_id: @space.id, email: 'test@test.com', sender_id: @user1.id}}, xhr: true
+    end
+
+    assert_response :success
+    assert_template 'invitations/create'
   end
 end
