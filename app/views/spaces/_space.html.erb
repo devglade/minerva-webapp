@@ -1,4 +1,7 @@
-<li class="list-space-item <% if current_user.id == space.user.id %>owner<% else %>member<% end %> " id="space-<%= space.id %>">
+<li class="list-space-item
+  <% if current_user.id == space.user.id %>owner
+  <% else %>member
+  <% end %> " id="space-<%= space.id %>">
   <%= link_to space_projects_path(space), id: "space-#{space.id}-title", class: 'content' do %>
     <h3 class="title">
       <% if current_user.id == space.user.id %>
@@ -18,9 +21,11 @@
       <% if current_user.id == space.user.id %>
         <%= link_to '이름 수정', edit_space_path(space), remote: true, class: 'dropdown-item' %>
         <%= link_to '공간 삭제', space, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
+        <%= link_to '초대하기', new_invitation_path(space_id: space), remote: true, class: 'dropdown-item' %>
       <% else %>
         <button class="dropdown-item" data-toggle="popover" title="<%= space.user.name %>" data-content="<%= space.user.email %>">
           <%= space.user.name.truncate(8) %> <i class="material-icons">face</i>
+          <%= link_to '초대하기', space, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
         </button>
       <% end %>
     </div>

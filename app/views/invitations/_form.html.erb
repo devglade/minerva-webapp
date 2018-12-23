@@ -1,0 +1,23 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><%= @space.name %>공간에 초대합니다.</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= bootstrap_form_for [@invitation], remote: true do |form| %>
+          <div class="form-group">
+            <%= form.email_field :email, class: "form-control", autofocus: true, required: true, label: '초대하실분의 이메일을 적어주세요.' %>
+            <%= form.hidden_field :space_id, value: @space.id %>
+          </div>
+          <div class="actions">
+            <%= form.submit '초대하기', class: "btn btn-primary btn-block" %>
+          </div>
+          </div>
+        <% end %>
+        </div>
+  </div>
+</div>
