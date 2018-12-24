@@ -2,7 +2,7 @@
   <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <%= link_to root_url, class:'navbar-brand' do %>
+        <%= link_to root_url, class: 'navbar-brand' do %>
           <%= image_tag("bi-nav-head.png", class: "bi-nav-head", size: "58x30", alt: "로고이미지") %>
           <%= image_tag("bi-nav-body.png", class: "bi-nav-body", size: "19x30", alt: "로고이미지") %>
           <%= image_tag("bi-nav-tail.png", class: "bi-nav-tail", size: "55x30", alt: "로고이미지") %>
@@ -69,7 +69,7 @@
           </li>
         <% end %>
 
-        <% unless controller_name == 'projects' || 'spins' %>
+        <% unless controller_name == "projects" || controller_name == "spins" %>
           <li class="nav-item">
             <%= link_to '사이트 소개', about_url, class: 'btn btn-sm btn-default' %>
           </li>
