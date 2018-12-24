@@ -1,14 +1,14 @@
 FactoryBot.define do
   factory :invitation do
-    
+
   end
   factory :space_member do
-    
+
   end
   factory :space do
-    name Forgery(:lorem_ipsum).words(10)
-    url Forgery('internet').domain_name
-    is_public Forgery('basic').boolean
+    name {Forgery(:lorem_ipsum).words(10)}
+    url {Forgery('internet').domain_name}
+    is_public {Forgery('basic').boolean}
     user
   end
   factory :user do
@@ -16,7 +16,7 @@ FactoryBot.define do
     email {Forgery(:internet).email_address}
     password {Forgery(:basic).password({at_least: 8})}
     password_confirmation {|u| u.password}
-    confirmed_at Time.now
+    confirmed_at {Time.now}
   end
 
   factory :project do
@@ -27,7 +27,7 @@ FactoryBot.define do
   end
 
   factory :spin do
-    status 1
+    status {1}
     title {Forgery(:lorem_ipsum).words(20)}
     summary {Forgery(:lorem_ipsum).words(20)}
     project
@@ -36,7 +36,7 @@ FactoryBot.define do
 
   factory :section do
     title {Forgery(:lorem_ipsum).words(20)}
-    order 0
+    order {0}
     spin
   end
 
