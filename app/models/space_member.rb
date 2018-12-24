@@ -1,6 +1,6 @@
 class SpaceMember < ApplicationRecord
 
-  has_many :user
-  has_many :spaces
+  belongs_to :user
+  belongs_to :space
 
 end

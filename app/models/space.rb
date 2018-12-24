@@ -1,6 +1,7 @@
 class Space < ApplicationRecord
   belongs_to :user
   has_many :projects
+  has_many :space_members
   has_many :users, through: :space_members
   has_many :invitations
 
@@ -18,6 +19,6 @@ class Space < ApplicationRecord
   end
 
   def isAllowed current_user_id
-    space_members.exists?(user_id: current_user_id)
+    users.exists?(current_user_id)
   end
 end

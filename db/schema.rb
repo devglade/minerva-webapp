@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20181216121545) do
     t.string "title", limit: 500, null: false
     t.text "description"
     t.bigint "user_id"
+    t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "space_id", default: 1, null: false
-    t.index ["space_id"], name: "index_space_id"
+    t.index ["space_id"], name: "index_projects_on_space_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -73,19 +73,17 @@ ActiveRecord::Schema.define(version: 20181216121545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_space_members_on_space_id"
-    t.index ["user_id", "space_id"], name: "index_space_members_on_user_id_and_space_id", unique: true
     t.index ["user_id"], name: "index_space_members_on_user_id"
   end
 
   create_table "spaces", force: :cascade do |t|
     t.string "name", null: false
-    t.string "url", null: false
     t.string "description"
-    t.boolean "is_public"
+    t.string "url", null: false
+    t.boolean "is_public", default: true, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_joos_on_name"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
@@ -140,6 +138,5 @@ ActiveRecord::Schema.define(version: 20181216121545) do
   end
 
   add_foreign_key "identities", "users"
-  add_foreign_key "projects", "users"
   add_foreign_key "spaces", "users"
 end

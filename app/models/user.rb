@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :spins, dependent: :destroy
+  has_many :space_members
   has_many :spaces, through: :space_members
   has_many :invitations, foreign_key: 'recipient_id'
   has_many :sent_invitations, class_name: 'Invitation', foreign_key: 'sender_id'
