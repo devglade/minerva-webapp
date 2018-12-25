@@ -4,7 +4,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in @user1
     @user2 = FactoryBot.create(:user)
-    @space = FactoryBot.create(:space)
+    @space = FactoryBot.create(:space, user: @user1)
     @project = create(:project)
   end
 
@@ -22,9 +22,16 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "[project] should get index" do
-    get space_project_path(@space, @project)
+  test "공간에 참여한 사람만 프로젝트를 볼 수 있다." do
+    get space_projects_path(@space, @project)
     assert_response :success
+  end
+
+  test "공간에 참여하지 못한 사람은 프로젝트를 볼수 없다" do
+    sign_out @user1
+    sign_in @user2
+    get space_projects_path(@space, @project)
+    assert_response 401
   end
 
   test "[project] should get new" do
