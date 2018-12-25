@@ -41,6 +41,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'forgery'
   gem 'rails-controller-testing'
+  gem 'simplecov'
 end
 
 group :development do
