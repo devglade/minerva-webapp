@@ -36,7 +36,6 @@ FactoryBot.define do
 
   factory :section do
     title {Forgery(:lorem_ipsum).words(20)}
-    order {0}
     spin
   end
 

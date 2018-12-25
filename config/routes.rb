@@ -37,7 +37,7 @@ Rails.application.routes.draw do
           member do
             patch :move
           end
-          resources :posts, except: [:index] do
+          resources :posts, except: [:index, :new] do
             member do
               put 'like', to: 'posts#upvote'
               put 'dislike', to: 'posts#downvote'

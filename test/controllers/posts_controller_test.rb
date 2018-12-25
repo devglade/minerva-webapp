@@ -5,24 +5,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user1
     @user2 = FactoryBot.create(:user)
     @space = create(:space)
-    @project = create(:project)
-    @spin = create(:spin)
-    @section = create(:section)
-    @post = create(:post)
-  end
-
-  test "[post] should get new" do
-    # get new_space_project_spin_post_url(@space, @project, @spin), xhr: true
-    # assert_response :success
-    # post = assigns(:post)
-    # assert_not_nil post
+    @project = create(:project, space: @space)
+    @spin = create(:spin, project: @project)
+    @section = create(:section, spin: @spin)
+    @post = create(:post, section: @section)
   end
 
   test "[post] should create post" do
-    # assert_difference('Post.count') do
-    #   post space_project_spin_posts_url(@space, @project, @spin), params: {post: {content: "test"}}, xhr: true
-    # end
-    # assert_response :success
+    assert_difference('Post.count') do
+      post space_project_spin_section_posts_path(@space, @project, @spin, @section), params: {post: {content: "test"}}, as: :json
+    end
+    assert_response :success
   end
   test "[post] should show post" do
     # get space_project_spin_post_url(@space, @project, @spin, @post), xhr: true
@@ -30,30 +23,31 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "[post] should update post" do
-    # sign_out @user1
-    # sign_in @post.user
-    # patch space_project_spin_post_url @space, @project, @spin, @post, params: {post: {content: "changed"}}, format: :js
-    # assert_response :success
-    # assert_equal "changed", assigns(:post).content
+    sign_out @user1
+    sign_in @post.user
+    patch space_project_spin_section_post_path(@space, @project, @spin, @section, @post), params: {post: {content: "changed"}}, as: :json
+    assert_response :success
+    assert_equal "changed", assigns(:post).content
   end
 
   test "[post] should destroy post" do
-    # sign_out @user1
-    # sign_in @post.user
-    # assert_difference('Post.count', -1) do
-    #   delete space_project_spin_post_path(@space, @project, @spin, @post), xhr: true
-    # end
-    # assert_response :success
+    sign_out @user1
+    sign_in @post.user
+    assert_difference('Post.count', -1) do
+      delete space_project_spin_section_post_path(@space, @project, @spin, @section, @post), as: :json
+    end
+    assert_response :success
   end
 
   test "[post] 다른 사람이 쓴 포스트는 수정할 수 없다." do
-    # sign_in @user1
-    # post space_project_spin_posts_url(@space, @project, @spin), params: {post: {content: "test"}}, xhr: true
-    # sign_out @user1
-    # sign_in @user2
-    # last = Post.last
-    # patch space_project_spin_post_url @space, @project, @spin, last, params: {post: {content: "changed"}}, format: :js
-    # assert_equal "test", last.content
+    sign_in @user1
+    post space_project_spin_section_posts_path(@space, @project, @spin, @section), params: {post: {content: "test"}}, as: :json
+    sign_out @user1
+    sign_in @user2
+    last = Post.last
+
+    patch space_project_spin_section_post_path(@space, @project, @spin, @section, last), params: {post: {content: "changed"}}
+    assert_equal "test", last.content
   end
 
   test "[post] 다른 사람이 쓴 포스트는 삭제할 수 없다." do

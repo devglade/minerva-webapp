@@ -8,11 +8,6 @@ class PostsController < ApplicationController
   def show
   end
 
-  # GET /posts/new
-  def new
-    @post = Post.new
-  end
-
   # GET /posts/1/edit
   def edit
   end
