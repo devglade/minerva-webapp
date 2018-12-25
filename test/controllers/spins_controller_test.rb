@@ -9,7 +9,7 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "[spin] should get index" do
-    get space_project_spin_path(@space, @project, @spin)
+    get space_project_spins_path(@space, @project, @spin)
     assert_response :success
   end
 
@@ -23,15 +23,6 @@ class SpinsControllerTest < ActionDispatch::IntegrationTest
   test '[spin] should get show' do
     get space_project_spin_path(@space, @project, @spin)
     assert_response :success
-  end
-
-  test "[spin] 스핀을 만들면 기본으로 section 2개를 만들어준다." do
-    assert_difference('Spin.count') do
-      post space_project_spins_path(@space, @project), params: {spin: {status: @spin.status, summary: @spin.summary, title: @spin.title}}, xhr: true
-    end
-    assert_response :success
-    spin = Spin.last
-    assert_equal spin.sections.count, 2
   end
 
   test "[spin] should show spin" do

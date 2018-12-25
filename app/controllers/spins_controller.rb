@@ -6,11 +6,6 @@ class SpinsController < ApplicationController
   def index
     @spins = @project.spins.by_created_at
     # @opened_spin_count = @spins.opened.count
-    #
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def show
