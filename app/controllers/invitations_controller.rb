@@ -9,10 +9,14 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new(invitation_params)
     if @invitation.save
-      logger.debug "saved!"
-    else
-      logger.debug @invitation.errors.inspect
-      logger.debug "failed!"
+      if User.find_by_email(@invitation.email) == nil
+        link = @invitation.new_user_invite_link(new_user_registration_url)
+      else
+        # TODO
+        link = nil
+      end
+
+      InvitationMailer.invite_space(@invitation, link).deliver
     end
   end
 
