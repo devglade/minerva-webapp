@@ -12,6 +12,7 @@
           <div class="form-group">
             <%= form.email_field :email, class: "form-control", autofocus: true, required: true, label: '초대하실분의 이메일을 적어주세요.' %>
             <%= form.hidden_field :space_id, value: @space.id %>
+            <%= form.hidden_field :sender_id, value: @sender_id %>
           </div>
           <div class="actions">
             <%= form.submit '초대하기', class: "btn btn-primary btn-block" %>
