@@ -5,7 +5,7 @@ class SpacesController < ApplicationController
   # GET /spaces.json
   def index
     @spaces_mine = Space.mine(current_user.id)
-    @spaces_membered = nil
+    @joined_spaces = SpaceMember.joined(current_user.id)
   end
 
   # GET /spaces/1

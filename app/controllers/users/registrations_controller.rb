@@ -3,14 +3,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @token = params[:invite_space_token]
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @token = params[:invite_space_token]
+    if @token != nil
+      super
+      invitation = Invitation.find_by_token(@token)
+      space = invitation.space
+      space_member = SpaceMember.new
+      space_member.space_id = space.id
+      space_member.user_id = current_user.id
+      space_member.save
+      invitation.update(recipient_id: current_user.id)
+    else
+      super
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -61,10 +74,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :confirmed_at)
   end
 
   def account_update_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
   end
+
+  # def configure_sign_up_params
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute, :invite_space_token])
+  # end
 end

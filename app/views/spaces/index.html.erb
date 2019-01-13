@@ -8,7 +8,9 @@
 
   <ul class="list-spaces" id="space-board">
     <%= render partial: 'space', collection: @spaces_mine %>
-    <%= render partial: 'space', collection: @spaces_membered %>
+    <% @joined_spaces.each do |member| %>
+      <%= render partial: 'space', locals: {space: member.space} %>
+    <% end %>
 
     <li class="list-space-item">
       <%= link_to new_space_path, class: 'content create-space', remote: true do %>

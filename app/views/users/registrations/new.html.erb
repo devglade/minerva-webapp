@@ -1,5 +1,5 @@
 <div class="nav-logo">
-  <%= link_to root_url, class:'btn-root' do %>
+  <%= link_to root_url, class: 'btn-root' do %>
     <%= image_tag("img-symbol-64.png", class: "bi-nav-head", size: "64", alt: "로고이미지") %>
   <% end %>
 </div>
@@ -11,7 +11,10 @@
     <%= f.email_field :email, required: true, placeholder: '이메일', label: 'E-MAIL' %>
     <%= f.password_field :password, required: true, autocomplete: 'off', placeholder: '비밀번호', label: 'PASSWORD' %>
     <%= f.password_field :password_confirmation, required: true, autocomplete: 'off', placeholder: '비밀번호 확인', label: 'PASSWORD REPEAT' %>
-
+    <% if @token != nil %>
+      <%= f.hidden_field :confirmed_at, value: Time.now %>
+      <%= hidden_field_tag :invite_space_token, params[:invite_space_token] %>
+    <% end %>
     <%= f.submit "가입하기", class: 'btn btn-primary btn-block', data: {disable_with: '처리중'} %>
   <% end %>
 
