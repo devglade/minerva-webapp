@@ -1,9 +1,20 @@
 class SpacesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   # GET /spaces
   # GET /spaces.json
   def index
+    token = params[:invite_space_token]
+    if token != nil
+      if Invitation.is_invited_member current_user, token
+        message = SpaceMember.join_if_needed current_user, token
+        flash.now[:notice] = message
+      else
+        flash.now[:error] = "초대받은 이메일로 로그인을 하셔야합니다."
+      end
+    end
+
     @spaces_mine = Space.mine(current_user.id)
     @joined_spaces = SpaceMember.joined(current_user.id)
   end

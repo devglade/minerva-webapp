@@ -16,6 +16,7 @@ class InvitationsController < ApplicationController
 
     @invitation = Invitation.find_or_create_by invitation_params.merge(recipient_id: recipient == nil ? nil : recipient.id)
     if @invitation.recipient_id != nil
+      link = @invitation.exist_user_invite_link spaces_url
     else
       link = @invitation.new_user_invite_link(new_user_registration_url)
       @invitation.save
