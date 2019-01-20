@@ -42,6 +42,7 @@ group :development, :test do
   gem 'forgery'
   gem 'rails-controller-testing'
   gem 'simplecov'
+  gem 'rb-readline' #rails console 이 동작이 안되서 추가;
 end
 
 group :development do
