@@ -7,6 +7,7 @@ class Space < ApplicationRecord
 
   scope :mine, ->(user_id) {where(user_id: user_id).order('created_at DESC')}
   scope :opend, -> {where("is_public =?", true)}
+  scope :contains_keyword, ->(query) {where("name LIKE ?", "#{query}%")}
   validates_format_of :url, with: /[A-Za-z0-9]+/, message: "URL은 영어와 숫자만 허용됩니다", on: :create
 
 

@@ -63,7 +63,7 @@ class SpacesController < ApplicationController
 
   def search
     if params[:text].present?
-      @spaces = Space.opend.where("name = ?", params[:text])
+      @spaces = Space.opend.contains_keyword(params[:text])
     else
       @spaces = Space.opend.all
     end
