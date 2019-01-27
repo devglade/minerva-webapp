@@ -15,6 +15,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    if @space.is_public
+      raise User::NotAuthorized, '초대받은 사람만 작성할 수 있습니다.' unless @space.isAllowed current_user.id
+    end
     @post = @spin.posts.build(post_params)
 
     respond_to do |format|
