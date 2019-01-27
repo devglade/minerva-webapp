@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if !@space.is_public
+    unless @space.is_public
       raise User::NotAuthorized unless @space.isAllowed current_user.id
     end
     @projects = @space.projects.by_created_at
@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    if @space.is_public
+      raise User::NotAuthorized, '초대받은 사람만 생성할 수 있습니다.' unless @space.isAllowed current_user.id
+    end
     @project = Project.new
   end
 
@@ -22,6 +25,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    if @space.is_public
+      raise User::NotAuthorized, '초대받은 사람만 생성할 수 있습니다.' unless @space.isAllowed current_user.id
+    end
     @project = Project.new(project_params.merge(user_id: current_user.id))
     @project.space = @space
     @project.save
