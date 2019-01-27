@@ -4,6 +4,7 @@ class SpaceMember < ApplicationRecord
   belongs_to :space
 
   scope :joined, ->(user_id) {where(user_id: user_id).order('created_at DESC')}
+  scope :except_mine, ->(ids) {where(id: ids).order('created_at DESC')}
 
   def self.exist_member(recipient, space_id)
     if recipient == nil
