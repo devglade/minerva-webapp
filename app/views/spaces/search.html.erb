@@ -4,8 +4,8 @@
   <table>
     <% @spaces.each do |space| %>
       <tr>
-        <td>이름 : <%= space.name %></td>
-        <td>설명 :<%= space.description %></td>
+        <td>공간 이름 : <%= link_to space.name, space_projects_path(space.id) %></td>
+        <td>공간 설명 :<%= space.description %></td>
       </tr>
     <% end %>
   </table>
