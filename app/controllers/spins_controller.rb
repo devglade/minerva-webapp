@@ -21,6 +21,10 @@ class SpinsController < ApplicationController
   end
 
   def new
+    if @space.is_public
+      raise User::NotAuthorized, '초대받은 사람만 생성할 수 있습니다.' unless @space.isAllowed current_user.id
+    end
+
     @spin = Spin.new
   end
 
@@ -28,6 +32,10 @@ class SpinsController < ApplicationController
   end
 
   def create
+    if @space.is_public
+      raise User::NotAuthorized, '초대받은 사람만 생성할 수 있습니다.' unless @space.isAllowed current_user.id
+    end
+
     @spin = @project.spins.build(spin_params.merge(status: "opened"))
     @spin.save
 
@@ -35,6 +43,10 @@ class SpinsController < ApplicationController
   end
 
   def update
+    if @space.is_public
+      raise User::NotAuthorized, '초대받은 사람만 생성할 수 있습니다.' unless @space.isAllowed current_user.id
+    end
+
     @spin.update_attributes(spin_params)
 
     broadcast_update_spin(@spin)
