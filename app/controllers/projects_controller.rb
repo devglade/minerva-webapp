@@ -4,7 +4,9 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    raise User::NotAuthorized unless @space.isAllowed current_user.id
+    if !@space.is_public
+      raise User::NotAuthorized unless @space.isAllowed current_user.id
+    end
     @projects = @space.projects.by_created_at
   end
 
