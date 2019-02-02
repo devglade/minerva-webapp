@@ -7,7 +7,7 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item" href="#">이름 수정</a>
-        <a class="dropdown-item" href="#" v-if="section.posts.length ===0" v-on:click="deleteSection" data-confirm="이 섹션을 제거하면 이곳에 포함된 모든 포스트잇들도 모두 삭제됩니다. 이 섹션을 제거할까요? ">그룹 제거</a>
+        <a class="dropdown-item" href="" v-if="section.posts.length ===0" v-on:click="deleteSection" data-confirm="이 섹션을 제거할까요? ">섹션 제거</a>
       </div>
     </div>
 
@@ -114,7 +114,6 @@
           beforeSend: () => true,
           url: window.location.href + `/sections/${this.section.id}`,
           type: "DELETE",
-          dataType: "json",
         })
       }
     }
