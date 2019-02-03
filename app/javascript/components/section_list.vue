@@ -7,7 +7,7 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item" href="#">이름 수정</a>
-        <a class="dropdown-item" href="" v-if="section.posts.length ===0" v-on:click="deleteSection" data-confirm="이 섹션을 제거할까요? ">섹션 제거</a>
+        <a class="dropdown-item" href="" v-if="section.posts.length === 0" v-on:click="deleteSection">섹션 제거</a>
       </div>
     </div>
 
