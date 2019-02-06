@@ -4,5 +4,5 @@
 <%#= link_to '글쓰기', new_space_project_spin_post_path(@space, @project, @spin), remote: true, class: 'btn btn-block btn btn-outline-secondary' %>
 
 <div id="board" class="spin-board-wrap" data-spin=<%= @spin.id %>>
-  <%= render partial: 'sections/section', locals: {spin: @spin, sections: @spin.sections, current_user: current_user} %>
+  <%= render partial: 'sections/section', locals: {spin: @spin, sections: @sections, current_user: current_user} %>
 </div>

@@ -9,7 +9,7 @@ class SpinsController < ApplicationController
   end
 
   def show
-    @sections = Section.sorted
+    @sections = @spin.sections.sorted
     respond_to do |format|
       format.html
       format.js
