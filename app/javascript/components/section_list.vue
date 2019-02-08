@@ -114,6 +114,7 @@
           beforeSend: () => true,
           url: window.location.href + `/sections/${this.section.id}`,
           type: "DELETE",
+          dataType: "json"
         })
       }
     }

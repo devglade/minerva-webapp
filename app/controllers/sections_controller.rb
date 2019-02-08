@@ -18,7 +18,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        ActionCable.server.broadcast "board", {commit: 'addSection', payload: render_to_string(:show, format: :json)}
+        ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'addSection', payload: render_to_string(:show, format: :json)}
         format.html {redirect_to space_project_spin_path(@space, @project, @spin), notice: 'Section was successfully created.'}
         format.json {render json: @section.to_json, status: :created}
       else
@@ -46,14 +46,14 @@ class SectionsController < ApplicationController
 
   def move
     @section.insert_at(section_params[:position].to_i)
-    ActionCable.server.broadcast "board", {commit: 'moveSection', payload: @section.to_json(include: {posts: {include: {user: {only: [:id, :name, :image_id]}}}})}
+    ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'moveSection', payload: @section.to_json(include: {posts: {include: {user: {only: [:id, :name, :image_id]}}}})}
   end
 
   def destroy
     @section.destroy
     respond_to do |format|
-      ActionCable.server.broadcast "board", {commit: 'destroySection', payload: "{\"spin_id\":#{@spin.id},\"id\":#{@section.id}}"}
-      format.html {redirect_to space_project_spin_path @space, @project, @spin}
+      ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'destroySection', payload: "{\"spin_id\":#{@spin.id},\"id\":#{@section.id}}"}
+      format.html {redirect_to space_project_spin_path @space, @project, @spin, notice: 'Section was successfully destroyed'}
       format.json {head :no_content}
     end
   end

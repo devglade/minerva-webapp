@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        ActionCable.server.broadcast "board", {commit: 'addPost', payload: render_to_string(:show, format: :json)}
+        ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'addPost', payload: render_to_string(:show, format: :json)}
         format.html {redirect_to space_project_spin_path(@space, @project, @spin)}
         format.json {render json: @post.to_json(include: :user), status: :created}
       else
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update(post_params)
-        ActionCable.server.broadcast "board", {commit: 'editPost', payload: render_to_string(:show, format: :json)}
+        ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'editPost', payload: render_to_string(:show, format: :json)}
 
         format.html {redirect_to space_project_spin_path(@space, @project, @post), notice: 'Post was successfully updated.'}
         format.json {render json: @post.to_json, status: :ok}
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
 
     @post.destroy
     respond_to do |format|
-      ActionCable.server.broadcast "board", {commit: 'destroyPost', payload: "{\"spin_id\":#{@spin.id},\"section_id\":#{@section.id},\"id\":#{@post.id}}"}
+      ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'destroyPost', payload: "{\"spin_id\":#{@spin.id},\"section_id\":#{@section.id},\"id\":#{@post.id}}"}
       format.html {redirect_to space_project_spin_path @space, @project, @spin, notice: 'Section was successfully destroyed'}
       format.json {head :no_content}
     end
@@ -88,7 +88,7 @@ class PostsController < ApplicationController
     data = params.require(:post).permit(:content, :position).merge(user: user,
                                                                    section_id: params[:section_id], spin_id: params[:spin_id])
     @post.update(data)
-    ActionCable.server.broadcast "board", {commit: 'movePost', payload: render_to_string(:show, format: :json)}
+    ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'movePost', payload: render_to_string(:show, format: :json)}
     render action: :show
   end
 
@@ -117,7 +117,7 @@ class PostsController < ApplicationController
   end
 
   def broadcast_upvote_downvote(post)
-    ActionCable.server.broadcast "board", {commit: 'upVoteDownVoteUpdate', payload: "{\"spin_id\":#{@spin.id},
+    ActionCable.server.broadcast "board_#{@spin.id}", {commit: 'upVoteDownVoteUpdate', payload: "{\"spin_id\":#{@spin.id},
 \"section_id\":#{@section.id},\"id\":#{post.id}, \"upvote_count\":#{post.get_upvotes.size}, \"downvote_count\":#{post.get_downvotes.size}}"}
   end
 
