@@ -17,7 +17,7 @@ class SpacesController < ApplicationController
 
     @spaces_mine = Space.mine(current_user.id)
     joined_spaces = SpaceMember.joined(current_user.id)
-    @joined_spaces = SpaceMember.except_mine(@spaces_mine.pluck(:id)- joined_spaces.pluck(:id))
+    @joined_spaces = SpaceMember.except_mine(joined_spaces.pluck(:id) - @spaces_mine.pluck(:id))
   end
 
   # GET /spaces/1
