@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'postmaster@devglade.com'
+  default from: 'noreply@devglade.com'
   layout 'mailer'
 end
