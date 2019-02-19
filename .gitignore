@@ -55,3 +55,4 @@ config/secrets.yml.key
 yarn-debug.log*
 .yarn-integrity
 dump.rdb
+sendgrid.env
