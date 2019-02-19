@@ -99,19 +99,19 @@ Rails.application.configure do
   # config.serve_static_assets = true
   # config.public_file_server.enabled = true
 
-  config.action_cable.url = 'ws://minerva.devglade.com/cable'
-  config.action_cable.allowed_request_origins = ['http://minerva.devglade.com']
+  config.action_cable.url = 'ws://retrospin.io/cable'
+  config.action_cable.allowed_request_origins = [ 'http://retrospin.io' ]
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = {:host => 'http://minerva.devglade.com'}
+  config.action_mailer.default_url_options = {host: ENV['HOST_ADDRESS'], port: 3000}
   config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
+      address: ENV['SMTP_ADDRESS'],
       port: '587',
       enable_starttls_auto: true,
-      user_name: ENV['GMAIL_USERNAME'],
-      password: ENV['GMAIL_PASSWORD'],
-      authentication: "plain",
-      domain: 'minerva.devglade.com'
+      user_name: ENV['EMAIL_USER'],
+      password: ENV['EMAIL_PASSWORD'],
+      authentication: 'plain',
+      domain: ENV['DOMAIN']
   }
 end

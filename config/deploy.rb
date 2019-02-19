@@ -2,7 +2,7 @@
 set :ssh_options, {
   forward_agent: true,
   auth_methods: ["publickey"],
-  keys: ["#{Dir.home}/Key/devglade-key.pem"]
+  keys: ["#{Dir.home}/Key/retrospin.pem"]
 }
 
 set :application,     'minerva-webapp'

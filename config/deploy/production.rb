@@ -60,4 +60,4 @@
 #     # password: "please use keys"
 #   }
 
-server 'minerva.devglade.com', user: 'ubuntu', roles: %w{web app}
+server ENV['DEPLOY_SERVER'], user: 'ubuntu', roles: %w{web app}
