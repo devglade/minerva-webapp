@@ -32,6 +32,9 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
 set :assets_roles, [:web, :app]
+
+append :linked_files, "config/secrets.yml.key"
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
