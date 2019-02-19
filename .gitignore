@@ -56,3 +56,4 @@ yarn-debug.log*
 .yarn-integrity
 dump.rdb
 sendgrid.env
+Gemfile.lock
