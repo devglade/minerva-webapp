@@ -34,7 +34,6 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 set :assets_roles, [:web, :app]
 
 append :linked_files, "config/secrets.yml.key"
-append :linked_files, "config/database.yml"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
