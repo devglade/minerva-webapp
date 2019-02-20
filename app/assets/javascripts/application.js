@@ -13,7 +13,6 @@
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
-//= require rails-ujs
 //= require jquery-ui
 //= require turbolinks
 //= require minerva
