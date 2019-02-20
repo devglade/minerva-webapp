@@ -17,7 +17,7 @@ production:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   database: minerva-webapp
-  username: ENV['DATABASE_USER']
-  password: ENV['DATABASE_PASSWORD']
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   host: localhost
   port: 5432
