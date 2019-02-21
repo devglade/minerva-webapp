@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: 'nanumbarunpenb';
-    src: url('nanumbarunpenb.eot');
-    src: url('nanumbarunpenb.eot?#iefix') format('embedded-opentype'),
-         url('nanumbarunpenb.woff2') format('woff2'),
-         url('nanumbarunpenb.woff') format('woff'),
-         url('nanumbarunpenb.ttf') format('truetype'),
-         url('nanumbarunpenb.svg#nanumbarunpenb') format('svg');
+    src: url('/assets/nanumbarunpenb.eot');
+    src: url('/assets/nanumbarunpenb.eot?#iefix') format('embedded-opentype'),
+         url('/assets/nanumbarunpenb.woff2') format('woff2'),
+         url('/assets/nanumbarunpenb.woff') format('woff'),
+         url('/assets/nanumbarunpenb.ttf') format('truetype'),
+         url('/assets/nanumbarunpenb.svg#nanumbarunpenb') format('svg');
     font-weight: normal;
     font-style: normal;
 
