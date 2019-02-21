@@ -25,8 +25,7 @@
   import draggable from 'vuedraggable'
   import sectionList from 'components/section_list'
 
-  const Rails = require('rails-ujs');
-  Rails.start();
+  const Rails = require("@rails/ujs").start()
 
   export default {
     props: ['current_user'],
