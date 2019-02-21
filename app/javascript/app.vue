@@ -26,6 +26,7 @@
   import sectionList from 'components/section_list'
 
   const Rails = require('rails-ujs');
+  Rails.start();
 
   export default {
     props: ['current_user'],
