@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@rails/ujs@^5.2.1":
-  version "6.0.0-beta1"
-  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.0-beta1.tgz#9f91cbcb7d708f4d00805607281fe508dc77bb7e"
+"@rails/ujs@^6.0.0-alpha":
+  version "6.0.0-alpha"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.0-alpha.tgz#d5761d93e19215f5f342229f934d5ca8f6dd22a5"
 
 "@rails/webpacker@3.5":
   version "3.5.5"
