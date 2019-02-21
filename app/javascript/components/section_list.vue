@@ -41,7 +41,7 @@
 <script>
   import draggable from 'vuedraggable'
   import post from 'components/post'
-  import * as Rails from "rails-ujs";
+  import * as Rails from "@rails/ujs";
 
 
   export default {
@@ -75,7 +75,7 @@
           data: data,
           dataType: "json",
           success: (data) => {
-            this.messages = ""
+            this.messages = "";
             this.$nextTick(() => {
               this.$refs.message.focus()
             })
@@ -84,11 +84,11 @@
       },
 
       postMoved: function (event) {
-        const evt = event.added || event.moved
+        const evt = event.added || event.moved;
         if (evt === undefined) {
           return
         }
-        const element = evt.element
+        const element = evt.element;
         const section_index = window.store.state.sections.findIndex((section) => {
           return section.posts.find((post) => {
             return post.id === element.id

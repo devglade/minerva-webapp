@@ -25,7 +25,7 @@
   import draggable from 'vuedraggable'
   import sectionList from 'components/section_list'
 
-  const Rails = require("@rails/ujs").start()
+  const Rails = require("@rails/ujs").start();
 
   export default {
     props: ['current_user'],
@@ -49,14 +49,14 @@
 
     methods: {
       startEditing: function () {
-        this.editing = true
+        this.editing = true;
         this.$nextTick(() => {
           this.$refs.message.focus()
         })
       },
 
       sectionMoved: function (event) {
-        var data = new FormData
+        var data = new FormData;
         data.append("section[position]", event.newIndex + 1)
 
         Rails.ajax({
@@ -69,7 +69,7 @@
       },
 
       createSection: function () {
-        var data = new FormData
+        var data = new FormData;
         data.append("section[title]", this.message)
 
         Rails.ajax({

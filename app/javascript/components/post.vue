@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  import * as Rails from "rails-ujs";
+  import * as Rails from "@rails/ujs";
   import 'images/img_profile_default.png'
 
   export default {
