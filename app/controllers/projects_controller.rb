@@ -56,7 +56,11 @@ class ProjectsController < ApplicationController
   private
 
   def set_space
-    @space = Space.find(params[:space_id])
+    if request.subdomain != nil
+      @space = Space.where(url: request.subdomain).first
+    else
+      @space = Space.find(params[:space_id])
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
