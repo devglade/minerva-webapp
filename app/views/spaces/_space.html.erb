@@ -2,10 +2,10 @@
   isOwner = (space.user != nil && current_user.id == space.user.id)
   space_type = isOwner ? "owner" : "member"
 %>
-<li class="list-space-item <%space_type%>" id="space-<%= space.id %>">
+<li class="list-space-item <%= space_type %>" id="space-<%= space.id %>">
   <%= link_to space_projects_path(space), id: "space-#{space.id}-title", class: 'content' do %>
     <h3 class="title">
-      <span class="ownership"><% space_type %></span>
+      <span class="ownership"><%= space_type %></span>
       <br><%= space.name %>
     </h3>
   <% end %>
