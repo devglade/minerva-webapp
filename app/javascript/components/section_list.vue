@@ -57,7 +57,7 @@
 
     methods: {
       startEditing: function () {
-        this.editing = true
+        this.editing = true;
         this.$nextTick(() => {
           this.$refs.message.focus();
         })
