@@ -1,3 +1,5 @@
+<% noSubdomain = request.subdomain.blank? %>
+
 <nav class="navbar navbar-global navbar-expand-lg navbar-light">
   <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
@@ -14,7 +16,8 @@
         </li>
       <% elsif controller_name == 'spins' and action_name == 'index' %>
         <li class="breadcrumb-item">
-          <%= link_to space_projects_path do %>
+          <% path = noSubdomain ? space_projects_path : projects_path %>
+          <%= link_to path do %>
             <%= @space.name %>
           <% end %>
         </li>
@@ -23,12 +26,14 @@
         </li>
       <% elsif controller_name == 'spins' and action_name == 'show' %>
         <li class="breadcrumb-item">
-          <%= link_to space_projects_path do %>
+          <% path = noSubdomain ? space_projects_path : projects_path %>
+          <%= link_to path do %>
             <%= @space.name %>
           <% end %>
         </li>
         <li class="breadcrumb-item">
-          <%= link_to space_project_spins_path do %>
+          <% path = noSubdomain ? space_project_spins_path : project_spins_path %>
+          <%= link_to path do %>
             <%= @project.title %>
           <% end %>
         </li>
@@ -61,11 +66,13 @@
           </li>
         <% elsif controller_name == 'projects' %>
           <li class="nav-item">
-            <%= link_to '팀 등록', new_space_project_path, remote: true, class: 'btn btn-sm btn-primary btn-project' %>
+            <% path = noSubdomain ? new_space_project_path : new_project_path %>
+            <%= link_to '팀 등록', path, remote: true, class: 'btn btn-sm btn-primary btn-project' %>
           </li>
         <% elsif controller_name == 'spins' %>
           <li class="nav-item">
-            <%= link_to '회고 주제 등록', new_space_project_spin_path, remote: true, class: 'btn btn-sm btn-primary btn-spin' %>
+            <% path = noSubdomain ? new_space_project_spin_path : new_project_spin_path %>
+            <%= link_to '회고 주제 등록', path, remote: true, class: 'btn btn-sm btn-primary btn-spin' %>
           </li>
         <% end %>
 

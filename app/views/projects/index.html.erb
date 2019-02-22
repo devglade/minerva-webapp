@@ -4,7 +4,8 @@
 
   <ul class="list-projects">
     <li class="list-item create-project">
-      <%= link_to new_space_project_path, remote: true, class: 'content' do %>
+      <% new_path = request.subdomain.blank? ? new_space_project_path : new_project_path %>
+      <%= link_to new_path, remote: true, class: 'content' do %>
         <i class="material-icons">add</i>
       <% end %>
     </li>

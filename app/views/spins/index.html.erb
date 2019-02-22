@@ -3,7 +3,8 @@
 <div class="container container-lg container-spins" data-retrospect=<%= @project.id %>>
   <ul class="list-spins">
     <li class="list-spin-item create-spin">
-      <%= link_to new_space_project_spin_path, remote: true, class: 'spin' do %>
+      <% new_path = request.subdomain.blank? ? new_space_project_spin_path : new_project_spin_path %>
+      <%= link_to new_path, remote: true, class: 'spin' do %>
         <i class="material-icons">add</i>
       <% end %>
     </li>

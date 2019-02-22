@@ -1,5 +1,10 @@
 <li id="spin-<%= spin.id %>" class="list-spin-item">
-  <%= link_to space_project_spin_path(project_id: spin.project, id: spin), class: 'spin' do %>
+  <%
+    noSubdomain = request.subdomain.blank?
+    path = noSubdomain ? space_project_spin_path(project_id: spin.project, id: spin) : project_spin_path(project_id: spin.project, id: spin)
+    update_path = noSubdomain ? edit_space_project_spin_path(project_id: spin.project, id: spin) : edit_project_spin_path(project_id: spin.project, id: spin)
+  %>
+  <%= link_to path, class: 'spin' do %>
     <% if spin.status == "closed" %>
     <% else %>
     <% end %>
@@ -14,8 +19,8 @@
       <i class="material-icons">more_vert</i>
     </a>
     <div class="dropdown-menu dropdown-menu-right">
-        <%= link_to '이름 수정', edit_space_project_spin_path(project_id: spin.project, id: spin), remote: true, class: 'dropdown-item' %>
-        <%= link_to '삭제', space_project_spin_path(project_id: spin.project, id: spin), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
+        <%= link_to '이름 수정', update_path, remote: true, class: 'dropdown-item' %>
+        <%= link_to '삭제', path, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
     </div>
   </div>
   <% end %>
