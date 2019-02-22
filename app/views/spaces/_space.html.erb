@@ -1,12 +1,11 @@
-<% space_type = current_user.id == space.user.id ? "owner" : "member" %>
+<%
+  isOwner = (space.user != nil && current_user.id == space.user.id)
+  space_type = isOwner ? "owner" : "member"
+%>
 <li class="list-space-item <%space_type%>" id="space-<%= space.id %>">
   <%= link_to space_projects_path(space), id: "space-#{space.id}-title", class: 'content' do %>
     <h3 class="title">
-      <% if current_user.id == space.user.id %>
-        <spqn class="ownership">owner</spqn>
-      <% else %>
-        <span class="ownership">member</span>
-      <% end %>
+      <span class="ownership"><% space_type %></span>
       <br><%= space.name %>
     </h3>
   <% end %>
@@ -16,7 +15,7 @@
       <i class="material-icons">more_vert</i>
     </a>
     <div class="dropdown-menu dropdown-menu-right">
-      <% if current_user.id == space.user.id %>
+      <% if isOwner %>
         <%= link_to '이름 수정', edit_space_path(space), remote: true, class: 'dropdown-item' %>
         <%= link_to '공간 삭제', space, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
         <%= link_to '초대하기', new_invitation_path(space_id: space), remote: true, class: 'dropdown-item' %>
