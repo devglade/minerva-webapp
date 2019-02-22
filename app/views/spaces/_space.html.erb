@@ -23,7 +23,7 @@
       <% else %>
         <button class="dropdown-item" data-toggle="popover" title="<%= space.user.name %>" data-content="<%= space.user.email %>">
           <%= space.user.name.truncate(8) %> <i class="material-icons">face</i>
-          <%= link_to '초대하기', space, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
+          <%= link_to '초대하기', new_invitation_path(space_id: space), remote: true, class: 'dropdown-item' %>
         </button>
       <% end %>
     </div>
