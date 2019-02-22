@@ -53,6 +53,10 @@ class ProjectsController < ApplicationController
     broadcast_delete_project(@project)
   end
 
+  def space_by_subdomain
+    Space.where(url: request.subdomain).first.id
+  end
+
   private
 
   def set_space
@@ -60,6 +64,7 @@ class ProjectsController < ApplicationController
       @space = Space.find(params[:space_id])
     else
       @space = Space.where(url: request.subdomain).first
+      params.merge(space_id: @space.id)
     end
   end
 
