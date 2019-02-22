@@ -56,10 +56,10 @@ class ProjectsController < ApplicationController
   private
 
   def set_space
-    if request.subdomain != nil
-      @space = Space.where(url: request.subdomain).first
-    else
+    if request.subdomain.blank?
       @space = Space.find(params[:space_id])
+    else
+      @space = Space.where(url: request.subdomain).first
     end
   end
 
