@@ -9,7 +9,9 @@
   <ul class="list-spaces" id="space-board">
     <%= render partial: 'space', collection: @spaces_mine %>
     <% @joined_spaces.each do |member| %>
-      <%= render partial: 'space', locals: {space: member.space} %>
+      <% if member.space != nil %>
+        <%= render partial: 'space', locals: {space: member.space} %>
+      <% end %>
     <% end %>
 
     <li class="list-space-item">
