@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   authenticated :user do
-    root to: 'spaces#index', constraints: { subdomain: '' }
-    root to: 'spaces#index', constraints: { subdomain: 'www' }
+    root to: 'spaces#index'  , constraints: { subdomain: ['', 'www'] }
     root to: 'projects#index', constraints: { subdomain: /.+/ }
   end
   root to: 'root#index'
@@ -28,7 +27,6 @@ Rails.application.routes.draw do
 
   constraints(SubdomainRoutes) do
     resources :projects do
-      get :space_id, to: 'projects#space_by_subdomain'
       resources :spins do
         member do
           get :get_spin #show는 post를 같이 보여주고 있어서 get_spin을 만듦.ㅠ

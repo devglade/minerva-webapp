@@ -53,10 +53,6 @@ class ProjectsController < ApplicationController
     broadcast_delete_project(@project)
   end
 
-  def space_by_subdomain
-    Space.where(url: request.subdomain).first.id
-  end
-
   private
 
   def set_space
