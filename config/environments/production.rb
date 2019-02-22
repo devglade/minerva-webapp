@@ -99,8 +99,8 @@ Rails.application.configure do
   # config.serve_static_assets = true
   # config.public_file_server.enabled = true
 
-  config.action_cable.url = 'ws://retrospin.io/cable'
-  config.action_cable.allowed_request_origins = [ 'http://retrospin.io' ]
+  config.action_cable.url = 'ws://' + ENV['DOMAIN'] + '/cable'
+  config.action_cable.allowed_request_origins = [ /(?:^(http|https):\/\/)?(?:([^.]+)\.)?#{ENV['DOMAIN']}/ ]
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
