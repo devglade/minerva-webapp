@@ -12,6 +12,10 @@
   <%= favicon_link_tag 'minerva-256.png', sizes: '256x256', rel: 'apple-touch-icon', type: 'image/png' %>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta property="og:title" content="RetoSpin" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.url %>" />
+  <meta property="og:image" content="<%= image_url("img-symbol-64.png", class: "bi-nav-head", size: "64", alt: "로고이미지") %>" />
 </head>
 
 <body class="<%= controller_name %> <%= controller_name %>-<%= controller.action_name %>" data-controller="<%= controller_name %>" data-action="<%= action_name %>">
