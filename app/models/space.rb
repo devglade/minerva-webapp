@@ -22,4 +22,8 @@ class Space < ApplicationRecord
   def isAllowed current_user_id
     users.exists?(current_user_id)
   end
+
+  class NotAllowed < MinervaError
+    DEFAULT_MESSAGE = '해당 액션을 허용하지 않습니다.'
+  end
 end

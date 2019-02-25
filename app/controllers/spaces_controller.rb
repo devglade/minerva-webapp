@@ -2,6 +2,8 @@ class SpacesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
+  SPACE_LIMIT = 2
+
   # GET /spaces
   # GET /spaces.json
   def index
@@ -14,10 +16,10 @@ class SpacesController < ApplicationController
         flash.now[:error] = "초대받은 이메일로 로그인을 하셔야합니다."
       end
     end
+
     @space_limit = 2
     @spaces_mine = Space.mine(current_user.id)
     @joined_spaces = SpaceMember.joined(current_user.id)
-    # @joined_spaces = SpaceMember.except_mine(joined_spaces.pluck(:id) - @spaces_mine.pluck(:id))
   end
 
   # GET /spaces/1
@@ -38,6 +40,8 @@ class SpacesController < ApplicationController
   # POST /spaces
   # POST /spaces.json
   def create
+    @spaces_mine = Space.mine(current_user.id)
+    raise Space::NotAllowed, '공간 생성 한도를 초과했습니다.' if over_space_limit
     @space = Space.new(space_params.merge(user_id: current_user.id))
     @space.save
     flash.now[:error] = @space.errors.messages[:url] if @space.errors.any?
@@ -82,15 +86,21 @@ class SpacesController < ApplicationController
     params.require(:space).permit(:name, :description, :url, :is_public, :user_id)
   end
 
+  def over_space_limit
+    Space.mine(current_user.id).count >= SPACE_LIMIT
+  end
+
   def broadcast_create_space(space)
-    ActionCable.server.broadcast "all_spaces", {action: "create", id: space.id}
+
+    ActionCable.server.broadcast "#{current_user.email}_spaces", {action: "create", id: space.id, state: over_space_limit ? 'hide' : 'show'}
   end
 
   def broadcast_delete_space(space)
-    ActionCable.server.broadcast "all_spaces", {action: "delete", id: "space-#{space.id}"}
+    @spaces_mine = Space.mine(current_user.id)
+    ActionCable.server.broadcast "#{current_user.email}_spaces", {action: "delete", id: "space-#{space.id}", state: over_space_limit ? 'hide' : 'show'}
   end
 
   def broadcast_update_space(space)
-    ActionCable.server.broadcast "all_spaces", {action: "update", id: space.id}
+    ActionCable.server.broadcast "#{current_user.email}_spaces", {action: "update", id: space.id}
   end
 end

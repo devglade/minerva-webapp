@@ -14,11 +14,13 @@
       switch data.action
         when 'create'
           if $('#space-' + data.id).length == 0
+            $('#create-button').toggle(data.state)
             $.get('spaces/' + data.id).done (html)->
               console.log(html)
               $('#space-board').prepend html
         when 'delete'
           if $('#' + data.id).length > 0
+            $('#create-button').toggle(data.state)
             $('#' + data.id).remove()
         when 'update'
           if $('#space-' + data.id).length > 0

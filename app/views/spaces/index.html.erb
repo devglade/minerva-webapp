@@ -1,4 +1,4 @@
-<%= javascript_tag "MakeSpaceChannel('all')" %>
+<%= javascript_tag "MakeSpaceChannel('#{current_user.email}')" %>
 
 <div class="container container-space">
   <header class="header">
@@ -14,12 +14,10 @@
       <% end %>
     <% end %>
 
-    <li class="list-space-item">
-      <% if @spaces_mine.count < @space_limit %>
-        <%= link_to new_space_path, class: 'content create-space', remote: true do %>
+    <li class="list-space-item" >
+        <%= link_to new_space_path, class: 'content create-space', remote: true, id: 'create-button', style: @spaces_mine.count >= @space_limit ? 'display:none' : '' do %>
           <h1 class="">새로운 공간</h1>
         <% end %>
-      <% end %>
     </li>
 
   </ul>
