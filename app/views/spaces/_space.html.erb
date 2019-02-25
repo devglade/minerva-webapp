@@ -1,6 +1,7 @@
 <%
   isOwner = (space.user != nil && current_user.id == space.user.id)
-  space_type = isOwner ? "owner" : "member"
+  isMember = SpaceMember.is_member(space.id, current_user.id).count > 0
+  space_type = isOwner ? "owner" : (isMember ? "member" : "public")
 %>
 <li class="list-space-item <%= space_type %>" id="space-<%= space.id %>">
   <%= link_to space_projects_path(space), id: "space-#{space.id}-title", class: 'content' do %>
@@ -9,22 +10,24 @@
       <br><%= space.name %>
     </h3>
   <% end %>
+  <% if isOwner || isMember %>
+    <div class="dropdown">
+      <a href="" id="dropdown_space" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <i class="material-icons">more_vert</i>
+      </a>
 
-  <div class="dropdown">
-    <a href="" id="dropdown_space" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <i class="material-icons">more_vert</i>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-      <% if isOwner %>
-        <%= link_to '이름 수정', edit_space_path(space), remote: true, class: 'dropdown-item' %>
-        <%= link_to '공간 삭제', space, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
-        <%= link_to '초대하기', new_invitation_path(space_id: space), remote: true, class: 'dropdown-item' %>
-      <% else %>
-        <button class="dropdown-item" data-toggle="popover" title="<%= space.user.name %>" data-content="<%= space.user.email %>">
-          <%= space.user.name.truncate(8) %> <i class="material-icons">face</i>
+      <div class="dropdown-menu dropdown-menu-right">
+        <% if isOwner %>
+          <%= link_to '이름 수정', edit_space_path(space), remote: true, class: 'dropdown-item' %>
+          <%= link_to '공간 삭제', space, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
           <%= link_to '초대하기', new_invitation_path(space_id: space), remote: true, class: 'dropdown-item' %>
-        </button>
-      <% end %>
+        <% elsif isMember %>
+          <button class="dropdown-item" data-toggle="popover" title="<%= space.user.name %>" data-content="<%= space.user.email %>">
+            <%= space.user.name.truncate(8) %> <i class="material-icons">face</i>
+            <%= link_to '초대하기', new_invitation_path(space_id: space), remote: true, class: 'dropdown-item' %>
+          </button>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </li>

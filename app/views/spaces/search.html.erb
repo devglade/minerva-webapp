@@ -1,12 +1,12 @@
-<% if @spaces.size == 0 %>
-  검색결과가 없습니다.
-<% else %>
-  <table>
-    <% @spaces.each do |space| %>
-      <tr>
-        <td>공간 이름 : <%= link_to space.name, space_projects_path(space.id) %></td>
-        <td>공간 설명 :<%= space.description %></td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
+<div class="container container-space">
+  <header class="header">
+    <h1 class="headline">공간 검색 결과</h1>
+    <h4 class="sub-headline"><%= @spaces.size %>개의 공간이 검색되었습니다.</h4>
+  </header>
+
+  <% if @spaces.size > 0 %>
+    <ul class="list-spaces" id="space-board">
+      <%= render partial: 'space', collection: @spaces %>
+    </ul>
+  <% end %>
+</div>
