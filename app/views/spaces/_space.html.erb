@@ -1,6 +1,6 @@
 <%
   isOwner = (space.user != nil && current_user.id == space.user.id)
-  isMember = SpaceMember.is_member(space.id, current_user.id).count > 0
+  isMember = SpaceMember.is_member(space.id, current_user.id).present?
   space_type = isOwner ? "owner" : (isMember ? "member" : "public")
 %>
 <li class="list-space-item <%= space_type %>" id="space-<%= space.id %>">
