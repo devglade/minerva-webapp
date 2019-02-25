@@ -8,26 +8,26 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     @project = create(:project)
   end
 
-  test '[project] 로그인 안한 사용자는 프로젝트를 볼 수 없다.' do
+  test '[project] 로그인 안한 사용자는 프로젝트(팀)를 볼 수 없다.' do
     sign_out @user1
     get space_projects_path @space
 
     assert_response 302
   end
 
-  test '[project] 로그인 안한 사용자는 프로젝트를 쓸 수 없다.' do
+  test '[project] 로그인 안한 사용자는 프로젝트(팀)를 쓸 수 없다.' do
     sign_out @user1
     assert_no_difference 'Project.count' do
       post space_projects_path(@space), params: {project: attributes_for(:project)}, xhr: true
     end
   end
 
-  test "공간에 참여한 사람만 프로젝트를 볼 수 있다." do
+  test "공간에 참여한 사람만 프로젝트(팀)를 볼 수 있다." do
     get space_projects_path(@space, @project)
     assert_response :success
   end
 
-  test "공간에 참여하지 못한 사람은 프로젝트를 볼수 없다" do
+  test "공간에 참여하지 못한 사람은 프로젝트(팀)를 볼수 없다" do
     sign_out @user1
     sign_in @user2
     get space_projects_path(@space, @project)
@@ -76,7 +76,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test '다른 사람이 쓴 프로젝트는 삭제할 수 없다.' do
+  test '다른 사람이 쓴 프로젝트(팀)는 삭제할 수 없다.' do
     sign_out @project.user
     assert_no_difference 'Project.count' do
       delete space_project_path(@space, @project), xhr: true

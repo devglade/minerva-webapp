@@ -67,7 +67,7 @@
         <% elsif controller_name == 'projects' %>
           <li class="nav-item">
             <% path = noSubdomain ? new_space_project_path : new_project_path %>
-            <%= link_to '팀 등록', path, remote: true, class: 'btn btn-sm btn-primary btn-project' %>
+            <%= link_to '프로젝트(팀) 등록', path, remote: true, class: 'btn btn-sm btn-primary btn-project' %>
           </li>
         <% elsif controller_name == 'spins' %>
           <li class="nav-item">

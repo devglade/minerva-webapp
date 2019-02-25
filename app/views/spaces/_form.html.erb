@@ -16,7 +16,7 @@
             <%= form.text_field :description, class: "form-control", autofocus: true, :required => true %>
           </div>
           <div class="form-group">
-            <%= form.text_field :url, class: "form-control" %>
+            <%= form.text_field :url, class: "form-control", label: '서브도메인', placeholder: "subdomain.#{ request.domain }" %>
           </div>
 
           <div class="form-group">
