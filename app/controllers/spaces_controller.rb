@@ -14,10 +14,10 @@ class SpacesController < ApplicationController
         flash.now[:error] = "초대받은 이메일로 로그인을 하셔야합니다."
       end
     end
-
+    @space_limit = 2
     @spaces_mine = Space.mine(current_user.id)
-    joined_spaces = SpaceMember.joined(current_user.id)
-    @joined_spaces = SpaceMember.except_mine(joined_spaces.pluck(:id) - @spaces_mine.pluck(:id))
+    @joined_spaces = SpaceMember.joined(current_user.id)
+    # @joined_spaces = SpaceMember.except_mine(joined_spaces.pluck(:id) - @spaces_mine.pluck(:id))
   end
 
   # GET /spaces/1

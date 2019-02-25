@@ -4,10 +4,10 @@
   <header class="header">
     <h1 class="headline">회고를 위한 공간</h1>
     <h4 class="sub-headline">회고를 진행할 공간을 생성하세요. 초대 받은 공간이 있다면 이곳에 표시됩니다.</h4>
+    <h4 class="sub-headline"><%= @space_limit %>개의 공간까지 무료로 생성할 수 있습니다.</h4>
   </header>
 
   <ul class="list-spaces" id="space-board">
-    <%= render partial: 'space', collection: @spaces_mine %>
     <% @joined_spaces.each do |member| %>
       <% if member.space != nil %>
         <%= render partial: 'space', locals: {space: member.space} %>
@@ -15,9 +15,12 @@
     <% end %>
 
     <li class="list-space-item">
-      <%= link_to new_space_path, class: 'content create-space', remote: true do %>
-        <h1 class="">새로운 공간</h1>
+      <% if @spaces_mine.count < @space_limit %>
+        <%= link_to new_space_path, class: 'content create-space', remote: true do %>
+          <h1 class="">새로운 공간</h1>
+        <% end %>
       <% end %>
     </li>
+
   </ul>
 </div>
