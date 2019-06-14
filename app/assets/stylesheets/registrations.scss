@@ -1,6 +1,7 @@
 @import "common";
 $width-session: rem-calc(360);
 
+.registrations-create,
 .registrations-new,
 .sessions-new,
 .passwords-new,
@@ -8,6 +9,7 @@ $width-session: rem-calc(360);
 .registrations-edit,
 .registrations-update { .footer-wrap {display: none;} }
 
+.registrations-create,
 .registrations-new,
 .sessions-new,
 .passwords-new,
