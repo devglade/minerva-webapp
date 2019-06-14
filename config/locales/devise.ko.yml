@@ -1,5 +1,20 @@
 ko:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "이메일을 입력해주세요."
+              taken: "이미 사용 중입니다. 다른 이메일을 입력해주세요."
+              invalid: "잘못된 이메일 형식입니다."
+            password:
+              blank: "비밀번호를 입력해주세요."
+            password_confirmation:
+              blank: "확인을 위한 비밀번호를 입력해주세요."
+              confirmation: "입력하신 비밀번호와 다릅니다."
+            current_password:
+              invalid: "현재 사용 중인 비밀번호와 다릅니다."
     attributes:
       user:
         confirmation_sent_at: "확인 메일 전송 시간"
