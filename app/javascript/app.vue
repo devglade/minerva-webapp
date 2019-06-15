@@ -1,6 +1,7 @@
 <template>
   <draggable class="spin-board" v-model="sections" :options="{groups: 'sections'}" @end="sectionMoved">
-    <sectionList v-for="(section, index) in sections" :section="section" :current_user="current_user"></sectionList>
+    <sectionList v-for="(section, index) in sections" v-bind:key="section.id" :section="section"
+                 :current_user="current_user"></sectionList>
 
     <div class="section create-section">
       <a class="btn btn-create"
