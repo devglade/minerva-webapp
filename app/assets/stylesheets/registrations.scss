@@ -7,13 +7,17 @@ $width-session: rem-calc(360);
 .passwords-new,
 .confirmations-new,
 .registrations-edit,
-.registrations-update { .footer-wrap {display: none;} }
+.registrations-update,
+.confirmations-create,
+.confirmations-show { .footer-wrap {display: none;} }
 
 .registrations-create,
 .registrations-new,
 .sessions-new,
 .passwords-new,
-.confirmations-new {
+.confirmations-new,
+.confirmations-create,
+.confirmations-show {
   .alert-notice {
     width: calc(#{$width-session} - #{rem-calc(48)});
     position: fixed;
