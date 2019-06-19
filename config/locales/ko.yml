@@ -1,5 +1,5 @@
 ko:
-  service_name: '레트로스핀'
+  service_name: '미네르바'
   activerecord:
     errors:
       messages:
