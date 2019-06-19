@@ -1,20 +1,11 @@
 Rails.application.routes.draw do
   authenticated :user do
-    root to: 'spaces#index'  , constraints: { subdomain: ['', 'www'] }
-    root to: 'projects#index', constraints: { subdomain: /.+/ }
+    root to: 'spaces#index', constraints: {subdomain: ['', 'www']}
+    root to: 'projects#index', constraints: {subdomain: /.+/}
   end
   root to: 'root#index'
 
   devise_for :users,
-             controllers: {
-                 sessions: 'users/sessions',
-                 confirmations: 'users/confirmations',
-                 passwords: 'users/passwords',
-                 registrations: 'users/registrations',
-                 mailer: 'users/mailer',
-                 shared: 'users/shared',
-                 unlocks: 'users/unlocks'
-             },
              path_names: {
                  sign_in: 'login',
                  sign_out: 'logout',
