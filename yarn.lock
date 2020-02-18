@@ -2886,7 +2886,7 @@ grunt-legacy-util@~1.1.1:
   version "0.2.8"
   resolved "git+https://github.com/dbushell/grunt-svg2png.git#57f8a2c2828e366cbd687ec3007d190fff3a5ce6"
   dependencies:
-    phantomjs "~2.1.7"
+    phantomjs-prebuilt "~2.1.7"
 
 grunt-svgmin@^4.0.0:
   version "4.0.0"
@@ -4730,7 +4730,7 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-phantomjs@~2.1.7:
+phantomjs-prebuilt@~2.1.7:
   version "2.1.7"
   resolved "https://registry.yarnpkg.com/phantomjs/-/phantomjs-2.1.7.tgz#c6910f67935c37285b6114329fc2f27d5f3e3134"
   dependencies:
