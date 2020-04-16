@@ -68,7 +68,7 @@ group :development do
   gem 'bullet'
 end
 
-gem 'acts_as_votable', '~> 0.12.0'
+gem 'acts_as_votable', '~> 0.12.1'
 
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'bootstrap-social-rails'
