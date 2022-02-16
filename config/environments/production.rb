@@ -110,7 +110,7 @@ Rails.application.configure do
       authentication: :plain,
       user_name: 'apikey',
       password: ENV['EMAIL_PASSWORD'],
-      domain: ENV['DOMAIN']
-      enable_starttls_auto: true,
+      domain: ENV['DOMAIN'],
+      enable_starttls_auto: true
   }
 end
