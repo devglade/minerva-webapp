@@ -341,9 +341,11 @@ GEM
     net-ssh (6.1.0)
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.1-arm64-darwin)
+    nokogiri (1.12.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.1-x86_64-linux)
+    nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     optimist (3.0.1)
     orm_adapter (0.5.0)
@@ -516,6 +518,7 @@ DEPENDENCIES
   letter_opener
   listen (>= 3.0.5, < 3.2)
   material_icons
+  nokogiri (~> 1.12.5)
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.3)

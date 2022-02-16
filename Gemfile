@@ -94,3 +94,5 @@ gem 'webpacker', '~> 3.5' #https://github.com/rails/webpacker
 gem 'inline_svg'
 
 gem 'sendgrid-ruby'
+
+gem 'nokogiri', '~> 1.12.5'
