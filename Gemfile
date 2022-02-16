@@ -93,6 +93,6 @@ gem 'webpacker', '~> 3.5' #https://github.com/rails/webpacker
 
 gem 'inline_svg'
 
-gem 'sendgrid-ruby'
+gem 'sendgrid-ruby', '~> 6.6.1'
 
 gem 'ffi', '~> 1.13'
