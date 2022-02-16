@@ -2,42 +2,42 @@
   "name": "minerva-webapp",
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.0-alpha",
-    "@rails/webpacker": "3.5",
-    "vue": "^2.5.17",
-    "vue-loader": "14.2.2",
-    "vue-template-compiler": "^2.5.17",
-    "vue-turbolinks": "^2.0.0",
-    "vuedraggable": "^2.16.0",
-    "vuex": "^3.0.1"
+  "@rails/ujs": "^6.0.0-alpha",
+  "@rails/webpacker": "3.5",
+  "vue": "^2.5.17",
+  "vue-loader": "14.2.2",
+  "vue-template-compiler": "^2.5.17",
+  "vue-turbolinks": "^2.0.0",
+  "vuedraggable": "^2.16.0",
+  "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
-    "grunt-svg2png": "git+https://github.com/dbushell/grunt-svg2png.git",
-    "grunt-svgmin": "^4.0.0",
-    "grunt-svgstore": "^1.0.0",
-    "load-grunt-tasks": "^4.0.0",
-    "svg4everybody": "2.1.9",
-    "webpack-dev-server": "2.11.2"
+  "grunt": "^1.0.3",
+  "grunt-svg2png": "git+https://github.com/dbushell/grunt-svg2png.git",
+  "grunt-svgmin": "^4.0.0",
+  "grunt-svgstore": "^1.0.0",
+  "load-grunt-tasks": "^4.0.0",
+  "svg4everybody": "2.1.9",
+  "webpack-dev-server": "2.11.2"
   },
   "description": "# Getting Started",
   "version": "1.0.0",
   "main": "Gruntfile.js",
   "directories": {
-    "lib": "lib",
-    "test": "test"
+  "lib": "lib",
+  "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devglade/minerva-webapp.git"
+  "type": "git",
+  "url": "git+https://github.com/devglade/minerva-webapp.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/devglade/minerva-webapp/issues"
+  "url": "https://github.com/devglade/minerva-webapp/issues"
   },
   "homepage": "https://github.com/devglade/minerva-webapp#readme"
-}
+  }
