@@ -70,7 +70,7 @@ end
 
 gem 'acts_as_votable', '~> 0.12.0'
 
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'bootstrap', '~> 4.0.0'
 gem 'bootstrap-social-rails'
 gem 'bootstrap_form'
 gem 'font-awesome-rails'
@@ -94,3 +94,5 @@ gem 'webpacker', '~> 3.5' #https://github.com/rails/webpacker
 gem 'inline_svg'
 
 gem 'sendgrid-ruby'
+
+gem 'ffi', '~> 1.13'
