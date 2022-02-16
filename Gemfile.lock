@@ -343,8 +343,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     optimist (3.0.1)
@@ -527,7 +525,7 @@ DEPENDENCIES
   redis (~> 3.0)
   sass-rails (~> 5.0)
   selenium-webdriver
-  sendgrid-ruby
+  sendgrid-ruby (~> 6.6.1)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
