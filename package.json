@@ -12,7 +12,7 @@
   "vuex": "^3.0.1"
   },
   "devDependencies": {
-  "grunt": "^1.0.3",
+  "grunt": "^1.5.3",
   "grunt-svg2png": "git+https://github.com/dbushell/grunt-svg2png.git",
   "grunt-svgmin": "^4.0.0",
   "grunt-svgstore": "^1.0.0",
