@@ -3,9 +3,9 @@
   "private": true,
   "dependencies": {
   "@rails/ujs": "^6.0.0-alpha",
-  "@rails/webpacker": "3.5",
+  "@rails/webpacker": "5.4",
   "vue": "^2.5.17",
-  "vue-loader": "14.2.2",
+  "vue-loader": "17.0.1",
   "vue-template-compiler": "^2.5.17",
   "vue-turbolinks": "^2.0.0",
   "vuedraggable": "^2.16.0",
